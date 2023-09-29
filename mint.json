@@ -1,0 +1,92 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "UnifyX Docs",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#8946FD",
+    "light": "#A673EF",
+    "dark": "#8946FD",
+    "background": {
+      "light": "#FAFAFB",
+      "dark": "#070709"
+    },
+    "anchors": {
+      "from": "#8946FD",
+      "to": "#DCD4FF"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "UnifyX.dev",
+      "url": "https://unifyx.dev/"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Book Demo",
+    "url": "https://calendly.com/unifyx/demo"
+  },
+  "primaryTab": {
+    "name": "Home"
+  },
+  "tabs": [
+    {
+      "name": "UnifyX Features",
+      "url": "features"
+    },
+    {
+      "name": "API Verticals",
+      "url": "api-verticals"
+    },
+    {
+      "name": "Integrations",
+      "url": "integrations"
+    },
+    {
+      "name": "FAQs",
+      "url": "faqs"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Help Center",
+      "icon": "question",
+      "url": "https://mintlify.com/community"
+    },
+    {
+      "name": "Blog",
+      "icon": "newspaper",
+      "url": "https://mintlify.com/blog"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": ["introduction", "quickstart", "development"]
+    },
+    {
+      "group": "Essentials",
+      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
+    },
+    {
+      "group": "API Documentation",
+      "pages": ["api-verticals/authentication"]
+    },
+    {
+      "group": "Endpoint Examples",
+      "pages": [
+        "api-verticals/endpoint/get",
+        "api-verticals/endpoint/create",
+        "api-verticals/endpoint/update",
+        "api-verticals/endpoint/delete"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/UnifyX_API?utm_source=documentation&utm_medium=documentation-footer&utm_campaign=documentation",
+    "linkedin": "https://www.linkedin.com/company/unifyx/?utm_source=documentation&utm_medium=documentation-footer&utm_campaign=documentation"
+  }
+}
