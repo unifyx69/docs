@@ -64,10 +64,6 @@
   ],
   "navigation": [
     {
-<<<<<<< Updated upstream
-      "group": "",
-      "pages": ["introduction"]
-=======
       "group": "Introduction",
       "pages": ["home/introduction", "home/quickstart", "home/development"]
     },
@@ -78,7 +74,6 @@
     {
       "group": "UnifyX Features",
       "pages": ["features/dashboard", "features/magic-link","features/connectors","features/logs","features/issues"]
->>>>>>> Stashed changes
     },
     {
       "group": "API Documentation",
