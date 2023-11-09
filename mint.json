@@ -5,6 +5,13 @@
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
+  "api": {
+    "baseUrl": "https://stage.unifyx.dev",
+    "auth": {
+      "method": "bearer"
+    }
+  },
+  "openapi": ["/spec.json"],
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#8946FD",
@@ -39,7 +46,7 @@
     },
     {
       "name": "API Verticals",
-      "url": "api-verticals"
+      "url": "api-reference"
     },
     {
       "name": "Integrations",
@@ -76,16 +83,238 @@
       "pages": ["features/dashboard", "features/magic-link","features/connectors","features/logs","features/issues"]
     },
     {
-      "group": "API Documentation",
-      "pages": ["api-verticals/authentication"]
-    },
-    {
-      "group": "Endpoint Examples",
+      "group": "API Verticals",
       "pages": [
-        "api-verticals/endpoint/get",
-        "api-verticals/endpoint/create",
-        "api-verticals/endpoint/update",
-        "api-verticals/endpoint/delete"
+        {
+          "group": "Internal-Organization",
+          "pages": [
+            "api-reference/internal-organization/get-organization",
+            "api-reference/internal-organization/regenerate-production-key"
+          ]
+        },
+        {
+          "group": "Internal-Person",
+          "pages": [
+            "api-reference/internal-person/create-person",
+            "api-reference/internal-person/read-persons-me"
+          ]
+        },
+        {
+          "group": "Internal-Integration",
+          "pages": [
+            "api-reference/internal-integration/get-integrations-for-magic-link",
+            "api-reference/internal-integration/get-integration",
+            "api-reference/internal-integration/create-integration"
+          ]
+        },
+        {
+          "group": "Internal-Link",
+          "pages": [
+            "api-reference/internal-link/create-unify-link",
+            "api-reference/internal-link/initiate-magic-link"
+          ]
+        },
+        {
+          "group": "Internal-Connector",
+          "pages": [
+            "api-reference/internal-connector/get-org-connectors",
+            "api-reference/internal-connector/update-connector-config",
+            "api-reference/internal-connector/get-connectors-for-tester",
+            "api-reference/internal-connector/handle-tester-query",
+            "api-reference/internal-connector/get-org-connectors-count",
+            "api-reference/internal-connector/get-connector",
+            "api-reference/internal-connector/force-resync",
+            "api-reference/internal-connector/get-sync-status",
+            "api-reference/internal-connector/delete-connector",
+            "api-reference/internal-connector/oauth-init",
+            "api-reference/internal-connector/check-oauth"
+          ]
+        },
+        {
+          "group": "Internal-End User",
+          "pages": [
+            "api-reference/internal-end-user/get-end-user",
+            "api-reference/internal-end-user/create-end-user"
+          ]
+        },
+        {
+          "group": "Internal-Login",
+          "pages": [
+            "api-reference/internal-login/login-for-access-token"
+          ]
+        },
+        {
+          "group": "HRIS-Bank Info",
+          "pages": [
+            "api-reference/hris-bank-info/get-bank-info-list",
+            "api-reference/hris-bank-info/get-bank-info-by-id"
+          ]
+        },
+        {
+          "group": "HRIS-Benefits",
+          "pages": [
+            "api-reference/hris-benefits/get-benefits",
+            "api-reference/hris-benefits/get-benefit-by-id"
+          ]
+        },
+        {
+          "group": "HRIS-Dependents",
+          "pages": [
+            "api-reference/hris-dependents/get-dependents",
+            "api-reference/hris-dependents/get-dependent-by-id"
+          ]
+        },
+        {
+          "group": "HRIS-Employee",
+          "pages": [
+            "api-reference/hris-employee/get-employees",
+            "api-reference/hris-employee/create-employee",
+            "api-reference/hris-employee/get-employee-by-id"
+          ]
+        },
+        {
+          "group": "HRIS-Employments",
+          "pages": [
+            "api-reference/hris-employments/get-employments",
+            "api-reference/hris-employments/get-employment-by-id"
+          ]
+        },
+        {
+          "group": "HRIS-Pay Groups",
+          "pages": [
+            "api-reference/hris-pay-groups/get-pay-groups",
+            "api-reference/hris-pay-groups/get-pay-group-by-id"
+          ]
+        },
+        {
+          "group": "HRIS-Payroll Runs",
+          "pages": [
+            "api-reference/hris-payroll-runs/get-payroll-runs",
+            "api-reference/hris-payroll-runs/get-payroll-run-by-id"
+          ]
+        },
+        {
+          "group": "HRIS-Employee Payroll Runs",
+          "pages": [
+            "api-reference/hris-employee-payroll-runs/get-employee-payroll-runs",
+            "api-reference/hris-employee-payroll-runs/get-employee-payroll-runs-by-id"
+          ]
+        },
+        {
+          "group": "HRIS-Time Off",
+          "pages": [
+            "api-reference/hris-time-off/get-time-off-list",
+            "api-reference/hris-time-off/create-time-off",
+            "api-reference/hris-time-off/get-time-off-by-id"
+          ]
+        },
+        {
+          "group": "HRIS-Passthrough",
+          "pages": [
+            "api-reference/hris-passthrough/make-passthrough-request"
+          ]
+        },
+        {
+          "group": "HRIS-Compensation",
+          "pages": [
+            "api-reference/hris-compensation/get-compensations",
+            "api-reference/hris-compensation/get-compensation-by-id"
+          ]
+        },
+        {
+          "group": "CRM-Company",
+          "pages": [
+            "api-reference/crm-company/get-companies",
+            "api-reference/crm-company/create-company",
+            "api-reference/crm-company/get-company-by-id",
+            "api-reference/crm-company/update-company",
+            "api-reference/crm-company/get-company-meta-patch",
+            "api-reference/crm-company/get-company-meta-post"
+          ]
+        },
+        {
+          "group": "CRM-Contacts",
+          "pages": [
+            "api-reference/crm-contacts/get-contacts",
+            "api-reference/crm-contacts/create-contact",
+            "api-reference/crm-contacts/get-contact-by-id",
+            "api-reference/crm-contacts/update-contact",
+            "api-reference/crm-contacts/create-ignore-contact",
+            "api-reference/crm-contacts/get-contact-meta-patch",
+            "api-reference/crm-contacts/get-contact-meta-post"
+          ]
+        },
+        {
+          "group": "CRM-Engagements",
+          "pages": [
+            "api-reference/crm-engagements/get-engagements",
+            "api-reference/crm-engagements/create-engagement",
+            "api-reference/crm-engagements/get-engagement-by-id",
+            "api-reference/crm-engagements/update-engagement",
+            "api-reference/crm-engagements/get-engagement-meta-patch",
+            "api-reference/crm-engagements/get-engagement-meta-post"
+          ]
+        },
+        {
+          "group": "CRM-Leads",
+          "pages": [
+            "api-reference/crm-leads/get-leads",
+            "api-reference/crm-leads/create-lead",
+            "api-reference/crm-leads/get-lead-by-id",
+            "api-reference/crm-leads/get-lead-meta-post"
+          ]
+        },
+        {
+          "group": "CRM-Notes",
+          "pages": [
+            "api-reference/crm-notes/get-notes",
+            "api-reference/crm-notes/create-note",
+            "api-reference/crm-notes/get-note-by-id",
+            "api-reference/crm-notes/get-note-meta-post"
+          ]
+        },
+        {
+          "group": "CRM-Opportunities",
+          "pages": [
+            "api-reference/crm-opportunities/get-opportunities",
+            "api-reference/crm-opportunities/create-opportunity",
+            "api-reference/crm-opportunities/get-opportunity-by-id",
+            "api-reference/crm-opportunities/update-opportunity",
+            "api-reference/crm-opportunities/get-opportunity-meta-patch",
+            "api-reference/crm-opportunities/get-opportunity-meta-post"
+          ]
+        },
+        {
+          "group": "CRM-Stage",
+          "pages": [
+            "api-reference/crm-stage/get-stages",
+            "api-reference/crm-stage/get-stage-by-id"
+          ]
+        },
+        {
+          "group": "CRM-Task",
+          "pages": [
+            "api-reference/crm-task/get-tasks",
+            "api-reference/crm-task/create-task",
+            "api-reference/crm-task/get-task-by-id",
+            "api-reference/crm-task/update-task",
+            "api-reference/crm-task/get-task-meta-patch",
+            "api-reference/crm-task/get-task-meta-post"
+          ]
+        },
+        {
+          "group": "CRM-User",
+          "pages": [
+            "api-reference/crm-user/get-users",
+            "api-reference/crm-user/get-user-by-id"
+          ]
+        },
+        {
+          "group": "Oauth Callback",
+          "pages": [
+            "api-reference/oauth-callback/oauth-callback-crm"
+          ]
+        }
       ]
     }
   ],
