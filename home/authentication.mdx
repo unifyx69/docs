@@ -1,0 +1,40 @@
+---
+title: 'Authentication'
+description: 'Learn about the process of authenticating your requests to the Unified API.'
+---
+
+## Overview
+
+When initiating requests to the UnifyX API, it is essential to include the necessary authentication parameters to establish your identity as an authorized user.
+
+There are two primary authentication protocols:
+1. UnifyX API Key
+2. Connector Tokens
+
+<Info>
+Credentials obtained through these protocols must be incorporated into the headers of each request sent to the UnifyX API.
+</Info>
+
+
+## UnifyX API Key
+For any communication with the UnifyX API, it is crucial to have an API key to authenticate yourself as an authorized user.
+
+<Note>It is recommended to securely store your access key after its creation in UnifyX</Note>
+
+In case you no longer have access to your key, you have the option to regenerate you UnifyX API Key in [API Key](https://demo.unifyx.dev/settings/keys) Tab in Settings.
+
+<img
+  src="https://media.discordapp.net/attachments/889556106832130098/1174649752604913704/image.png"
+  alt="Regenerate Token"
+  className="block"
+/>
+
+
+When creating your own requests, it is essential to include your API key with a **"Bearer "** prefix as a header named `Authorization`. This practice is crucial for authorizing your Merge API requests effectively. Ensure that this specific header is incorporated in every request, adhering to the following format:
+
+
+`Authorization: Bearer YOUR_UNIFYX_API_KEY`
+
+
+
+## Connector Tokens
