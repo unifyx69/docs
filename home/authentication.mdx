@@ -30,7 +30,7 @@ In case you no longer have access to your key, you have the option to regenerate
 />
 
 
-When creating your own requests, it is essential to include your API key with a **"Bearer "** prefix as a header named `Authorization`. This practice is crucial for authorizing your Merge API requests effectively. Ensure that this specific header is incorporated in every request, adhering to the following format:
+When creating your own requests, it is essential to include your API key with a **"Bearer "** prefix as a header named `Authorization`. This practice is crucial for authorizing your UnifyX API requests effectively. Ensure that this specific header is incorporated in every request, adhering to the following format:
 
 
 `Authorization: Bearer YOUR_UNIFYX_API_KEY`
@@ -38,3 +38,18 @@ When creating your own requests, it is essential to include your API key with a 
 
 
 ## Connector Tokens
+
+When issuing requests to the UnifyX API concerning your end users' data, access or manipulation, authorization is granted only if the users have undergone the [UnifyX's Magic Link](/features/magic-link) process and successfully stored their `connector_token`, as this token is a prerequisite for the successful execution of such requests.
+
+<Tip>You can find your `connector_token` inside the **Overview** section of your connector</Tip>
+
+<img
+  src="https://media.discordapp.net/attachments/889556106832130098/1174654931161067590/connector.png"
+  alt="Connector Token"
+  className="block"
+/>
+
+When creating your own requests, it is essential to include your your user's `connector_token` as a header named `X-Connector-Token` for authorizing your UnifyX API requests effectively. Ensure that this specific header is incorporated in every request, adhering to the following format:
+
+
+`X-Connector-Token: END_USER_CONNECTOR_TOKEN`
