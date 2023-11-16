@@ -41,33 +41,11 @@
   },
   "tabs": [
     {
-      "name": "UnifyX Features",
-      "url": "features"
-    },
-    {
-      "name": "API References",
+      "name": "API Reference",
       "url": "api-reference"
-    },
-    {
-      "name": "Integrations",
-      "url": "integrations"
-    },
-    {
-      "name": "FAQs",
-      "url": "faqs"
     }
   ],
   "navigation": [
-    {
-      "group": "UnifyX API Basics",
-      "pages": [
-        "home/introduction",
-        "home/authentication",
-        "home/pagination",
-        "home/sync-frequency",
-        "home/rate-limits"
-      ]
-    },
     {
       "group": "Features Overview",
       "pages": ["features/overview"]
@@ -80,6 +58,15 @@
         "features/connectors",
         "features/logs",
         "features/issues"
+      ]
+    },
+    {
+      "group": "UnifyX API Basics",
+      "pages": [
+        "api-reference/basics/authentication",
+        "api-reference/basics/pagination",
+        "api-reference/basics/sync-frequency",
+        "api-reference/basics/rate-limits"
       ]
     },
     {
