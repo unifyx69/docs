@@ -8,10 +8,27 @@
         "summary": "Get Bank Info List",
         "description": "Returns a list of BankInfo objects.",
         "operationId": "get_bank_info_list_api_hris_v1_bank_info_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
           }
         }
       }
@@ -22,10 +39,27 @@
         "summary": "Get Bank Info By Id",
         "description": "Returns a BankInfo object with the given id.",
         "operationId": "get_bank_info_by_id_api_hris_v1_bank_info__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
           }
         }
       }
@@ -195,6 +229,24 @@
               "default": false,
               "title": "Include Raw Data"
             }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 50,
+              "title": "Page Size"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "title": "Cursor" }
           },
           {
             "name": "x-connector-token",
@@ -453,6 +505,59 @@
         "summary": "Get Employments",
         "description": "Returns a list of Employment objects.",
         "operationId": "get_employments_api_hris_v1_employments_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "employee_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Employee Id"
+            }
+          },
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "title": "Remote Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Include Raw Data"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 50,
+              "title": "Page Size"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "title": "Cursor" }
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -461,6 +566,14 @@
                 "schema": {
                   "$ref": "#/components/schemas/HrisEmploymentPaginatedResponse"
                 }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
               }
             }
           }
@@ -473,12 +586,45 @@
         "summary": "Get Employment By Id",
         "description": "Returns an Employment object with the given id.",
         "operationId": "get_employment_by_id_api_hris_v1_employments__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Include Raw Data"
+            }
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/HrisEmployment" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
               }
             }
           }
@@ -1511,7 +1657,7 @@
       "HrisBenefitPaginatedResponse": {
         "properties": {
           "cursor": {
-            "type": "string",
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Cursor",
             "description": "Cursor value to fetch next set of items",
             "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
@@ -1636,7 +1782,7 @@
       "HrisCompensationPaginatedResponse": {
         "properties": {
           "cursor": {
-            "type": "string",
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Cursor",
             "description": "Cursor value to fetch next set of items",
             "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
@@ -1772,7 +1918,7 @@
       "HrisDependentPaginatedResponse": {
         "properties": {
           "cursor": {
-            "type": "string",
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Cursor",
             "description": "Cursor value to fetch next set of items",
             "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
@@ -2026,7 +2172,7 @@
       "HrisEmployeePaginatedResponse": {
         "properties": {
           "cursor": {
-            "type": "string",
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Cursor",
             "description": "Cursor value to fetch next set of items",
             "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
@@ -2188,7 +2334,7 @@
       "HrisEmployeePayrollRunPaginatedResponse": {
         "properties": {
           "cursor": {
-            "type": "string",
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Cursor",
             "description": "Cursor value to fetch next set of items",
             "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
@@ -2296,7 +2442,7 @@
       "HrisEmploymentPaginatedResponse": {
         "properties": {
           "cursor": {
-            "type": "string",
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Cursor",
             "description": "Cursor value to fetch next set of items",
             "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
@@ -2367,7 +2513,7 @@
       "HrisPayGroupPaginatedResponse": {
         "properties": {
           "cursor": {
-            "type": "string",
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Cursor",
             "description": "Cursor value to fetch next set of items",
             "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
@@ -2475,7 +2621,7 @@
       "HrisPayrollRunPaginatedResponse": {
         "properties": {
           "cursor": {
-            "type": "string",
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Cursor",
             "description": "Cursor value to fetch next set of items",
             "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
@@ -2685,7 +2831,7 @@
       "HrisTimeOffBalancePaginatedResponse": {
         "properties": {
           "cursor": {
-            "type": "string",
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Cursor",
             "description": "Cursor value to fetch next set of items",
             "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
@@ -2709,7 +2855,7 @@
       "HrisTimeOffPaginatedResponse": {
         "properties": {
           "cursor": {
-            "type": "string",
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Cursor",
             "description": "Cursor value to fetch next set of items",
             "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
