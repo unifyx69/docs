@@ -70,15 +70,8 @@
       ]
     },
     {
-      "group": "API Verticals",
+      "group": "Unified Models",
       "pages": [
-        {
-          "group": "Bank Info",
-          "pages": [
-            "api-reference/bank-info/get-bank-info-list",
-            "api-reference/bank-info/get-bank-info-by-id"
-          ]
-        },
         {
           "group": "Benefits",
           "pages": [
@@ -145,15 +138,20 @@
           ]
         },
         {
-          "group": "Passthrough",
-          "pages": ["api-reference/passthrough/make-passthrough-request"]
-        },
-        {
           "group": "Compensation",
           "pages": [
             "api-reference/compensation/get-compensations",
             "api-reference/compensation/get-compensation-by-id"
           ]
+        }
+      ]
+    },
+    {
+      "group": "Supplemental Data",
+      "pages": [
+        {
+          "group": "Passthrough",
+          "pages": ["api-reference/passthrough/make-passthrough-request"]
         }
       ]
     }
