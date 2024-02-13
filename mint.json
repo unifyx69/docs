@@ -41,8 +41,20 @@
   },
   "tabs": [
     {
-      "name": "API Reference",
+      "name": "API Basics",
       "url": "api-reference"
+    },
+    {
+      "name": "HR, Payroll, and Directory (HRIS)",
+      "url": "hris"
+    },
+    {
+      "name": "Vendor Management System (VMS)",
+      "url": "vms"
+    },
+    {
+      "name": "Recruiting (ATS)",
+      "url": "ats"
     }
   ],
   "navigation": [
@@ -70,104 +82,104 @@
       ]
     },
     {
-      "group": "HR, Payroll, and Directory (HRIS)",
+      "group": "Unified Models",
       "pages": [
         {
           "group": "Benefits",
           "pages": [
-            "api-reference/benefits/get-benefits",
-            "api-reference/benefits/get-benefit-by-id"
+            "hris/benefits/get-benefits",
+            "hris/benefits/get-benefit-by-id"
           ]
         },
         {
           "group": "Dependents",
           "pages": [
-            "api-reference/dependents/get-dependents",
-            "api-reference/dependents/get-dependent-by-id"
+            "hris/dependents/get-dependents",
+            "hris/dependents/get-dependent-by-id"
           ]
         },
         {
           "group": "Employee",
           "pages": [
-            "api-reference/employee/get-employees",
-            "api-reference/employee/create-employee",
-            "api-reference/employee/get-employee-by-id"
+            "hris/employee/get-employees",
+            "hris/employee/create-employee",
+            "hris/employee/get-employee-by-id"
           ]
         },
         {
           "group": "Employments",
           "pages": [
-            "api-reference/employments/get-employments",
-            "api-reference/employments/get-employment-by-id"
+            "hris/employments/get-employments",
+            "hris/employments/get-employment-by-id"
           ]
         },
         {
           "group": "Pay Groups",
           "pages": [
-            "api-reference/pay-groups/get-pay-groups",
-            "api-reference/pay-groups/get-pay-group-by-id"
+            "hris/pay-groups/get-pay-groups",
+            "hris/pay-groups/get-pay-group-by-id"
           ]
         },
         {
           "group": "Payroll Runs",
           "pages": [
-            "api-reference/payroll-runs/get-payroll-runs",
-            "api-reference/payroll-runs/get-payroll-run-by-id"
+            "hris/payroll-runs/get-payroll-runs",
+            "hris/payroll-runs/get-payroll-run-by-id"
           ]
         },
         {
           "group": "Employee Payroll Runs",
           "pages": [
-            "api-reference/employee-payroll-runs/get-employee-payroll-runs",
-            "api-reference/employee-payroll-runs/get-employee-payroll-runs-by-id"
+            "hris/employee-payroll-runs/get-employee-payroll-runs",
+            "hris/employee-payroll-runs/get-employee-payroll-runs-by-id"
           ]
         },
         {
           "group": "Time Off",
           "pages": [
-            "api-reference/time-off/get-time-off-list",
-            "api-reference/time-off/create-time-off",
-            "api-reference/time-off/get-time-off-by-id"
+            "hris/time-off/get-time-off-list",
+            "hris/time-off/create-time-off",
+            "hris/time-off/get-time-off-by-id"
           ]
         },
         {
           "group": "Time Off Balance",
           "pages": [
-            "api-reference/time-off-balance/get-time-off-balances-list",
-            "api-reference/time-off-balance/get-time-off-balance-by-id"
+            "hris/time-off-balance/get-time-off-balances-list",
+            "hris/time-off-balance/get-time-off-balance-by-id"
           ]
         },
         {
           "group": "Compensation",
           "pages": [
-            "api-reference/compensation/get-compensations",
-            "api-reference/compensation/get-compensation-by-id"
+            "hris/compensation/get-compensations",
+            "hris/compensation/get-compensation-by-id"
           ]
         }
       ]
     },
     {
-      "group": "Vendor Management System (VMS)",
+      "group": "Unified Models",
       "pages": [
         {
           "group": "Job Posting",
           "pages": [
-            "api-reference/job-posting/get-job-posting-list",
-            "api-reference/job-posting/get-job-posting-by-id"
+            "vms/job-posting/get-job-posting-list",
+            "vms/job-posting/get-job-posting-by-id"
           ]
         },
         {
           "group": "Job Seeker",
           "pages": [
-            "api-reference/job-seeker/create-job-seeker",
-            "api-reference/job-seeker/get-job-seeker-list"
+            "vms/job-seeker/create-job-seeker",
+            "vms/job-seeker/get-job-seeker-list"
           ]
         },
         {
           "group": "Work Order",
           "pages": [
-            "api-reference/work-order/get-work-order-list",
-            "api-reference/work-order/create-work-order"
+            "vms/work-order/get-work-order-list",
+            "vms/work-order/create-work-order"
           ]
         }
       ]
