@@ -70,7 +70,7 @@
       ]
     },
     {
-      "group": "Unified Models",
+      "group": "HR, Payroll, and Directory (HRIS)",
       "pages": [
         {
           "group": "Benefits",
@@ -142,6 +142,32 @@
           "pages": [
             "api-reference/compensation/get-compensations",
             "api-reference/compensation/get-compensation-by-id"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Vendor Management System (VMS)",
+      "pages": [
+        {
+          "group": "Job Posting",
+          "pages": [
+            "api-reference/job-posting/get-job-posting-list",
+            "api-reference/job-posting/get-job-posting-by-id"
+          ]
+        },
+        {
+          "group": "Job Seeker",
+          "pages": [
+            "api-reference/job-seeker/create-job-seeker",
+            "api-reference/job-seeker/get-job-seeker-list"
+          ]
+        },
+        {
+          "group": "Work Order",
+          "pages": [
+            "api-reference/work-order/get-work-order-list",
+            "api-reference/work-order/create-work-order"
           ]
         }
       ]
