@@ -275,6 +275,12 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "title": "Expand" }
+          },
+          {
             "name": "manager_id",
             "in": "query",
             "required": false,
@@ -309,6 +315,12 @@
               "default": false,
               "title": "Include Raw Data"
             }
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "title": "Modified After" }
           },
           {
             "name": "page_size",
@@ -399,6 +411,12 @@
             "in": "path",
             "required": true,
             "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "title": "Expand" }
           },
           {
             "name": "include_raw_data",
@@ -2315,6 +2333,12 @@
             "title": "Mobile Phone Number",
             "description": "The employee's mobile phone number.",
             "example": "+1234567890"
+          },
+          "country_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Country Code",
+            "description": "The employee's country code",
+            "example": "+91"
           },
           "home_location": {
             "anyOf": [
