@@ -17,14 +17,23 @@
             "schema": {
               "type": "string",
               "format": "uuid",
+              "description": "The ID of the employee.",
               "title": "Employee Id"
-            }
+            },
+            "description": "The ID of the employee.",
+            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
           },
           {
             "name": "remote_id",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Remote Id" }
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
           },
           {
             "name": "include_raw_data",
@@ -32,9 +41,24 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
           },
           {
             "name": "page_size",
@@ -44,15 +68,22 @@
               "type": "integer",
               "maximum": 100,
               "minimum": 1,
+              "description": "Number of results to return per page.",
               "default": 50,
               "title": "Page Size"
-            }
+            },
+            "description": "Number of results to return per page."
           },
           {
             "name": "cursor",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Cursor" }
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
           },
           {
             "name": "x-connector-token",
@@ -103,9 +134,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "x-connector-token",
@@ -149,14 +183,23 @@
             "schema": {
               "type": "string",
               "format": "uuid",
+              "description": "The ID of the employee.",
               "title": "Employee Id"
-            }
+            },
+            "description": "The ID of the employee.",
+            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
           },
           {
             "name": "remote_id",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Remote Id" }
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
           },
           {
             "name": "include_raw_data",
@@ -164,9 +207,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "page_size",
@@ -176,15 +222,34 @@
               "type": "integer",
               "maximum": 100,
               "minimum": 1,
+              "description": "Number of results to return per page.",
               "default": 50,
               "title": "Page Size"
-            }
+            },
+            "description": "Number of results to return per page."
           },
           {
             "name": "cursor",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Cursor" }
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
           },
           {
             "name": "x-connector-token",
@@ -235,9 +300,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "x-connector-token",
@@ -275,26 +343,29 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "schema": { "type": "string", "title": "Expand" }
-          },
-          {
             "name": "manager_id",
             "in": "query",
             "required": false,
             "schema": {
               "type": "string",
               "format": "uuid",
+              "description": "If provided, will only return employees for this manager.",
               "title": "Manager Id"
-            }
+            },
+            "description": "If provided, will only return employees for this manager.",
+            "example": "018d69a2-ea0e-7c93-8b7a-709b126e9c7a"
           },
           {
             "name": "remote_id",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Remote Id" }
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
           },
           {
             "name": "company_id",
@@ -303,8 +374,23 @@
             "schema": {
               "type": "string",
               "format": "uuid",
+              "description": "If provided, will only return employees for this company",
               "title": "Company Id"
-            }
+            },
+            "description": "If provided, will only return employees for this company",
+            "example": "018af6f5-180c-782e-816a-1d9b01c63652"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.",
+            "example": "manager"
           },
           {
             "name": "include_raw_data",
@@ -312,15 +398,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
-          },
-          {
-            "name": "modified_after",
-            "in": "query",
-            "required": false,
-            "schema": { "type": "string", "title": "Modified After" }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "page_size",
@@ -330,15 +413,34 @@
               "type": "integer",
               "maximum": 100,
               "minimum": 1,
+              "description": "Number of results to return per page.",
               "default": 50,
               "title": "Page Size"
-            }
+            },
+            "description": "Number of results to return per page."
           },
           {
             "name": "cursor",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Cursor" }
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
           },
           {
             "name": "x-connector-token",
@@ -413,20 +515,29 @@
             "schema": { "type": "string", "format": "uuid", "title": "Id" }
           },
           {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "schema": { "type": "string", "title": "Expand" }
-          },
-          {
             "name": "include_raw_data",
             "in": "query",
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.",
+            "example": "manager"
           },
           {
             "name": "x-connector-token",
@@ -470,14 +581,23 @@
             "schema": {
               "type": "string",
               "format": "uuid",
+              "description": "The ID of the employee.",
               "title": "Employee Id"
-            }
+            },
+            "description": "The ID of the employee.",
+            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
           },
           {
             "name": "remote_id",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Remote Id" }
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
           },
           {
             "name": "include_raw_data",
@@ -485,9 +605,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "page_size",
@@ -497,15 +620,34 @@
               "type": "integer",
               "maximum": 100,
               "minimum": 1,
+              "description": "Number of results to return per page.",
               "default": 50,
               "title": "Page Size"
-            }
+            },
+            "description": "Number of results to return per page."
           },
           {
             "name": "cursor",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Cursor" }
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
           },
           {
             "name": "x-connector-token",
@@ -556,9 +698,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "x-connector-token",
@@ -599,7 +744,13 @@
             "name": "remote_id",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Remote Id" }
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
           },
           {
             "name": "include_raw_data",
@@ -607,9 +758,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "page_size",
@@ -619,15 +773,34 @@
               "type": "integer",
               "maximum": 100,
               "minimum": 1,
+              "description": "Number of results to return per page.",
               "default": 50,
               "title": "Page Size"
-            }
+            },
+            "description": "Number of results to return per page."
           },
           {
             "name": "cursor",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Cursor" }
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
           },
           {
             "name": "x-connector-token",
@@ -678,9 +851,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "x-connector-token",
@@ -721,7 +897,13 @@
             "name": "remote_id",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Remote Id" }
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
           },
           {
             "name": "include_raw_data",
@@ -729,9 +911,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "page_size",
@@ -741,15 +926,34 @@
               "type": "integer",
               "maximum": 100,
               "minimum": 1,
+              "description": "Number of results to return per page.",
               "default": 50,
               "title": "Page Size"
-            }
+            },
+            "description": "Number of results to return per page."
           },
           {
             "name": "cursor",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Cursor" }
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
           },
           {
             "name": "x-connector-token",
@@ -800,9 +1004,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "x-connector-token",
@@ -846,8 +1053,11 @@
             "schema": {
               "type": "string",
               "format": "uuid",
+              "description": "The ID of the employee.",
               "title": "Employee Id"
-            }
+            },
+            "description": "The ID of the employee.",
+            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
           },
           {
             "name": "payroll_run_id",
@@ -856,14 +1066,23 @@
             "schema": {
               "type": "string",
               "format": "uuid",
+              "description": "The payroll being run.",
               "title": "Payroll Run Id"
-            }
+            },
+            "description": "The payroll being run.",
+            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
           },
           {
             "name": "remote_id",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Remote Id" }
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
           },
           {
             "name": "include_raw_data",
@@ -871,9 +1090,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "page_size",
@@ -883,15 +1105,34 @@
               "type": "integer",
               "maximum": 100,
               "minimum": 1,
+              "description": "Number of results to return per page.",
               "default": 50,
               "title": "Page Size"
-            }
+            },
+            "description": "Number of results to return per page."
           },
           {
             "name": "cursor",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Cursor" }
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
           },
           {
             "name": "x-connector-token",
@@ -942,9 +1183,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "x-connector-token",
@@ -987,7 +1231,13 @@
             "name": "remote_id",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Remote Id" }
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
           },
           {
             "name": "include_raw_data",
@@ -995,9 +1245,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "page_size",
@@ -1007,15 +1260,34 @@
               "type": "integer",
               "maximum": 100,
               "minimum": 1,
+              "description": "Number of results to return per page.",
               "default": 50,
               "title": "Page Size"
-            }
+            },
+            "description": "Number of results to return per page."
           },
           {
             "name": "cursor",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Cursor" }
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
           },
           {
             "name": "x-connector-token",
@@ -1078,9 +1350,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "x-connector-token",
@@ -1121,7 +1396,13 @@
             "name": "remote_id",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Remote Id" }
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
           },
           {
             "name": "include_raw_data",
@@ -1129,9 +1410,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "page_size",
@@ -1141,15 +1425,34 @@
               "type": "integer",
               "maximum": 100,
               "minimum": 1,
+              "description": "Number of results to return per page.",
               "default": 50,
               "title": "Page Size"
-            }
+            },
+            "description": "Number of results to return per page."
           },
           {
             "name": "cursor",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Cursor" }
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
           },
           {
             "name": "x-connector-token",
@@ -1200,9 +1503,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "x-connector-token",
@@ -1276,14 +1582,23 @@
             "schema": {
               "type": "string",
               "format": "uuid",
+              "description": "The ID of the employee.",
               "title": "Employee Id"
-            }
+            },
+            "description": "The ID of the employee.",
+            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
           },
           {
             "name": "remote_id",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Remote Id" }
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
           },
           {
             "name": "include_raw_data",
@@ -1291,9 +1606,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "page_size",
@@ -1303,15 +1621,34 @@
               "type": "integer",
               "maximum": 100,
               "minimum": 1,
+              "description": "Number of results to return per page.",
               "default": 50,
               "title": "Page Size"
-            }
+            },
+            "description": "Number of results to return per page."
           },
           {
             "name": "cursor",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Cursor" }
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
           },
           {
             "name": "x-connector-token",
@@ -1362,9 +1699,12 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
-            }
+            },
+            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "example": false
           },
           {
             "name": "x-connector-token",
@@ -1425,15 +1765,22 @@
               "type": "integer",
               "maximum": 100,
               "minimum": 1,
+              "description": "Number of results to return per page.",
               "default": 50,
               "title": "Page Size"
-            }
+            },
+            "description": "Number of results to return per page."
           },
           {
             "name": "cursor",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Cursor" }
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
           },
           {
             "name": "x-connector-token",
@@ -1577,15 +1924,22 @@
               "type": "integer",
               "maximum": 100,
               "minimum": 1,
+              "description": "Number of results to return per page.",
               "default": 50,
               "title": "Page Size"
-            }
+            },
+            "description": "Number of results to return per page."
           },
           {
             "name": "cursor",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Cursor" }
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
           },
           {
             "name": "x-connector-token",
@@ -1648,15 +2002,22 @@
               "type": "integer",
               "maximum": 100,
               "minimum": 1,
+              "description": "Number of results to return per page.",
               "default": 50,
               "title": "Page Size"
-            }
+            },
+            "description": "Number of results to return per page."
           },
           {
             "name": "cursor",
             "in": "query",
             "required": false,
-            "schema": { "type": "string", "title": "Cursor" }
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
           },
           {
             "name": "x-connector-token",
@@ -2280,6 +2641,12 @@
             "description": "The employee's first name.",
             "example": "Kunal"
           },
+          "middle_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Middle Name",
+            "description": "The employee's middle name.",
+            "example": "Christopher"
+          },
           "last_name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Last Name",
@@ -2303,6 +2670,12 @@
             "title": "Username",
             "description": "The employee's username that appears in the remote UI.",
             "example": "kunaltyagi"
+          },
+          "designation": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Designation",
+            "description": "The employee's current designation/title",
+            "example": "Chief Technology Officer"
           },
           "department": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
@@ -2373,10 +2746,7 @@
             }
           },
           "manager": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Manager",
             "description": "The employee ID of the employee's manager.",
             "example": "018aeaff-cc7c-7837-988a-965762bd63c1"
@@ -2470,7 +2840,6 @@
           "mobile_phone_number",
           "home_location",
           "work_location",
-          "manager",
           "pay_group",
           "ssn",
           "gender",
@@ -3295,7 +3664,12 @@
             "description": "username of the creator of this job posting",
             "example": "kunal_tyagi"
           },
-          "owner_username": { "type": "string", "title": "Owner Username" },
+          "owner_username": {
+            "type": "string",
+            "title": "Owner Username",
+            "description": "Username of the owner of job posting",
+            "example": "om_anand"
+          },
           "job_template_id": {
             "type": "string",
             "title": "Job Template Id",
@@ -3364,6 +3738,7 @@
           "modified_at",
           "external_job_posting_id",
           "creator_username",
+          "owner_username",
           "job_template_id",
           "title",
           "currency",
