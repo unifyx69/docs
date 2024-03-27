@@ -406,6 +406,20 @@
             "example": false
           },
           {
+            "name": "employment_status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "allOf": [
+                { "$ref": "#/components/schemas/HRISEmploymentStatus" }
+              ],
+              "description": "If provided, will only return employees with this employment status.",
+              "title": "Employment Status"
+            },
+            "description": "If provided, will only return employees with this employment status.",
+            "example": "ACTIVE"
+          },
+          {
             "name": "page_size",
             "in": "query",
             "required": false,
@@ -2138,6 +2152,18 @@
         "type": "object",
         "required": ["amount", "name"],
         "title": "Earning"
+      },
+      "HRISEmploymentStatus": {
+        "type": "string",
+        "enum": [
+          "ACTIVE",
+          "PENDING",
+          "INACTIVE",
+          "ACTIVE_EXTERNAL",
+          "INACTIVE_EXTERNAL",
+          "-"
+        ],
+        "title": "HRISEmploymentStatus"
       },
       "HTTPValidationError": {
         "properties": {
