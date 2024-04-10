@@ -1,7 +1,173 @@
 {
   "openapi": "3.1.0",
-  "info": { "title": "Unifyx Backend APIs", "version": "0.1.0" },
+  "info": { "title": "Bindbee APIs", "version": "0.1.0" },
   "paths": {
+    "/metrics": {
+      "get": {
+        "summary": "Metrics",
+        "description": "Endpoint that serves Prometheus metrics.",
+        "operationId": "metrics_metrics_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/api/hris/v1/bank-info": {
+      "get": {
+        "tags": ["Bank Info"],
+        "summary": "Get Bank Info List",
+        "description": "Returns a list of BankInfo objects.",
+        "operationId": "get_bank_info_list_api_hris_v1_bank_info_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HrisBankInfoPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hris/v1/bank-info/{id}": {
+      "get": {
+        "tags": ["Bank Info"],
+        "summary": "Get Bank Info By Id",
+        "description": "Returns a BankInfo object with the given id.",
+        "operationId": "get_bank_info_by_id_api_hris_v1_bank_info__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HrisBankInfo" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/hris/v1/benefits": {
       "get": {
         "tags": ["Benefits"],
@@ -41,11 +207,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -54,10 +220,10 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
@@ -134,11 +300,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -207,11 +373,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -245,10 +411,10 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
@@ -300,11 +466,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -398,11 +564,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -450,10 +616,10 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
@@ -534,11 +700,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -619,11 +785,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -657,10 +823,10 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
@@ -712,11 +878,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -772,11 +938,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -810,10 +976,10 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
@@ -865,11 +1031,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -925,11 +1091,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -963,10 +1129,10 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
@@ -1018,11 +1184,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -1104,11 +1270,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -1142,10 +1308,10 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
@@ -1197,11 +1363,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -1259,11 +1425,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -1297,10 +1463,10 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
@@ -1364,11 +1530,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -1424,11 +1590,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -1462,10 +1628,10 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
@@ -1517,11 +1683,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -1620,11 +1786,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -1658,10 +1824,10 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Unifyx after this date time will be returned. Format: DateTime (ISO 8601)",
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
@@ -1713,11 +1879,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
               "default": false,
               "title": "Include Raw Data"
             },
-            "description": "Whether to include the original data Unifyx fetched from the third-party to produce these models.",
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
           },
           {
@@ -1733,6 +1899,2829 @@
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/HrisCompensation" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/activities": {
+      "get": {
+        "tags": ["Activity"],
+        "summary": "Get Activities",
+        "description": "Returns a list of Activity objects.",
+        "operationId": "get_activities_api_ats_v1_activities_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsActivityPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Activity"],
+        "summary": "Create Activity",
+        "description": "Creates a Activity object with the given values.",
+        "operationId": "create_activity_api_ats_v1_activities_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/activities/{id}": {
+      "get": {
+        "tags": ["Activity"],
+        "summary": "Get Activity By Id",
+        "description": "Returns a Activity object with the given id.",
+        "operationId": "get_activity_by_id_api_ats_v1_activities__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AtsActivity" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/applications": {
+      "get": {
+        "tags": ["Application"],
+        "summary": "Get Applications",
+        "description": "Returns a list of Application objects.",
+        "operationId": "get_applications_api_ats_v1_applications_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsApplicationPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Application"],
+        "summary": "Create Application",
+        "description": "Creates an Application object with the given values.",
+        "operationId": "create_application_api_ats_v1_applications_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/applications/{id}": {
+      "get": {
+        "tags": ["Application"],
+        "summary": "Get Application By Id",
+        "description": "Returns an Application object with the given id.",
+        "operationId": "get_application_by_id_api_ats_v1_applications__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AtsApplication" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/attachments": {
+      "get": {
+        "tags": ["Attachment"],
+        "summary": "Get Attachments",
+        "description": "Returns a list of Attachment objects.",
+        "operationId": "get_attachments_api_ats_v1_attachments_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsAttachmentPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Attachment"],
+        "summary": "Create Attachment",
+        "description": "Creates an Attachment object with the given values.",
+        "operationId": "create_attachment_api_ats_v1_attachments_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/attachments/{id}": {
+      "get": {
+        "tags": ["Attachment"],
+        "summary": "Get Attachment By Id",
+        "description": "Returns an Attachment object with the given id.",
+        "operationId": "get_attachment_by_id_api_ats_v1_attachments__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AtsAttachment" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/candidates": {
+      "get": {
+        "tags": ["Candidate"],
+        "summary": "Get Candidates",
+        "description": "Returns a list of Candidate objects.",
+        "operationId": "get_candidates_api_ats_v1_candidates_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
+          },
+          {
+            "name": "company_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "If provided, will only return candidate for this company",
+              "title": "Company Id"
+            },
+            "description": "If provided, will only return candidate for this company",
+            "example": "2024-02-21T21:22:12.993+05:30"
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsCandidatePaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Candidate"],
+        "summary": "Create Candidate",
+        "description": "Creates a Candidate object with the given values.",
+        "operationId": "create_candidate_api_ats_v1_candidates_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/candidates/{id}": {
+      "get": {
+        "tags": ["Candidate"],
+        "summary": "Get Candidate By Id",
+        "description": "Returns a Candidate object with the given id.",
+        "operationId": "get_candidate_by_id_api_ats_v1_candidates__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AtsCandidate" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/departments": {
+      "get": {
+        "tags": ["Department"],
+        "summary": "Get Departments",
+        "description": "Returns a list of Department objects.",
+        "operationId": "get_departments_api_ats_v1_departments_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsDepartmentPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Department"],
+        "summary": "Create Department",
+        "description": "Creates a Department object with the given values.",
+        "operationId": "create_department_api_ats_v1_departments_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/departments/{id}": {
+      "get": {
+        "tags": ["Department"],
+        "summary": "Get Department By Id",
+        "description": "Returns a Department object with the given id.",
+        "operationId": "get_department_by_id_api_ats_v1_departments__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AtsDepartment" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/eeocs": {
+      "get": {
+        "tags": ["EEOC"],
+        "summary": "Get Eeocs",
+        "description": "Returns a list of EEOC records.",
+        "operationId": "get_eeocs_api_ats_v1_eeocs_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsEEOCPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["EEOC"],
+        "summary": "Create Eeoc",
+        "description": "Creates an EEOC record with the given values.",
+        "operationId": "create_eeoc_api_ats_v1_eeocs_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/eeocs/{id}": {
+      "get": {
+        "tags": ["EEOC"],
+        "summary": "Get Eeoc By Id",
+        "description": "Returns an EEOC record with the given id.",
+        "operationId": "get_eeoc_by_id_api_ats_v1_eeocs__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AtsEEOC" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/job-interview-stages": {
+      "get": {
+        "tags": ["Job Interview Stage"],
+        "summary": "Get Job Interview Stages",
+        "description": "Returns a list of Job Interview Stage objects.",
+        "operationId": "get_job_interview_stages_api_ats_v1_job_interview_stages_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsJobInterviewStagePaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Job Interview Stage"],
+        "summary": "Create Job Interview Stage",
+        "description": "Creates a Job Interview Stage object with the given values.",
+        "operationId": "create_job_interview_stage_api_ats_v1_job_interview_stages_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/job-interview-stages/{id}": {
+      "get": {
+        "tags": ["Job Interview Stage"],
+        "summary": "Get Job Interview Stage By Id",
+        "description": "Returns a Job Interview Stage object with the given id.",
+        "operationId": "get_job_interview_stage_by_id_api_ats_v1_job_interview_stages__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsJobInterviewStage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/jobs": {
+      "get": {
+        "tags": ["Job"],
+        "summary": "Get Jobs",
+        "description": "Returns a list of Job objects.",
+        "operationId": "get_jobs_api_ats_v1_jobs_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsJobPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Job"],
+        "summary": "Create Job",
+        "description": "Creates a Job object with the given values.",
+        "operationId": "create_job_api_ats_v1_jobs_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/jobs/{id}": {
+      "get": {
+        "tags": ["Job"],
+        "summary": "Get Job By Id",
+        "description": "Returns a Job object with the given id.",
+        "operationId": "get_job_by_id_api_ats_v1_jobs__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AtsJob" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/offers": {
+      "get": {
+        "tags": ["Offer"],
+        "summary": "Get Offers",
+        "description": "Returns a list of Offer objects.",
+        "operationId": "get_offers_api_ats_v1_offers_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsOfferPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Offer"],
+        "summary": "Create Offer",
+        "description": "Creates an Offer object with the given values.",
+        "operationId": "create_offer_api_ats_v1_offers_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/offers/{id}": {
+      "get": {
+        "tags": ["Offer"],
+        "summary": "Get Offer By Id",
+        "description": "Returns an Offer object with the given id.",
+        "operationId": "get_offer_by_id_api_ats_v1_offers__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AtsOffer" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/offices": {
+      "get": {
+        "tags": ["Office"],
+        "summary": "Get Offices",
+        "description": "Returns a list of Office objects.",
+        "operationId": "get_offices_api_ats_v1_offices_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsOfficePaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Office"],
+        "summary": "Create Office",
+        "description": "Creates an Office object with the given values.",
+        "operationId": "create_office_api_ats_v1_offices_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/offices/{id}": {
+      "get": {
+        "tags": ["Office"],
+        "summary": "Get Office By Id",
+        "description": "Returns an Office object with the given id.",
+        "operationId": "get_office_by_id_api_ats_v1_offices__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AtsOffice" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/reject-reasons": {
+      "get": {
+        "tags": ["Reject Reason"],
+        "summary": "Get Reject Reasons",
+        "description": "Returns a list of RejectReason objects.",
+        "operationId": "get_reject_reasons_api_ats_v1_reject_reasons_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsRejectReasonPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Reject Reason"],
+        "summary": "Create Reject Reason",
+        "description": "Creates a RejectReason object with the given values.",
+        "operationId": "create_reject_reason_api_ats_v1_reject_reasons_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/reject-reasons/{id}": {
+      "get": {
+        "tags": ["Reject Reason"],
+        "summary": "Get Reject Reason By Id",
+        "description": "Returns a RejectReason object with the given id.",
+        "operationId": "get_reject_reason_by_id_api_ats_v1_reject_reasons__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AtsRejectReason" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/remote-users": {
+      "get": {
+        "tags": ["Remote User"],
+        "summary": "Get Remote Users",
+        "description": "Returns a list of RemoteUser objects.",
+        "operationId": "get_remote_users_api_ats_v1_remote_users_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsRemoteUserPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Remote User"],
+        "summary": "Create Remote User",
+        "description": "Creates a RemoteUser object with the given values.",
+        "operationId": "create_remote_user_api_ats_v1_remote_users_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/remote-users/{id}": {
+      "get": {
+        "tags": ["Remote User"],
+        "summary": "Get Remote User By Id",
+        "description": "Returns a RemoteUser object with the given id.",
+        "operationId": "get_remote_user_by_id_api_ats_v1_remote_users__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AtsRemoteUser" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/scheduled-interviews": {
+      "get": {
+        "tags": ["Scheduled Interview"],
+        "summary": "Get Scheduled Interviews",
+        "description": "Returns a list of ScheduledInterview objects.",
+        "operationId": "get_scheduled_interviews_api_ats_v1_scheduled_interviews_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsScheduledInterviewPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Scheduled Interview"],
+        "summary": "Create Scheduled Interview",
+        "description": "Creates a ScheduledInterview object with the given values.",
+        "operationId": "create_scheduled_interview_api_ats_v1_scheduled_interviews_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/scheduled-interviews/{id}": {
+      "get": {
+        "tags": ["Scheduled Interview"],
+        "summary": "Get Scheduled Interview By Id",
+        "description": "Returns a ScheduledInterview object with the given id.",
+        "operationId": "get_scheduled_interview_by_id_api_ats_v1_scheduled_interviews__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsScheduledInterview"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/scorecards": {
+      "get": {
+        "tags": ["Scorecard"],
+        "summary": "Get Scorecards",
+        "description": "Returns a list of Scorecard objects.",
+        "operationId": "get_scorecards_api_ats_v1_scorecards_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsScorecardPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Scorecard"],
+        "summary": "Create Scorecard",
+        "description": "Creates a Scorecard object with the given values.",
+        "operationId": "create_scorecard_api_ats_v1_scorecards_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/scorecards/{id}": {
+      "get": {
+        "tags": ["Scorecard"],
+        "summary": "Get Scorecard By Id",
+        "description": "Returns a Scorecard object with the given id.",
+        "operationId": "get_scorecard_by_id_api_ats_v1_scorecards__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AtsScorecard" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/screening-questions": {
+      "get": {
+        "tags": ["Screening Question"],
+        "summary": "Get Screening Questions",
+        "description": "Returns a list of ScreeningQuestion objects.",
+        "operationId": "get_screening_questions_api_ats_v1_screening_questions_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsScreeningQuestionPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Screening Question"],
+        "summary": "Create Screening Question",
+        "description": "Creates a ScreeningQuestion object with the given values.",
+        "operationId": "create_screening_question_api_ats_v1_screening_questions_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/screening-questions/{id}": {
+      "get": {
+        "tags": ["Screening Question"],
+        "summary": "Get Screening Question By Id",
+        "description": "Returns a ScreeningQuestion object with the given id.",
+        "operationId": "get_screening_question_by_id_api_ats_v1_screening_questions__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsScreeningQuestion"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/tags": {
+      "get": {
+        "tags": ["Tag"],
+        "summary": "Get Tags",
+        "description": "Returns a list of Tag objects.",
+        "operationId": "get_tags_api_ats_v1_tags_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtsTagPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Tag"],
+        "summary": "Create Tag",
+        "description": "Creates a Tag object with the given values.",
+        "operationId": "create_tag_api_ats_v1_tags_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/tags/{id}": {
+      "get": {
+        "tags": ["Tag"],
+        "summary": "Get Tag By Id",
+        "description": "Returns a Tag object with the given id.",
+        "operationId": "get_tag_by_id_api_ats_v1_tags__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include raw data in the response",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AtsTag" }
               }
             }
           },
@@ -2097,6 +5086,1402 @@
   },
   "components": {
     "schemas": {
+      "AtsActivity": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "user": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "User",
+            "description": "The user who owns the activity.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "activity_type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Activity Type",
+            "description": "The type of activity.",
+            "example": "NOTE"
+          },
+          "subject": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Subject",
+            "description": "The subject of the activity.",
+            "example": "Interview with John Doe"
+          },
+          "body": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Body",
+            "description": "The body of the activity. This can include notes, comments, or other relevant information.",
+            "example": "John Doe was interviewed for the position of Software Engineer."
+          },
+          "visibility": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Visibility",
+            "description": "Visibility of the activity. Can be PUBLIC/PRIVATE",
+            "example": "PUBLIC"
+          },
+          "candidate": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Candidate",
+            "description": "Candidate who applied for the activity.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "remote_created_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Created At",
+            "description": "When the third party's candidate was created.",
+            "example": "2021-07-01T00:00:00Z"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "remote_id",
+          "modified_at",
+          "user",
+          "activity_type",
+          "subject",
+          "body",
+          "visibility",
+          "candidate",
+          "remote_created_at"
+        ],
+        "title": "AtsActivity",
+        "description": "The activity object is used to represent any activity in the ATS."
+      },
+      "AtsActivityPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsActivity" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsActivityPaginatedResponse"
+      },
+      "AtsApplication": {
+        "properties": {
+          "candidate": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Candidate",
+            "description": "The candidate associated with the application.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "job": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Job",
+            "description": "The job for which the candidate has applied.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "applied_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Applied At",
+            "description": "The date and time when the candidate applied for the job.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "rejected_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Rejected At",
+            "description": "The date and time when the application was rejected.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "source": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Source",
+            "description": "The source from where the candidate's application originated.",
+            "example": "LinkedIn"
+          },
+          "credited_to": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Credited To",
+            "description": "The user or entity to which the application is credited.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "current_stage": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Current Stage",
+            "description": "The current stage of the application in the hiring process.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "reject_reason": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Reject Reason",
+            "description": "The reason for the application's rejection.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          }
+        },
+        "type": "object",
+        "required": [
+          "candidate",
+          "job",
+          "applied_at",
+          "rejected_at",
+          "source",
+          "credited_to",
+          "current_stage",
+          "reject_reason"
+        ],
+        "title": "AtsApplication",
+        "description": "The AtsApplication object is used to represent an application within the ATS."
+      },
+      "AtsApplicationPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsApplication" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsApplicationPaginatedResponse"
+      },
+      "AtsAttachment": {
+        "properties": {
+          "file_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "File Name",
+            "description": "The name of the file attached.",
+            "example": "resume.pdf"
+          },
+          "file_url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2083,
+                "minLength": 1,
+                "format": "uri"
+              },
+              { "type": "null" }
+            ],
+            "title": "File Url",
+            "description": "The URL where the file is stored and can be retrieved.",
+            "example": "https://example.com/path/to/resume.pdf"
+          },
+          "candidate": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Candidate",
+            "description": "The candidate to whom the attachment belongs.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "attachment_type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Attachment Type",
+            "description": "The type of attachment, such as 'resume', 'cover letter', etc.",
+            "example": "RESUME"
+          }
+        },
+        "type": "object",
+        "required": ["file_name", "file_url", "candidate", "attachment_type"],
+        "title": "AtsAttachment",
+        "description": "The AtsAttachment object is used to represent a file attachment linked to a candidate's application within the ATS."
+      },
+      "AtsAttachmentPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsAttachment" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsAttachmentPaginatedResponse"
+      },
+      "AtsCandidate": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "First Name",
+            "description": "The candidate's first name.",
+            "example": "John"
+          },
+          "last_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Last Name",
+            "description": "The candidate's last name.",
+            "example": "Doe"
+          },
+          "company": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Company",
+            "description": "The name of the company where candidate has applied.",
+            "example": "Google"
+          },
+          "title": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Title",
+            "description": "The position for which the candidate has applied",
+            "example": "SOFTWARE ENGINEER"
+          },
+          "last_interaction_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Last Interaction At",
+            "description": "The date of the last interaction with the candidate.",
+            "example": "2021-07-01T00:00:00Z"
+          },
+          "is_private": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Is Private",
+            "description": "Whether the candidate's information is private.",
+            "example": true
+          },
+          "can_email": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Can Email",
+            "description": "Whether the candidate can be emailed.",
+            "example": true
+          },
+          "locations": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Locations",
+            "description": "The location of the candidate.",
+            "example": ["San Francisco", "New York"]
+          },
+          "phone_numbers": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Phone Numbers",
+            "description": "The candidate's phone numbers.",
+            "example": ["123-456-7890"]
+          },
+          "email_addresses": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Email Addresses",
+            "description": "The candidate's email addresses.",
+            "example": ["john@doe.com"]
+          },
+          "urls": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Urls",
+            "description": "The candidate's URLs. This can include a personal website, LinkedIn profile, or other relevant URLs.",
+            "example": [
+              {
+                "type": "LINKEDIN",
+                "value": "https://www.linkedin.com/in/johndoe"
+              }
+            ]
+          },
+          "tags": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Tags",
+            "description": "The candidate's tags. Tags are used to categorize candidates and can be used to filter candidates in the UI.",
+            "example": ["JUNIOR", "INTERMEDIATE"]
+          },
+          "applications": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Applications",
+            "description": "The candidate's applications.",
+            "example": ["018b4bfb-5ece-70b1-ad5e-862a9433aa65"]
+          },
+          "attachments": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Attachments",
+            "description": "The candidate's attachments.",
+            "example": ["018b4bfb-5ece-70b1-ad5e-862a9433aa65"]
+          },
+          "remote_created_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Created At",
+            "description": "When the third party's candidate was created.",
+            "example": "2021-07-01T00:00:00Z"
+          },
+          "remote_updated_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Updated At",
+            "description": "When the third party's candidate was last updated.",
+            "example": "2021-07-01T00:00:00Z"
+          },
+          "avatar": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Avatar",
+            "description": "The candidate's avatar.",
+            "example": "https://www.example.com/avatar.jpg"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "remote_id",
+          "modified_at",
+          "first_name",
+          "last_name",
+          "company",
+          "title",
+          "last_interaction_at",
+          "is_private",
+          "can_email",
+          "locations",
+          "phone_numbers",
+          "email_addresses",
+          "urls",
+          "tags",
+          "applications",
+          "attachments",
+          "remote_created_at",
+          "remote_updated_at",
+          "avatar"
+        ],
+        "title": "AtsCandidate",
+        "description": "The candidate object is used to represent any person who has applied as a candidate."
+      },
+      "AtsCandidatePaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsCandidate" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsCandidatePaginatedResponse"
+      },
+      "AtsDepartment": {
+        "properties": {
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name",
+            "description": "The name of the department.",
+            "example": "Engineering"
+          }
+        },
+        "type": "object",
+        "required": ["name"],
+        "title": "AtsDepartment",
+        "description": "The AtsDepartment object represents a department within the company in the ATS."
+      },
+      "AtsDepartmentPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsDepartment" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsDepartmentPaginatedResponse"
+      },
+      "AtsEEOC": {
+        "properties": {
+          "candidate": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Candidate",
+            "description": "The candidate associated with the EEOC data.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "submitted_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Submitted At",
+            "description": "The ISO date string when the EEOC data was submitted.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "race": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Race",
+            "description": "The race of the candidate as indicated in the EEOC form.",
+            "example": "WHITE"
+          },
+          "gender": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Gender",
+            "description": "The gender of the candidate as indicated in the EEOC form.",
+            "example": "MALE"
+          },
+          "veteran_status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Veteran Status",
+            "description": "The veteran status of the candidate as indicated in the EEOC form.",
+            "example": "DISABLED"
+          },
+          "disability_status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Disability Status",
+            "description": "The disability status of the candidate as indicated in the EEOC form.",
+            "example": "YES"
+          }
+        },
+        "type": "object",
+        "required": [
+          "candidate",
+          "submitted_at",
+          "race",
+          "gender",
+          "veteran_status",
+          "disability_status"
+        ],
+        "title": "AtsEEOC",
+        "description": "The AtsEEOC object represents the Equal Employment Opportunity Commission (EEOC) related data for a candidate within the ATS."
+      },
+      "AtsEEOCPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsEEOC" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsEEOCPaginatedResponse"
+      },
+      "AtsJob": {
+        "properties": {
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name",
+            "description": "The name of the job.",
+            "example": "SOFTWARE ENGINEER"
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Description",
+            "description": "A detailed description of the job.",
+            "example": "We are looking for a software engineer to join our team."
+          },
+          "code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Code",
+            "description": "The internal or external code that identifies the job.",
+            "example": "SE-2021-01"
+          },
+          "status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Status",
+            "description": "The current status of the job posting.",
+            "example": "OPEN"
+          },
+          "job_posting_urls": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string",
+                  "maxLength": 2083,
+                  "minLength": 1,
+                  "format": "uri"
+                },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Job Posting Urls",
+            "description": "A list of URLs where the job is posted.",
+            "example": ["https://www.company.com/careers/software-engineer"]
+          },
+          "remote_created_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Created At",
+            "description": "The ISO date string when the job was first created in the ATS.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "remote_updated_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Updated At",
+            "description": "The ISO date string when the job was last updated in the ATS.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "confidential": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Confidential",
+            "description": "Whether the job posting is confidential.",
+            "example": false
+          },
+          "departments": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Departments",
+            "description": "A list of department identifiers associated with the job.",
+            "example": [
+              "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+              "018b4bfb-5ece-70b1-ad5e-862a9433aa23"
+            ]
+          },
+          "offices": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Offices",
+            "description": "A list of office identifiers where the job is located.",
+            "example": [
+              "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+              "018b4bfb-5ece-70b1-ad5e-862a9433aa23"
+            ]
+          },
+          "hiring_managers": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Hiring Managers",
+            "description": "A list of identifiers for hiring managers associated with the job.",
+            "example": [
+              "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+              "018b4bfb-5ece-70b1-ad5e-862a9433aa23"
+            ]
+          },
+          "recruiters": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Recruiters",
+            "description": "A list of identifiers for recruiters associated with the job.",
+            "example": ["018b4bfb-5ece-70b1-ad5e-862a9433aa65"]
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "description",
+          "code",
+          "status",
+          "job_posting_urls",
+          "remote_created_at",
+          "remote_updated_at",
+          "confidential",
+          "departments",
+          "offices",
+          "hiring_managers",
+          "recruiters"
+        ],
+        "title": "AtsJob",
+        "description": "The AtsJob object represents a job posting within the ATS."
+      },
+      "AtsJobInterviewStage": {
+        "properties": {
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name",
+            "description": "The name of the interview stage.",
+            "example": "PHONE SCREENING"
+          },
+          "job": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Job",
+            "description": "The identifier of the job to which this interview stage is related.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "stage_order": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Stage Order",
+            "description": "The order or sequence number of the stage within the interview process.",
+            "example": 3
+          }
+        },
+        "type": "object",
+        "required": ["name", "job", "stage_order"],
+        "title": "AtsJobInterviewStage",
+        "description": "The AtsJobInterviewStage object represents a stage in the interview process for a job within the ATS."
+      },
+      "AtsJobInterviewStagePaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsJobInterviewStage" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsJobInterviewStagePaginatedResponse"
+      },
+      "AtsJobPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsJob" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsJobPaginatedResponse"
+      },
+      "AtsOffer": {
+        "properties": {
+          "application": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Application",
+            "description": "The identifier of the application to which the offer is related.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "creator": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Creator",
+            "description": "The identifier of the user who created the offer.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "remote_created_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Created At",
+            "description": "The ISO date string when the offer was created in the third-party system.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "closed_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Closed At",
+            "description": "The ISO date string when the offer was closed.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "sent_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Sent At",
+            "description": "The ISO date string when the offer was sent to the candidate.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "start_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Start Date",
+            "description": "The proposed start date for the candidate, as an ISO date string.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Status",
+            "description": "The current status of the offer.",
+            "example": "ACCEPTED"
+          }
+        },
+        "type": "object",
+        "required": [
+          "application",
+          "creator",
+          "remote_created_at",
+          "closed_at",
+          "sent_at",
+          "start_date",
+          "status"
+        ],
+        "title": "AtsOffer",
+        "description": "The AtsOffer object represents a job offer associated with an application within the ATS."
+      },
+      "AtsOfferPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsOffer" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsOfferPaginatedResponse"
+      },
+      "AtsOffice": {
+        "properties": {
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name",
+            "description": "The name of the office.",
+            "example": "San Francisco"
+          },
+          "location": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Location",
+            "description": "The physical location or address of the office.",
+            "example": "1234 Main Street, San Francisco, CA 94111"
+          }
+        },
+        "type": "object",
+        "required": ["name", "location"],
+        "title": "AtsOffice",
+        "description": "The AtsOffice object represents an office or physical location of the company in the ATS."
+      },
+      "AtsOfficePaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsOffice" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsOfficePaginatedResponse"
+      },
+      "AtsRejectReason": {
+        "properties": {
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name",
+            "description": "The name or title of the reject reason.",
+            "example": "Not a good fit"
+          }
+        },
+        "type": "object",
+        "required": ["name"],
+        "title": "AtsRejectReason",
+        "description": "The AtsRejectReason object represents a reason for rejecting a candidate within the ATS."
+      },
+      "AtsRejectReasonPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsRejectReason" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsRejectReasonPaginatedResponse"
+      },
+      "AtsRemoteUser": {
+        "properties": {
+          "first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "First Name",
+            "description": "The first name of the user.",
+            "example": "John"
+          },
+          "last_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Last Name",
+            "description": "The last name of the user.",
+            "example": "Doe"
+          },
+          "email": {
+            "anyOf": [
+              { "type": "string", "format": "email" },
+              { "type": "null" }
+            ],
+            "title": "Email",
+            "description": "The email address of the user.",
+            "example": "john@doe.com"
+          },
+          "disabled": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Disabled",
+            "description": "Indicates whether the user's account is disabled.",
+            "example": false
+          },
+          "remote_created_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Created At",
+            "description": "The ISO date string when the user profile was created in the remote system.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "access_role": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Access Role",
+            "description": "The role of the user defining their level of access.",
+            "example": "ADMIN"
+          }
+        },
+        "type": "object",
+        "required": [
+          "first_name",
+          "last_name",
+          "email",
+          "disabled",
+          "remote_created_at",
+          "access_role"
+        ],
+        "title": "AtsRemoteUser",
+        "description": "The AtsRemoteUser object represents a user profile from a remote system that interacts with the ATS."
+      },
+      "AtsRemoteUserPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsRemoteUser" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsRemoteUserPaginatedResponse"
+      },
+      "AtsScheduledInterview": {
+        "properties": {
+          "application": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Application",
+            "description": "The identifier of the application associated with the interview.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "job_interview_stage": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Job Interview Stage",
+            "description": "The identifier of the interview stage associated with this interview.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "organizer": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Organizer",
+            "description": "The identifier of the user who organized the interview.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "interviewers": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Interviewers",
+            "description": "A list of identifiers for the users who are scheduled to interview the candidate.",
+            "example": [
+              "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+              "018b4bfb-5ece-70b1-ad5e-862a9412aa12"
+            ]
+          },
+          "location": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Location",
+            "description": "The location where the interview is scheduled to take place.",
+            "example": "123 Main St, Anytown, USA"
+          },
+          "start_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Start At",
+            "description": "The ISO date string when the interview is scheduled to start.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "end_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "End At",
+            "description": "The ISO date string when the interview is scheduled to end.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "remote_created_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Created At",
+            "description": "The ISO date string when the interview was created in the remote system.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "remote_updated_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Updated At",
+            "description": "The ISO date string when the interview was last updated in the remote system.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Status",
+            "description": "The current status of the scheduled interview.",
+            "example": "SCHEDULED"
+          }
+        },
+        "type": "object",
+        "required": [
+          "application",
+          "job_interview_stage",
+          "organizer",
+          "interviewers",
+          "location",
+          "start_at",
+          "end_at",
+          "remote_created_at",
+          "remote_updated_at",
+          "status"
+        ],
+        "title": "AtsScheduledInterview",
+        "description": "The AtsScheduledInterview object represents an interview event scheduled within the ATS."
+      },
+      "AtsScheduledInterviewPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsScheduledInterview" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsScheduledInterviewPaginatedResponse"
+      },
+      "AtsScorecard": {
+        "properties": {
+          "application": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Application",
+            "description": "The identifier of the application associated with the scorecard.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "interview": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Interview",
+            "description": "The identifier of the interview associated with the scorecard.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "interviewer": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Interviewer",
+            "description": "The identifier of the interviewer who filled out the scorecard.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "remote_created_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Created At",
+            "description": "The ISO date string when the scorecard was created in the remote system.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "submitted_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Submitted At",
+            "description": "The ISO date string when the scorecard was submitted by the interviewer.",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "overall_recommendation": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Overall Recommendation",
+            "description": "The final recommendation or decision submitted by the interviewer.",
+            "example": "RECOMMEND"
+          }
+        },
+        "type": "object",
+        "required": [
+          "application",
+          "interview",
+          "interviewer",
+          "remote_created_at",
+          "submitted_at",
+          "overall_recommendation"
+        ],
+        "title": "AtsScorecard",
+        "description": "The AtsScorecard object represents an evaluation of a candidate's interview within the ATS."
+      },
+      "AtsScorecardPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsScorecard" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsScorecardPaginatedResponse"
+      },
+      "AtsScreeningQuestion": {
+        "properties": {
+          "job": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Job",
+            "description": "The identifier of the job to which this screening question is related.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Description",
+            "description": "A detailed description of the screening question.",
+            "example": "Please describe your experience with Python."
+          },
+          "title": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Title",
+            "description": "The title of the screening question.",
+            "example": "Python Experience"
+          },
+          "type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Type",
+            "description": "The type of screening question, such as 'text', 'multiple-choice', etc.",
+            "example": "TEXT"
+          },
+          "required": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Required",
+            "description": "Indicates whether answering the question is required for the applicant.",
+            "example": true
+          },
+          "options": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Options",
+            "description": "The possible options for answering the question, if applicable.",
+            "example": ["Yes", "No", "N/A"]
+          }
+        },
+        "type": "object",
+        "required": [
+          "job",
+          "description",
+          "title",
+          "type",
+          "required",
+          "options"
+        ],
+        "title": "AtsScreeningQuestion",
+        "description": "The AtsScreeningQuestion object represents a question used to screen candidates for a job within the ATS."
+      },
+      "AtsScreeningQuestionPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsScreeningQuestion" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsScreeningQuestionPaginatedResponse"
+      },
+      "AtsTag": {
+        "properties": {
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name",
+            "description": "The name of the tag.",
+            "example": "JUNIOR"
+          }
+        },
+        "type": "object",
+        "required": ["name"],
+        "title": "AtsTag",
+        "description": "The AtsTag object represents a tag that can be applied to candidates, jobs, or other entities within the ATS."
+      },
+      "AtsTagPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/AtsTag" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "AtsTagPaginatedResponse"
+      },
       "Deduction": {
         "properties": {
           "name": {
@@ -2224,6 +6609,114 @@
         "type": "object",
         "title": "HrisAddress"
       },
+      "HrisBankInfo": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "employee": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Employee",
+            "description": "The employee that appears in the third-party integration's UI.",
+            "example": "018af1fe-1250-772d-87c5-6f725a579e8a"
+          },
+          "account_number": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Account Number",
+            "description": "The bank account number of the employee.",
+            "example": "123456789012"
+          },
+          "routing_number": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Routing Number",
+            "description": "Bank identifier for financial transactions in the US for an employee.",
+            "example": "123456789"
+          },
+          "bank_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Bank Name",
+            "description": "The employee's bank name.",
+            "example": "Wells Fargo"
+          },
+          "account_type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Account Type",
+            "description": "The employee's bank account type.",
+            "example": "SAVINGS"
+          },
+          "remote_created_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Created At",
+            "description": "When the bank info of third party's employee was created.",
+            "example": "2023-03-01T00:00:00Z"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "remote_id",
+          "modified_at",
+          "employee",
+          "account_number",
+          "routing_number",
+          "bank_name",
+          "account_type",
+          "remote_created_at"
+        ],
+        "title": "HrisBankInfo",
+        "description": "The Bank info object is used to represent bank info of any person who has been employed by a company."
+      },
+      "HrisBankInfoPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/HrisBankInfo" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "HrisBankInfoPaginatedResponse"
+      },
       "HrisBenefit": {
         "properties": {
           "id": {
@@ -2241,7 +6734,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -2364,7 +6857,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -2489,7 +6982,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -2634,7 +7127,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -2719,7 +7212,7 @@
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Work Email",
             "description": "The employee's work email.",
-            "example": "kunal@unifyx.dev"
+            "example": "kunal@bindbee.dev"
           },
           "personal_email": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
@@ -2920,7 +7413,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -3093,7 +7586,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -3201,7 +7694,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -3272,7 +7765,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -3380,7 +7873,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -3404,7 +7897,7 @@
           "approver": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Approver",
-            "description": "The Unifyx ID of the employee with the ability to approve the time off request.",
+            "description": "The Bindbee ID of the employee with the ability to approve the time off request.",
             "example": "018b4bfb-6065-7f83-b11d-e85ea49e37c3"
           },
           "status": {
@@ -3488,7 +7981,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -3666,7 +8159,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -3827,7 +8320,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -3899,7 +8392,7 @@
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Email",
             "description": "The email address of the job seeker.",
-            "example": "kunal@unifyx.dev"
+            "example": "kunal@bindbee.dev"
           },
           "site_code": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
@@ -3964,7 +8457,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -4036,7 +8529,7 @@
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Email",
             "description": "The email address of the job seeker.",
-            "example": "kunal@unifyx.dev"
+            "example": "kunal@bindbee.dev"
           },
           "site_code": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
@@ -4214,7 +8707,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -4242,7 +8735,7 @@
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Worker Email",
             "description": "Worker Email",
-            "example": "kunal@unifyx.dev"
+            "example": "kunal@bindbee.dev"
           },
           "pay_rates": {
             "items": { "$ref": "#/components/schemas/VmsPayRate" },
@@ -4281,7 +8774,7 @@
           "modified_at": {
             "type": "string",
             "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by UnifyX",
+            "description": "This is the datetime that this object was last updated by Bindbee",
             "example": "2021-10-16T00:00:00Z"
           },
           "raw_data": {
@@ -4309,7 +8802,7 @@
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Worker Email",
             "description": "Worker Email",
-            "example": "kunal@unifyx.dev"
+            "example": "kunal@bindbee.dev"
           },
           "pay_rates": {
             "items": { "$ref": "#/components/schemas/VmsPayRate" },

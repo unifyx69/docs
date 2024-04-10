@@ -1,12 +1,12 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "UnifyX Docs",
+  "name": "BindBee Docs",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "api": {
-    "baseUrl": "https://stage.unifyx.dev",
+    "baseUrl": "https://api.bindbee.dev",
     "auth": {
       "method": "bearer"
     }
@@ -14,27 +14,27 @@
   "openapi": ["/spec.json"],
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#8946FD",
-    "light": "#A673EF",
-    "dark": "#8946FD",
+    "primary": "#F57E21",
+    "light": "#F57E21",
+    "dark": "#441F02",
     "background": {
       "light": "#FAFAFB",
-      "dark": "#070709"
+      "dark": "#090807"
     },
     "anchors": {
-      "from": "#8946FD",
-      "to": "#DCD4FF"
+      "from": "#F57E21",
+      "to": "#EDDAFD"
     }
   },
   "topbarLinks": [
     {
-      "name": "UnifyX.dev",
-      "url": "https://unifyx.dev/"
+      "name": "Bindbee.dev",
+      "url": "https://bindbee.dev/"
     }
   ],
   "topbarCtaButton": {
     "name": "Book Demo",
-    "url": "https://calendly.com/unifyx/demo"
+    "url": "https://calendly.com/bindbee/demo?utm_source=Documentation&utm_medium=Header&utm_campaign=Documentation"
   },
   "primaryTab": {
     "name": "Home"
@@ -63,17 +63,16 @@
       "pages": ["features/overview"]
     },
     {
-      "group": "UnifyX Features",
+      "group": "BindBee Features",
       "pages": [
         "features/dashboard",
         "features/magic-link",
         "features/connectors",
-        "features/logs",
-        "features/issues"
+        "features/logs"
       ]
     },
     {
-      "group": "UnifyX API Basics",
+      "group": "BindBee API Basics",
       "pages": [
         "api-reference/basics/authentication",
         "api-reference/basics/pagination",
@@ -84,6 +83,13 @@
     {
       "group": "Unified Models",
       "pages": [
+        {
+          "group": "Bank Info",
+          "pages": [
+            "hris/bank-info/get-bank-info-list",
+            "hris/bank-info/get-bank-info-by-id"
+          ]
+        },
         {
           "group": "Benefits",
           "pages": [
@@ -154,6 +160,139 @@
           "pages": [
             "hris/compensation/get-compensations",
             "hris/compensation/get-compensation-by-id"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Unified Models",
+      "pages": [
+        {
+          "group": "Activity",
+          "pages": [
+            "ats/activity/get-activities",
+            "ats/activity/create-activity",
+            "ats/activity/get-activity-by-id"
+          ]
+        },
+        {
+          "group": "Application",
+          "pages": [
+            "ats/application/get-applications",
+            "ats/application/create-application",
+            "ats/application/get-application-by-id"
+          ]
+        },
+        {
+          "group": "Attachment",
+          "pages": [
+            "ats/attachment/get-attachments",
+            "ats/attachment/create-attachment",
+            "ats/attachment/get-attachment-by-id"
+          ]
+        },
+        {
+          "group": "Candidate",
+          "pages": [
+            "ats/candidate/get-candidates",
+            "ats/candidate/create-candidate",
+            "ats/candidate/get-candidate-by-id"
+          ]
+        },
+        {
+          "group": "Department",
+          "pages": [
+            "ats/department/get-departments",
+            "ats/department/create-department",
+            "ats/department/get-department-by-id"
+          ]
+        },
+        {
+          "group": "EEOC",
+          "pages": [
+            "ats/eeoc/get-eeocs",
+            "ats/eeoc/create-eeoc",
+            "ats/eeoc/get-eeoc-by-id"
+          ]
+        },
+        {
+          "group": "Job Interview Stage",
+          "pages": [
+            "ats/job-interview-stage/get-job-interview-stages",
+            "ats/job-interview-stage/create-job-interview-stage",
+            "ats/job-interview-stage/get-job-interview-stage-by-id"
+          ]
+        },
+        {
+          "group": "Job",
+          "pages": [
+            "ats/job/get-jobs",
+            "ats/job/create-job",
+            "ats/job/get-job-by-id"
+          ]
+        },
+        {
+          "group": "Offer",
+          "pages": [
+            "ats/offer/get-offers",
+            "ats/offer/create-offer",
+            "ats/offer/get-offer-by-id"
+          ]
+        },
+        {
+          "group": "Office",
+          "pages": [
+            "ats/office/get-offices",
+            "ats/office/create-office",
+            "ats/office/get-office-by-id"
+          ]
+        },
+        {
+          "group": "Reject Reason",
+          "pages": [
+            "ats/reject-reason/get-reject-reasons",
+            "ats/reject-reason/create-reject-reason",
+            "ats/reject-reason/get-reject-reason-by-id"
+          ]
+        },
+        {
+          "group": "Remote User",
+          "pages": [
+            "ats/remote-user/get-remote-users",
+            "ats/remote-user/create-remote-user",
+            "ats/remote-user/get-remote-user-by-id"
+          ]
+        },
+        {
+          "group": "Scheduled Interview",
+          "pages": [
+            "ats/scheduled-interview/get-scheduled-interviews",
+            "ats/scheduled-interview/create-scheduled-interview",
+            "ats/scheduled-interview/get-scheduled-interview-by-id"
+          ]
+        },
+        {
+          "group": "Scorecard",
+          "pages": [
+            "ats/scorecard/get-scorecards",
+            "ats/scorecard/create-scorecard",
+            "ats/scorecard/get-scorecard-by-id"
+          ]
+        },
+        {
+          "group": "Screening Question",
+          "pages": [
+            "ats/screening-question/get-screening-questions",
+            "ats/screening-question/create-screening-question",
+            "ats/screening-question/get-screening-question-by-id"
+          ]
+        },
+        {
+          "group": "Tag",
+          "pages": [
+            "ats/tag/get-tags",
+            "ats/tag/create-tag",
+            "ats/tag/get-tag-by-id"
           ]
         }
       ]
