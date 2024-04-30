@@ -5206,6 +5206,33 @@
       },
       "AtsApplication": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
           "candidate": {
             "anyOf": [
               { "type": "string", "format": "uuid" },
@@ -5272,6 +5299,9 @@
         },
         "type": "object",
         "required": [
+          "id",
+          "remote_id",
+          "modified_at",
           "candidate",
           "job",
           "applied_at",
@@ -5310,6 +5340,33 @@
       },
       "AtsAttachment": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
           "file_name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "File Name",
@@ -5347,7 +5404,15 @@
           }
         },
         "type": "object",
-        "required": ["file_name", "file_url", "candidate", "attachment_type"],
+        "required": [
+          "id",
+          "remote_id",
+          "modified_at",
+          "file_name",
+          "file_url",
+          "candidate",
+          "attachment_type"
+        ],
         "title": "AtsAttachment",
         "description": "The AtsAttachment object is used to represent a file attachment linked to a candidate's application within the ATS."
       },
@@ -5475,7 +5540,10 @@
           },
           "urls": {
             "anyOf": [
-              { "items": { "type": "string" }, "type": "array" },
+              {
+                "items": { "$ref": "#/components/schemas/AtsUrl" },
+                "type": "array"
+              },
               { "type": "null" }
             ],
             "title": "Urls",
@@ -5498,7 +5566,10 @@
           },
           "applications": {
             "anyOf": [
-              { "items": { "type": "string" }, "type": "array" },
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
               { "type": "null" }
             ],
             "title": "Applications",
@@ -5507,7 +5578,10 @@
           },
           "attachments": {
             "anyOf": [
-              { "items": { "type": "string" }, "type": "array" },
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
               { "type": "null" }
             ],
             "title": "Attachments",
@@ -5585,6 +5659,33 @@
       },
       "AtsDepartment": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
           "name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Name",
@@ -5593,7 +5694,7 @@
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": ["id", "remote_id", "modified_at", "name"],
         "title": "AtsDepartment",
         "description": "The AtsDepartment object represents a department within the company in the ATS."
       },
@@ -5623,6 +5724,33 @@
       },
       "AtsEEOC": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
           "candidate": {
             "anyOf": [
               { "type": "string", "format": "uuid" },
@@ -5665,6 +5793,9 @@
         },
         "type": "object",
         "required": [
+          "id",
+          "remote_id",
+          "modified_at",
           "candidate",
           "submitted_at",
           "race",
@@ -5701,6 +5832,33 @@
       },
       "AtsJob": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
           "name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Name",
@@ -5728,12 +5886,7 @@
           "job_posting_urls": {
             "anyOf": [
               {
-                "items": {
-                  "type": "string",
-                  "maxLength": 2083,
-                  "minLength": 1,
-                  "format": "uri"
-                },
+                "items": { "$ref": "#/components/schemas/AtsUrl" },
                 "type": "array"
               },
               { "type": "null" }
@@ -5820,6 +5973,9 @@
         },
         "type": "object",
         "required": [
+          "id",
+          "remote_id",
+          "modified_at",
           "name",
           "description",
           "code",
@@ -5838,6 +5994,33 @@
       },
       "AtsJobInterviewStage": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
           "name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Name",
@@ -5861,7 +6044,14 @@
           }
         },
         "type": "object",
-        "required": ["name", "job", "stage_order"],
+        "required": [
+          "id",
+          "remote_id",
+          "modified_at",
+          "name",
+          "job",
+          "stage_order"
+        ],
         "title": "AtsJobInterviewStage",
         "description": "The AtsJobInterviewStage object represents a stage in the interview process for a job within the ATS."
       },
@@ -5915,6 +6105,33 @@
       },
       "AtsOffer": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
           "application": {
             "anyOf": [
               { "type": "string", "format": "uuid" },
@@ -5966,6 +6183,9 @@
         },
         "type": "object",
         "required": [
+          "id",
+          "remote_id",
+          "modified_at",
           "application",
           "creator",
           "remote_created_at",
@@ -6003,6 +6223,33 @@
       },
       "AtsOffice": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
           "name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Name",
@@ -6017,7 +6264,7 @@
           }
         },
         "type": "object",
-        "required": ["name", "location"],
+        "required": ["id", "remote_id", "modified_at", "name", "location"],
         "title": "AtsOffice",
         "description": "The AtsOffice object represents an office or physical location of the company in the ATS."
       },
@@ -6047,6 +6294,33 @@
       },
       "AtsRejectReason": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
           "name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Name",
@@ -6055,7 +6329,7 @@
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": ["id", "remote_id", "modified_at", "name"],
         "title": "AtsRejectReason",
         "description": "The AtsRejectReason object represents a reason for rejecting a candidate within the ATS."
       },
@@ -6085,6 +6359,33 @@
       },
       "AtsRemoteUser": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
           "first_name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "First Name",
@@ -6127,6 +6428,9 @@
         },
         "type": "object",
         "required": [
+          "id",
+          "remote_id",
+          "modified_at",
           "first_name",
           "last_name",
           "email",
@@ -6163,6 +6467,33 @@
       },
       "AtsScheduledInterview": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
           "application": {
             "anyOf": [
               { "type": "string", "format": "uuid" },
@@ -6244,6 +6575,9 @@
         },
         "type": "object",
         "required": [
+          "id",
+          "remote_id",
+          "modified_at",
           "application",
           "job_interview_stage",
           "organizer",
@@ -6284,6 +6618,33 @@
       },
       "AtsScorecard": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
           "application": {
             "anyOf": [
               { "type": "string", "format": "uuid" },
@@ -6332,6 +6693,9 @@
         },
         "type": "object",
         "required": [
+          "id",
+          "remote_id",
+          "modified_at",
           "application",
           "interview",
           "interviewer",
@@ -6368,8 +6732,38 @@
       },
       "AtsScreeningQuestion": {
         "properties": {
-          "job": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "job": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
             "title": "Job",
             "description": "The identifier of the job to which this screening question is related.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
@@ -6400,7 +6794,7 @@
           },
           "options": {
             "anyOf": [
-              { "items": { "type": "string" }, "type": "array" },
+              { "items": { "type": "object" }, "type": "array" },
               { "type": "null" }
             ],
             "title": "Options",
@@ -6410,6 +6804,9 @@
         },
         "type": "object",
         "required": [
+          "id",
+          "remote_id",
+          "modified_at",
           "job",
           "description",
           "title",
@@ -6446,6 +6843,33 @@
       },
       "AtsTag": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
           "name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Name",
@@ -6454,7 +6878,7 @@
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": ["id", "remote_id", "modified_at", "name"],
         "title": "AtsTag",
         "description": "The AtsTag object represents a tag that can be applied to candidates, jobs, or other entities within the ATS."
       },
@@ -6481,6 +6905,23 @@
         "type": "object",
         "required": ["cursor", "page_size", "items"],
         "title": "AtsTagPaginatedResponse"
+      },
+      "AtsUrl": {
+        "properties": {
+          "value": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Value",
+            "description": "The site's url."
+          },
+          "url_type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Url Type",
+            "description": "The type of site. Possible values include: PERSONAL, COMPANY, PORTFOLIO, BLOG, SOCIAL_MEDIA, OTHER, JOB_POSTING. In cases where there is no clear mapping, the original value passed through will be returned."
+          }
+        },
+        "type": "object",
+        "required": ["value", "url_type"],
+        "title": "AtsUrl"
       },
       "Deduction": {
         "properties": {
@@ -6761,6 +7202,18 @@
             "description": "The name of the plan.",
             "example": "401(k) Plan"
           },
+          "provider_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Provider Name",
+            "description": "The name of the benefit provider.",
+            "example": "Metlife"
+          },
+          "benefit_plan_type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Benefit Plan Type",
+            "description": "The type of benefit plan",
+            "example": "MED"
+          },
           "frequency": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Frequency",
@@ -6807,6 +7260,8 @@
           "modified_at",
           "employee",
           "plan_name",
+          "provider_name",
+          "benefit_plan_type",
           "frequency",
           "employee_contribution",
           "company_contribution",
@@ -7895,7 +8350,10 @@
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
           },
           "approver": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
             "title": "Approver",
             "description": "The Bindbee ID of the employee with the ability to approve the time off request.",
             "example": "018b4bfb-6065-7f83-b11d-e85ea49e37c3"
