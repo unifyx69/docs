@@ -34,7 +34,7 @@
   ],
   "topbarCtaButton": {
     "name": "Book Demo",
-    "url": "https://calendly.com/bindbee/demo?utm_source=Documentation&utm_medium=Header&utm_campaign=Documentation"
+    "url": "https://cal.com/bindbee/demo?utm_source=Documentation&utm_medium=Header&utm_campaign=Documentation"
   },
   "primaryTab": {
     "name": "Home"
@@ -49,12 +49,12 @@
       "url": "hris"
     },
     {
-      "name": "Vendor Management System (VMS)",
-      "url": "vms"
-    },
-    {
       "name": "Recruiting (ATS)",
       "url": "ats"
+    },
+    {
+      "name": "Vendor Management System (VMS)",
+      "url": "vms"
     }
   ],
   "navigation": [
