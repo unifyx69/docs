@@ -100,7 +100,7 @@
         {
           "group": "Employer Benefits",
           "pages": [
-            "hris/employer-benefits/get-benefit-by-id",
+            "hris/employer-benefits/get-employer-benefit-by-id",
             "hris/employer-benefits/get-employer-benefits"
           ]
         },
