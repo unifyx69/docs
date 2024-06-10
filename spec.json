@@ -509,19 +509,6 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
-            "name": "employee_id",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "The ID of the employee.",
-              "title": "Employee Id"
-            },
-            "description": "The ID of the employee.",
-            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
-          },
-          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -676,19 +663,6 @@
         "operationId": "get_employer_benefits_api_hris_v1_employer_benefits_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
-          {
-            "name": "employee_id",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "The ID of the employee.",
-              "title": "Employee Id"
-            },
-            "description": "The ID of the employee.",
-            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
-          },
           {
             "name": "remote_id",
             "in": "query",
