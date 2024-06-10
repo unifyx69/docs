@@ -282,9 +282,9 @@
     },
     "/api/hris/v1/benefits/{id}": {
       "get": {
-        "tags": ["Dependent Benefits"],
+        "tags": ["Benefits"],
         "summary": "Get Benefit By Id",
-        "description": "Returns a Dependent Benefit object with the given id.",
+        "description": "Returns a Benefit object with the given id.",
         "operationId": "get_benefit_by_id_api_hris_v1_benefits__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
@@ -319,9 +319,7 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HrisDependentBenefit"
-                }
+                "schema": { "$ref": "#/components/schemas/HrisBenefit" }
               }
             }
           },
@@ -614,6 +612,62 @@
         }
       }
     },
+    "/api/hris/v1/dependent-benefits/{id}": {
+      "get": {
+        "tags": ["Dependent Benefits"],
+        "summary": "Get Dependent Benefit By Id",
+        "description": "Returns a Dependent Benefit object with the given id.",
+        "operationId": "get_dependent_benefit_by_id_api_hris_v1_dependent_benefits__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HrisDependentBenefit"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/hris/v1/employer-benefits": {
       "get": {
         "tags": ["Employer Benefits"],
@@ -710,7 +764,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HrisBenefitPaginatedResponse"
+                  "$ref": "#/components/schemas/HrisEmployerBenefitPaginatedResponse"
                 }
               }
             }
@@ -729,9 +783,9 @@
     "/api/hris/v1/employer-benefits/{id}": {
       "get": {
         "tags": ["Employer Benefits"],
-        "summary": "Get Benefit By Id",
+        "summary": "Get Employer Benefit By Id",
         "description": "Returns a Employer Benefit object with the given id.",
-        "operationId": "get_benefit_by_id_api_hris_v1_employer_benefits__id__get",
+        "operationId": "get_employer_benefit_by_id_api_hris_v1_employer_benefits__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -765,7 +819,7 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/HrisBenefit" }
+                "schema": { "$ref": "#/components/schemas/HrisEmployerBenefit" }
               }
             }
           },
@@ -8409,6 +8463,104 @@
         "type": "object",
         "required": ["cursor", "page_size", "items"],
         "title": "HrisEmployeePayrollRunPaginatedResponse"
+      },
+      "HrisEmployerBenefit": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "plan_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Plan Name",
+            "description": "The name of the plan.",
+            "example": "401(k) Plan"
+          },
+          "provider_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Provider Name",
+            "description": "The name of the benefit provider.",
+            "example": "Metlife"
+          },
+          "benefit_plan_type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Benefit Plan Type",
+            "description": "The type of benefit plan",
+            "example": "MEDICAL"
+          },
+          "deduction_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Deduction Code",
+            "description": "The employer benefit's deduction code.",
+            "example": "KT"
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Description",
+            "description": "The employer benefit's description.",
+            "example": "KTO Silver Plan"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "remote_id",
+          "modified_at",
+          "plan_name",
+          "provider_name",
+          "benefit_plan_type",
+          "deduction_code",
+          "description"
+        ],
+        "title": "HrisEmployerBenefit",
+        "description": "The Employer Benefit object is used to represent a benefit plan offered by a company."
+      },
+      "HrisEmployerBenefitPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/HrisEmployerBenefit" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "HrisEmployerBenefitPaginatedResponse"
       },
       "HrisEmployment": {
         "properties": {

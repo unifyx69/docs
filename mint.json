@@ -100,8 +100,8 @@
         {
           "group": "Employer Benefits",
           "pages": [
-            "hris/employer-benefits/get-employer-benefit-by-id",
-            "hris/employer-benefits/get-employer-benefits"
+            "hris/employer-benefits/get-employer-benefits",
+            "hris/employer-benefits/get-employer-benefit-by-id"
           ]
         },
         {
@@ -113,7 +113,10 @@
         },
         {
           "group": "Dependent Benefits",
-          "pages": ["hris/dependent-benefits/get-dependent-benefits"]
+          "pages": [
+            "hris/dependent-benefits/get-dependent-benefits",
+            "hris/dependent-benefits/get-dependent-benefit-by-id"
+          ]
         },
         {
           "group": "Employee",
