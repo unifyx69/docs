@@ -1,0 +1,431 @@
+---
+title: "Embedded link flow"
+description: "With our embedded link flow feature, you can embed our integration process directly into your frontend, ensuring that all HRIS, Payroll, and ATS integrations can be set up within minutes, with minimal code required."
+---
+
+![SDK Workflow](https://images.unifyx.dev/documentation_images/sdk_workflow.webp)
+
+## Four-Step Process for Embedding BindBee's Linking Flow
+
+### Generate `link_token`
+
+To start, generate a link_token by making a POST request to the following endpoint: `https://api.bindbee.dev/api/embedded/v1/link/create-link-token`.
+
+#### What is a `link_token`?
+
+A `link_token` is a unique code that allows you to start the linking process for integrating with third-party services like HRIS, Payroll, or ATS systems.
+
+#### Generating the `link_token`?
+
+You will need [**BINDBEE_API_KEY**](/api-reference/basics/authentication#bindbee-api-key) for authentication.
+
+You will also need to send some information about end user, integration category, and the specific integration you want to connect to.
+
+#### How to get Integration Category and Slug?
+
+To get the category and integration slug refer to [Slugs](/sdk/integration-slugs) page
+
+<CodeGroup>
+
+```python Python
+import requests
+
+url = 'https://api.bindbee.dev/api/embedded/v1/link/create-link-token'
+api_key = '<BINDBEE_API_KEY>'
+headers = {
+'accept': 'application/json',
+'Content-Type': 'application/json'
+'Authorization': f"Bearer {api_key}",
+}
+data = {
+"end_user_data": {
+"org_name": "Kunal Organization", # unique entity name
+"org_logo": "https://xyss.com/images",
+"origin_id": "2kh3ub45ad" # unique entity ID
+},
+"category": "HRIS", # category
+"integration": "bamboohr" # integration slug
+}
+
+response = requests.post(url, headers=headers, json=data)
+print(response.json())
+
+```
+
+```bash cURL
+curl -X 'POST' \
+  'https://api.bindbee.dev/api/embedded/v1/link/create-link-token' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer <BINDBEE_API_KEY>' \
+  -d '{
+  "end_user_data": {
+    "org_name": "Kunal Organization",
+    "org_logo": "https://xyss.com/images",
+    "origin_id": "2kh3ub45ad"
+  },
+  "category": "HRIS",
+  "integration": "bamboohr"
+}'
+```
+
+```js JavaScript
+const fetch = require("node-fetch");
+
+const url = "https://api.bindbee.dev/api/embedded/v1/link/create-link-token";
+const headers = {
+  accept: "application/json",
+  "Content-Type": "application/json",
+  Authorization: "Bearer <BINDBEE_API_KEY>",
+};
+const data = {
+  end_user_data: {
+    org_name: "Kunal Organization", // unique entity name
+    org_logo: "https://xyss.com/images",
+    origin_id: "2kh3ub45ad", // unique entity ID
+  },
+  category: "HRIS", // category
+  integration: "bamboohr", // integration slug
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data),
+})
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => console.error("Error:", error));
+```
+
+```php PHP
+<?php
+$url = 'https://api.bindbee.dev/api/embedded/v1/link/create-link-token';
+$headers = [
+    'accept: application/json',
+    'Content-Type: application/json'
+    'Authorization: Bearer <BINDBEE_API_KEY>'
+];
+$data = [
+    "end_user_data" => [
+        "org_name" => "Kunal Organization", // unique entity name
+        "org_logo" => "https://xyss.com/images",
+        "origin_id" => "2kh3ub45ad" // unique entity ID
+    ],
+    "category" => "HRIS", // category
+    "integration" => "bamboohr" // integration slug
+];
+
+$options = [
+    'http' => [
+        'header'  => implode("\r\n", $headers),
+        'method'  => 'POST',
+        'content' => json_encode($data)
+    ]
+];
+
+$context  = stream_context_create($options);
+$result = file_get_contents($url, false, $context);
+if ($result === FALSE) { /* Handle error */ }
+
+var_dump($result);
+?>
+
+```
+
+```go Go
+package main
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	url := "https://api.bindbee.dev/api/embedded/v1/link/create-link-token"
+	data := map[string]interface{}{
+		"end_user_data": map[string]string{
+			"org_name":  "Kunal Organization", // unique entity name
+			"org_logo":  "https://xyss.com/images",
+			"origin_id": "2kh3ub45ad", // unique entity ID
+		},
+		"category":    "HRIS", // category
+		"integration": "bamboohr", // integration slug
+	}
+	jsonData, err := json.Marshal(data)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	req.Header.Set("accept", "application/json")
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Authorization", "Bearer <BINDBEE_API_KEY>")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer resp.Body.Close()
+
+	var result map[string]interface{}
+	json.NewDecoder(resp.Body).Decode(&result)
+	fmt.Println(result)
+}
+```
+
+```java Java
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            URL url = new URL("https://api.bindbee.dev/api/embedded/v1/link/create-link-token");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("accept", "application/json");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Authorization", "Bearer <BINDBEE_API_KEY>");
+            conn.setDoOutput(true);
+
+            String jsonInputString = "{\"end_user_data\": {\"org_name\": \"Kunal Organization\",\"org_logo\": \"https://xyss.com/images\",\"origin_id\": \"2kh3ub45ad\"},\"category\": \"HRIS\",\"integration\": \"bamboohr\"}";
+
+            try (OutputStream os = conn.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+
+            try (Scanner scanner = new Scanner(conn.getInputStream(), "UTF-8")) {
+                String response = scanner.useDelimiter("\\A").next();
+                System.out.println(response);
+            }
+
+            conn.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+</CodeGroup>
+
+### Use React SDK
+
+If you are using React for your frontend, you can easily integrate the linking flow using our [React SDK](https://www.npmjs.com/package/@bindbee/react-link).
+
+### Installation
+
+Run one of the following commands in your React project directory:
+
+`npm install --save @bindbee/react-link`
+
+or
+
+`yarn add @bindbee/react-link`
+
+#### How to use the SDK?
+
+Import the `useBindbeeMagiclink` hook and integrate it into your React application. Here’s an example:
+
+```js
+import React from "react";
+// Run this in your React project:
+// npm install --save @bindbee/react-link
+import { useBindbeeMagiclink } from "@bindbee/react-link";
+
+const App = () => {
+  const handleOnSuccess = (temporary_token) => {
+    // Use this token to get the connector_token
+    console.log("Temporary Token:", temporary_token);
+  };
+
+  const handleOnClose = () => {
+    // Optional: Perform any action when the user closes the linking flow
+    console.log("Linking flow closed");
+  };
+
+  const { open } = useBindbeeMagiclink({
+    linkToken: "LINK_TOKEN", // Replace LINK_TOKEN with the token retrieved from previous step,
+    onSuccess: handleOnSuccess,
+    onClose: handleOnClose,
+  });
+
+  return <button onClick={open}>Open Linking Flow</button>;
+};
+
+export default App;
+```
+
+#### How it works?
+
+- `useBindbeeMagiclink` is a hook that handles the linking flow which takes following parameters as input:
+  - `linkToken` is the token generated in Step 1.
+  - `onSuccess` is a callback function that is called when the linking process is successful.
+  - `onClose` is an optional callback function that is called when the user closes the linking flow.
+
+### Get `temporary_token`
+
+After a successful linking process, you will receive a `temporary_token`. This token is used to retrieve the `connector_token`.
+
+### Get `connector_token` using the `temporary_token`
+
+To get the connector_token, make a GET request to the following endpoint: `https://api.bindbee.dev/api/embedded/v1/connectors/connector_token/{temporary_token}`
+
+You will need [**BINDBEE_API_KEY**](/api-reference/basics/authentication#bindbee-api-key) for authentication.
+
+#### What is `connector_token`?
+
+`connector_token` is required for authorizing your BindBee API requests effectively. for more information about connector_token you can refer [here](/api-reference/basics/authentication#connector-tokens)
+
+#### Getting the `connector_token`?
+
+<Tip>
+  Important: Securely store this **connector_token** in your database for
+  authenticating future API requests to the Bindbee's Unified API regarding the
+  end user's data.
+</Tip>
+
+Here’s an example on how to get the `connector_token`:
+
+<CodeGroup>
+
+```python Python
+import requests
+
+url = 'https://api.bindbee.dev/api/embedded/v1/connectors/connector_token/{temporary_token}'
+headers = {
+'accept': 'application/json',
+'Authorization': 'Bearer <BINDBEE_API_KEY>'
+}
+
+response = requests.get(url, headers=headers)
+print(response.json())
+
+```
+
+```bash cURL
+curl -X 'GET' \
+  'https://api.bindbee.dev/api/embedded/v1/connectors/connector_token/{temporary_token}' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer <BINDBEE_API_KEY>'
+```
+
+```js Javascript
+const fetch = require("node-fetch");
+
+const url =
+  "https://api.bindbee.dev/api/embedded/v1/connectors/connector_token/{temporary_token}";
+const headers = {
+  accept: "application/json",
+  Authorization: "Bearer <BINDBEE_API_KEY>",
+};
+
+fetch(url, {
+  method: "GET",
+  headers: headers,
+})
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => console.error("Error:", error));
+```
+
+```php PHP
+<?php
+$url = 'https://api.bindbee.dev/api/embedded/v1/connectors/connector_token/{temporary_token}';
+$headers = [
+    'accept: application/json',
+    'Authorization: Bearer <BINDBEE_API_KEY>'
+];
+
+$options = [
+    'http' => [
+        'header'  => implode("\r\n", $headers),
+        'method'  => 'GET'
+    ]
+];
+
+$context  = stream_context_create($options);
+$result = file_get_contents($url, false, $context);
+if ($result === FALSE) { /* Handle error */ }
+
+var_dump($result);
+?>
+
+```
+
+```go Go
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"net/http"
+)
+
+func main() {
+	url := "https://api.bindbee.dev/api/embedded/v1/connectors/connector_token/{temporary_token}"
+	req, _ := http.NewRequest("GET", url, nil)
+	req.Header.Set("accept", "application/json")
+	req.Header.Set("Authorization", "Bearer <BINDBEE_API_KEY>")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer resp.Body.Close()
+
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(body))
+}
+
+```
+
+```java Java
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            URL url = new URL("https://api.bindbee.dev/api/embedded/v1/connectors/connector_token/{temporary_token}");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("accept", "application/json");
+            conn.setRequestProperty("Authorization", "Bearer <BINDBEE_API_KEY>");
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String inputLine;
+            StringBuffer content = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+            in.close();
+            conn.disconnect();
+
+            System.out.println(content.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+```
+
+</CodeGroup>

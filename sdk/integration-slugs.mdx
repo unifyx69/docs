@@ -1,0 +1,77 @@
+---
+title: "Integration Slugs"
+description: "A list of supported HRIS and ATS integration slugs for reference."
+---
+
+Use these slugs when making requests to our API to specify the service you want to connect to.
+
+## HRIS (Human Resource Information Systems)
+
+- **SAP SuccessFactors**: `sap-success-factors`
+- **Keka HR**: `keka`
+- **BambooHR**: `bamboohr`
+- **Gusto**: `gusto`
+- **Hibob**: `hibob`
+- **Zoho People**: `zoho-people`
+- **BreatheHR**: `breathehr`
+- **UKG Pro**: `ukg-pro`
+- **Sage HR**: `sage-hr`
+- **Google Workspace**: `google-workspace`
+- **Workday**: `workday`
+- **Rippling**: `rippling`
+- **Deel**: `deel`
+- **UKG Ready**: `ukg-ready`
+- **Oracle HCM**: `oracle-hcm`
+- **TriNet HR**: `trinet-hr`
+- **Paychex**: `paychex`
+- **Personio**: `personio`
+- **Employment Hero**: `employment_hero`
+
+## ATS (Applicant Tracking Systems)
+
+- **SAP SuccessFactors**: `sap-success-factors`
+- **Greenhouse**: `green-house`
+- **BambooHR**: `bamboohr`
+- **Lever**: `lever`
+- **Recruitee**: `recruitee`
+- **Workable**: `workable`
+- **Workday**: `workday`
+- **JazzHR**: `jazzhr`
+
+## How to Use
+
+When generating a `link_token`, specify the desired service by using the appropriate slug from the lists above.
+
+For example, if you want to integrate with BambooHR for HRIS, use the slug `bamboohr` in your request.
+
+## Example
+
+Here's an example of a request payload to generate a `link_token` for integrating with **BambooHR** as an **HRIS**:
+
+```json
+{
+  "end_user_data": {
+    "org_name": "Kunal Organization", // unique entity name
+    "org_logo": "https://xyss.com/images",
+    "origin_id": "2kh3ub45ad" // unique entity ID
+  },
+  "category": "HRIS", // category
+  "integration": "bamboohr" // integration slug
+}
+```
+
+For **ATS** integration with **Greenhouse**, use the slug `green-house`:
+
+```json
+{
+  "end_user_data": {
+    "org_name": "Kunal Organization", // unique entity name
+    "org_logo": "https://xyss.com/images",
+    "origin_id": "2kh3ub45ad" // unique entity ID
+  },
+  "category": "ATS", // category
+  "integration": "green-house" // integration slug
+}
+```
+
+By using the correct slugs, you can seamlessly connect with the desired HRIS or ATS service through BindBee's Unified APIs.

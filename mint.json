@@ -55,6 +55,10 @@
     {
       "name": "Vendor Management System (VMS)",
       "url": "vms"
+    },
+    {
+      "name": "SDKs",
+      "url": "sdk"
     }
   ],
   "navigation": [
@@ -345,6 +349,14 @@
           "pages": ["api-reference/passthrough/make-passthrough-request"]
         }
       ]
+    },
+    {
+      "group": "Overview",
+      "pages": ["sdk/embedded-link-flow", "sdk/integration-slugs"]
+    },
+    {
+      "group": "API Reference",
+      "pages": ["sdk/create-link-token", "sdk/get-connector-token"]
     }
   ],
   "footerSocials": {
