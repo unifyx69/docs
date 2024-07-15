@@ -1,13 +1,25 @@
 ---
-title: "Embedded link flow"
-description: "With our embedded link flow feature, you can embed our integration process directly into your frontend, ensuring that all HRIS, Payroll, and ATS integrations can be set up within minutes, with minimal code required."
+title: "Bindbee Connect"
+description: "With Bindbee Connect, you can directly integrate our suite of HRIS, Payroll, and ATS solutions into the frontend of your application. This allows for quick and easy setup with minimal coding required. Your customers will be able to seamlessly integrate with any HRIS, ATS, and Payroll systems directly from your app in just minutes."
 ---
+
+Post this, your customers will be able to integrate with any HRIS, ATS and Payroll directly from your app.
+
+## Add Bindbee Connect in your product
+
+Bindbee Connect uses four steps to securely authenticate your customer's integrations and allow you to embed the entire magic link flow inside your own product.
+
+**Step 1:** Generate a `link_token` to initialize a BindBee Connect session for your end user.
+
+**Step 2:** Embed BindBee Connect in your frontend using the [React SDK](https://www.npmjs.com/package/@bindbee/react-link).
+
+**Step 3:** Retrieve a `temporary_token` upon successful integration.
+
+**Step 4:** Exchange the `temporary_token` for a `connector_token`, which authenticates future requests to the Unified API.
 
 ![SDK Workflow](https://images.unifyx.dev/documentation_images/sdk_workflow.webp)
 
-## Four-Step Process for Embedding BindBee's Linking Flow
-
-### Generate `link_token`
+### Step 1: Generate `link_token`
 
 To start, generate a link_token by making a POST request to the following endpoint: `https://api.bindbee.dev/api/embedded/v1/link/create-link-token`.
 
@@ -21,9 +33,9 @@ You will need [**BINDBEE_API_KEY**](/api-reference/basics/authentication#bindbee
 
 You will also need to send some information about end user, integration category, and the specific integration you want to connect to.
 
-#### How to get Integration Category and Slug?
+#### How to get Integration Category and Name?
 
-To get the category and integration slug refer to [Slugs](/sdk/integration-slugs) page
+To get the category and Integration name refer to [Integrations](/sdk/integrations) page
 
 <CodeGroup>
 
@@ -39,12 +51,11 @@ headers = {
 }
 data = {
 "end_user_data": {
-"org_name": "Kunal Organization", # unique entity name
-"org_logo": "https://xyss.com/images",
-"origin_id": "2kh3ub45ad" # unique entity ID
+"org_name": "Acme Corp.", # Unique entity name of your customer's organisation
+"origin_id": "064e1cd7-49ad-4e6d-8005-7e4c92fe9675" # Unique ID to Identify your customer's organisation
 },
 "category": "HRIS", # category
-"integration": "bamboohr" # integration slug
+"integration": "bamboohr" # Integration name
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -60,9 +71,8 @@ curl -X 'POST' \
   -H 'Authorization: Bearer <BINDBEE_API_KEY>' \
   -d '{
   "end_user_data": {
-    "org_name": "Kunal Organization",
-    "org_logo": "https://xyss.com/images",
-    "origin_id": "2kh3ub45ad"
+    "org_name": "Acme Corp.",
+    "origin_id": "064e1cd7-49ad-4e6d-8005-7e4c92fe9675"
   },
   "category": "HRIS",
   "integration": "bamboohr"
@@ -80,12 +90,11 @@ const headers = {
 };
 const data = {
   end_user_data: {
-    org_name: "Kunal Organization", // unique entity name
-    org_logo: "https://xyss.com/images",
-    origin_id: "2kh3ub45ad", // unique entity ID
+    org_name: "Acme Corp.", // Unique entity name of your customer's organisation
+    origin_id: "064e1cd7-49ad-4e6d-8005-7e4c92fe9675", // Unique ID to Identify your customer's organisation
   },
   category: "HRIS", // category
-  integration: "bamboohr", // integration slug
+  integration: "bamboohr", // Integration name
 };
 
 fetch(url, {
@@ -108,12 +117,11 @@ $headers = [
 ];
 $data = [
     "end_user_data" => [
-        "org_name" => "Kunal Organization", // unique entity name
-        "org_logo" => "https://xyss.com/images",
-        "origin_id" => "2kh3ub45ad" // unique entity ID
+        "org_name" => "Acme Corp.", // Unique entity name of your customer's organisation
+        "origin_id" => "064e1cd7-49ad-4e6d-8005-7e4c92fe9675" // Unique ID to Identify your customer's organisation
     ],
     "category" => "HRIS", // category
-    "integration" => "bamboohr" // integration slug
+    "integration" => "bamboohr" // Integration name
 ];
 
 $options = [
@@ -147,12 +155,11 @@ func main() {
 	url := "https://api.bindbee.dev/api/embedded/v1/link/create-link-token"
 	data := map[string]interface{}{
 		"end_user_data": map[string]string{
-			"org_name":  "Kunal Organization", // unique entity name
-			"org_logo":  "https://xyss.com/images",
-			"origin_id": "2kh3ub45ad", // unique entity ID
+			"org_name":  "Acme Corp.", // Unique entity name of your customer's organisation
+			"origin_id": "064e1cd7-49ad-4e6d-8005-7e4c92fe9675", // Unique ID to Identify your customer's organisation
 		},
 		"category":    "HRIS", // category
-		"integration": "bamboohr", // integration slug
+		"integration": "bamboohr", // Integration name
 	}
 	jsonData, err := json.Marshal(data)
 	if err != nil {
@@ -200,7 +207,7 @@ public class Main {
             conn.setRequestProperty("Authorization", "Bearer <BINDBEE_API_KEY>");
             conn.setDoOutput(true);
 
-            String jsonInputString = "{\"end_user_data\": {\"org_name\": \"Kunal Organization\",\"org_logo\": \"https://xyss.com/images\",\"origin_id\": \"2kh3ub45ad\"},\"category\": \"HRIS\",\"integration\": \"bamboohr\"}";
+            String jsonInputString = "{\"end_user_data\": {\"org_name\": \"Acme Corp.\",\"origin_id\": \"064e1cd7-49ad-4e6d-8005-7e4c92fe9675\"},\"category\": \"HRIS\",\"integration\": \"bamboohr\"}";
 
             try (OutputStream os = conn.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
@@ -222,11 +229,11 @@ public class Main {
 
 </CodeGroup>
 
-### Use React SDK
+### Step 2: Embed BindBee Connect
 
 If you are using React for your frontend, you can easily integrate the linking flow using our [React SDK](https://www.npmjs.com/package/@bindbee/react-link).
 
-### Installation
+#### Installation
 
 Run one of the following commands in your React project directory:
 
@@ -276,11 +283,11 @@ export default App;
   - `onSuccess` is a callback function that is called when the linking process is successful.
   - `onClose` is an optional callback function that is called when the user closes the linking flow.
 
-### Get `temporary_token`
+### Step 3: Get `temporary_token`
 
 After a successful linking process, you will receive a `temporary_token`. This token is used to retrieve the `connector_token`.
 
-### Get `connector_token` using the `temporary_token`
+### Step 4: Get `connector_token` using the `temporary_token`
 
 To get the connector_token, make a GET request to the following endpoint: `https://api.bindbee.dev/api/embedded/v1/connectors/connector_token/{temporary_token}`
 
@@ -288,7 +295,7 @@ You will need [**BINDBEE_API_KEY**](/api-reference/basics/authentication#bindbee
 
 #### What is `connector_token`?
 
-`connector_token` is required for authorizing your BindBee API requests effectively. for more information about connector_token you can refer [here](/api-reference/basics/authentication#connector-tokens)
+`connector_token` is required for authorizing your Bindbee API requests effectively. for more information about connector_token you can refer [here](/api-reference/basics/authentication#connector-tokens)
 
 #### Getting the `connector_token`?
 

@@ -352,7 +352,7 @@
     },
     {
       "group": "Overview",
-      "pages": ["sdk/embedded-link-flow", "sdk/integration-slugs"]
+      "pages": ["sdk/bindbee-connect", "sdk/integrations"]
     },
     {
       "group": "API Reference",

@@ -1,9 +1,9 @@
 ---
-title: "Integration Slugs"
-description: "A list of supported HRIS and ATS integration slugs for reference."
+title: "Integrations"
+description: "A list of supported HRIS and ATS integration names for reference."
 ---
 
-Use these slugs when making requests to our API to specify the service you want to connect to.
+Use these names when making requests to our API to specify the integration you want to connect to.
 
 ## HRIS (Human Resource Information Systems)
 
@@ -40,9 +40,9 @@ Use these slugs when making requests to our API to specify the service you want 
 
 ## How to Use
 
-When generating a `link_token`, specify the desired service by using the appropriate slug from the lists above.
+When generating a `link_token`, specify the desired integration by using the appropriate name from the lists above.
 
-For example, if you want to integrate with BambooHR for HRIS, use the slug `bamboohr` in your request.
+For example, if you want to integrate with BambooHR for HRIS, use the name `bamboohr` in your request.
 
 ## Example
 
@@ -51,27 +51,25 @@ Here's an example of a request payload to generate a `link_token` for integratin
 ```json
 {
   "end_user_data": {
-    "org_name": "Kunal Organization", // unique entity name
-    "org_logo": "https://xyss.com/images",
-    "origin_id": "2kh3ub45ad" // unique entity ID
+    "org_name": "Acme Corp.", // Unique entity name of your customer's organisation
+    "origin_id": "064e1cd7-49ad-4e6d-8005-7e4c92fe9675" // Unique ID to Identify your customer's organisation
   },
   "category": "HRIS", // category
-  "integration": "bamboohr" // integration slug
+  "integration": "bamboohr" // Integration name
 }
 ```
 
-For **ATS** integration with **Greenhouse**, use the slug `green-house`:
+For **ATS** integration with **Greenhouse**, use the name `green-house`:
 
 ```json
 {
   "end_user_data": {
-    "org_name": "Kunal Organization", // unique entity name
-    "org_logo": "https://xyss.com/images",
-    "origin_id": "2kh3ub45ad" // unique entity ID
+    "org_name": "Acme Corp.", // Unique entity name of your customer's organisation
+    "origin_id": "064e1cd7-49ad-4e6d-8005-7e4c92fe9675" // Unique ID to Identify your customer's organisation
   },
   "category": "ATS", // category
-  "integration": "green-house" // integration slug
+  "integration": "green-house" // Integration name
 }
 ```
 
-By using the correct slugs, you can seamlessly connect with the desired HRIS or ATS service through BindBee's Unified APIs.
+By using the correct names, you can seamlessly connect with the desired HRIS or ATS through BindBee's Unified APIs.

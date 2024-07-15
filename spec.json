@@ -7354,21 +7354,7 @@
             "minLength": 2,
             "title": "Organization Name",
             "description": "Name of the organization to which end user belongs",
-            "example": "Kunal Organization"
-          },
-          "org_logo": {
-            "anyOf": [
-              {
-                "type": "string",
-                "maxLength": 2083,
-                "minLength": 1,
-                "format": "uri"
-              },
-              { "type": "null" }
-            ],
-            "title": "Organization logo url",
-            "description": "Organization Logo URl",
-            "example": "https://xyss.com/images"
+            "example": "Acme Corp."
           },
           "origin_id": {
             "type": "string",
@@ -7379,7 +7365,7 @@
           }
         },
         "type": "object",
-        "required": ["org_name", "org_logo", "origin_id"],
+        "required": ["org_name", "origin_id"],
         "title": "EndUserCreate"
       },
       "HRISEmploymentStatus": {
