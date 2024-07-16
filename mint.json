@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "BindBee Docs",
+  "name": "Bindbee Docs",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -67,7 +67,7 @@
       "pages": ["features/overview"]
     },
     {
-      "group": "BindBee Features",
+      "group": "Bindbee Features",
       "pages": [
         "features/dashboard",
         "features/magic-link",
@@ -76,7 +76,7 @@
       ]
     },
     {
-      "group": "BindBee API Basics",
+      "group": "Bindbee API Basics",
       "pages": [
         "api-reference/basics/authentication",
         "api-reference/basics/pagination",
