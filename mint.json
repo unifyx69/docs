@@ -39,6 +39,23 @@
   "primaryTab": {
     "name": "Home"
   },
+  "anchors": [
+    {
+      "name": "Overview",
+      "icon": "book-open",
+      "url": "features"
+    },
+    {
+      "name": "SDKs",
+      "icon": "code",
+      "url": "sdk"
+    },
+    {
+      "name": "Webhooks",
+      "icon": "webhook",
+      "url": "webhooks"
+    }
+  ],
   "tabs": [
     {
       "name": "API Basics",
@@ -55,10 +72,6 @@
     {
       "name": "Vendor Management System (VMS)",
       "url": "vms"
-    },
-    {
-      "name": "SDKs",
-      "url": "sdk"
     }
   ],
   "navigation": [
@@ -357,10 +370,14 @@
     {
       "group": "API Reference",
       "pages": ["sdk/create-link-token", "sdk/get-connector-token"]
+    },
+    {
+      "group": "Overview",
+      "pages": ["webhooks/overview"]
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/UnifyX_API?utm_source=documentation&utm_medium=documentation-footer&utm_campaign=documentation",
-    "linkedin": "https://www.linkedin.com/company/unifyx/?utm_source=documentation&utm_medium=documentation-footer&utm_campaign=documentation"
+    "twitter": "https://twitter.com/bindbee?utm_source=documentation&utm_medium=documentation-footer&utm_campaign=documentation",
+    "linkedin": "https://www.linkedin.com/company/bindbee/?utm_source=documentation&utm_medium=documentation-footer&utm_campaign=documentation"
   }
 }
