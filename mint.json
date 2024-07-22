@@ -364,7 +364,7 @@
       ]
     },
     {
-      "group": "Overview",
+      "group": "Bindbee Embed",
       "pages": ["sdk/bindbee-embed", "sdk/integrations", "sdk/customizations"]
     },
     {
@@ -372,7 +372,7 @@
       "pages": ["sdk/create-link-token", "sdk/get-connector-token"]
     },
     {
-      "group": "Overview",
+      "group": "Webhooks",
       "pages": ["webhooks/overview"]
     }
   ],

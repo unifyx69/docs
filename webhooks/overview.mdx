@@ -5,9 +5,9 @@ description: "With Webhooks, you can receive real-time updates on connector sync
 
 ## Create Webhooks
 
-To create webhooks follow the next steps!
+To create webhooks follow the intructions up ahead!
 
-**Step 1:** Navigate to the “Webhooks” section from the left sidebar under the “Configure” menu.
+**Step 1:** Navigate to the “Webhooks” section from the sidebar under the “Configure” menu.
 
 ![Webhook New](https://images.unifyx.dev/documentation_images/webhook_name.webp)
 
@@ -21,11 +21,11 @@ To create webhooks follow the next steps!
 
 **Step 5:** Choose the events for which you want to receive notifications by selecting the appropriate checkboxes:
 
-- Sync start: Receive an alert when a connector’s sync starts.
-- Sync error: Get notified when a connector sync fails.
-- Sync completed: Get notified when a connector sync job is successful.
-- Employee model change: Receive an alert when any employee data is modified.
-- Data model change: Receive an alert when any data model is modified.
+- **Sync start**: Receive an alert when a connector’s sync starts.
+- **Sync error**: Get notified when a connector sync fails.
+- **Sync completed**: Get notified when a connector sync job is successful.
+- **Employee model change**: Receive an alert when any employee data is modified.
+- **Data model change**: Receive an alert when any data model is modified.
 
 **Step 6:** Once you have filled in all the required fields and selected the notification triggers, click the “Create webhook” button to save your webhook configuration.
 
@@ -43,6 +43,8 @@ To create webhooks follow the next steps!
 - Employee Data Changed
 - Connector Data Modified
 
+### Sample payload for webhook events
+
 <Tabs>
   <Tab title="Connector Sync Started">
     Recieve an alert when the connector sync starts
@@ -59,7 +61,7 @@ To create webhooks follow the next steps!
             "categories": [
             "HRIS"
             ],
-            "org_name": "Bindbee",
+            "org_name": "Test Org",
             "connector_status": "COMPLETE",
             "end_user_name": "John Doe",
             "end_user_email": "abc@xyz.com"
@@ -90,7 +92,7 @@ To create webhooks follow the next steps!
             "categories": [
             "HRIS"
             ],
-            "org_name": "Bindbee",
+            "org_name": "Test Org",
             "connector_status": "COMPLETE",
             "end_user_name": "John Doe",
             "end_user_email": "abc@xyz.com"
@@ -121,7 +123,7 @@ To create webhooks follow the next steps!
             "categories": [
             "HRIS"
             ],
-            "org_name": "Bindbee",
+            "org_name": "Test Org",
             "connector_status": "COMPLETE",
             "end_user_name": "John Doe",
             "end_user_email": "abc@xyz.com"
@@ -152,7 +154,7 @@ To create webhooks follow the next steps!
             "categories": [
             "HRIS"
             ],
-            "org_name": "Bindbee",
+            "org_name": "Test Org",
             "connector_status": "COMPLETE",
             "end_user_name": "John Doe",
             "end_user_email": "abc@xyz.com"
@@ -178,7 +180,7 @@ To create webhooks follow the next steps!
             "categories": [
             "HRIS"
             ],
-            "org_name": "Bindbee",
+            "org_name": "Test Org",
             "connector_status": "COMPLETE",
             "end_user_name": "John Doe",
             "end_user_email": "abc@xyz.com"
@@ -195,140 +197,128 @@ To create webhooks follow the next steps!
     ```
   </Tab>
 </Tabs>
-
+ 
+ 
+ 
 ## Security
-
 To secure your API endpoint, ensure it verifies that POST requests are genuinely from Bindbee and not from a malicious source, and that payloads haven’t been tampered with during transit.
-
-You can achieve this by checking if the X-Bindbee-Webhook-Signature field in the request header matches an encoded combination of your organization’s unique webhook signature and the payload of the incoming request.
-
+ 
+You can achieve this by checking if the `X-Bindbee-Webhook-Signature` field in the request header matches an encoded combination of your organization’s unique webhook signature and the payload of the incoming request.
+ 
 In the Webhooks configuration page, you should find a Security section where you can access your signature key. This key is unique to your organization and can be regenerated if it becomes known to an unauthorized party.
-
+ 
 ![Webhook Security](https://images.unifyx.dev/documentation_images/signature_key.webp)
-
+ 
 <CodeGroup>
 ``` python Python
 import base64
 import hashlib
 import hmac
-
+ 
 # Replace 'YOUR_WEBHOOK_SIGNATURE_KEY' with the actual key from:
-
 # https://app.bindbee.dev/webhooks
-
+ 
 signature_key = "YOUR_WEBHOOK_SIGNATURE_KEY"
 request_body = request.body
-
+ 
 # Ensure the presence of a signature header in the request
-
 if "X-Bindbee-Webhook-Signature" not in request.headers:
-print('Signature header missing; request may not be from Bindbee.')
-raise
-
+    print('Signature header missing; request may not be from Bindbee.')
+    raise
+ 
 # Retrieve the signature header from the request
-
 received_signature = request.headers["X-Bindbee-Webhook-Signature"]
-
+ 
 # Convert the key and request body to bytes
-
 key_bytes = signature_key.encode("utf-8")
 body_bytes = request_body.encode("utf-8")
-
+ 
 # Create an HMAC digest using SHA-256
-
 hmac_digest = hmac.new(key_bytes, body_bytes, hashlib.sha256).digest()
-
+ 
 # Encode the digest to base64
-
 encoded_digest = base64.urlsafe_b64encode(hmac_digest).decode()
-
+ 
 # Use `hmac.compare_digest` to compare the computed digest with the received signature
-
 signature_valid = hmac.compare_digest(encoded_digest, received_signature)
-
-````
-
+```
+ 
 ``` ruby Ruby
 require 'base64'
 require 'openssl'
 require 'json'
-
+ 
 # Replace 'YOUR_WEBHOOK_SIGNATURE_KEY' with the actual key from:
 # https://app.bindbee.dev/webhooks
-
+ 
 secret_key = 'YOUR_WEBHOOK_SIGNATURE_KEY'
 request_body = request.raw_post
 received_signature = request.env['X-Bindbee-Webhook-Signature']
-
+ 
 unless received_signature
   raise "Signature header missing; request may not be from Bindbee."
 end
-
+ 
 # Ensure the payload is properly encoded in UTF-8
 request_body.force_encoding('UTF-8')
-
+ 
 # Compute HMAC digest using SHA-256
 hmac_digest = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), secret_key, request_body)
-
+ 
 # Base64 encode the HMAC digest
 encoded_digest = Base64.urlsafe_encode64(hmac_digest)
-
+ 
 # Use secure comparison to validate the signature
 valid_signature = ActiveSupport::SecurityUtils.secure_compare(encoded_digest, received_signature)
-````
-
-```javascript Node
-const crypto = require("crypto");
-const express = require("express");
+```
+``` javascript Node
+const crypto = require('crypto');
+const express = require('express');
 const app = express();
-
+ 
 // Replace 'YOUR_WEBHOOK_SIGNATURE_KEY' with the actual key from:
 // https://app.bindbee.dev/webhooks
-
+ 
 // Middleware to capture raw body for HMAC verification
 app.use(
   express.json({
     verify: (req, res, buf) => {
       req.rawBody = buf.toString();
-    },
+    }
   })
 );
-
-const webhookSecret = "YOUR_WEBHOOK_SIGNATURE_KEY";
+ 
+const webhookSecret = 'YOUR_WEBHOOK_SIGNATURE_KEY';
 const rawRequestBody = request.rawBody;
-
-const receivedSignature = request.headers["x-bindbee-webhook-signature"];
-
+ 
+const receivedSignature = request.headers['X-Bindbee-Webhook-Signature'];
+ 
 if (!receivedSignature) {
-  console.log("Missing webhook signature; request may not be from Bindbee.");
+  console.log('Missing webhook signature; request may not be from Bindbee.');
 }
-
+ 
 // Ensure the request body is properly encoded
-const utf8Body = Buffer.from(rawRequestBody, "utf-8").toString();
-
+const utf8Body = Buffer.from(rawRequestBody, 'utf-8').toString();
+ 
 // Create an HMAC digest using SHA-256
-const hmacDigest = crypto
-  .createHmac("sha256", webhookSecret)
+const hmacDigest = crypto.createHmac('sha256', webhookSecret)
   .update(utf8Body)
-  .digest("base64")
-  .replace(/\+/g, "-")
-  .replace(/\//g, "_");
-
+  .digest('base64')
+  .replace(/\+/g, '-')
+  .replace(/\//g, '_');
+ 
 // Use crypto.timingSafeEqual to compare the signatures securely
-const expectedSignature = Buffer.from(receivedSignature, "utf-8");
-const calculatedSignature = Buffer.from(hmacDigest, "utf-8");
-
-const isSignatureValid =
-  Buffer.byteLength(expectedSignature) ===
-    Buffer.byteLength(calculatedSignature) &&
+const expectedSignature = Buffer.from(receivedSignature, 'utf-8');
+const calculatedSignature = Buffer.from(hmacDigest, 'utf-8');
+ 
+const isSignatureValid = Buffer.byteLength(expectedSignature) === Buffer.byteLength(calculatedSignature) &&
   crypto.timingSafeEqual(expectedSignature, calculatedSignature);
-
+ 
 console.log(isSignatureValid);
 ```
-
 </CodeGroup>
-
+ 
 ## Webhook Visibility
-
-The webhook logs are easily visible on the webhooks tab at [Bindbee](https://app.bindbee.dev/logs/webhooks) dashboard.
+ 
+The webhook logs are easily visible on the webhooks tab at [Bindbee](https://app.bindbee.dev/logs/webhooks) dashboard. 
 The specific webhook logs will be visible on the individual webhook page.
