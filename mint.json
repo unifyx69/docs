@@ -136,6 +136,13 @@
           ]
         },
         {
+          "group": "Company",
+          "pages": [
+            "hris/companies/get-companies",
+            "hris/companies/get-company-by-id"
+          ]
+        },
+        {
           "group": "Employee",
           "pages": [
             "hris/employee/get-employees",
@@ -184,6 +191,14 @@
           "pages": [
             "hris/time-off-balance/get-time-off-balances-list",
             "hris/time-off-balance/get-time-off-balance-by-id"
+          ]
+        },
+        {
+          "group": "Time Sheet Entry",
+          "pages": [
+            "hris/time-sheet-entries/get-time-sheet-entries-list",
+            "hris/time-sheet-entries/create-time-sheet-entries",
+            "hris/time-sheet-entries/get-time-sheet-entries-by-id"
           ]
         },
         {
