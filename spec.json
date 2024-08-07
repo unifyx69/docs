@@ -2364,12 +2364,12 @@
         }
       }
     },
-    "/api/hris/v1/time-sheet-entry": {
+    "/api/hris/v1/timesheet-entry": {
       "get": {
-        "tags": ["Time Sheet Entry"],
+        "tags": ["Timesheet Entry"],
         "summary": "Get Timesheet List",
         "description": "Returns a list of Timesheet entry objects.",
-        "operationId": "get_timesheet_list_api_hris_v1_time_sheet_entry_get",
+        "operationId": "get_timesheet_list_api_hris_v1_timesheet_entry_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -2463,10 +2463,10 @@
         }
       },
       "post": {
-        "tags": ["Time Sheet Entry"],
-        "summary": "Create Time Sheet",
+        "tags": ["Timesheet Entry"],
+        "summary": "Create Timesheet",
         "description": "Creates a Time sheet object with the given values.",
-        "operationId": "create_time_sheet_api_hris_v1_time_sheet_entry_post",
+        "operationId": "create_timesheet_api_hris_v1_timesheet_entry_post",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -2502,12 +2502,12 @@
         }
       }
     },
-    "/api/hris/v1/time-sheet-entry/{id}": {
+    "/api/hris/v1/timesheet-entry/{id}": {
       "get": {
-        "tags": ["Time Sheet Entry"],
+        "tags": ["Timesheet Entry"],
         "summary": "Get Timesheet By Id",
         "description": "Returns a Timesheet object with the given id.",
-        "operationId": "get_timesheet_by_id_api_hris_v1_time_sheet_entry__id__get",
+        "operationId": "get_timesheet_by_id_api_hris_v1_timesheet_entry__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {

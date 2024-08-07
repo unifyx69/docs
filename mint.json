@@ -196,9 +196,9 @@
         {
           "group": "Time Sheet Entry",
           "pages": [
-            "hris/time-sheet-entries/get-time-sheet-entries-list",
-            "hris/time-sheet-entries/create-time-sheet-entries",
-            "hris/time-sheet-entries/get-time-sheet-entries-by-id"
+            "hris/timesheet-entries/get-timesheet-entries-list",
+            "hris/timesheet-entries/create-timesheet-entries",
+            "hris/timesheet-entries/get-timesheet-entries-by-id"
           ]
         },
         {
