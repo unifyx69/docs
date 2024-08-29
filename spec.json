@@ -1465,9 +1465,9 @@
     "/api/hris/v1/groups/{id}": {
       "get": {
         "tags": ["Group"],
-        "summary": "Get Pay Group By Id",
+        "summary": "Get Group By Id",
         "description": "Returns a Group object with the given id.",
-        "operationId": "get_pay_group_by_id_api_hris_v1_groups__id__get",
+        "operationId": "get_group_by_id_api_hris_v1_groups__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
