@@ -1363,6 +1363,159 @@
         }
       }
     },
+    "/api/hris/v1/groups": {
+      "get": {
+        "tags": ["Group"],
+        "summary": "Get Groups",
+        "description": "Returns a list of Group objects.",
+        "operationId": "get_groups_api_hris_v1_groups_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object.",
+            "example": "3235005483341316245"
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HrisGroupPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hris/v1/groups/{id}": {
+      "get": {
+        "tags": ["Group"],
+        "summary": "Get Pay Group By Id",
+        "description": "Returns a Group object with the given id.",
+        "operationId": "get_pay_group_by_id_api_hris_v1_groups__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HrisGroup" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/hris/v1/pay-groups": {
       "get": {
         "tags": ["Pay Groups"],
@@ -7682,8 +7835,8 @@
           },
           "employee_deduction": {
             "anyOf": [
-              { "type": "integer" },
               { "type": "number" },
+              { "type": "integer" },
               { "type": "null" }
             ],
             "title": "Employee Deduction",
@@ -7692,8 +7845,8 @@
           },
           "company_deduction": {
             "anyOf": [
-              { "type": "integer" },
               { "type": "number" },
+              { "type": "integer" },
               { "type": "null" }
             ],
             "title": "Company Deduction",
@@ -7709,8 +7862,8 @@
         "properties": {
           "amount": {
             "anyOf": [
-              { "type": "integer" },
               { "type": "number" },
+              { "type": "integer" },
               { "type": "null" }
             ],
             "title": "Amount",
@@ -8000,8 +8153,8 @@
           },
           "employee_contribution": {
             "anyOf": [
-              { "type": "integer" },
               { "type": "number" },
+              { "type": "integer" },
               { "type": "null" }
             ],
             "title": "Employee Contribution",
@@ -8010,8 +8163,8 @@
           },
           "company_contribution": {
             "anyOf": [
-              { "type": "integer" },
               { "type": "number" },
+              { "type": "integer" },
               { "type": "null" }
             ],
             "title": "Company Contribution",
@@ -8129,8 +8282,8 @@
           },
           "pay_rate": {
             "anyOf": [
-              { "type": "integer" },
               { "type": "number" },
+              { "type": "integer" },
               { "type": "null" }
             ],
             "title": "Pay Rate",
@@ -8536,6 +8689,17 @@
             "description": "The employee's current designation/title",
             "example": "Chief Technology Officer"
           },
+          "groups": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Groups",
+            "description": "The IDs of the groups that the employee belongs to."
+          },
           "department": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Department",
@@ -8692,6 +8856,7 @@
           "preferred_name",
           "display_full_name",
           "username",
+          "groups",
           "department",
           "division",
           "work_email",
@@ -8785,8 +8950,8 @@
           },
           "gross_pay": {
             "anyOf": [
-              { "type": "integer" },
               { "type": "number" },
+              { "type": "integer" },
               { "type": "null" }
             ],
             "title": "Gross Pay",
@@ -8795,8 +8960,8 @@
           },
           "net_pay": {
             "anyOf": [
-              { "type": "integer" },
               { "type": "number" },
+              { "type": "integer" },
               { "type": "null" }
             ],
             "title": "Net Pay",
@@ -9115,6 +9280,96 @@
         "required": ["cursor", "page_size", "items"],
         "title": "HrisEmploymentPaginatedResponse"
       },
+      "HrisGroup": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name",
+            "description": "The group name."
+          },
+          "type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Type",
+            "description": "The group type."
+          },
+          "parent_group": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Parent Group",
+            "description": "The parent group id."
+          },
+          "is_commonly_used_as_team": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Is Commonly Used As Team",
+            "description": "The group is commonly used as a team."
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "remote_id",
+          "modified_at",
+          "name",
+          "type",
+          "parent_group",
+          "is_commonly_used_as_team"
+        ],
+        "title": "HrisGroup",
+        "description": "The Group object is used to represent a hierarchy in employees"
+      },
+      "HrisGroupPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/HrisGroup" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "HrisGroupPaginatedResponse"
+      },
       "HrisPayGroup": {
         "properties": {
           "id": {
@@ -9361,8 +9616,8 @@
           },
           "amount": {
             "anyOf": [
-              { "type": "integer" },
               { "type": "number" },
+              { "type": "integer" },
               { "type": "null" }
             ],
             "title": "Amount",
@@ -9445,8 +9700,8 @@
           },
           "balance": {
             "anyOf": [
-              { "type": "integer" },
               { "type": "number" },
+              { "type": "integer" },
               { "type": "null" }
             ],
             "title": "Balance",
@@ -9455,8 +9710,8 @@
           },
           "used": {
             "anyOf": [
-              { "type": "integer" },
               { "type": "number" },
+              { "type": "integer" },
               { "type": "null" }
             ],
             "title": "Used",
@@ -9576,18 +9831,16 @@
             "example": "2023-11-10T00:00:00Z"
           },
           "hours_worked": {
-            "anyOf": [
-              { "type": "integer" },
-              { "type": "number" },
-              { "type": "null" }
-            ],
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
             "title": "Hours Worked",
             "description": "The number of hours logged by the employee.",
-            "example": 12
+            "example": 12.0
           },
           "break_duration": {
             "anyOf": [{ "type": "number" }, { "type": "null" }],
-            "title": "Break Duration"
+            "title": "Break Duration",
+            "description": "The number of hours the employee took for a break.",
+            "example": 2.5
           },
           "start_time": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
@@ -9610,6 +9863,7 @@
           "employee",
           "date",
           "hours_worked",
+          "break_duration",
           "start_time",
           "end_time"
         ],
@@ -9689,8 +9943,8 @@
           },
           "amount": {
             "anyOf": [
-              { "type": "integer" },
               { "type": "number" },
+              { "type": "integer" },
               { "type": "null" }
             ],
             "title": "Amount",

@@ -146,6 +146,10 @@
           ]
         },
         {
+          "group": "Group",
+          "pages": ["hris/groups/get-groups", "hris/groups/get-group-by-id"]
+        },
+        {
           "group": "Employments",
           "pages": [
             "hris/employments/get-employments",
