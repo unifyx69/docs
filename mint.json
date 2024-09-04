@@ -46,6 +46,12 @@
       "url": "features"
     },
     {
+      "name": "SDK",
+      "icon": "code",
+      "url": "sdk",
+      "isDefaultHidden": true
+    },
+    {
       "name": "Webhooks",
       "icon": "webhook",
       "url": "webhooks"
