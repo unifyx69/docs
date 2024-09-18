@@ -177,6 +177,13 @@
           ]
         },
         {
+          "group": "Payroll Run Calendar",
+          "pages": [
+            "hris/payroll-run-calendar/get-payroll-run-calendars",
+            "hris/payroll-run-calendar/get-payroll-run-calendar-by-id"
+          ]
+        },
+        {
           "group": "Employee Payroll Runs",
           "pages": [
             "hris/employee-payroll-runs/get-employee-payroll-runs",
