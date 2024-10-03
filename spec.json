@@ -2258,10 +2258,35 @@
         "summary": "Create Time Off",
         "description": "Creates a TimeOff object with the given values.",
         "operationId": "create_time_off_api_hris_v1_time_off_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateHrisTimeOff" }
+            }
+          }
+        },
         "responses": {
-          "200": {
+          "201": {
             "description": "Successful Response",
             "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
           }
         }
       }
@@ -2973,8 +2998,16 @@
             "schema": { "type": "string", "title": "X-Connector-Token" }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateAtsActivity" }
+            }
+          }
+        },
         "responses": {
-          "200": {
+          "201": {
             "description": "Successful Response",
             "content": { "application/json": { "schema": {} } }
           },
@@ -7931,6 +7964,137 @@
         "required": ["value", "url_type"],
         "title": "AtsUrl"
       },
+      "CreateAtsActivity": {
+        "properties": {
+          "user": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "User",
+            "description": "The user who owns the activity.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "activity_type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Activity Type",
+            "description": "The type of activity.",
+            "example": "NOTE"
+          },
+          "subject": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Subject",
+            "description": "The subject of the activity.",
+            "example": "Interview with John Doe"
+          },
+          "body": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Body",
+            "description": "The body of the activity. This can include notes, comments, or other relevant information.",
+            "example": "John Doe was interviewed for the position of Software Engineer."
+          },
+          "visibility": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Visibility",
+            "description": "Visibility of the activity. Can be PUBLIC/PRIVATE",
+            "example": "PUBLIC"
+          },
+          "candidate": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Candidate",
+            "description": "Candidate who applied for the activity.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          }
+        },
+        "type": "object",
+        "required": [
+          "user",
+          "activity_type",
+          "body",
+          "visibility",
+          "candidate"
+        ],
+        "title": "CreateAtsActivity"
+      },
+      "CreateHrisTimeOff": {
+        "properties": {
+          "employee": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Employee",
+            "description": "The employee requesting time off.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "approver": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Approver",
+            "description": "The Bindbee ID of the employee with the ability to approve the time off request.",
+            "default": "",
+            "example": "018b4bfb-6065-7f83-b11d-e85ea49e37c3"
+          },
+          "status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Status",
+            "description": "The status of this time off request.",
+            "default": "",
+            "example": "APPROVED"
+          },
+          "employee_note": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Employee Note",
+            "description": "The employee note for this time off request.",
+            "default": "",
+            "example": "Paid paid vacation! Scuba diving in Hawaii."
+          },
+          "units": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Units",
+            "description": "The measurement that the third-party integration uses to count time requested.",
+            "default": "",
+            "example": "HOURS"
+          },
+          "amount": {
+            "anyOf": [
+              { "type": "integer" },
+              { "type": "number" },
+              { "type": "null" }
+            ],
+            "title": "Amount",
+            "description": "The time off quantity measured by the prescribed “units”.",
+            "example": 12
+          },
+          "request_type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Request Type",
+            "description": "The type of time off request.",
+            "example": "VACATION"
+          },
+          "start_time": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Start Time",
+            "description": "The day and time of the start of the time requested off.",
+            "example": "2023-04-10T00:00:00Z"
+          },
+          "end_time": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "End Time",
+            "default": "The day and time of the end of the time requested off.",
+            "example": "2023-04-10T00:00:00Z"
+          }
+        },
+        "type": "object",
+        "required": ["employee", "amount", "request_type", "start_time"],
+        "title": "CreateHrisTimeOff",
+        "description": "The TimeOff object is used to represent all employees' Time Off entries."
+      },
       "CreateHrisTimeSheetEntry": {
         "properties": {
           "employee": {
@@ -7987,8 +8151,8 @@
           },
           "employee_deduction": {
             "anyOf": [
-              { "type": "number" },
               { "type": "integer" },
+              { "type": "number" },
               { "type": "null" }
             ],
             "title": "Employee Deduction",
@@ -7997,8 +8161,8 @@
           },
           "company_deduction": {
             "anyOf": [
-              { "type": "number" },
               { "type": "integer" },
+              { "type": "number" },
               { "type": "null" }
             ],
             "title": "Company Deduction",
@@ -8014,8 +8178,8 @@
         "properties": {
           "amount": {
             "anyOf": [
-              { "type": "number" },
               { "type": "integer" },
+              { "type": "number" },
               { "type": "null" }
             ],
             "title": "Amount",
@@ -8311,8 +8475,8 @@
           },
           "employee_contribution": {
             "anyOf": [
-              { "type": "number" },
               { "type": "integer" },
+              { "type": "number" },
               { "type": "null" }
             ],
             "title": "Employee Contribution",
@@ -8321,8 +8485,8 @@
           },
           "company_contribution": {
             "anyOf": [
-              { "type": "number" },
               { "type": "integer" },
+              { "type": "number" },
               { "type": "null" }
             ],
             "title": "Company Contribution",
@@ -8440,8 +8604,8 @@
           },
           "pay_rate": {
             "anyOf": [
-              { "type": "number" },
               { "type": "integer" },
+              { "type": "number" },
               { "type": "null" }
             ],
             "title": "Pay Rate",
@@ -9117,8 +9281,8 @@
           },
           "gross_pay": {
             "anyOf": [
-              { "type": "number" },
               { "type": "integer" },
+              { "type": "number" },
               { "type": "null" }
             ],
             "title": "Gross Pay",
@@ -9127,8 +9291,8 @@
           },
           "net_pay": {
             "anyOf": [
-              { "type": "number" },
               { "type": "integer" },
+              { "type": "number" },
               { "type": "null" }
             ],
             "title": "Net Pay",
@@ -9882,8 +10046,8 @@
           },
           "amount": {
             "anyOf": [
-              { "type": "number" },
               { "type": "integer" },
+              { "type": "number" },
               { "type": "null" }
             ],
             "title": "Amount",
@@ -9966,8 +10130,8 @@
           },
           "balance": {
             "anyOf": [
-              { "type": "number" },
               { "type": "integer" },
+              { "type": "number" },
               { "type": "null" }
             ],
             "title": "Balance",
@@ -9976,8 +10140,8 @@
           },
           "used": {
             "anyOf": [
-              { "type": "number" },
               { "type": "integer" },
+              { "type": "number" },
               { "type": "null" }
             ],
             "title": "Used",
@@ -10209,8 +10373,8 @@
           },
           "amount": {
             "anyOf": [
-              { "type": "number" },
               { "type": "integer" },
+              { "type": "number" },
               { "type": "null" }
             ],
             "title": "Amount",
