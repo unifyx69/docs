@@ -2097,6 +2097,45 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": ["Employee Payroll Runs"],
+        "summary": "Create Employee Payroll Run",
+        "description": "Creates a TimeOff object with the given values.",
+        "operationId": "create_employee_payroll_run_api_hris_v1_employee_payroll_runs_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateHrisEmployeePayrollRun"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
       }
     },
     "/api/hris/v1/employee-payroll-runs/{id}": {
@@ -3565,6 +3604,14 @@
             "schema": { "type": "string", "title": "X-Connector-Token" }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateCandidate" }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -8019,6 +8066,141 @@
         ],
         "title": "CreateAtsActivity"
       },
+      "CreateCandidate": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/PostCandidate" },
+          "remote_user_id": {
+            "type": "string",
+            "title": "Remote User Id",
+            "description": "The remote user's id",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          }
+        },
+        "type": "object",
+        "required": ["data", "remote_user_id"],
+        "title": "CreateCandidate"
+      },
+      "CreateHrisEmployeePayrollRun": {
+        "properties": {
+          "employee": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Employee",
+            "description": "The employee whose payroll is being run.",
+            "example": "018b168d-70f9-7043-a796-56d66a4f8f07"
+          },
+          "payroll_run": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Payroll Run",
+            "description": "The payroll being run.",
+            "default": "",
+            "example": "018b709e-b6ef-7db4-902a-a064157bdba2"
+          },
+          "payroll_process_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Payroll Process Name",
+            "description": "The payroll process name to be displayed.",
+            "default": "",
+            "example": "Hours, Earning Codes"
+          },
+          "payroll_file": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Payroll File",
+            "description": "Employee's Payroll File Number for which earnings are made",
+            "default": "",
+            "example": "000099"
+          },
+          "gross_pay": {
+            "anyOf": [
+              { "type": "integer" },
+              { "type": "number" },
+              { "type": "null" }
+            ],
+            "title": "Gross Pay",
+            "description": "The total earnings throughout a given period for an employee before any deductions are made.",
+            "default": 0,
+            "example": 772277.77
+          },
+          "net_pay": {
+            "anyOf": [
+              { "type": "integer" },
+              { "type": "number" },
+              { "type": "null" }
+            ],
+            "title": "Net Pay",
+            "description": "The take-home pay throughout a given period for an employee after deductions are made.",
+            "default": 0,
+            "example": 577221.27
+          },
+          "start_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Start Date",
+            "description": "The day and time the benefit started.",
+            "default": "",
+            "example": "2023-07-01T00:00:00Z"
+          },
+          "end_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "End Date",
+            "description": "The day and time the benefit ended.",
+            "default": "",
+            "example": "2023-07-31T00:00:00Z"
+          },
+          "check_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Check Date",
+            "description": "The day and time the payroll run was checked.",
+            "default": "",
+            "example": "2023-08-31T00:00:00Z"
+          },
+          "earnings": {
+            "anyOf": [
+              { "items": { "type": "object" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Earnings",
+            "description": "The earnings of the Employee",
+            "default": [],
+            "example": [{ "amount": "27151", "name": "SALARY" }]
+          },
+          "deductions": {
+            "anyOf": [
+              { "items": { "type": "object" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Deductions",
+            "description": "The deductions of the Employee",
+            "default": [],
+            "example": [
+              {
+                "company_deduction": "77.57",
+                "employee_deduction": "27.22",
+                "name": "Social Security"
+              }
+            ]
+          },
+          "taxes": {
+            "anyOf": [
+              { "items": { "type": "object" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Taxes",
+            "description": "The taxes of the Employee",
+            "default": [],
+            "example": [
+              { "amount": "175.22", "name": "California State Income Tax" }
+            ]
+          }
+        },
+        "type": "object",
+        "required": ["employee"],
+        "title": "CreateHrisEmployeePayrollRun"
+      },
       "CreateHrisTimeOff": {
         "properties": {
           "employee": {
@@ -10347,6 +10529,138 @@
         "type": "object",
         "required": ["end_user_data", "category", "integration"],
         "title": "LinkTokenCreate"
+      },
+      "PostCandidate": {
+        "properties": {
+          "first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "First Name",
+            "description": "The candidate's first name.",
+            "example": "John"
+          },
+          "last_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Last Name",
+            "description": "The candidate's last name.",
+            "example": "Doe"
+          },
+          "company": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Company",
+            "description": "The name of the company where candidate has applied.",
+            "example": "Google"
+          },
+          "title": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Title",
+            "description": "The position for which the candidate has applied",
+            "example": "SOFTWARE ENGINEER"
+          },
+          "is_private": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Is Private",
+            "description": "Whether the candidate's information is private.",
+            "example": true
+          },
+          "can_email": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Can Email",
+            "description": "Whether the candidate can be emailed.",
+            "example": true
+          },
+          "locations": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Locations",
+            "description": "The location of the candidate.",
+            "default": [],
+            "example": ["San Francisco", "New York"]
+          },
+          "phone_numbers": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Phone Numbers",
+            "description": "The candidate's phone numbers.",
+            "default": [],
+            "example": ["123-456-7890"]
+          },
+          "email_addresses": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Email Addresses",
+            "description": "The candidate's email addresses.",
+            "default": [],
+            "example": ["john@doe.com"]
+          },
+          "urls": {
+            "anyOf": [
+              {
+                "items": { "$ref": "#/components/schemas/AtsUrl" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Urls",
+            "description": "The candidate's URLs. This can include a personal website, LinkedIn profile, or other relevant URLs.",
+            "default": [],
+            "example": [
+              {
+                "type": "LINKEDIN",
+                "value": "https://www.linkedin.com/in/johndoe"
+              }
+            ]
+          },
+          "tags": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Tags",
+            "description": "The candidate's tags. Tags are used to categorize candidates and can be used to filter candidates in the UI.",
+            "default": [],
+            "example": ["JUNIOR", "INTERMEDIATE"]
+          },
+          "applications": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Applications",
+            "description": "The candidate's applications.",
+            "example": ["018b4bfb-5ece-70b1-ad5e-862a9433aa65"]
+          },
+          "attachments": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Attachments",
+            "description": "The candidate's attachments.",
+            "default": [],
+            "example": ["018b4bfb-5ece-70b1-ad5e-862a9433aa65"]
+          },
+          "avatar": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Avatar",
+            "description": "The candidate's avatar.",
+            "example": "https://www.example.com/avatar.jpg"
+          }
+        },
+        "type": "object",
+        "required": ["first_name", "last_name", "applications"],
+        "title": "PostCandidate"
       },
       "RateCategory": {
         "type": "string",

@@ -187,6 +187,7 @@
           "group": "Employee Payroll Runs",
           "pages": [
             "hris/employee-payroll-runs/get-employee-payroll-runs",
+            "hris/employee-payroll-runs/create-employee-payroll-runs",
             "hris/employee-payroll-runs/get-employee-payroll-runs-by-id"
           ]
         },
