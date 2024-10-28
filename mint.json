@@ -99,6 +99,10 @@
       ]
     },
     {
+      "group": "Connectors",
+      "pages": ["api-reference/connectors/get-connectors"]
+    },
+    {
       "group": "Unified Models",
       "pages": [
         {

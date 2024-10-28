@@ -414,7 +414,13 @@
         "responses": {
           "200": {
             "description": "Successful Response",
-            "content": { "application/json": { "schema": {} } }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HrisCompanyPaginatedResponse"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -464,7 +470,11 @@
         "responses": {
           "200": {
             "description": "Successful Response",
-            "content": { "application/json": { "schema": {} } }
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HrisCompany" }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -1115,7 +1125,13 @@
         "responses": {
           "200": {
             "description": "Successful Response",
-            "content": { "application/json": { "schema": {} } }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WriteApiResponseModel"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -2215,6 +2231,19 @@
             "example": "3235005483341316245"
           },
           {
+            "name": "employee_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The ID of the employee.",
+              "title": "Employee Id"
+            },
+            "description": "The ID of the employee.",
+            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+          },
+          {
             "name": "include_raw_data",
             "in": "query",
             "required": false,
@@ -2403,6 +2432,19 @@
             },
             "description": "The third-party API ID of the matching object.",
             "example": "3235005483341316245"
+          },
+          {
+            "name": "employee_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The ID of the employee.",
+              "title": "Employee Id"
+            },
+            "description": "The ID of the employee.",
+            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
           },
           {
             "name": "include_raw_data",
@@ -2911,6 +2953,62 @@
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/HrisTimeSheetEntry" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hris/v1/connectors": {
+      "get": {
+        "tags": ["Connector"],
+        "summary": "Get Hris Connectors",
+        "description": "Returns a list of HRIS connectors",
+        "operationId": "get_hris_connectors_api_hris_v1_connectors_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectorPaginatedResponse"
+                }
               }
             }
           },
@@ -5764,6 +5862,62 @@
         }
       }
     },
+    "/api/ats/v1/connectors": {
+      "get": {
+        "tags": ["Connector"],
+        "summary": "Get Ats Connectors",
+        "description": "Returns a list of ATS connectors",
+        "operationId": "get_ats_connectors_api_ats_v1_connectors_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectorPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/vms/v1/job-posting": {
       "get": {
         "tags": ["Job Posting"],
@@ -8011,6 +8165,155 @@
         "required": ["value", "url_type"],
         "title": "AtsUrl"
       },
+      "Category": {
+        "type": "string",
+        "enum": ["CRM", "HRIS", "ATS"],
+        "title": "Category"
+      },
+      "ConnectorPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "anyOf": [
+              {
+                "items": { "$ref": "#/components/schemas/ConnectorResponse" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "ConnectorPaginatedResponse"
+      },
+      "ConnectorResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "description": "Id of the connector",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "is_active": {
+            "type": "boolean",
+            "title": "Is Active",
+            "description": "Flag to indicate if connector is active or not",
+            "example": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/ConnectorStatus",
+            "description": "Link status of the connector",
+            "example": "COMPLETE"
+          },
+          "integration_slug": {
+            "type": "string",
+            "title": "Integration Slug",
+            "description": "Integration slug for the particular connector",
+            "example": "ukg-pro"
+          },
+          "end_user": {
+            "type": "string",
+            "title": "End User",
+            "description": "Name of the end user which is used when creating corresponding connector",
+            "example": "Acme Corp."
+          },
+          "sync_status": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/JobDisplayStatus" },
+              { "type": "null" }
+            ],
+            "description": "Latest Sync status of the connector",
+            "example": "Done"
+          },
+          "last_sync_start_time": {
+            "anyOf": [
+              { "type": "string", "format": "date-time" },
+              { "type": "null" }
+            ],
+            "title": "Last Sync Start Time",
+            "description": "This time represent last sync start time",
+            "example": "2024-10-16T00:00:00Z"
+          },
+          "next_sync_start_time": {
+            "anyOf": [
+              { "type": "string", "format": "date-time" },
+              { "type": "null" }
+            ],
+            "title": "Next Sync Start Time",
+            "description": "This time represent next sync start time",
+            "example": "2024-10-17T00:00:00Z"
+          },
+          "connector_token": {
+            "type": "string",
+            "title": "Connector Token",
+            "description": "Connector token for this connector",
+            "example": "LJITuCJFqpGXeKfZtn4I9ZcahzA-lkCSO6uhDKj5xw9EzPL96qk7ObgIHQQ1GnxH"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category",
+            "description": "Category of the connector",
+            "example": "HRIS"
+          },
+          "is_test_connector": {
+            "type": "boolean",
+            "title": "Is Test Connector",
+            "description": "Flag indicating if connector is test connector or not",
+            "example": false
+          },
+          "completed_at": {
+            "anyOf": [
+              { "type": "string", "format": "date-time" },
+              { "type": "null" }
+            ],
+            "title": "Completed At",
+            "description": "Indicated time at which connector has been linked properly",
+            "example": "2024-10-17T00:00:00Z"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At",
+            "description": "Connector creation time",
+            "example": "2024-10-17T00:00:00Z"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "is_active",
+          "status",
+          "integration_slug",
+          "end_user",
+          "sync_status",
+          "last_sync_start_time",
+          "next_sync_start_time",
+          "connector_token",
+          "category",
+          "is_test_connector",
+          "completed_at",
+          "created_at"
+        ],
+        "title": "ConnectorResponse"
+      },
+      "ConnectorStatus": {
+        "type": "string",
+        "enum": ["COMPLETE", "INCOMPLETE", "RELINK_NEEDED"],
+        "title": "ConnectorStatus"
+      },
       "CreateAtsActivity": {
         "properties": {
           "user": {
@@ -8739,6 +9042,93 @@
         "type": "object",
         "required": ["cursor", "page_size", "items"],
         "title": "HrisBenefitPaginatedResponse"
+      },
+      "HrisCompany": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "legal_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Legal Name",
+            "description": "The company's legal name.",
+            "example": "Integrax Pvt. Ltd."
+          },
+          "display_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Display Name",
+            "description": "The company's display name.",
+            "example": "Bindbee"
+          },
+          "eins": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Eins",
+            "description": "The company's Employer Identification Numbers.",
+            "example": ["12-3456789", "12-3451111"]
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "remote_id",
+          "modified_at",
+          "legal_name",
+          "display_name",
+          "eins"
+        ],
+        "title": "HrisCompany",
+        "description": "The Company object is used to represent a company within the HRIS / Payroll system."
+      },
+      "HrisCompanyPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/HrisCompany" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "HrisCompanyPaginatedResponse"
       },
       "HrisCompensation": {
         "properties": {
@@ -10506,6 +10896,11 @@
         "required": ["cursor", "page_size", "items"],
         "title": "HrisTimesheetPaginatedResponse"
       },
+      "JobDisplayStatus": {
+        "type": "string",
+        "enum": ["Syncing", "Done", "Failed"],
+        "title": "JobDisplayStatus"
+      },
       "LinkTokenCreate": {
         "properties": {
           "end_user_data": {
@@ -11408,6 +11803,19 @@
         "type": "object",
         "required": ["model"],
         "title": "VmsWorkOrderAcceptCreateRequest"
+      },
+      "WriteApiResponseModel": {
+        "properties": {
+          "success": { "type": "boolean", "title": "Success" },
+          "message": { "type": "string", "title": "Message" },
+          "errors": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Errors"
+          }
+        },
+        "type": "object",
+        "required": ["success", "message"],
+        "title": "WriteApiResponseModel"
       }
     },
     "securitySchemes": { "HTTPBearer": { "type": "http", "scheme": "bearer" } }
