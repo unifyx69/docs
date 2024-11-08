@@ -100,7 +100,14 @@
     },
     {
       "group": "Connectors",
-      "pages": ["api-reference/connectors/get-connectors"]
+      "pages": [
+        "api-reference/connectors/get-connectors",
+        "api-reference/connectors/delete-connector"
+      ]
+    },
+    {
+      "group": "Integrations",
+      "pages": ["api-reference/integrations/get-integrations"]
     },
     {
       "group": "Unified Models",

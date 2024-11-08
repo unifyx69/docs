@@ -1044,6 +1044,18 @@
             "example": "ACTIVE"
           },
           {
+            "name": "employee_number",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will only return employees for this employee number",
+              "title": "Employee Number"
+            },
+            "description": "If provided, will only return employees for this employee number",
+            "example": "000000168"
+          },
+          {
             "name": "page_size",
             "in": "query",
             "required": false,
@@ -1122,6 +1134,16 @@
             "schema": { "type": "string", "title": "X-Connector-Token" }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HrisEmployeeCreateRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -2976,6 +2998,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "connector_token",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The connector token for the connector",
+              "title": "Connector Token"
+            },
+            "description": "The connector token for the connector",
+            "example": "i5kqe8bSedEdPLX9pHhFojKdo7Uzvue0f7I4NVhaDfV0GTxF0uAgwa_COb3zZU3T"
+          },
+          {
             "name": "page_size",
             "in": "query",
             "required": false,
@@ -3008,6 +3042,97 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ConnectorPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hris/v1/connectors/{connector_id}/delete": {
+      "delete": {
+        "tags": ["Connector"],
+        "summary": "Delete Ats Connector",
+        "description": "Deletes the provided connector",
+        "operationId": "delete_ats_connector_api_hris_v1_connectors__connector_id__delete_delete",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Connector Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hris/v1/integrations": {
+      "get": {
+        "tags": ["Integration"],
+        "summary": "Get Org Integrations",
+        "description": "Returns a list of Integrations",
+        "operationId": "get_org_integrations_api_hris_v1_integrations_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntegrationPaginatedResponse"
                 }
               }
             }
@@ -5871,6 +5996,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "connector_token",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The connector token for the connector",
+              "title": "Connector Token"
+            },
+            "description": "The connector token for the connector",
+            "example": "i5kqe8bSedEdPLX9pHhFojKdo7Uzvue0f7I4NVhaDfV0GTxF0uAgwa_COb3zZU3T"
+          },
+          {
             "name": "page_size",
             "in": "query",
             "required": false,
@@ -5903,6 +6040,97 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ConnectorPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/connectors/{connector_id}/delete": {
+      "delete": {
+        "tags": ["Connector"],
+        "summary": "Delete Ats Connector",
+        "description": "Deletes the provided connector",
+        "operationId": "delete_ats_connector_api_ats_v1_connectors__connector_id__delete_delete",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Connector Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/integrations": {
+      "get": {
+        "tags": ["Integration"],
+        "summary": "Get Org Integrations",
+        "description": "Returns a list of Integrations",
+        "operationId": "get_org_integrations_api_ats_v1_integrations_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntegrationPaginatedResponse"
                 }
               }
             }
@@ -9780,6 +10008,235 @@
         "title": "HrisEmployee",
         "description": "The Employee object is used to represent any person who has been employed by a company."
       },
+      "HrisEmployeeCreateRequest": {
+        "properties": {
+          "employee_number": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Employee Number",
+            "description": "The employee's number that appears in the third-party integration's UI.",
+            "example": "1"
+          },
+          "company": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Company",
+            "description": "The ID of the employee's company.",
+            "example": "018af1fe-1250-772d-87c5-6f725a579e8a"
+          },
+          "first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "First Name",
+            "description": "The employee's first name.",
+            "example": "Kunal"
+          },
+          "middle_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Middle Name",
+            "description": "The employee's middle name.",
+            "example": "Christopher"
+          },
+          "last_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Last Name",
+            "description": "The employee's last name.",
+            "example": "Tyagi"
+          },
+          "preferred_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Preferred Name",
+            "description": "The employee's preferred first name.",
+            "example": "Dark Knight"
+          },
+          "display_full_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Display Full Name",
+            "description": "The employee's full name, to use for display purposes. If a preferred first name is available, the full name will include the preferred first name.",
+            "example": "Kunal Tyagi"
+          },
+          "username": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Username",
+            "description": "The employee's username that appears in the remote UI.",
+            "example": "kunaltyagi"
+          },
+          "designation": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Designation",
+            "description": "The employee's current designation/title",
+            "example": "Chief Technology Officer"
+          },
+          "groups": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Groups",
+            "description": "The IDs of the groups that the employee belongs to."
+          },
+          "department": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Department",
+            "description": "The employee's department",
+            "example": "Engineering"
+          },
+          "division": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Division",
+            "description": "The employee's division",
+            "example": "Bangalore Division"
+          },
+          "work_email": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Work Email",
+            "description": "The employee's work email.",
+            "example": "kunal@bindbee.dev"
+          },
+          "personal_email": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Personal Email",
+            "description": "The employee's personal email.",
+            "example": "kunaltyagi77@gmail.com"
+          },
+          "mobile_phone_number": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Mobile Phone Number",
+            "description": "The employee's mobile phone number.",
+            "example": "+1234567890"
+          },
+          "home_phone_number": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Home Phone Number",
+            "description": "The employee's home phone number.",
+            "example": "+1234567890"
+          },
+          "country_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Country Code",
+            "description": "The employee's country code",
+            "example": "+91"
+          },
+          "home_location": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/HrisAddress" },
+              { "type": "null" }
+            ],
+            "description": "The employee's home address.",
+            "example": {
+              "city": "London",
+              "country": "UK",
+              "location": "UK-HO-London",
+              "name": "UK-HO-London",
+              "postal_code": "56273",
+              "state": "LND",
+              "street_1": "1011",
+              "street_2": "Lane number 4, Golden Villa"
+            }
+          },
+          "work_location": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/HrisAddress" },
+              { "type": "null" }
+            ],
+            "description": "The employee's work address.",
+            "example": {
+              "city": "London",
+              "country": "UK",
+              "location": "UK-HO-London",
+              "name": "UK-HO-London",
+              "postal_code": "56273",
+              "state": "LND",
+              "street_1": "1011",
+              "street_2": "Lane number 4, Golden Villa"
+            }
+          },
+          "manager": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Manager",
+            "description": "The employee ID of the employee's manager.",
+            "example": "018aeaff-cc7c-7837-988a-965762bd63c1"
+          },
+          "pay_group": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Pay Group",
+            "description": "The employee's pay group",
+            "example": "018af1fe-1250-77c5-9fcd-4bca1e4568f4"
+          },
+          "ssn": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Ssn",
+            "description": "The employee's social security number.",
+            "example": "1234567890"
+          },
+          "gender": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Gender",
+            "description": "The employee's gender.",
+            "example": "MALE"
+          },
+          "ethnicity": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Ethnicity",
+            "description": "The employee's ethnicity.",
+            "example": "ASIAN_OR_INDIAN_SUBCONTINENT"
+          },
+          "marital_status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Marital Status",
+            "description": "The employee's filing status as related to marital status",
+            "example": "SINGLE"
+          },
+          "date_of_birth": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Date Of Birth",
+            "description": "The employee's date of birth.",
+            "example": "1986-10-27T00:00:00Z"
+          },
+          "start_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Start Date",
+            "description": "The date that the employee started working. If an employee was rehired, the most recent start date will be returned.",
+            "example": "2023-03-05T00:00:00Z"
+          },
+          "remote_created_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Created At",
+            "description": "When the third party's employee was created.",
+            "example": "2023-03-01T00:00:00Z"
+          },
+          "employment_status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Employment Status",
+            "description": "The employment status of the employee. Possible values include: ACTIVE, PENDING, INACTIVE, or - in cases where there is no clear mapping - the original value passed through.",
+            "example": "INACTIVE"
+          },
+          "termination_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Termination Date",
+            "description": "The employee's termination date.",
+            "example": "2023-06-05T00:00:00Z"
+          },
+          "avatar": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Avatar",
+            "description": "The URL of the employee's avatar image.",
+            "example": "http://alturl.com/h2h8m"
+          }
+        },
+        "type": "object",
+        "required": ["employee_number", "company", "first_name", "last_name"],
+        "title": "HrisEmployeeCreateRequest"
+      },
       "HrisEmployeePaginatedResponse": {
         "properties": {
           "cursor": {
@@ -10895,6 +11352,79 @@
         "type": "object",
         "required": ["cursor", "page_size", "items"],
         "title": "HrisTimesheetPaginatedResponse"
+      },
+      "IntegrationPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "anyOf": [
+              {
+                "items": { "$ref": "#/components/schemas/IntegrationResponse" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "IntegrationPaginatedResponse"
+      },
+      "IntegrationResponse": {
+        "properties": {
+          "integration_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Integration Id",
+            "description": "Id of the integration",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "is_enabled": {
+            "type": "boolean",
+            "title": "Is Enabled",
+            "description": "Enabled boolean flag",
+            "example": true
+          },
+          "category": {
+            "type": "string",
+            "title": "Category",
+            "description": "Categories this integration falls into",
+            "example": "HRIS"
+          },
+          "display_name": {
+            "type": "string",
+            "title": "Display Name",
+            "description": "Name of the integration",
+            "example": "BambooHR"
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Description",
+            "description": "Description of integration",
+            "example": "BambooHR is an intuitive HRIS solution designed to streamline HR processes, offering features for employee onboarding, performance management, and HR analytics, providing organizations with a user-friendly platform for effective workforce management."
+          }
+        },
+        "type": "object",
+        "required": [
+          "integration_id",
+          "is_enabled",
+          "category",
+          "display_name",
+          "description"
+        ],
+        "title": "IntegrationResponse"
       },
       "JobDisplayStatus": {
         "type": "string",
