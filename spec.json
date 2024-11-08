@@ -9483,6 +9483,48 @@
         "required": ["cursor", "page_size", "items"],
         "title": "HrisCompensationPaginatedResponse"
       },
+      "HrisCustomFields": {
+        "properties": {
+          "hire_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Hire Date",
+            "description": "Hire date of the employee",
+            "example": "1991-03-16T00:00:00"
+          },
+          "hire_source": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Hire Source",
+            "description": "Source of hiring the employee",
+            "example": "REFER"
+          },
+          "nationality": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Nationality",
+            "description": "Nationality of the employee",
+            "example": "IND"
+          },
+          "category_group": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Category Group",
+            "description": "The type of employee",
+            "example": "REG"
+          },
+          "disability_type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Disability Type",
+            "description": "Type of disability of the employee",
+            "example": "ASBERG"
+          },
+          "original_hire_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Original Hire Date",
+            "description": "The original hire date of the employee",
+            "example": "1991-03-16T00:00:00"
+          }
+        },
+        "type": "object",
+        "title": "HrisCustomFields"
+      },
       "HrisDependent": {
         "properties": {
           "id": {
@@ -9964,14 +10006,29 @@
           "termination_date": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Termination Date",
-            "default": "The employee's termination date.",
+            "description": "The employee's termination date.",
             "example": "2023-06-05T00:00:00Z"
           },
           "avatar": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Avatar",
-            "default": "The URL of the employee's avatar image.",
+            "description": "The URL of the employee's avatar image.",
             "example": "http://alturl.com/h2h8m"
+          },
+          "custom_fields": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/HrisCustomFields" },
+              { "type": "null" }
+            ],
+            "description": "The custom fields related to employee",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
           }
         },
         "type": "object",
@@ -10003,7 +10060,10 @@
           "date_of_birth",
           "start_date",
           "remote_created_at",
-          "employment_status"
+          "employment_status",
+          "termination_date",
+          "avatar",
+          "custom_fields"
         ],
         "title": "HrisEmployee",
         "description": "The Employee object is used to represent any person who has been employed by a company."
@@ -11397,6 +11457,12 @@
             "description": "Enabled boolean flag",
             "example": true
           },
+          "integration_slug": {
+            "type": "string",
+            "title": "Integration Slug",
+            "description": "Integration slug",
+            "example": "ukg_pro"
+          },
           "category": {
             "type": "string",
             "title": "Category",
@@ -11409,6 +11475,12 @@
             "description": "Name of the integration",
             "example": "BambooHR"
           },
+          "icon_url": {
+            "type": "string",
+            "title": "Icon Url",
+            "description": "The url for icon",
+            "example": "https://images.unifyx.dev/logos/icon/ats/recruitee.svg"
+          },
           "description": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Description",
@@ -11420,8 +11492,10 @@
         "required": [
           "integration_id",
           "is_enabled",
+          "integration_slug",
           "category",
           "display_name",
+          "icon_url",
           "description"
         ],
         "title": "IntegrationResponse"
