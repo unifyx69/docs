@@ -54,13 +54,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -232,13 +232,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -373,13 +373,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -539,13 +539,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -704,13 +704,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -859,13 +859,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -1061,13 +1061,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -1284,13 +1284,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -1437,13 +1437,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -1500,9 +1500,9 @@
     "/api/hris/v1/groups/{id}": {
       "get": {
         "tags": ["Group"],
-        "summary": "Get Group By Id",
+        "summary": "Get Pay Group By Id",
         "description": "Returns a Group object with the given id.",
-        "operationId": "get_group_by_id_api_hris_v1_groups__id__get",
+        "operationId": "get_pay_group_by_id_api_hris_v1_groups__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -1590,13 +1590,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -1743,13 +1743,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -1896,13 +1896,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -2077,13 +2077,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -2284,13 +2284,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -2487,13 +2487,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -2683,13 +2683,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -2836,13 +2836,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -3015,13 +3015,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -3106,13 +3106,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -3187,13 +3187,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -3377,13 +3377,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -3559,13 +3559,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -3754,13 +3754,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -3932,13 +3932,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -4102,13 +4102,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -4272,13 +4272,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -4456,13 +4456,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -4638,13 +4638,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -4820,13 +4820,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -4990,13 +4990,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -5160,13 +5160,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -5330,13 +5330,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -5502,13 +5502,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -5672,13 +5672,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -5844,13 +5844,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -6013,13 +6013,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -6104,13 +6104,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -6176,13 +6176,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -6335,13 +6335,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -6413,13 +6413,13 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 100,
+              "maximum": 1000,
               "minimum": 1,
-              "description": "Number of results to return per page.",
+              "description": "Number of results to return per page. Maximum size is 100.",
               "default": 50,
               "title": "Page Size"
             },
-            "description": "Number of results to return per page."
+            "description": "Number of results to return per page. Maximum size is 100."
           },
           {
             "name": "cursor",
@@ -9397,7 +9397,10 @@
             "example": "018abccc-3208-7b2d-8b86-927945f89a42"
           },
           "pay_group": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
             "title": "Pay Group",
             "description": "The employee's pay group.",
             "example": "018b802f-4856-7ea8-a83f-ac374853ab90"
@@ -11594,7 +11597,6 @@
             ],
             "title": "Email Addresses",
             "description": "The candidate's email addresses.",
-            "default": [],
             "example": ["john@doe.com"]
           },
           "urls": {
@@ -11655,10 +11657,25 @@
             "title": "Avatar",
             "description": "The candidate's avatar.",
             "example": "https://www.example.com/avatar.jpg"
+          },
+          "job_id": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Job Id",
+            "description": "The job id for the candidate",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
           }
         },
         "type": "object",
-        "required": ["first_name", "last_name", "applications"],
+        "required": [
+          "first_name",
+          "last_name",
+          "email_addresses",
+          "applications",
+          "job_id"
+        ],
         "title": "PostCandidate"
       },
       "RateCategory": {

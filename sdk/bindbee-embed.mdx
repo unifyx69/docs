@@ -268,6 +268,7 @@ const App = () => {
 
   const { open } = useBindbeeMagiclink({
     linkToken: "LINK_TOKEN", // Replace LINK_TOKEN with the token retrieved from previous step,
+    serverUrl: "https://api.bindbee.dev", // OPTIONAL: use 'https://api-eu.bindbee.dev' for EU Region
     onSuccess: handleOnSuccess,
     onClose: handleOnClose,
   });
@@ -282,6 +283,7 @@ export default App;
 
 - `useBindbeeMagiclink` is a hook that handles the linking flow which takes following parameters as input:
   - `linkToken` is the token generated in Step 1.
+  - `serverUrl` is optional parameter used to specify region. eg. use 'https://api-eu.bindbee.dev' to use eu region.
   - `onSuccess` is a callback function that is called when the linking process is successful.
   - `onClose` is an optional callback function that is called when the user closes the linking flow.
 
@@ -310,6 +312,7 @@ Here is a sample JavaScript code snippet for the implementation.
 // Initialize BindbeeEmbed
 window.BindbeeEmbed.initialize({
   linkToken: "LINK_TOKEN", // Replace with your link_token
+  serverUrl: "https://api.bindbee.dev", // OPTIONAL: use 'https://api-eu.bindbee.dev' for EU Region
   onSuccess: (temporary_token) => {
     // Handle the temporary token
     console.log("Temporary Token:", temporary_token);
@@ -348,6 +351,7 @@ Here’s a complete HTML code snippet for the implementation, including the Java
     <script>
       window.BindbeeEmbed.initialize({
         linkToken: "LINK_TOKEN",
+        serverUrl: "https://api.bindbee.dev", // OPTIONAL: use 'https://api-eu.bindbee.dev' for EU Region
         onSuccess: (temporary_token) => {
           console.log("Success! Temporary Token:", temporary_token);
         },
