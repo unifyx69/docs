@@ -10018,6 +10018,15 @@
             "description": "The URL of the employee's avatar image.",
             "example": "http://alturl.com/h2h8m"
           },
+          "payroll_calendar": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Payroll Calendar",
+            "description": "The employee's payroll calendar",
+            "example": "018af1fe-1250-77c5-9fcd-4bca1e4568f4"
+          },
           "custom_fields": {
             "anyOf": [
               { "$ref": "#/components/schemas/HrisCustomFields" },
@@ -10066,6 +10075,7 @@
           "employment_status",
           "termination_date",
           "avatar",
+          "payroll_calendar",
           "custom_fields"
         ],
         "title": "HrisEmployee",
@@ -10931,6 +10941,15 @@
             "title": "Check Date",
             "description": "The day and time the payroll run was checked.",
             "example": "2020-11-15T00:00:00Z"
+          },
+          "payroll_run_calendar": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Payroll Run Calendar",
+            "description": "The payroll run calendar to which which the payroll run belongs",
+            "example": "018af1fe-2fad-749e-a282-ea17ba4fc0c4"
           }
         },
         "type": "object",
@@ -10943,7 +10962,8 @@
           "run_type",
           "start_date",
           "end_date",
-          "check_date"
+          "check_date",
+          "payroll_run_calendar"
         ],
         "title": "HrisPayrollRun",
         "description": "The PayrollRun object is used to represent a group of pay statements for a specific pay schedule."
@@ -11356,7 +11376,7 @@
             "anyOf": [{ "type": "number" }, { "type": "null" }],
             "title": "Hours Worked",
             "description": "The number of hours logged by the employee.",
-            "example": 12.0
+            "example": 12
           },
           "break_duration": {
             "anyOf": [{ "type": "number" }, { "type": "null" }],
