@@ -86,6 +86,18 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -140,6 +152,18 @@
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -252,6 +276,18 @@
             "description": "The pagination cursor value."
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -306,6 +342,18 @@
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -571,6 +619,18 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -625,6 +685,18 @@
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -724,6 +796,18 @@
             "description": "The pagination cursor value."
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -778,6 +862,18 @@
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -1008,18 +1104,6 @@
             "example": "018af6f5-180c-782e-816a-1d9b01c63652"
           },
           {
-            "name": "expand",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.",
-              "title": "Expand"
-            },
-            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.",
-            "example": "manager"
-          },
-          {
             "name": "include_raw_data",
             "in": "query",
             "required": false,
@@ -1091,6 +1175,18 @@
             },
             "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -1199,11 +1295,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
               "title": "Expand"
             },
-            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.",
-            "example": "manager"
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -1316,6 +1412,18 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -1325,13 +1433,7 @@
         "responses": {
           "200": {
             "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HrisEmploymentPaginatedResponse"
-                }
-              }
-            }
+            "content": { "application/json": { "schema": {} } }
           },
           "422": {
             "description": "Validation Error",
@@ -1775,6 +1877,18 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -1829,6 +1943,18 @@
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -1928,6 +2054,18 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -1959,9 +2097,9 @@
     "/api/hris/v1/payroll-run-calendars/{id}": {
       "get": {
         "tags": ["Payroll Run Calendars"],
-        "summary": "Get Pay Group By Id",
+        "summary": "Get Payroll Calendar Run By Id",
         "description": "Returns a PayrollRunCalendar object with the given id.",
-        "operationId": "get_pay_group_by_id_api_hris_v1_payroll_run_calendars__id__get",
+        "operationId": "get_payroll_calendar_run_by_id_api_hris_v1_payroll_run_calendars__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -1982,6 +2120,18 @@
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -2109,6 +2259,18 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -2202,6 +2364,18 @@
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -2302,6 +2476,18 @@
               "title": "Cursor"
             },
             "description": "The pagination cursor value."
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "modified_after",
@@ -2407,6 +2593,18 @@
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -2519,6 +2717,18 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -2573,6 +2783,18 @@
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -2715,6 +2937,18 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -2769,6 +3003,18 @@
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -2868,6 +3114,18 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -2961,6 +3219,18 @@
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -9046,10 +9316,7 @@
             }
           },
           "employee": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
             "description": "The employee that appears in the third-party integration's UI.",
             "example": "018af1fe-1250-772d-87c5-6f725a579e8a"
@@ -9154,10 +9421,7 @@
             }
           },
           "employee": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
             "description": "The employee on the plan.",
             "example": "018b18ef-c488-7d40-9131-91bbc47c1007"
@@ -9219,10 +9483,7 @@
             "example": "2024-10-16T00:00:00Z"
           },
           "employer_benefit": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Employer Benefit",
             "description": "The employer benefit plan the employee is enrolled in.",
             "example": "018b18ef-c488-7d40-9131-91bbc47c1007"
@@ -9388,19 +9649,13 @@
             }
           },
           "employee": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
             "description": "The employee holding this position.",
             "example": "018abccc-3208-7b2d-8b86-927945f89a42"
           },
           "pay_group": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Pay Group",
             "description": "The employee's pay group.",
             "example": "018b802f-4856-7ea8-a83f-ac374853ab90"
@@ -9558,10 +9813,7 @@
             }
           },
           "employee": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
             "description": "The employee holding this position.",
             "example": "018abccb-c4a9-72f6-be1d-3fc7aaf2be67"
@@ -9679,19 +9931,13 @@
             }
           },
           "employer_benefit": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Employer Benefit",
             "description": "The employer benefit plan the dependent is enrolled in.",
             "example": "018b18ef-c488-7d40-9131-91bbc47c1007"
           },
           "dependent": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Dependent",
             "description": "The dependent which belongs to this benefit.",
             "example": "018abccb-c4a9-72f6-be1d-3fc7aaf2be67"
@@ -9806,10 +10052,7 @@
             "example": "1"
           },
           "company": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Company",
             "description": "The ID of the employee's company.",
             "example": "018af1fe-1250-772d-87c5-6f725a579e8a"
@@ -9857,13 +10100,7 @@
             "example": "Chief Technology Officer"
           },
           "groups": {
-            "anyOf": [
-              {
-                "items": { "type": "string", "format": "uuid" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
             "title": "Groups",
             "description": "The IDs of the groups that the employee belongs to."
           },
@@ -9950,10 +10187,7 @@
             "example": "018aeaff-cc7c-7837-988a-965762bd63c1"
           },
           "pay_group": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Pay Group",
             "description": "The employee's pay group",
             "example": "018af1fe-1250-77c5-9fcd-4bca1e4568f4"
@@ -10018,12 +10252,9 @@
             "description": "The URL of the employee's avatar image.",
             "example": "http://alturl.com/h2h8m"
           },
-          "payroll_calendar": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
-            "title": "Payroll Calendar",
+          "payroll_run_calendar": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "Payroll Run Calendar",
             "description": "The employee's payroll calendar",
             "example": "018af1fe-1250-77c5-9fcd-4bca1e4568f4"
           },
@@ -10075,7 +10306,7 @@
           "employment_status",
           "termination_date",
           "avatar",
-          "payroll_calendar",
+          "payroll_run_calendar",
           "custom_fields"
         ],
         "title": "HrisEmployee",
@@ -10364,19 +10595,13 @@
             }
           },
           "employee": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
             "description": "The employee whose payroll is being run.",
             "example": "018b168d-70f9-7043-a796-56d66a4f8f07"
           },
           "payroll_run": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Payroll Run",
             "description": "The payroll being run.",
             "example": "018b709e-b6ef-7db4-902a-a064157bdba2"
@@ -10635,10 +10860,7 @@
             }
           },
           "employee": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
             "description": "The employee holding this position.",
             "example": "018abccc-3208-7b2d-8b86-927945f89a42"
@@ -10675,43 +10897,9 @@
           }
         },
         "type": "object",
-        "required": [
-          "id",
-          "remote_id",
-          "modified_at",
-          "employee",
-          "job_title",
-          "department",
-          "division",
-          "effective_date",
-          "employment_type"
-        ],
+        "required": ["id", "remote_id", "modified_at"],
         "title": "HrisEmployment",
         "description": "The Employment object is used to represent a job position at a company."
-      },
-      "HrisEmploymentPaginatedResponse": {
-        "properties": {
-          "cursor": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Cursor",
-            "description": "Cursor value to fetch next set of items",
-            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
-          },
-          "page_size": {
-            "type": "integer",
-            "title": "Page Size",
-            "description": "Indicates the count of items in the response",
-            "example": 50
-          },
-          "items": {
-            "items": { "$ref": "#/components/schemas/HrisEmployment" },
-            "type": "array",
-            "title": "Items"
-          }
-        },
-        "type": "object",
-        "required": ["cursor", "page_size", "items"],
-        "title": "HrisEmploymentPaginatedResponse"
       },
       "HrisGroup": {
         "properties": {
@@ -10904,10 +11092,7 @@
             }
           },
           "pay_group": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Pay Group",
             "description": "The paygroup to which this pay cycle belongs to",
             "example": "018af1fe-2fad-749e-a282-ea17ba4fc0c4"
@@ -10943,10 +11128,7 @@
             "example": "2020-11-15T00:00:00Z"
           },
           "payroll_run_calendar": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Payroll Run Calendar",
             "description": "The payroll run calendar to which which the payroll run belongs",
             "example": "018af1fe-2fad-749e-a282-ea17ba4fc0c4"
@@ -11002,9 +11184,9 @@
             "title": "Payroll Run Calendar Name",
             "description": "The name of the payroll run calendar"
           },
-          "pay_group_id": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Pay Group Id",
+          "pay_group": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "Pay Group",
             "description": "The paygroup to which this pay cycle belongs to"
           },
           "pay_period_start_date": {
@@ -11034,7 +11216,7 @@
           "remote_id",
           "modified_at",
           "payroll_run_calendar_name",
-          "pay_group_id",
+          "pay_group",
           "pay_period_start_date",
           "pay_period_end_date",
           "pay_date",
@@ -11121,19 +11303,13 @@
             }
           },
           "employee": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
             "description": "The employee requesting time off.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
           },
           "approver": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Approver",
             "description": "The Bindbee ID of the employee with the ability to approve the time off request.",
             "example": "018b4bfb-6065-7f83-b11d-e85ea49e37c3"
@@ -11232,10 +11408,7 @@
             }
           },
           "employee": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
             "description": "The employee the balance belongs to.",
             "example": "018b48d5-79f8-7deb-8813-3e47b375067e"
@@ -11358,10 +11531,7 @@
             }
           },
           "employee": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
             "description": "The employee the timesheet entry is for.",
             "example": "018abccc-4a0a-7e7d-a9d7-56881f57a6b4"
@@ -11376,7 +11546,7 @@
             "anyOf": [{ "type": "number" }, { "type": "null" }],
             "title": "Hours Worked",
             "description": "The number of hours logged by the employee.",
-            "example": 12
+            "example": 12.0
           },
           "break_duration": {
             "anyOf": [{ "type": "number" }, { "type": "null" }],
