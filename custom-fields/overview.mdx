@@ -1,0 +1,107 @@
+---
+title: "Custom Fields"
+description: "Custom Fields allow you to extend Bindbee's unified models with additional fields specific to your use case. This feature enables you to extract any data available in the third party API response and include it in your unified model response."
+---
+
+## Overview
+
+Custom Fields can be configured at two levels:
+
+- **Connector Level**: Applied to a specific connector instance
+- **Organization Level**: Applied to all connectors of a specific integration type
+
+<Info>
+  When the same custom field name exists at both levels, the **connector-level**
+  field takes precedence.
+</Info>
+
+## Creating a Custom field
+
+Creating a Custom field involves two main steps:
+
+**Step 1:** Create New Field
+
+**Step 2:** Configure Field Mappings
+
+### Step 1: Create New Field
+
+- Click the "New Field" button in the top right corner
+- Fill out the necessary details in the dialog.
+- Click "Create"
+
+<Note>
+  Name of custom field must be **unique** and naming should follow
+  **snake_case**
+</Note>
+
+### Step 2: Configure Field Mappings
+
+After creating the field, you'll be redirected to the mapping configuration screen where you can set up both `Connector Level` and `Organization Level` mappings.
+
+#### Connector Level Mapping
+
+- Click on "Connector Level"
+- Select your connector from the Dropdown
+- Fill or Select Data field box, you can choose either
+  - Select Mapping from Options
+  - Click the `</>` button to view the raw JSON response and click the desired field
+  - Enter the JMESPath expression directly
+
+#### Organization Level Mapping
+
+- Click on "Organization Level"
+- Select your integration from the Dropdown
+- Fill or Select Data field box, you can choose either
+  - Select Mapping from Options
+  - Click the `</>` button to view the raw JSON response and click the desired field
+  - Enter the JMESPath expression directly.
+
+<Info>
+  You can add multiple mappings to a single custom field by clicking the "Add
+  New" button and repeating the process for different connectors or
+  integrations.
+</Info>
+
+## Using Custom Fields
+
+To include custom fields in your API responses, add the query parameter `include_custom_fields=true` to your requests:
+
+if you are trying to get Custom Fields for `employees` model your request will look like this:
+
+```
+GET https://api.bindbee.dev/api/hris/v1/employees?include_custom_fields=true
+```
+
+Example response with custom fields:
+
+```json
+{
+  "id": "emp_123",
+  "name": "John Doe",
+  "custom_fields": {
+    "cost_center_name": "Engineering-NA",
+    "hourly_rate": 45.0
+  }
+}
+```
+
+## Best Practices
+
+1. **Naming Conventions**
+
+   - Use clear, descriptive names
+   - Follow snake_case formatting
+   - Avoid generic names like "custom1", "custom2"
+
+2. **JMESPath Expressions**
+
+   - Test expressions thoroughly before saving
+   - Consider data type consistency
+
+3. **Organization vs Connector Level Mapping**
+
+   - Use **Organization Level** fields for data that's consistent across all connectors
+   - Use **Connector Level** fields for connector-specific data
+   - Review existing **Organization Level** fields before creating **Connector Level** duplicates
+
+For more details on How to write custom JMESPath Expression visit [JMESPath Documentation](https://jmespath.org/)

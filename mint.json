@@ -55,6 +55,11 @@
       "name": "Webhooks",
       "icon": "webhook",
       "url": "webhooks"
+    },
+    {
+      "name": "Custom Fields",
+      "icon": "code-fork",
+      "url": "custom-fields"
     }
   ],
   "tabs": [
@@ -413,6 +418,10 @@
     {
       "group": "Webhooks",
       "pages": ["webhooks/overview"]
+    },
+    {
+      "group": "Custom Fields",
+      "pages": ["custom-fields/overview"]
     }
   ],
   "footerSocials": {
