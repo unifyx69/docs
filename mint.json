@@ -59,8 +59,7 @@
     {
       "name": "Custom Fields",
       "icon": "code-fork",
-      "url": "custom-fields",
-      "isDefaultHidden": true
+      "url": "custom-fields"
     }
   ],
   "tabs": [

@@ -49,6 +49,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "page_size",
             "in": "query",
             "required": false,
@@ -154,6 +167,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "expand",
             "in": "query",
             "required": false,
@@ -236,6 +262,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -344,6 +383,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "expand",
             "in": "query",
             "required": false,
@@ -413,6 +465,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -509,6 +574,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -579,6 +657,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -687,6 +778,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "expand",
             "in": "query",
             "required": false,
@@ -756,6 +860,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -864,6 +981,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "expand",
             "in": "query",
             "required": false,
@@ -935,6 +1065,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -1031,6 +1174,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -1114,6 +1270,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -1290,6 +1459,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "expand",
             "in": "query",
             "required": false,
@@ -1375,6 +1557,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "page_size",
             "in": "query",
             "required": false,
@@ -1433,7 +1628,13 @@
         "responses": {
           "200": {
             "description": "Successful Response",
-            "content": { "application/json": { "schema": {} } }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HrisEmploymentPaginatedResponse"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -1472,6 +1673,31 @@
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
             "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -1531,6 +1757,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -1627,6 +1866,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -1684,6 +1936,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -1780,6 +2045,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -1837,6 +2115,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -1945,6 +2236,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "expand",
             "in": "query",
             "required": false,
@@ -2014,6 +2318,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -2122,6 +2439,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "expand",
             "in": "query",
             "required": false,
@@ -2219,6 +2549,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -2366,6 +2709,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "expand",
             "in": "query",
             "required": false,
@@ -2450,6 +2806,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -2595,6 +2964,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "expand",
             "in": "query",
             "required": false,
@@ -2677,6 +3059,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -2785,6 +3180,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "expand",
             "in": "query",
             "required": false,
@@ -2837,6 +3245,14 @@
             "schema": { "type": "string", "title": "X-Connector-Token" }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PassThroughRequest" }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -2897,6 +3313,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -3005,6 +3434,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "expand",
             "in": "query",
             "required": false,
@@ -3074,6 +3516,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -3218,6 +3673,19 @@
               "title": "Include Raw Data"
             },
             "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -9315,6 +9783,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "employee": {
             "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
@@ -9357,6 +9838,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "employee",
           "account_number",
           "routing_number",
@@ -9418,6 +9900,19 @@
             "example": {
               "key_1": "Platform dependent data 1",
               "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
             }
           },
           "employee": {
@@ -9494,6 +9989,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "employee",
           "plan_name",
           "provider_name",
@@ -9561,6 +10057,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "legal_name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Legal Name",
@@ -9588,6 +10097,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "legal_name",
           "display_name",
           "eins"
@@ -9648,6 +10158,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "employee": {
             "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
@@ -9706,6 +10229,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "employee",
           "pay_group",
           "pay_rate",
@@ -9741,48 +10265,6 @@
         "required": ["cursor", "page_size", "items"],
         "title": "HrisCompensationPaginatedResponse"
       },
-      "HrisCustomFields": {
-        "properties": {
-          "hire_date": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Hire Date",
-            "description": "Hire date of the employee",
-            "example": "1991-03-16T00:00:00"
-          },
-          "hire_source": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Hire Source",
-            "description": "Source of hiring the employee",
-            "example": "REFER"
-          },
-          "nationality": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Nationality",
-            "description": "Nationality of the employee",
-            "example": "IND"
-          },
-          "category_group": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Category Group",
-            "description": "The type of employee",
-            "example": "REG"
-          },
-          "disability_type": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Disability Type",
-            "description": "Type of disability of the employee",
-            "example": "ASBERG"
-          },
-          "original_hire_date": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Original Hire Date",
-            "description": "The original hire date of the employee",
-            "example": "1991-03-16T00:00:00"
-          }
-        },
-        "type": "object",
-        "title": "HrisCustomFields"
-      },
       "HrisDependent": {
         "properties": {
           "id": {
@@ -9810,6 +10292,19 @@
             "example": {
               "key_1": "Platform dependent data 1",
               "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
             }
           },
           "employee": {
@@ -9888,6 +10383,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "employee",
           "home_location",
           "first_name",
@@ -9930,6 +10426,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "employer_benefit": {
             "anyOf": [{}, { "type": "null" }],
             "title": "Employer Benefit",
@@ -9960,6 +10469,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "employer_benefit",
           "dependent",
           "start_date",
@@ -10043,6 +10553,19 @@
             "example": {
               "key_1": "Platform dependent data 1",
               "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
             }
           },
           "employee_number": {
@@ -10257,21 +10780,6 @@
             "title": "Payroll Run Calendar",
             "description": "The employee's payroll calendar",
             "example": "018af1fe-1250-77c5-9fcd-4bca1e4568f4"
-          },
-          "custom_fields": {
-            "anyOf": [
-              { "$ref": "#/components/schemas/HrisCustomFields" },
-              { "type": "null" }
-            ],
-            "description": "The custom fields related to employee",
-            "example": {
-              "category_group": "REG",
-              "disability_type": "ASBERG",
-              "hire_date": "1991-03-16T00:00:00",
-              "hire_source": "REFER",
-              "nationality": "USA",
-              "original_hire_date": "1991-03-16T00:00:00"
-            }
           }
         },
         "type": "object",
@@ -10279,6 +10787,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "employee_number",
           "company",
           "first_name",
@@ -10306,8 +10815,7 @@
           "employment_status",
           "termination_date",
           "avatar",
-          "payroll_run_calendar",
-          "custom_fields"
+          "payroll_run_calendar"
         ],
         "title": "HrisEmployee",
         "description": "The Employee object is used to represent any person who has been employed by a company."
@@ -10594,6 +11102,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "employee": {
             "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
@@ -10694,6 +11215,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "employee",
           "payroll_run",
           "gross_pay",
@@ -10761,6 +11283,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "plan_name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Plan Name",
@@ -10797,6 +11332,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "plan_name",
           "provider_name",
           "benefit_plan_type",
@@ -10859,6 +11395,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "employee": {
             "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
@@ -10897,9 +11446,33 @@
           }
         },
         "type": "object",
-        "required": ["id", "remote_id", "modified_at"],
+        "required": ["id", "remote_id", "modified_at", "custom_fields"],
         "title": "HrisEmployment",
         "description": "The Employment object is used to represent a job position at a company."
+      },
+      "HrisEmploymentPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/HrisEmployment" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "HrisEmploymentPaginatedResponse"
       },
       "HrisGroup": {
         "properties": {
@@ -10928,6 +11501,19 @@
             "example": {
               "key_1": "Platform dependent data 1",
               "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
             }
           },
           "name": {
@@ -10959,6 +11545,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "name",
           "type",
           "parent_group",
@@ -11020,6 +11607,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Name",
@@ -11034,7 +11634,14 @@
           }
         },
         "type": "object",
-        "required": ["id", "remote_id", "modified_at", "name", "description"],
+        "required": [
+          "id",
+          "remote_id",
+          "modified_at",
+          "custom_fields",
+          "name",
+          "description"
+        ],
         "title": "HrisPayGroup",
         "description": "The PayGroup object is used to represent a subset of employees that are put together for payroll processing purposes."
       },
@@ -11091,6 +11698,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "pay_group": {
             "anyOf": [{}, { "type": "null" }],
             "title": "Pay Group",
@@ -11139,6 +11759,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "pay_group",
           "run_state",
           "run_type",
@@ -11179,6 +11800,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "payroll_run_calendar_name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Payroll Run Calendar Name",
@@ -11215,6 +11849,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "payroll_run_calendar_name",
           "pay_group",
           "pay_period_start_date",
@@ -11302,6 +11937,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "employee": {
             "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
@@ -11366,6 +12014,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "employee",
           "approver",
           "status",
@@ -11407,6 +12056,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "employee": {
             "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
@@ -11445,6 +12107,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "employee",
           "balance",
           "used",
@@ -11530,6 +12193,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "employee": {
             "anyOf": [{}, { "type": "null" }],
             "title": "Employee",
@@ -11572,6 +12248,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "employee",
           "date",
           "hours_worked",
@@ -11605,6 +12282,11 @@
         "type": "object",
         "required": ["cursor", "page_size", "items"],
         "title": "HrisTimesheetPaginatedResponse"
+      },
+      "HttpMethodEnum": {
+        "type": "string",
+        "enum": ["GET", "POST", "PUT", "PATCH", "DELETE"],
+        "title": "HttpMethodEnum"
       },
       "IntegrationPaginatedResponse": {
         "properties": {
@@ -11721,6 +12403,46 @@
         "type": "object",
         "required": ["end_user_data", "category", "integration"],
         "title": "LinkTokenCreate"
+      },
+      "PassThroughRequest": {
+        "properties": {
+          "method": {
+            "$ref": "#/components/schemas/HttpMethodEnum",
+            "title": "method",
+            "description": "Method of the request",
+            "example": "POST"
+          },
+          "path": {
+            "type": "string",
+            "title": "path",
+            "description": "Path of the request",
+            "example": "/employees"
+          },
+          "headers": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "headers",
+            "description": "headers of the request",
+            "example": { "Content-Type": "application/json" }
+          },
+          "data": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "data",
+            "description": "Body of the request",
+            "example": { "a": 1, "b": 2 }
+          },
+          "request_format": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/RequestFormatEnum" },
+              { "type": "null" }
+            ],
+            "title": "Request Format",
+            "description": "format of the request",
+            "example": "JSON"
+          }
+        },
+        "type": "object",
+        "required": ["method", "path", "headers", "data", "request_format"],
+        "title": "PassThroughRequest"
       },
       "PostCandidate": {
         "properties": {
@@ -11882,6 +12604,11 @@
         "type": "string",
         "enum": ["Hr", "Daily"],
         "title": "RateUnitOfMeasurement"
+      },
+      "RequestFormatEnum": {
+        "type": "string",
+        "enum": ["JSON", "XML", "MULTIPART"],
+        "title": "RequestFormatEnum"
       },
       "Tax": {
         "properties": {
