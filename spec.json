@@ -9346,7 +9346,7 @@
           }
         },
         "type": "object",
-        "required": ["data", "remote_user_id"],
+        "required": ["data"],
         "title": "CreateCandidate"
       },
       "CreateHrisEmployeePayrollRun": {
@@ -10837,6 +10837,12 @@
             "description": "The ID of the employee's company.",
             "example": "018af1fe-1250-772d-87c5-6f725a579e8a"
           },
+          "title": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Title",
+            "description": "The employee's Title.",
+            "example": "Mr"
+          },
           "first_name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "First Name",
@@ -11046,7 +11052,7 @@
           }
         },
         "type": "object",
-        "required": ["employee_number", "company", "first_name", "last_name"],
+        "required": ["first_name", "last_name"],
         "title": "HrisEmployeeCreateRequest"
       },
       "HrisEmployeePaginatedResponse": {
