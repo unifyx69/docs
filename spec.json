@@ -3920,6 +3920,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "page_size",
             "in": "query",
             "required": false,
@@ -4050,6 +4063,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -4107,6 +4133,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -4232,6 +4271,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -4289,6 +4341,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -4414,6 +4479,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -4484,6 +4562,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -4617,6 +4708,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -4662,6 +4766,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -4787,6 +4904,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -4832,6 +4962,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -4957,6 +5100,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -5002,6 +5158,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -5127,6 +5296,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -5186,6 +5368,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -5311,6 +5506,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -5368,6 +5576,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -5493,6 +5714,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -5550,6 +5784,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -5675,6 +5922,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -5720,6 +5980,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -5845,6 +6118,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -5890,6 +6176,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -6015,6 +6314,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -6060,6 +6372,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -6185,6 +6510,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -6232,6 +6570,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -6357,6 +6708,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -6402,6 +6766,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -6527,6 +6904,19 @@
             "example": false
           },
           {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -6574,6 +6964,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -6696,6 +7099,19 @@
               "title": "Include Raw Data"
             },
             "description": "Include raw data in the response",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
             "example": false
           },
           {
@@ -7323,6 +7739,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "user": {
             "anyOf": [
               { "type": "string", "format": "uuid" },
@@ -7377,6 +7806,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "user",
           "activity_type",
           "subject",
@@ -7439,6 +7869,19 @@
             "example": {
               "key_1": "Platform dependent data 1",
               "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
             }
           },
           "candidate": {
@@ -7510,6 +7953,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "candidate",
           "job",
           "applied_at",
@@ -7575,6 +8019,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "file_name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "File Name",
@@ -7616,6 +8073,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "file_name",
           "file_url",
           "candidate",
@@ -7675,6 +8133,19 @@
             "example": {
               "key_1": "Platform dependent data 1",
               "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
             }
           },
           "first_name": {
@@ -7820,6 +8291,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "first_name",
           "last_name",
           "company",
@@ -7894,6 +8366,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Name",
@@ -7902,7 +8387,7 @@
           }
         },
         "type": "object",
-        "required": ["id", "remote_id", "modified_at", "name"],
+        "required": ["id", "remote_id", "modified_at", "custom_fields", "name"],
         "title": "AtsDepartment",
         "description": "The AtsDepartment object represents a department within the company in the ATS."
       },
@@ -7959,6 +8444,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "candidate": {
             "anyOf": [
               { "type": "string", "format": "uuid" },
@@ -8004,6 +8502,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "candidate",
           "submitted_at",
           "race",
@@ -8065,6 +8564,19 @@
             "example": {
               "key_1": "Platform dependent data 1",
               "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
             }
           },
           "name": {
@@ -8184,6 +8696,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "name",
           "description",
           "code",
@@ -8229,6 +8742,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Name",
@@ -8256,6 +8782,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "name",
           "job",
           "stage_order"
@@ -8340,6 +8867,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "application": {
             "anyOf": [
               { "type": "string", "format": "uuid" },
@@ -8394,6 +8934,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "application",
           "creator",
           "remote_created_at",
@@ -8458,6 +8999,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Name",
@@ -8472,7 +9026,14 @@
           }
         },
         "type": "object",
-        "required": ["id", "remote_id", "modified_at", "name", "location"],
+        "required": [
+          "id",
+          "remote_id",
+          "modified_at",
+          "custom_fields",
+          "name",
+          "location"
+        ],
         "title": "AtsOffice",
         "description": "The AtsOffice object represents an office or physical location of the company in the ATS."
       },
@@ -8529,6 +9090,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Name",
@@ -8537,7 +9111,7 @@
           }
         },
         "type": "object",
-        "required": ["id", "remote_id", "modified_at", "name"],
+        "required": ["id", "remote_id", "modified_at", "custom_fields", "name"],
         "title": "AtsRejectReason",
         "description": "The AtsRejectReason object represents a reason for rejecting a candidate within the ATS."
       },
@@ -8594,6 +9168,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "first_name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "First Name",
@@ -8639,6 +9226,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "first_name",
           "last_name",
           "email",
@@ -8700,6 +9288,19 @@
             "example": {
               "key_1": "Platform dependent data 1",
               "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
             }
           },
           "application": {
@@ -8786,6 +9387,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "application",
           "job_interview_stage",
           "organizer",
@@ -8853,6 +9455,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "application": {
             "anyOf": [
               { "type": "string", "format": "uuid" },
@@ -8904,6 +9519,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "application",
           "interview",
           "interviewer",
@@ -8967,6 +9583,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "job": {
             "anyOf": [
               { "type": "string", "format": "uuid" },
@@ -9015,6 +9644,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "job",
           "description",
           "title",
@@ -9078,6 +9708,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "name": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Name",
@@ -9086,7 +9729,7 @@
           }
         },
         "type": "object",
-        "required": ["id", "remote_id", "modified_at", "name"],
+        "required": ["id", "remote_id", "modified_at", "custom_fields", "name"],
         "title": "AtsTag",
         "description": "The AtsTag object represents a tag that can be applied to candidates, jobs, or other entities within the ATS."
       },
@@ -12687,6 +13330,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "external_job_posting_id": {
             "type": "string",
             "title": "External Job Posting Id",
@@ -12771,6 +13427,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "external_job_posting_id",
           "creator_username",
           "owner_username",
@@ -12848,141 +13505,17 @@
               "key_2": "Platform dependent data 2"
             }
           },
-          "external_job_seeker_id": {
-            "type": "string",
-            "title": "External Job Seeker Id",
-            "description": "Any unique identifier of this job seeker.",
-            "example": "KTY1213456"
-          },
-          "job_posting_id": {
-            "type": "string",
-            "title": "Job Posting Id",
-            "description": "The unique identifier for the Job Posting. This identifier must match the external \n        Job Posting identifier for the corresponding data record listed in the Job Posting",
-            "example": "KUNALJP1001"
-          },
-          "first_name": {
-            "type": "string",
-            "title": "First Name",
-            "description": "The first name of this job seeker.",
-            "example": "Kunal"
-          },
-          "last_name": {
-            "type": "string",
-            "title": "Last Name",
-            "description": "The last name of this job seeker.",
-            "example": "Tyagi"
-          },
-          "date_available": {
-            "type": "string",
-            "title": "Date Available",
-            "description": "The date the job seeker is available to begin working.",
-            "example": "2023-11-10T00:00:00Z"
-          },
-          "supplier_code": {
-            "type": "string",
-            "title": "Supplier Code",
-            "description": "The company code of the job seeker’s supplier.",
-            "example": "KTSC07"
-          },
-          "security_id": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Security Id",
-            "description": "The security ID of the job seeker.",
-            "example": "KTY12084523"
-          },
-          "rates": {
-            "items": { "$ref": "#/components/schemas/VmsRate" },
-            "type": "array",
-            "title": "Rates",
-            "description": "Different rates for the job seeker",
-            "example": [
-              {
-                "rate_category": "ST",
-                "rate_type": "br",
-                "rate_uom": "Hr",
-                "value": 21.02
-              }
-            ]
-          },
-          "email": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Email",
-            "description": "The email address of the job seeker.",
-            "example": "kunal@bindbee.dev"
-          },
-          "site_code": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Site Code",
-            "description": "Site code for job seeker.",
-            "example": "KTSC"
-          },
-          "location_code": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Location Code",
-            "description": "Work location code for job seeker.",
-            "example": "OMLC"
-          },
-          "worker_pay_type": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Worker Pay Type",
-            "description": "Work type code for job seeker",
-            "example": "AGWTC"
-          },
-          "submitted_to_other_job_posting": {
-            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
-            "title": "Submitted To Other Job Posting",
-            "description": "Indicates whether this specific job seeker is submitted to other job postings",
-            "example": false
-          }
-        },
-        "type": "object",
-        "required": [
-          "id",
-          "remote_id",
-          "modified_at",
-          "external_job_seeker_id",
-          "job_posting_id",
-          "first_name",
-          "last_name",
-          "date_available",
-          "supplier_code",
-          "security_id",
-          "rates",
-          "email",
-          "site_code",
-          "location_code",
-          "worker_pay_type",
-          "submitted_to_other_job_posting"
-        ],
-        "title": "VmsJobSeeker"
-      },
-      "VmsJobSeeker-Output": {
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "title": "Id",
-            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
-          },
-          "remote_id": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Remote Id",
-            "description": "The third-party API ID of the matching object.",
-            "example": "123321"
-          },
-          "modified_at": {
-            "type": "string",
-            "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by Bindbee",
-            "example": "2021-10-16T00:00:00Z"
-          },
-          "raw_data": {
+          "custom_fields": {
             "anyOf": [{ "type": "object" }, { "type": "null" }],
-            "title": "Raw Data",
-            "description": "This is the Raw data",
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
             "example": {
-              "key_1": "Platform dependent data 1",
-              "key_2": "Platform dependent data 2"
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
             }
           },
           "external_job_seeker_id": {
@@ -13077,6 +13610,158 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
+          "external_job_seeker_id",
+          "job_posting_id",
+          "first_name",
+          "last_name",
+          "date_available",
+          "supplier_code",
+          "security_id",
+          "rates",
+          "email",
+          "site_code",
+          "location_code",
+          "worker_pay_type",
+          "submitted_to_other_job_posting"
+        ],
+        "title": "VmsJobSeeker"
+      },
+      "VmsJobSeeker-Output": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
+          "external_job_seeker_id": {
+            "type": "string",
+            "title": "External Job Seeker Id",
+            "description": "Any unique identifier of this job seeker.",
+            "example": "KTY1213456"
+          },
+          "job_posting_id": {
+            "type": "string",
+            "title": "Job Posting Id",
+            "description": "The unique identifier for the Job Posting. This identifier must match the external \n        Job Posting identifier for the corresponding data record listed in the Job Posting",
+            "example": "KUNALJP1001"
+          },
+          "first_name": {
+            "type": "string",
+            "title": "First Name",
+            "description": "The first name of this job seeker.",
+            "example": "Kunal"
+          },
+          "last_name": {
+            "type": "string",
+            "title": "Last Name",
+            "description": "The last name of this job seeker.",
+            "example": "Tyagi"
+          },
+          "date_available": {
+            "type": "string",
+            "title": "Date Available",
+            "description": "The date the job seeker is available to begin working.",
+            "example": "2023-11-10T00:00:00Z"
+          },
+          "supplier_code": {
+            "type": "string",
+            "title": "Supplier Code",
+            "description": "The company code of the job seeker’s supplier.",
+            "example": "KTSC07"
+          },
+          "security_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Security Id",
+            "description": "The security ID of the job seeker.",
+            "example": "KTY12084523"
+          },
+          "rates": {
+            "items": { "$ref": "#/components/schemas/VmsRate" },
+            "type": "array",
+            "title": "Rates",
+            "description": "Different rates for the job seeker",
+            "example": [
+              {
+                "rate_category": "ST",
+                "rate_type": "br",
+                "rate_uom": "Hr",
+                "value": 21.02
+              }
+            ]
+          },
+          "email": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Email",
+            "description": "The email address of the job seeker.",
+            "example": "kunal@bindbee.dev"
+          },
+          "site_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Site Code",
+            "description": "Site code for job seeker.",
+            "example": "KTSC"
+          },
+          "location_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Location Code",
+            "description": "Work location code for job seeker.",
+            "example": "OMLC"
+          },
+          "worker_pay_type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Worker Pay Type",
+            "description": "Work type code for job seeker",
+            "example": "AGWTC"
+          },
+          "submitted_to_other_job_posting": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Submitted To Other Job Posting",
+            "description": "Indicates whether this specific job seeker is submitted to other job postings",
+            "example": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "remote_id",
+          "modified_at",
+          "custom_fields",
           "external_job_seeker_id",
           "job_posting_id",
           "first_name",
@@ -13235,6 +13920,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "work_order_id": {
             "type": "string",
             "title": "Work Order Id",
@@ -13266,6 +13964,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "work_order_id",
           "job_seeker_id",
           "worker_email",
@@ -13302,6 +14001,19 @@
               "key_2": "Platform dependent data 2"
             }
           },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
           "work_order_id": {
             "type": "string",
             "title": "Work Order Id",
@@ -13333,6 +14045,7 @@
           "id",
           "remote_id",
           "modified_at",
+          "custom_fields",
           "work_order_id",
           "job_seeker_id",
           "worker_email",
