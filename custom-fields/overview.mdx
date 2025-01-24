@@ -45,7 +45,15 @@ After creating the field, you'll be redirected to the mapping configuration scre
 - Fill or Select Data field box, you can choose either
   - Select Mapping from Options
   - Click the `</>` button to view the raw JSON response and click the desired field
-  - Enter the JMESPath expression directly
+  - Enter the JSON Path(JMESPath) expression directly
+
+<Warning>
+  If your JSON Path (JMESPath) expression is incorrect, then while requesting
+  the `custom_fields` via APIs, you will not receive an error. Instead, the API
+  will respond with `"INVALID_JSON_PATH"` mapped to the incorrectly configured
+  field. Ensure that all JMESPath expressions are valid to retrieve the intended
+  data correctly.
+</Warning>
 
 #### Organization Level Mapping
 
@@ -54,7 +62,7 @@ After creating the field, you'll be redirected to the mapping configuration scre
 - Fill or Select Data field box, you can choose either
   - Select Mapping from Options
   - Click the `</>` button to view the raw JSON response and click the desired field
-  - Enter the JMESPath expression directly.
+  - Enter the JSON Path(JMESPath) expression directly.
 
 <Info>
   You can add multiple mappings to a single custom field by clicking the "Add
@@ -93,7 +101,7 @@ Example response with custom fields:
    - Follow snake_case formatting
    - Avoid generic names like "custom1", "custom2"
 
-2. **JMESPath Expressions**
+2. **JSON Path(JMESPath) Expressions**
 
    - Test expressions thoroughly before saving
    - Consider data type consistency
