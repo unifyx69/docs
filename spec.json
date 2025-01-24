@@ -11692,6 +11692,12 @@
             "title": "Avatar",
             "description": "The URL of the employee's avatar image.",
             "example": "http://alturl.com/h2h8m"
+          },
+          "job_requisition_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Job Requisition Id",
+            "description": "The job id for employee",
+            "example": "R-00007"
           }
         },
         "type": "object",
