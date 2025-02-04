@@ -10020,6 +10020,12 @@
             "default": "",
             "example": "Hours, Earning Codes"
           },
+          "paystatement_type_id": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Paystatement Type Id",
+            "description": "Id of Employee's Paystatement Type",
+            "example": 53123324
+          },
           "payroll_file": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Payroll File",
@@ -13096,7 +13102,7 @@
           }
         },
         "type": "object",
-        "required": ["method", "path", "headers", "data", "request_format"],
+        "required": ["method", "path", "headers", "request_format"],
         "title": "PassThroughRequest"
       },
       "PostCandidate": {
