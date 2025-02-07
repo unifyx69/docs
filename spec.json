@@ -1841,9 +1841,9 @@
     "/api/hris/v1/groups/{id}": {
       "get": {
         "tags": ["Group"],
-        "summary": "Get Pay Group By Id",
+        "summary": "Get Group By Id",
         "description": "Returns a Group object with the given id.",
-        "operationId": "get_pay_group_by_id_api_hris_v1_groups__id__get",
+        "operationId": "get_group_by_id_api_hris_v1_groups__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -4123,6 +4123,42 @@
             "example": "3235005483341316245"
           },
           {
+            "name": "current_stage",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The current stage id of the application",
+              "title": "Current Stage"
+            },
+            "description": "The current stage id of the application",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
+          {
+            "name": "job",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The job id of the application",
+              "title": "Job"
+            },
+            "description": "The job id of the application",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
+          {
+            "name": "candidate",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The candidate id of the application",
+              "title": "Candidate"
+            },
+            "description": "The candidate id of the application",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
+          {
             "name": "include_raw_data",
             "in": "query",
             "required": false,
@@ -4329,6 +4365,18 @@
             },
             "description": "The third-party API ID of the matching object.",
             "example": "3235005483341316245"
+          },
+          {
+            "name": "candidate",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The candidate id of the attachment",
+              "title": "Candidate"
+            },
+            "description": "The candidate id of the attachment",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
           },
           {
             "name": "include_raw_data",
@@ -4952,6 +5000,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "candidate",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The candidate id of the eeoc",
+              "title": "Candidate"
+            },
+            "description": "The candidate id of the eeoc",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
+          {
             "name": "include_raw_data",
             "in": "query",
             "required": false,
@@ -5564,6 +5624,18 @@
             },
             "description": "The third-party API ID of the matching object.",
             "example": "3235005483341316245"
+          },
+          {
+            "name": "application",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The application id of the offer",
+              "title": "Application"
+            },
+            "description": "The application id of the offer",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
           },
           {
             "name": "include_raw_data",
@@ -13170,6 +13242,7 @@
             ],
             "title": "Email Addresses",
             "description": "The candidate's email addresses.",
+            "default": [],
             "example": ["john@doe.com"]
           },
           "urls": {
@@ -13210,6 +13283,7 @@
             ],
             "title": "Applications",
             "description": "The candidate's applications.",
+            "default": [],
             "example": ["018b4bfb-5ece-70b1-ad5e-862a9433aa65"]
           },
           "attachments": {
@@ -13231,6 +13305,15 @@
             "description": "The candidate's avatar.",
             "example": "https://www.example.com/avatar.jpg"
           },
+          "job_interview_stage_id": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Job Interview Stage Id",
+            "description": "The job stage id for the candidate",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
           "job_id": {
             "anyOf": [
               { "type": "string", "format": "uuid" },
@@ -13242,13 +13325,6 @@
           }
         },
         "type": "object",
-        "required": [
-          "first_name",
-          "last_name",
-          "email_addresses",
-          "applications",
-          "job_id"
-        ],
         "title": "PostCandidate"
       },
       "RateCategory": {
