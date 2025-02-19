@@ -1431,6 +1431,41 @@
         }
       }
     },
+    "/api/hris/v1/employees/create/meta": {
+      "get": {
+        "tags": ["Employee"],
+        "summary": "Get Create Employee Request Body",
+        "description": "Returns the data points required to add new employee in HRIS",
+        "operationId": "get_create_employee_request_body_api_hris_v1_employees_create_meta_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/MetaApiResonseModel" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/hris/v1/employees/{id}": {
       "get": {
         "tags": ["Employee"],
@@ -1495,7 +1530,9 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/HrisEmployee" }
+                "schema": {
+                  "$ref": "#/components/schemas/HrisEmployeeResponse"
+                }
               }
             }
           },
@@ -11247,7 +11284,455 @@
         "required": ["cursor", "page_size", "items"],
         "title": "HrisDependentPaginatedResponse"
       },
-      "HrisEmployee": {
+      "HrisEmployeeCreateRequest": {
+        "properties": {
+          "employee_number": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Employee Number",
+            "description": "The employee's number that appears in the third-party integration's UI.",
+            "example": "1"
+          },
+          "company": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "Company",
+            "description": "The ID of the employee's company.",
+            "example": "018af1fe-1250-772d-87c5-6f725a579e8a"
+          },
+          "first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "First Name",
+            "description": "The employee's first name.",
+            "example": "Kunal"
+          },
+          "middle_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Middle Name",
+            "description": "The employee's middle name.",
+            "example": "Christopher"
+          },
+          "last_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Last Name",
+            "description": "The employee's last name.",
+            "example": "Tyagi"
+          },
+          "preferred_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Preferred Name",
+            "description": "The employee's preferred first name.",
+            "example": "Dark Knight"
+          },
+          "display_full_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Display Full Name",
+            "description": "The employee's full name, to use for display purposes. If a preferred first name is available, the full name will include the preferred first name.",
+            "example": "Kunal Tyagi"
+          },
+          "username": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Username",
+            "description": "The employee's username that appears in the remote UI.",
+            "example": "kunaltyagi"
+          },
+          "designation": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Designation",
+            "description": "The employee's current designation/title",
+            "example": "Chief Technology Officer"
+          },
+          "groups": {
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
+            "title": "Groups",
+            "description": "The IDs of the groups that the employee belongs to."
+          },
+          "department": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Department",
+            "description": "The employee's department",
+            "example": "Engineering"
+          },
+          "division": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Division",
+            "description": "The employee's division",
+            "example": "Bangalore Division"
+          },
+          "work_email": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Work Email",
+            "description": "The employee's work email.",
+            "example": "kunal@bindbee.dev"
+          },
+          "personal_email": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Personal Email",
+            "description": "The employee's personal email.",
+            "example": "kunaltyagi77@gmail.com"
+          },
+          "mobile_phone_number": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Mobile Phone Number",
+            "description": "The employee's mobile phone number.",
+            "example": "+1234567890"
+          },
+          "home_phone_number": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Home Phone Number",
+            "description": "The employee's home phone number.",
+            "example": "+1234567890"
+          },
+          "country_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Country Code",
+            "description": "The employee's country code",
+            "example": "+91"
+          },
+          "home_location": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/HrisAddress" },
+              { "type": "null" }
+            ],
+            "description": "The employee's home address.",
+            "example": {
+              "city": "London",
+              "country": "UK",
+              "location": "UK-HO-London",
+              "name": "UK-HO-London",
+              "postal_code": "56273",
+              "state": "LND",
+              "street_1": "1011",
+              "street_2": "Lane number 4, Golden Villa"
+            }
+          },
+          "work_location": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/HrisAddress" },
+              { "type": "null" }
+            ],
+            "description": "The employee's work address.",
+            "example": {
+              "city": "London",
+              "country": "UK",
+              "location": "UK-HO-London",
+              "name": "UK-HO-London",
+              "postal_code": "56273",
+              "state": "LND",
+              "street_1": "1011",
+              "street_2": "Lane number 4, Golden Villa"
+            }
+          },
+          "manager": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Manager",
+            "description": "UUID of the employee's manager",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
+          },
+          "pay_group": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "Pay Group",
+            "description": "The employee's pay group",
+            "example": "018af1fe-1250-77c5-9fcd-4bca1e4568f4"
+          },
+          "ssn": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Ssn",
+            "description": "The employee's social security number.",
+            "example": "1234567890"
+          },
+          "gender": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Gender",
+            "description": "The employee's gender.",
+            "example": "MALE"
+          },
+          "ethnicity": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Ethnicity",
+            "description": "The employee's ethnicity.",
+            "example": "ASIAN_OR_INDIAN_SUBCONTINENT"
+          },
+          "marital_status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Marital Status",
+            "description": "The employee's filing status as related to marital status",
+            "example": "SINGLE"
+          },
+          "date_of_birth": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Date Of Birth",
+            "description": "The employee's date of birth.",
+            "example": "1986-10-27T00:00:00Z"
+          },
+          "start_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Start Date",
+            "description": "The date that the employee started working. If an employee was rehired, the most recent start date will be returned.",
+            "example": "2023-03-05T00:00:00Z"
+          },
+          "remote_created_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Created At",
+            "description": "When the third party's employee was created.",
+            "example": "2023-03-01T00:00:00Z"
+          },
+          "employment_status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Employment Status",
+            "description": "The employment status of the employee. Possible values include: ACTIVE, PENDING, INACTIVE, or - in cases where there is no clear mapping - the original value passed through.",
+            "example": "INACTIVE"
+          },
+          "termination_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Termination Date",
+            "description": "The employee's termination date.",
+            "example": "2023-06-05T00:00:00Z"
+          },
+          "avatar": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Avatar",
+            "description": "The URL of the employee's avatar image.",
+            "example": "http://alturl.com/h2h8m"
+          },
+          "payroll_run_calendar": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "Payroll Run Calendar",
+            "description": "The employee's payroll calendar",
+            "example": "018af1fe-1250-77c5-9fcd-4bca1e4568f4"
+          },
+          "additional_attributes": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Additional Attributes",
+            "description": "Fields related to models other than employee Model",
+            "example": {
+              "contract_end_date": "2025-12-31T00:00:00",
+              "emergency_contact": "John Doe - +1-234-567-8901",
+              "employee_type": "Contract",
+              "language_proficiency": "English, French",
+              "marital_status": "Married",
+              "performance_rating": "Excellent",
+              "previous_employer": "TechCorp"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": { "customTshirtSize": "XXL" }
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "HrisEmployeeCreateRequest"
+      },
+      "HrisEmployeePaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/HrisEmployeeResponse" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "HrisEmployeePaginatedResponse"
+      },
+      "HrisEmployeePayrollRun": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
+          "employee": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "Employee",
+            "description": "The employee whose payroll is being run.",
+            "example": "018b168d-70f9-7043-a796-56d66a4f8f07"
+          },
+          "payroll_run": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "Payroll Run",
+            "description": "The payroll being run.",
+            "example": "018b709e-b6ef-7db4-902a-a064157bdba2"
+          },
+          "gross_pay": {
+            "anyOf": [
+              { "type": "integer" },
+              { "type": "number" },
+              { "type": "null" }
+            ],
+            "title": "Gross Pay",
+            "description": "The total earnings throughout a given period for an employee before any deductions are made.",
+            "example": 772277.77
+          },
+          "net_pay": {
+            "anyOf": [
+              { "type": "integer" },
+              { "type": "number" },
+              { "type": "null" }
+            ],
+            "title": "Net Pay",
+            "description": "The take-home pay throughout a given period for an employee after deductions are made.",
+            "example": 577221.27
+          },
+          "start_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Start Date",
+            "description": "The day and time the benefit started.",
+            "example": "2023-07-01T00:00:00Z"
+          },
+          "end_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "End Date",
+            "description": "The day and time the benefit ended.",
+            "example": "2023-07-31T00:00:00Z"
+          },
+          "check_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Check Date",
+            "description": "The day and time the payroll run was checked.",
+            "example": "2023-08-31T00:00:00Z"
+          },
+          "earnings": {
+            "anyOf": [
+              {
+                "items": { "$ref": "#/components/schemas/Earning" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Earnings",
+            "description": "The earnings of the Employee",
+            "example": [{ "amount": "27151", "name": "SALARY" }]
+          },
+          "deductions": {
+            "anyOf": [
+              {
+                "items": { "$ref": "#/components/schemas/Deduction" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Deductions",
+            "description": "The deductions of the Employee",
+            "example": [
+              {
+                "company_deduction": "77.57",
+                "employee_deduction": "27.22",
+                "name": "Social Security"
+              }
+            ]
+          },
+          "taxes": {
+            "anyOf": [
+              {
+                "items": { "$ref": "#/components/schemas/Tax" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Taxes",
+            "description": "The taxes of the Employee",
+            "example": [
+              { "amount": "175.22", "name": "California State Income Tax" }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "remote_id",
+          "modified_at",
+          "custom_fields",
+          "employee",
+          "payroll_run",
+          "gross_pay",
+          "net_pay",
+          "start_date",
+          "end_date",
+          "check_date",
+          "earnings",
+          "deductions",
+          "taxes"
+        ],
+        "title": "HrisEmployeePayrollRun",
+        "description": "The EmployeePayrollRun object is used to represent an employee's pay statement for a specific payroll run."
+      },
+      "HrisEmployeePayrollRunPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/HrisEmployeePayrollRun" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "HrisEmployeePayrollRunPaginatedResponse"
+      },
+      "HrisEmployeeResponse": {
         "properties": {
           "id": {
             "type": "string",
@@ -11504,488 +11989,8 @@
           }
         },
         "type": "object",
-        "required": [
-          "id",
-          "remote_id",
-          "modified_at",
-          "custom_fields",
-          "employee_number",
-          "company",
-          "first_name",
-          "last_name",
-          "preferred_name",
-          "display_full_name",
-          "username",
-          "groups",
-          "department",
-          "division",
-          "work_email",
-          "personal_email",
-          "mobile_phone_number",
-          "home_phone_number",
-          "home_location",
-          "work_location",
-          "pay_group",
-          "ssn",
-          "gender",
-          "ethnicity",
-          "marital_status",
-          "date_of_birth",
-          "start_date",
-          "remote_created_at",
-          "employment_status",
-          "termination_date",
-          "avatar",
-          "payroll_run_calendar"
-        ],
-        "title": "HrisEmployee",
-        "description": "The Employee object is used to represent any person who has been employed by a company."
-      },
-      "HrisEmployeeCreateRequest": {
-        "properties": {
-          "employee_number": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Employee Number",
-            "description": "The employee's number that appears in the third-party integration's UI.",
-            "example": "1"
-          },
-          "company": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
-            "title": "Company",
-            "description": "The ID of the employee's company.",
-            "example": "018af1fe-1250-772d-87c5-6f725a579e8a"
-          },
-          "title": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Title",
-            "description": "The employee's Title.",
-            "example": "Mr"
-          },
-          "first_name": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "First Name",
-            "description": "The employee's first name.",
-            "example": "Kunal"
-          },
-          "middle_name": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Middle Name",
-            "description": "The employee's middle name.",
-            "example": "Christopher"
-          },
-          "last_name": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Last Name",
-            "description": "The employee's last name.",
-            "example": "Tyagi"
-          },
-          "preferred_name": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Preferred Name",
-            "description": "The employee's preferred first name.",
-            "example": "Dark Knight"
-          },
-          "display_full_name": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Display Full Name",
-            "description": "The employee's full name, to use for display purposes. If a preferred first name is available, the full name will include the preferred first name.",
-            "example": "Kunal Tyagi"
-          },
-          "username": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Username",
-            "description": "The employee's username that appears in the remote UI.",
-            "example": "kunaltyagi"
-          },
-          "designation": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Designation",
-            "description": "The employee's current designation/title",
-            "example": "Chief Technology Officer"
-          },
-          "groups": {
-            "anyOf": [
-              {
-                "items": { "type": "string", "format": "uuid" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
-            "title": "Groups",
-            "description": "The IDs of the groups that the employee belongs to."
-          },
-          "department": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Department",
-            "description": "The employee's department",
-            "example": "Engineering"
-          },
-          "division": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Division",
-            "description": "The employee's division",
-            "example": "Bangalore Division"
-          },
-          "work_email": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Work Email",
-            "description": "The employee's work email.",
-            "example": "kunal@bindbee.dev"
-          },
-          "personal_email": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Personal Email",
-            "description": "The employee's personal email.",
-            "example": "kunaltyagi77@gmail.com"
-          },
-          "mobile_phone_number": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Mobile Phone Number",
-            "description": "The employee's mobile phone number.",
-            "example": "+1234567890"
-          },
-          "home_phone_number": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Home Phone Number",
-            "description": "The employee's home phone number.",
-            "example": "+1234567890"
-          },
-          "country_code": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Country Code",
-            "description": "The employee's country code",
-            "example": "+91"
-          },
-          "home_location": {
-            "anyOf": [
-              { "$ref": "#/components/schemas/HrisAddress" },
-              { "type": "null" }
-            ],
-            "description": "The employee's home address.",
-            "example": {
-              "city": "London",
-              "country": "UK",
-              "location": "UK-HO-London",
-              "name": "UK-HO-London",
-              "postal_code": "56273",
-              "state": "LND",
-              "street_1": "1011",
-              "street_2": "Lane number 4, Golden Villa"
-            }
-          },
-          "work_location": {
-            "anyOf": [
-              { "$ref": "#/components/schemas/HrisAddress" },
-              { "type": "null" }
-            ],
-            "description": "The employee's work address.",
-            "example": {
-              "city": "London",
-              "country": "UK",
-              "location": "UK-HO-London",
-              "name": "UK-HO-London",
-              "postal_code": "56273",
-              "state": "LND",
-              "street_1": "1011",
-              "street_2": "Lane number 4, Golden Villa"
-            }
-          },
-          "manager": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
-            "title": "Manager",
-            "description": "The employee ID of the employee's manager.",
-            "example": "018aeaff-cc7c-7837-988a-965762bd63c1"
-          },
-          "pay_group": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
-            "title": "Pay Group",
-            "description": "The employee's pay group",
-            "example": "018af1fe-1250-77c5-9fcd-4bca1e4568f4"
-          },
-          "ssn": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Ssn",
-            "description": "The employee's social security number.",
-            "example": "1234567890"
-          },
-          "gender": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Gender",
-            "description": "The employee's gender.",
-            "example": "MALE"
-          },
-          "ethnicity": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Ethnicity",
-            "description": "The employee's ethnicity.",
-            "example": "ASIAN_OR_INDIAN_SUBCONTINENT"
-          },
-          "marital_status": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Marital Status",
-            "description": "The employee's filing status as related to marital status",
-            "example": "SINGLE"
-          },
-          "date_of_birth": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Date Of Birth",
-            "description": "The employee's date of birth.",
-            "example": "1986-10-27T00:00:00Z"
-          },
-          "start_date": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Start Date",
-            "description": "The date that the employee started working. If an employee was rehired, the most recent start date will be returned.",
-            "example": "2023-03-05T00:00:00Z"
-          },
-          "remote_created_at": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Remote Created At",
-            "description": "When the third party's employee was created.",
-            "example": "2023-03-01T00:00:00Z"
-          },
-          "employment_status": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Employment Status",
-            "description": "The employment status of the employee. Possible values include: ACTIVE, PENDING, INACTIVE, or - in cases where there is no clear mapping - the original value passed through.",
-            "example": "INACTIVE"
-          },
-          "termination_date": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Termination Date",
-            "description": "The employee's termination date.",
-            "example": "2023-06-05T00:00:00Z"
-          },
-          "avatar": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Avatar",
-            "description": "The URL of the employee's avatar image.",
-            "example": "http://alturl.com/h2h8m"
-          },
-          "job_requisition_id": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Job Requisition Id",
-            "description": "The job id for employee",
-            "example": "R-00007"
-          }
-        },
-        "type": "object",
-        "required": ["first_name", "last_name"],
-        "title": "HrisEmployeeCreateRequest"
-      },
-      "HrisEmployeePaginatedResponse": {
-        "properties": {
-          "cursor": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Cursor",
-            "description": "Cursor value to fetch next set of items",
-            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
-          },
-          "page_size": {
-            "type": "integer",
-            "title": "Page Size",
-            "description": "Indicates the count of items in the response",
-            "example": 50
-          },
-          "items": {
-            "items": { "$ref": "#/components/schemas/HrisEmployee" },
-            "type": "array",
-            "title": "Items"
-          }
-        },
-        "type": "object",
-        "required": ["cursor", "page_size", "items"],
-        "title": "HrisEmployeePaginatedResponse"
-      },
-      "HrisEmployeePayrollRun": {
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "title": "Id",
-            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
-          },
-          "remote_id": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Remote Id",
-            "description": "The third-party API ID of the matching object.",
-            "example": "123321"
-          },
-          "modified_at": {
-            "type": "string",
-            "title": "Modified At",
-            "description": "This is the datetime that this object was last updated by Bindbee",
-            "example": "2021-10-16T00:00:00Z"
-          },
-          "raw_data": {
-            "anyOf": [{ "type": "object" }, { "type": "null" }],
-            "title": "Raw Data",
-            "description": "This is the Raw data",
-            "example": {
-              "key_1": "Platform dependent data 1",
-              "key_2": "Platform dependent data 2"
-            }
-          },
-          "custom_fields": {
-            "anyOf": [{ "type": "object" }, { "type": "null" }],
-            "title": "Custom Fields",
-            "description": "The custom fields related to the model",
-            "example": {
-              "category_group": "REG",
-              "disability_type": "ASBERG",
-              "hire_date": "1991-03-16T00:00:00",
-              "hire_source": "REFER",
-              "nationality": "USA",
-              "original_hire_date": "1991-03-16T00:00:00"
-            }
-          },
-          "employee": {
-            "anyOf": [{}, { "type": "null" }],
-            "title": "Employee",
-            "description": "The employee whose payroll is being run.",
-            "example": "018b168d-70f9-7043-a796-56d66a4f8f07"
-          },
-          "payroll_run": {
-            "anyOf": [{}, { "type": "null" }],
-            "title": "Payroll Run",
-            "description": "The payroll being run.",
-            "example": "018b709e-b6ef-7db4-902a-a064157bdba2"
-          },
-          "gross_pay": {
-            "anyOf": [
-              { "type": "integer" },
-              { "type": "number" },
-              { "type": "null" }
-            ],
-            "title": "Gross Pay",
-            "description": "The total earnings throughout a given period for an employee before any deductions are made.",
-            "example": 772277.77
-          },
-          "net_pay": {
-            "anyOf": [
-              { "type": "integer" },
-              { "type": "number" },
-              { "type": "null" }
-            ],
-            "title": "Net Pay",
-            "description": "The take-home pay throughout a given period for an employee after deductions are made.",
-            "example": 577221.27
-          },
-          "start_date": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Start Date",
-            "description": "The day and time the benefit started.",
-            "example": "2023-07-01T00:00:00Z"
-          },
-          "end_date": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "End Date",
-            "description": "The day and time the benefit ended.",
-            "example": "2023-07-31T00:00:00Z"
-          },
-          "check_date": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Check Date",
-            "description": "The day and time the payroll run was checked.",
-            "example": "2023-08-31T00:00:00Z"
-          },
-          "earnings": {
-            "anyOf": [
-              {
-                "items": { "$ref": "#/components/schemas/Earning" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
-            "title": "Earnings",
-            "description": "The earnings of the Employee",
-            "example": [{ "amount": "27151", "name": "SALARY" }]
-          },
-          "deductions": {
-            "anyOf": [
-              {
-                "items": { "$ref": "#/components/schemas/Deduction" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
-            "title": "Deductions",
-            "description": "The deductions of the Employee",
-            "example": [
-              {
-                "company_deduction": "77.57",
-                "employee_deduction": "27.22",
-                "name": "Social Security"
-              }
-            ]
-          },
-          "taxes": {
-            "anyOf": [
-              {
-                "items": { "$ref": "#/components/schemas/Tax" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
-            "title": "Taxes",
-            "description": "The taxes of the Employee",
-            "example": [
-              { "amount": "175.22", "name": "California State Income Tax" }
-            ]
-          }
-        },
-        "type": "object",
-        "required": [
-          "id",
-          "remote_id",
-          "modified_at",
-          "custom_fields",
-          "employee",
-          "payroll_run",
-          "gross_pay",
-          "net_pay",
-          "start_date",
-          "end_date",
-          "check_date",
-          "earnings",
-          "deductions",
-          "taxes"
-        ],
-        "title": "HrisEmployeePayrollRun",
-        "description": "The EmployeePayrollRun object is used to represent an employee's pay statement for a specific payroll run."
-      },
-      "HrisEmployeePayrollRunPaginatedResponse": {
-        "properties": {
-          "cursor": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Cursor",
-            "description": "Cursor value to fetch next set of items",
-            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
-          },
-          "page_size": {
-            "type": "integer",
-            "title": "Page Size",
-            "description": "Indicates the count of items in the response",
-            "example": 50
-          },
-          "items": {
-            "items": { "$ref": "#/components/schemas/HrisEmployeePayrollRun" },
-            "type": "array",
-            "title": "Items"
-          }
-        },
-        "type": "object",
-        "required": ["cursor", "page_size", "items"],
-        "title": "HrisEmployeePayrollRunPaginatedResponse"
+        "required": ["id", "remote_id", "modified_at", "custom_fields"],
+        "title": "HrisEmployeeResponse"
       },
       "HrisEmployerBenefit": {
         "properties": {
@@ -13137,6 +13142,22 @@
         "required": ["end_user_data", "category", "integration"],
         "title": "LinkTokenCreate"
       },
+      "MetaApiResonseModel": {
+        "properties": {
+          "success": { "type": "boolean", "title": "Success" },
+          "data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Data"
+          },
+          "error": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Error"
+          }
+        },
+        "type": "object",
+        "required": ["success"],
+        "title": "MetaApiResonseModel"
+      },
       "PassThroughRequest": {
         "properties": {
           "method": {
@@ -14152,14 +14173,14 @@
       "WriteApiResponseModel": {
         "properties": {
           "success": { "type": "boolean", "title": "Success" },
-          "message": { "type": "string", "title": "Message" },
-          "errors": {
+          "data": { "type": "string", "title": "Data" },
+          "error": {
             "anyOf": [{ "type": "object" }, { "type": "null" }],
-            "title": "Errors"
+            "title": "Error"
           }
         },
         "type": "object",
-        "required": ["success", "message"],
+        "required": ["success", "data"],
         "title": "WriteApiResponseModel"
       }
     },

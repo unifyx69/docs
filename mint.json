@@ -163,6 +163,7 @@
           "group": "Employee",
           "pages": [
             "hris/employee/get-employees",
+            "hris/employee/get-create-employee-meta",
             "hris/employee/create-employee",
             "hris/employee/get-employee-by-id"
           ]
