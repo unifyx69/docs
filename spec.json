@@ -1451,7 +1451,9 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/MetaApiResonseModel" }
+                "schema": {
+                  "$ref": "#/components/schemas/MetaApiResponseModel"
+                }
               }
             }
           },
@@ -2681,7 +2683,7 @@
       "post": {
         "tags": ["Employee Payroll Runs"],
         "summary": "Create Employee Payroll Run",
-        "description": "Creates a TimeOff object with the given values.",
+        "description": "Creates a Employee Payroll Run object with the given values.",
         "operationId": "create_employee_payroll_run_api_hris_v1_employee_payroll_runs_post",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
@@ -3957,6 +3959,30 @@
             "example": false
           },
           {
+            "name": "user",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The user id of the user triggering activity",
+              "title": "User"
+            },
+            "description": "The user id of the user triggering activity",
+            "example": "01932bf2-b8bc-7bc0-bef0-1a7e2971ec31"
+          },
+          {
+            "name": "candidate",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The candidate id concerning the activity.",
+              "title": "Candidate"
+            },
+            "description": "The candidate id concerning the activity.",
+            "example": "01932bf2-b8bc-7bc0-bef0-1a7e2971ec31"
+          },
+          {
             "name": "include_custom_fields",
             "in": "query",
             "required": false,
@@ -3993,6 +4019,18 @@
               "title": "Cursor"
             },
             "description": "The pagination cursor value."
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "modified_after",
@@ -4113,6 +4151,18 @@
             "example": false
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -4172,6 +4222,30 @@
             "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
           },
           {
+            "name": "credited_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The user id which has the credit for this application",
+              "title": "Credited To"
+            },
+            "description": "The user id which has the credit for this application",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
+          {
+            "name": "source",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The source of the application",
+              "title": "Source"
+            },
+            "description": "The source of the application",
+            "example": "Linkedin"
+          },
+          {
             "name": "job",
             "in": "query",
             "required": false,
@@ -4193,6 +4267,18 @@
               "title": "Candidate"
             },
             "description": "The candidate id of the application",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
+          {
+            "name": "reject_reason",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The reject reason id of the application",
+              "title": "Reject Reason"
+            },
+            "description": "The reject reason id of the application",
             "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
           },
           {
@@ -4245,6 +4331,18 @@
               "title": "Cursor"
             },
             "description": "The pagination cursor value."
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "modified_after",
@@ -4357,6 +4455,18 @@
             "example": false
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -4465,6 +4575,18 @@
               "title": "Cursor"
             },
             "description": "The pagination cursor value."
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "modified_after",
@@ -4577,6 +4699,18 @@
             "example": false
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -4637,6 +4771,55 @@
             "example": "2024-02-21T21:22:12.993+05:30"
           },
           {
+            "name": "first_name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will return candidates with this first name",
+              "title": "First Name"
+            },
+            "description": "If provided, will return candidates with this first name",
+            "example": "Radhe"
+          },
+          {
+            "name": "last_name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will return candidates with this last name",
+              "title": "Last Name"
+            },
+            "description": "If provided, will return candidates with this last name",
+            "example": "Mohan"
+          },
+          {
+            "name": "tag",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will return candidates with this tag",
+              "title": "Tag"
+            },
+            "description": "If provided, will return candidates with this tag",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
+          {
+            "name": "email_addresses",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "If provided, will return candidates with these email addresses",
+              "title": "Email Addresses"
+            },
+            "description": "If provided, will return candidates with these email addresses",
+            "example": ["john@doe.com", "jane@doe.com"]
+          },
+          {
             "name": "include_raw_data",
             "in": "query",
             "required": false,
@@ -4686,6 +4869,18 @@
               "title": "Cursor"
             },
             "description": "The pagination cursor value."
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "modified_after",
@@ -4745,7 +4940,13 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/CreateCandidate" }
+              "schema": {
+                "anyOf": [
+                  { "$ref": "#/components/schemas/CreateCandidate" },
+                  { "$ref": "#/components/schemas/AtsCandidateWrite" }
+                ],
+                "title": "Candidate"
+              }
             }
           }
         },
@@ -4753,6 +4954,43 @@
           "200": {
             "description": "Successful Response",
             "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/candidates/create/meta": {
+      "get": {
+        "tags": ["Candidate"],
+        "summary": "Get Create Candidate Request Body",
+        "description": "Returns the data points required to add new employee in HRIS",
+        "operationId": "get_create_candidate_request_body_api_ats_v1_candidates_create_meta_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetaApiResponseModel"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -4804,6 +5042,18 @@
             },
             "description": "Whether to include custom fields in the response.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -4904,6 +5154,18 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -5000,6 +5262,18 @@
             },
             "description": "Whether to include custom fields in the response.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -5112,6 +5386,18 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -5210,6 +5496,18 @@
             "example": false
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -5256,6 +5554,18 @@
             },
             "description": "Include raw data in the response",
             "example": false
+          },
+          {
+            "name": "job",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Return the stages for this particular jobid",
+              "title": "Job"
+            },
+            "description": "Return the stages for this particular jobid",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
           },
           {
             "name": "include_custom_fields",
@@ -5306,6 +5616,18 @@
             },
             "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -5406,6 +5728,18 @@
             "example": false
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -5453,6 +5787,45 @@
             },
             "description": "The third-party API ID of the matching object.",
             "example": "3235005483341316245"
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will return jobs with this code",
+              "title": "Code"
+            },
+            "description": "If provided, will return jobs with this code",
+            "example": "DEV-01"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/ATSStatusType",
+              "description": "If provided, will return jobs with this status"
+            },
+            "description": "If provided, will return jobs with this status",
+            "example": "OPEN"
+          },
+          {
+            "name": "offices",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "If provided, will return jobs in these offices",
+              "title": "Offices"
+            },
+            "description": "If provided, will return jobs in these offices",
+            "example": [
+              "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92",
+              "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            ]
           },
           {
             "name": "include_raw_data",
@@ -5516,6 +5889,18 @@
             },
             "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -5616,6 +6001,18 @@
             "example": false
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -5672,6 +6069,18 @@
               "title": "Application"
             },
             "description": "The application id of the offer",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
+          {
+            "name": "creator",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The creator of the offer",
+              "title": "Creator"
+            },
+            "description": "The creator of the offer",
             "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
           },
           {
@@ -5736,6 +6145,18 @@
             },
             "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -5834,6 +6255,18 @@
             },
             "description": "Whether to include custom fields in the response.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -5946,6 +6379,18 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -6042,6 +6487,18 @@
             },
             "description": "Whether to include custom fields in the response.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -6142,6 +6599,18 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -6240,6 +6709,18 @@
             "example": false
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -6274,6 +6755,18 @@
         "operationId": "get_remote_users_api_ats_v1_remote_users_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Email id of the user",
+              "title": "Email"
+            },
+            "description": "Email id of the user",
+            "example": "john@doe.com"
+          },
           {
             "name": "include_raw_data",
             "in": "query",
@@ -6336,6 +6829,18 @@
             },
             "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -6436,6 +6941,18 @@
             "example": false
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -6470,6 +6987,42 @@
         "operationId": "get_scheduled_interviews_api_ats_v1_scheduled_interviews_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
+          {
+            "name": "application",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Application id of the scheduled interview",
+              "title": "Application"
+            },
+            "description": "Application id of the scheduled interview",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
+          {
+            "name": "organizer",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "User id of the organizer of the scheduled interview",
+              "title": "Organizer"
+            },
+            "description": "User id of the organizer of the scheduled interview",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
+          {
+            "name": "job_interview_stage",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Job interview stage id of the scheduled interview",
+              "title": "Job Interview Stage"
+            },
+            "description": "Job interview stage id of the scheduled interview",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
           {
             "name": "include_raw_data",
             "in": "query",
@@ -6532,6 +7085,18 @@
             },
             "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -6632,6 +7197,18 @@
             "example": false
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -6668,6 +7245,42 @@
         "operationId": "get_scorecards_api_ats_v1_scorecards_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
+          {
+            "name": "application",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The application id for the scorecard",
+              "title": "Application"
+            },
+            "description": "The application id for the scorecard",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
+          {
+            "name": "interview",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The interview id for the scorecard",
+              "title": "Interview"
+            },
+            "description": "The interview id for the scorecard",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
+          {
+            "name": "interviewer",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The interviewer id for the scorecard",
+              "title": "Interviewer"
+            },
+            "description": "The interviewer id for the scorecard",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
           {
             "name": "include_raw_data",
             "in": "query",
@@ -6730,6 +7343,18 @@
             },
             "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -6830,6 +7455,18 @@
             "example": false
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -6864,6 +7501,18 @@
         "operationId": "get_screening_questions_api_ats_v1_screening_questions_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
+          {
+            "name": "job",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The job id for the screening question",
+              "title": "Job"
+            },
+            "description": "The job id for the screening question",
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+          },
           {
             "name": "include_raw_data",
             "in": "query",
@@ -6926,6 +7575,18 @@
             },
             "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -7024,6 +7685,18 @@
             },
             "description": "Whether to include custom fields in the response.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -7126,6 +7799,18 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -7222,6 +7907,18 @@
             },
             "description": "Whether to include custom fields in the response.",
             "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
           },
           {
             "name": "x-connector-token",
@@ -7819,6 +8516,11 @@
   },
   "components": {
     "schemas": {
+      "ATSStatusType": {
+        "type": "string",
+        "enum": ["OPEN", "CLOSED", "DRAFT", "ARCHIVED", "PENDING", "-"],
+        "title": "ATSStatusType"
+      },
       "AtsActivity": {
         "properties": {
           "id": {
@@ -7862,10 +8564,7 @@
             }
           },
           "user": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "User",
             "description": "The user who owns the activity.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
@@ -7895,10 +8594,7 @@
             "example": "PUBLIC"
           },
           "candidate": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Candidate",
             "description": "Candidate who applied for the activity.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
@@ -7994,19 +8690,13 @@
             }
           },
           "candidate": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Candidate",
             "description": "The candidate associated with the application.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
           },
           "job": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Job",
             "description": "The job for which the candidate has applied.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
@@ -8030,28 +8720,19 @@
             "example": "LinkedIn"
           },
           "credited_to": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Credited To",
             "description": "The user or entity to which the application is credited.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
           },
           "current_stage": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Current Stage",
             "description": "The current stage of the application in the hiring process.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
           },
           "reject_reason": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Reject Reason",
             "description": "The reason for the application's rejection.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
@@ -8162,10 +8843,7 @@
             "example": "https://example.com/path/to/resume.pdf"
           },
           "candidate": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Candidate",
             "description": "The candidate to whom the attachment belongs.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
@@ -8353,25 +9031,13 @@
             "example": ["JUNIOR", "INTERMEDIATE"]
           },
           "applications": {
-            "anyOf": [
-              {
-                "items": { "type": "string", "format": "uuid" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
             "title": "Applications",
             "description": "The candidate's applications.",
             "example": ["018b4bfb-5ece-70b1-ad5e-862a9433aa65"]
           },
           "attachments": {
-            "anyOf": [
-              {
-                "items": { "type": "string", "format": "uuid" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
             "title": "Attachments",
             "description": "The candidate's attachments.",
             "example": ["018b4bfb-5ece-70b1-ad5e-862a9433aa65"]
@@ -8396,31 +9062,8 @@
           }
         },
         "type": "object",
-        "required": [
-          "id",
-          "remote_id",
-          "modified_at",
-          "custom_fields",
-          "first_name",
-          "last_name",
-          "company",
-          "title",
-          "last_interaction_at",
-          "is_private",
-          "can_email",
-          "locations",
-          "phone_numbers",
-          "email_addresses",
-          "urls",
-          "tags",
-          "applications",
-          "attachments",
-          "remote_created_at",
-          "remote_updated_at",
-          "avatar"
-        ],
-        "title": "AtsCandidate",
-        "description": "The candidate object is used to represent any person who has applied as a candidate."
+        "required": ["id", "remote_id", "modified_at", "custom_fields"],
+        "title": "AtsCandidate"
       },
       "AtsCandidatePaginatedResponse": {
         "properties": {
@@ -8445,6 +9088,161 @@
         "type": "object",
         "required": ["cursor", "page_size", "items"],
         "title": "AtsCandidatePaginatedResponse"
+      },
+      "AtsCandidateWrite": {
+        "properties": {
+          "additional_attributes": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Additional Attributes",
+            "description": "Fields related to models other than employee Model",
+            "example": {
+              "contract_end_date": "2025-12-31T00:00:00",
+              "previous_employer": "TechCorp"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": { "customTshirtSize": "XXL" }
+          },
+          "first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "First Name",
+            "description": "The candidate's first name.",
+            "example": "John"
+          },
+          "last_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Last Name",
+            "description": "The candidate's last name.",
+            "example": "Doe"
+          },
+          "company": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Company",
+            "description": "The name of the company where candidate has applied.",
+            "example": "Google"
+          },
+          "title": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Title",
+            "description": "The position for which the candidate has applied",
+            "example": "SOFTWARE ENGINEER"
+          },
+          "last_interaction_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Last Interaction At",
+            "description": "The date of the last interaction with the candidate.",
+            "example": "2021-07-01T00:00:00Z"
+          },
+          "is_private": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Is Private",
+            "description": "Whether the candidate's information is private.",
+            "example": true
+          },
+          "can_email": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Can Email",
+            "description": "Whether the candidate can be emailed.",
+            "example": true
+          },
+          "locations": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Locations",
+            "description": "The location of the candidate.",
+            "example": ["San Francisco", "New York"]
+          },
+          "phone_numbers": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Phone Numbers",
+            "description": "The candidate's phone numbers.",
+            "example": ["123-456-7890"]
+          },
+          "email_addresses": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Email Addresses",
+            "description": "The candidate's email addresses.",
+            "example": ["john@doe.com"]
+          },
+          "urls": {
+            "anyOf": [
+              {
+                "items": { "$ref": "#/components/schemas/AtsUrl" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Urls",
+            "description": "The candidate's URLs. This can include a personal website, LinkedIn profile, or other relevant URLs.",
+            "example": [
+              {
+                "type": "LINKEDIN",
+                "value": "https://www.linkedin.com/in/johndoe"
+              }
+            ]
+          },
+          "tags": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Tags",
+            "description": "The candidate's tags. Tags are used to categorize candidates and can be used to filter candidates in the UI.",
+            "example": ["JUNIOR", "INTERMEDIATE"]
+          },
+          "applications": {
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
+            "title": "Applications",
+            "description": "The candidate's applications.",
+            "example": ["018b4bfb-5ece-70b1-ad5e-862a9433aa65"]
+          },
+          "attachments": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Attachments",
+            "description": "Please Share only candidate's resume in this",
+            "example": ["https://dummy-bucket.s3.amazonaws.com/sample-file.txt"]
+          },
+          "remote_created_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Created At",
+            "description": "When the third party's candidate was created.",
+            "example": "2021-07-01T00:00:00Z"
+          },
+          "remote_updated_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Updated At",
+            "description": "When the third party's candidate was last updated.",
+            "example": "2021-07-01T00:00:00Z"
+          },
+          "avatar": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Avatar",
+            "description": "The candidate's avatar.",
+            "example": "https://www.example.com/avatar.jpg"
+          },
+          "job": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Job",
+            "description": "The job id for the candidate",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          }
+        },
+        "type": "object",
+        "title": "AtsCandidateWrite"
       },
       "AtsDepartment": {
         "properties": {
@@ -8567,10 +9365,7 @@
             }
           },
           "candidate": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Candidate",
             "description": "The candidate associated with the EEOC data.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
@@ -8743,13 +9538,7 @@
             "example": false
           },
           "departments": {
-            "anyOf": [
-              {
-                "items": { "type": "string", "format": "uuid" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
             "title": "Departments",
             "description": "A list of department identifiers associated with the job.",
             "example": [
@@ -8758,13 +9547,7 @@
             ]
           },
           "offices": {
-            "anyOf": [
-              {
-                "items": { "type": "string", "format": "uuid" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
             "title": "Offices",
             "description": "A list of office identifiers where the job is located.",
             "example": [
@@ -8773,13 +9556,7 @@
             ]
           },
           "hiring_managers": {
-            "anyOf": [
-              {
-                "items": { "type": "string", "format": "uuid" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
             "title": "Hiring Managers",
             "description": "A list of identifiers for hiring managers associated with the job.",
             "example": [
@@ -8788,13 +9565,7 @@
             ]
           },
           "recruiters": {
-            "anyOf": [
-              {
-                "items": { "type": "string", "format": "uuid" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
             "title": "Recruiters",
             "description": "A list of identifiers for recruiters associated with the job.",
             "example": ["018b4bfb-5ece-70b1-ad5e-862a9433aa65"]
@@ -8871,10 +9642,7 @@
             "example": "PHONE SCREENING"
           },
           "job": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Job",
             "description": "The identifier of the job to which this interview stage is related.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
@@ -8990,19 +9758,13 @@
             }
           },
           "application": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Application",
             "description": "The identifier of the application to which the offer is related.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
           },
           "creator": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Creator",
             "description": "The identifier of the user who created the offer.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
@@ -9413,40 +10175,25 @@
             }
           },
           "application": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Application",
             "description": "The identifier of the application associated with the interview.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
           },
           "job_interview_stage": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Job Interview Stage",
             "description": "The identifier of the interview stage associated with this interview.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
           },
           "organizer": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Organizer",
             "description": "The identifier of the user who organized the interview.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
           },
           "interviewers": {
-            "anyOf": [
-              {
-                "items": { "type": "string", "format": "uuid" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
             "title": "Interviewers",
             "description": "A list of identifiers for the users who are scheduled to interview the candidate.",
             "example": [
@@ -9578,28 +10325,19 @@
             }
           },
           "application": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Application",
             "description": "The identifier of the application associated with the scorecard.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
           },
           "interview": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Interview",
             "description": "The identifier of the interview associated with the scorecard.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
           },
           "interviewer": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Interviewer",
             "description": "The identifier of the interviewer who filled out the scorecard.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
@@ -9706,10 +10444,7 @@
             }
           },
           "job": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
+            "anyOf": [{}, { "type": "null" }],
             "title": "Job",
             "description": "The identifier of the job to which this screening question is related.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
@@ -10095,6 +10830,12 @@
             "title": "Remote User Id",
             "description": "The remote user's id",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "job_requisition_id": {
+            "type": "string",
+            "title": "Job Requisition Id",
+            "description": "The job requisition id in external ATS",
+            "example": "R-00007"
           }
         },
         "type": "object",
@@ -11358,13 +12099,19 @@
             "example": "Bangalore Division"
           },
           "work_email": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "anyOf": [
+              { "type": "string", "format": "email" },
+              { "type": "null" }
+            ],
             "title": "Work Email",
             "description": "The employee's work email.",
             "example": "kunal@bindbee.dev"
           },
           "personal_email": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "anyOf": [
+              { "type": "string", "format": "email" },
+              { "type": "null" }
+            ],
             "title": "Personal Email",
             "description": "The employee's personal email.",
             "example": "kunaltyagi77@gmail.com"
@@ -11431,7 +12178,10 @@
             "example": "550e8400-e29b-41d4-a716-446655440000"
           },
           "pay_group": {
-            "anyOf": [{}, { "type": "null" }],
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
             "title": "Pay Group",
             "description": "The employee's pay group",
             "example": "018af1fe-1250-77c5-9fcd-4bca1e4568f4"
@@ -13142,7 +13892,7 @@
         "required": ["end_user_data", "category", "integration"],
         "title": "LinkTokenCreate"
       },
-      "MetaApiResonseModel": {
+      "MetaApiResponseModel": {
         "properties": {
           "success": { "type": "boolean", "title": "Success" },
           "data": {
@@ -13156,7 +13906,7 @@
         },
         "type": "object",
         "required": ["success"],
-        "title": "MetaApiResonseModel"
+        "title": "MetaApiResponseModel"
       },
       "PassThroughRequest": {
         "properties": {
@@ -13555,6 +14305,21 @@
       },
       "VmsJobPostingCreateRequest": {
         "properties": {
+          "additional_attributes": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Additional Attributes",
+            "description": "Fields related to models other than employee Model",
+            "example": {
+              "contract_end_date": "2025-12-31T00:00:00",
+              "previous_employer": "TechCorp"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": { "customTshirtSize": "XXL" }
+          },
           "model": { "$ref": "#/components/schemas/VmsJobPosting" }
         },
         "type": "object",
@@ -13889,6 +14654,21 @@
       },
       "VmsJobSeekerCreateRequest": {
         "properties": {
+          "additional_attributes": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Additional Attributes",
+            "description": "Fields related to models other than employee Model",
+            "example": {
+              "contract_end_date": "2025-12-31T00:00:00",
+              "previous_employer": "TechCorp"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": { "customTshirtSize": "XXL" }
+          },
           "model": { "$ref": "#/components/schemas/VmsJobSeeker-Input" }
         },
         "type": "object",
@@ -14164,6 +14944,21 @@
       },
       "VmsWorkOrderAcceptCreateRequest": {
         "properties": {
+          "additional_attributes": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Additional Attributes",
+            "description": "Fields related to models other than employee Model",
+            "example": {
+              "contract_end_date": "2025-12-31T00:00:00",
+              "previous_employer": "TechCorp"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": { "customTshirtSize": "XXL" }
+          },
           "model": { "$ref": "#/components/schemas/VmsWorkOrderAccept-Input" }
         },
         "type": "object",
