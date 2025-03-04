@@ -2132,6 +2132,30 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "run_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The type of the payroll run Possible values include: REGULAR, \n        OFF_CYCLE, CORRECTION, TERMINATION, SIGN_ON_BONUS. In cases where there is \n        no clear mapping, the original value passed through will be returned.",
+              "title": "Run Type"
+            },
+            "description": "The type of the payroll run Possible values include: REGULAR, \n        OFF_CYCLE, CORRECTION, TERMINATION, SIGN_ON_BONUS. In cases where there is \n        no clear mapping, the original value passed through will be returned.",
+            "example": "REGULAR"
+          },
+          {
+            "name": "run_state",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The state of the payroll run Possible values include: PAID, \n        DRAFT, APPROVED, FAILED, CLOSED. In cases where there is no clear mapping, \n        the original value passed through will be returned.",
+              "title": "Run State"
+            },
+            "description": "The state of the payroll run Possible values include: PAID, \n        DRAFT, APPROVED, FAILED, CLOSED. In cases where there is no clear mapping, \n        the original value passed through will be returned.",
+            "example": "PAID"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -2204,6 +2228,78 @@
               "title": "Modified After"
             },
             "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "start_date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Start Date From"
+            },
+            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "start_date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Start Date To"
+            },
+            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "end_date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "End Date From"
+            },
+            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "end_date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "End Date To"
+            },
+            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "check_date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with check_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Check Date From"
+            },
+            "description": "If provided, only objects with check_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "check_date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with check_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Check Date To"
+            },
+            "description": "If provided, only objects with check_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
@@ -2638,6 +2734,78 @@
               "title": "Modified After"
             },
             "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "start_date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Start Date From"
+            },
+            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "start_date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Start Date To"
+            },
+            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "end_date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "End Date From"
+            },
+            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "end_date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "End Date To"
+            },
+            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "check_date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with check_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Check Date From"
+            },
+            "description": "If provided, only objects with check_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "check_date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with check_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Check Date To"
+            },
+            "description": "If provided, only objects with check_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
