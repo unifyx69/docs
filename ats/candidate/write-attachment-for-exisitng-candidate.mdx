@@ -1,0 +1,32 @@
+---
+openapi: post /api/ats/v1/candidates/{candidate_id}/attachments
+---
+
+<Tip>
+  Currently this functionality is available for Success Factor and Teamtailor
+</Tip>
+
+
+🚨 **Note:** File size cannot exceed **5 MB**.
+
+### **For SAP Success Factor Integration**
+
+If integrating with **SAP_SUCCESS_FACTOR**, the request body must only contain:
+
+| Key | Type | Required | Description |
+| --- | --- | --- | --- |
+| `file_name` | string | **required** | Name of the file including its extension |
+| `file_content` | string (base64) | **required** | Base64 encoded file content |
+| `remote_user_id` | UUID | **required** | UUID of remote user created by Bindbee |
+
+
+### **For Teamtailor Integration**
+
+If integrating with **SAP_SUCCESS_FACTOR**, the request body must only contain:
+
+| Key | Type | Required | Description |
+| --- | --- | --- | --- |
+| `file_name` | string | **required** | Name of the file including its extension |
+| `file_url` | string | **required** | Publically accessible file url |
+| `remote_user_id` | UUID | **required** | UUID of remote user created by Bindbee |
+

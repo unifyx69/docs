@@ -272,7 +272,9 @@
           "pages": [
             "ats/candidate/get-candidates",
             "ats/candidate/create-candidate",
-            "ats/candidate/get-candidate-by-id"
+            "ats/candidate/get-candidate-by-id",
+            "ats/candidate/meta-create-candidate",
+            "ats/candidate/write-attachment-for-exisitng-candidate"
           ]
         },
         {

@@ -1,3 +1,21 @@
 ---
 openapi: post /api/ats/v1/candidates
 ---
+
+
+To create an candidate in ATS, you first need to fetch the request body structure that ATS expects. This structure varies based on the ATS provider (e.g., Greenhouse, Teamtailor, BambooHR). The request body consists of three parts:
+
+- **Model Keys**: Standard attributes required for all candidate.
+- **Additional Attributes**: Specific fields required by the chosen ATS.
+- **Custom Fields**: Extra metadata for specific implementations.
+
+**Note:** Some attributes may have `allowed_values`, meaning only specific values are permitted based on the customer's ATS configuration. Ensure you check for these constraints before submitting the request.
+
+
+## Step 1: Fetch the Required Request Body
+
+Before calling the **Create Candidate** API, you need to get the request structure using the  [Meta Create Candidate](/ats/candidate/meta-create-candidate) API.
+
+## Step 2: Create an Candidate
+
+Once you have the request body structure, use the **Create Candidate** API to send the request.

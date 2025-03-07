@@ -1,3 +1,21 @@
 ---
 openapi: post /api/hris/v1/employees
 ---
+
+
+To create an employee in HRIS, you first need to fetch the request body structure that HRIS expects. This structure varies based on the HRIS provider (e.g., BambooHR, ADP, Workday). The request body consists of three parts:
+
+- **Model Keys**: Standard attributes required for all employees.
+- **Additional Attributes**: Specific fields required by the chosen HRIS.
+- **Custom Fields**: Extra metadata for specific implementations.
+
+**Note:** Some attributes may have `allowed_values`, meaning only specific values are permitted based on the customer's HRIS configuration. Ensure you check for these constraints before submitting the request.
+
+
+## Step 1: Fetch the Required Request Body
+
+Before calling the **Create Employee** API, you need to get the request structure using the [Meta Create Employee](/hris/employee/get-create-employee-meta) API.
+
+## Step 2: Create an Employee
+
+Once you have the request body structure, use the **Create Employee** API to send the request.

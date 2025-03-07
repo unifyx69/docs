@@ -1434,7 +1434,7 @@
     "/api/hris/v1/employees/create/meta": {
       "get": {
         "tags": ["Employee"],
-        "summary": "Get Create Employee Request Body",
+        "summary": "Meta Create Employee",
         "description": "Returns the data points required to add new employee in HRIS",
         "operationId": "get_create_employee_request_body_api_hris_v1_employees_create_meta_get",
         "security": [{ "HTTPBearer": [] }],
@@ -5121,7 +5121,13 @@
         "responses": {
           "200": {
             "description": "Successful Response",
-            "content": { "application/json": { "schema": {} } }
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WriteApiResponseModel"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -5137,8 +5143,8 @@
     "/api/ats/v1/candidates/create/meta": {
       "get": {
         "tags": ["Candidate"],
-        "summary": "Get Create Candidate Request Body",
-        "description": "Returns the data points required to add new employee in HRIS",
+        "summary": "Meta Create Candidate",
+        "description": "Returns the data points required to add new employee in ATS",
         "operationId": "get_create_candidate_request_body_api_ats_v1_candidates_create_meta_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
@@ -5165,6 +5171,63 @@
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/candidates/{candidate_id}/attachments": {
+      "post": {
+        "tags": [
+          "Candidate"
+        ],
+        "summary": "Write attachment for candidate",
+        "description": "Uploads an attachment for a given candidate.",
+        "operationId": "create_candidate_attachment_api_ats_v1_candidates__candidate_id__attachments_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "candidate_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Candidate Id"
+            }
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "X-Connector-Token"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WriteApiResponseModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
               }
             }
           }
