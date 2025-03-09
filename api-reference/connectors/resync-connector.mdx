@@ -1,0 +1,16 @@
+---
+title: "Force Resync a Connector"
+description: ""
+openapi: post /api/embedded/v1/connectors/resync
+---
+
+## Overview
+
+This guide demonstrates how to use the Resync API to force a sync of a connector.
+
+<Warning>
+  It is neither necessary nor recommended to call this endpoint periodically.
+  Bindbee automatically performs periodic syncs for you. You should only trigger
+  a resync in specific cases, such as when a user manually initiates a sync from
+  your application (e.g., by clicking a “Sync” button).
+</Warning>

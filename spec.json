@@ -5179,9 +5179,7 @@
     },
     "/api/ats/v1/candidates/{candidate_id}/attachments": {
       "post": {
-        "tags": [
-          "Candidate"
-        ],
+        "tags": ["Candidate"],
         "summary": "Write attachment for candidate",
         "description": "Uploads an attachment for a given candidate.",
         "operationId": "create_candidate_attachment_api_ats_v1_candidates__candidate_id__attachments_post",
@@ -8726,6 +8724,36 @@
             "in": "path",
             "required": true,
             "schema": { "type": "string", "title": "Temporary Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/embedded/v1/connectors/resync": {
+      "post": {
+        "tags": ["Connector"],
+        "summary": "Force Resync Connector",
+        "operationId": "force_resync_connector_api_embedded_v1_connectors_resync_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
           }
         ],
         "responses": {

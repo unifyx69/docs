@@ -107,7 +107,8 @@
       "group": "Connectors",
       "pages": [
         "api-reference/connectors/get-connectors",
-        "api-reference/connectors/delete-connector"
+        "api-reference/connectors/delete-connector",
+        "api-reference/connectors/resync-connector"
       ]
     },
     {
