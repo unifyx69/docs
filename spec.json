@@ -1434,7 +1434,7 @@
     "/api/hris/v1/employees/create/meta": {
       "get": {
         "tags": ["Employee"],
-        "summary": "Meta Create Employee",
+        "summary": "Get Create Employee Request Body",
         "description": "Returns the data points required to add new employee in HRIS",
         "operationId": "get_create_employee_request_body_api_hris_v1_employees_create_meta_get",
         "security": [{ "HTTPBearer": [] }],
@@ -5121,13 +5121,7 @@
         "responses": {
           "200": {
             "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WriteApiResponseModel"
-                }
-              }
-            }
+            "content": { "application/json": { "schema": {} } }
           },
           "422": {
             "description": "Validation Error",
@@ -5143,8 +5137,8 @@
     "/api/ats/v1/candidates/create/meta": {
       "get": {
         "tags": ["Candidate"],
-        "summary": "Meta Create Candidate",
-        "description": "Returns the data points required to add new employee in ATS",
+        "summary": "Get Create Candidate Request Body",
+        "description": "Returns the data fields required to add new candidate in ATS",
         "operationId": "get_create_candidate_request_body_api_ats_v1_candidates_create_meta_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
@@ -5171,61 +5165,6 @@
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/ats/v1/candidates/{candidate_id}/attachments": {
-      "post": {
-        "tags": ["Candidate"],
-        "summary": "Write attachment for candidate",
-        "description": "Uploads an attachment for a given candidate.",
-        "operationId": "create_candidate_attachment_api_ats_v1_candidates__candidate_id__attachments_post",
-        "security": [
-          {
-            "HTTPBearer": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "candidate_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Candidate Id"
-            }
-          },
-          {
-            "name": "x-connector-token",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "X-Connector-Token"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WriteApiResponseModel"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
               }
             }
           }
@@ -5299,6 +5238,51 @@
                 "schema": { "$ref": "#/components/schemas/AtsCandidate" }
               }
             }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ats/v1/candidates/{candidate_id}/attachments": {
+      "post": {
+        "tags": ["Candidate"],
+        "summary": "Create Candidate Attachment",
+        "description": "Uploads an attachment for a given candidate.",
+        "operationId": "create_candidate_attachment_api_ats_v1_candidates__candidate_id__attachments_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "candidate_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Candidate Id" }
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AtsAttachmentWrite" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
           },
           "422": {
             "description": "Validation Error",
@@ -9041,6 +9025,32 @@
       },
       "AtsAttachment": {
         "properties": {
+          "file_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "File Name",
+            "description": "The name of the file attached.",
+            "example": "resume.pdf"
+          },
+          "file_url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2083,
+                "minLength": 1,
+                "format": "uri"
+              },
+              { "type": "null" }
+            ],
+            "title": "File Url",
+            "description": "The URL where the file is stored and can be retrieved.",
+            "example": "https://example.com/path/to/resume.pdf"
+          },
+          "attachment_type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Attachment Type",
+            "description": "The type of attachment, such as 'resume', 'cover letter', etc.",
+            "example": "RESUME"
+          },
           "id": {
             "type": "string",
             "format": "uuid",
@@ -9081,52 +9091,16 @@
               "original_hire_date": "1991-03-16T00:00:00"
             }
           },
-          "file_name": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "File Name",
-            "description": "The name of the file attached.",
-            "example": "resume.pdf"
-          },
-          "file_url": {
-            "anyOf": [
-              {
-                "type": "string",
-                "maxLength": 2083,
-                "minLength": 1,
-                "format": "uri"
-              },
-              { "type": "null" }
-            ],
-            "title": "File Url",
-            "description": "The URL where the file is stored and can be retrieved.",
-            "example": "https://example.com/path/to/resume.pdf"
-          },
           "candidate": {
             "anyOf": [{}, { "type": "null" }],
             "title": "Candidate",
             "description": "The candidate to whom the attachment belongs.",
             "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
-          },
-          "attachment_type": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Attachment Type",
-            "description": "The type of attachment, such as 'resume', 'cover letter', etc.",
-            "example": "RESUME"
           }
         },
         "type": "object",
-        "required": [
-          "id",
-          "remote_id",
-          "modified_at",
-          "custom_fields",
-          "file_name",
-          "file_url",
-          "candidate",
-          "attachment_type"
-        ],
-        "title": "AtsAttachment",
-        "description": "The AtsAttachment object is used to represent a file attachment linked to a candidate's application within the ATS."
+        "required": ["id", "remote_id", "modified_at", "custom_fields"],
+        "title": "AtsAttachment"
       },
       "AtsAttachmentPaginatedResponse": {
         "properties": {
@@ -9151,6 +9125,69 @@
         "type": "object",
         "required": ["cursor", "page_size", "items"],
         "title": "AtsAttachmentPaginatedResponse"
+      },
+      "AtsAttachmentWrite": {
+        "properties": {
+          "file_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "File Name",
+            "description": "The name of the file attached.",
+            "example": "resume.pdf"
+          },
+          "file_url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2083,
+                "minLength": 1,
+                "format": "uri"
+              },
+              { "type": "null" }
+            ],
+            "title": "File Url",
+            "description": "The URL where the file is stored and can be retrieved.",
+            "example": "https://example.com/path/to/resume.pdf"
+          },
+          "attachment_type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Attachment Type",
+            "description": "The type of attachment, such as 'resume', 'cover letter', etc.",
+            "example": "RESUME"
+          },
+          "file_content": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "File Content",
+            "description": "File in base64 format",
+            "example": "SGVsbG8sIFdvcmxkIQ=="
+          },
+          "content_type": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Content Type",
+            "description": "The MIME type of the file (e.g., 'application/pdf', 'image/png').",
+            "example": "application/pdf"
+          },
+          "candidate": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Candidate",
+            "description": "The candidate to whom the attachment belongs.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "remote_user_id": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Remote User Id",
+            "description": "The id of user using the integration",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          }
+        },
+        "type": "object",
+        "title": "AtsAttachmentWrite",
+        "description": "The AtsAttachmentWriteForCandidate object is used to represent a file attachment linked to a candidate's application within the ATS."
       },
       "AtsCandidate": {
         "properties": {
@@ -9467,10 +9504,15 @@
             "example": ["018b4bfb-5ece-70b1-ad5e-862a9433aa65"]
           },
           "attachments": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "anyOf": [
+              {
+                "items": { "$ref": "#/components/schemas/AtsAttachmentWrite" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
             "title": "Attachments",
-            "description": "Please Share only candidate's resume in this",
-            "example": ["https://dummy-bucket.s3.amazonaws.com/sample-file.txt"]
+            "description": "Please share the details like this, AtsAttachmentWrite model fields are shared in model_fields key"
           },
           "remote_created_at": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
