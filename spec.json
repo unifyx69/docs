@@ -240,6 +240,19 @@
             "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
           },
           {
+            "name": "employer_benefit_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The ID of the employer benefit.",
+              "title": "Employer Benefit Id"
+            },
+            "description": "The ID of the employer benefit.",
+            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -313,6 +326,54 @@
               "title": "Cursor"
             },
             "description": "The pagination cursor value."
+          },
+          {
+            "name": "start_date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Start Date From"
+            },
+            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "start_date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Start Date To"
+            },
+            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "end_date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "End Date From"
+            },
+            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "end_date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "End Date To"
+            },
+            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
           },
           {
             "name": "expand",
@@ -838,6 +899,32 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "employer_benefit_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The ID of the employer benefit.",
+              "title": "Employer Benefit Id"
+            },
+            "description": "The ID of the employer benefit.",
+            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+          },
+          {
+            "name": "dependent_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The ID of the dependent.",
+              "title": "Dependent Id"
+            },
+            "description": "The ID of the dependent.",
+            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -911,6 +998,54 @@
               "title": "Cursor"
             },
             "description": "The pagination cursor value."
+          },
+          {
+            "name": "start_date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Start Date From"
+            },
+            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "start_date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Start Date To"
+            },
+            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "end_date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "End Date From"
+            },
+            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "end_date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "End Date To"
+            },
+            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
           },
           {
             "name": "expand",
@@ -10366,10 +10501,7 @@
             "example": "Doe"
           },
           "email": {
-            "anyOf": [
-              { "type": "string", "format": "email" },
-              { "type": "null" }
-            ],
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Email",
             "description": "The email address of the user.",
             "example": "john@doe.com"
