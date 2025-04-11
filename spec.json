@@ -376,6 +376,30 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "effective_date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with effective_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Effective Date From"
+            },
+            "description": "If provided, only objects with effective_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "effective_date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with effective_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Effective Date To"
+            },
+            "description": "If provided, only objects with effective_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
             "name": "expand",
             "in": "query",
             "required": false,
@@ -5273,7 +5297,7 @@
       "get": {
         "tags": ["Candidate"],
         "summary": "Get Create Candidate Request Body",
-        "description": "Returns the data fields required to add new candidate in ATS",
+        "description": "Returns the data points required to add new employee in HRIS",
         "operationId": "get_create_candidate_request_body_api_ats_v1_candidates_create_meta_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
@@ -11903,6 +11927,12 @@
             "description": "The day and time the benefit started.",
             "example": "2023-10-18T00:00:00Z"
           },
+          "effective_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Effective Date",
+            "description": "The day and time the benefit is effective from.",
+            "example": "2023-10-18T00:00:00Z"
+          },
           "end_date": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "End Date",
@@ -11930,6 +11960,7 @@
           "employee_contribution",
           "company_contribution",
           "start_date",
+          "effective_date",
           "end_date",
           "employer_benefit"
         ],
