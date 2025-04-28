@@ -11340,6 +11340,13 @@
             "default": "",
             "example": "000099"
           },
+          "payroll_group_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Payroll Group Code",
+            "description": "The payroll group code the employee belongs to.",
+            "default": "",
+            "example": "9YT"
+          },
           "gross_pay": {
             "anyOf": [
               { "type": "integer" },
