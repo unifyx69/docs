@@ -1,0 +1,459 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "maple",
+  "name": "Bindbee Docs",
+  "colors": {
+    "primary": "#F57E21",
+    "light": "#F57E21",
+    "dark": "#441F02"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "anchors": [
+      {
+        "anchor": "Documentation",
+        "icon": "book-open",
+        "tabs": [
+          {
+            "tab": "API Basics",
+            "groups": [
+              {
+                "group": "Bindbee API Basics",
+                "pages": [
+                  "api-reference/basics/authentication",
+                  "api-reference/basics/pagination",
+                  "api-reference/basics/sync-frequency",
+                  "api-reference/basics/rate-limits"
+                ]
+              },
+              {
+                "group": "Connectors",
+                "pages": [
+                  "api-reference/connectors/get-connectors",
+                  "api-reference/connectors/delete-connector",
+                  "api-reference/connectors/resync-connector"
+                ]
+              },
+              {
+                "group": "Integrations",
+                "pages": ["api-reference/integrations/get-integrations"]
+              },
+              {
+                "group": "Supplemental Data",
+                "pages": [
+                  {
+                    "group": "Passthrough",
+                    "pages": [
+                      "api-reference/passthrough/make-passthrough-request"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "HR, Payroll, and Directory (HRIS)",
+            "groups": [
+              {
+                "group": "Unified Models",
+                "pages": [
+                  {
+                    "group": "Bank Info",
+                    "pages": [
+                      "hris/bank-info/get-bank-info-list",
+                      "hris/bank-info/get-bank-info-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Benefits",
+                    "pages": [
+                      "hris/benefits/get-benefits",
+                      "hris/benefits/get-benefit-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Employer Benefits",
+                    "pages": [
+                      "hris/employer-benefits/get-employer-benefits",
+                      "hris/employer-benefits/get-employer-benefit-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Dependents",
+                    "pages": [
+                      "hris/dependents/get-dependents",
+                      "hris/dependents/get-dependent-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Dependent Benefits",
+                    "pages": [
+                      "hris/dependent-benefits/get-dependent-benefits",
+                      "hris/dependent-benefits/get-dependent-benefit-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Company",
+                    "pages": [
+                      "hris/companies/get-companies",
+                      "hris/companies/get-company-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Employee",
+                    "pages": [
+                      "hris/employee/get-employees",
+                      "hris/employee/get-create-employee-meta",
+                      "hris/employee/create-employee",
+                      "hris/employee/get-employee-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Group",
+                    "pages": [
+                      "hris/groups/get-groups",
+                      "hris/groups/get-group-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Employments",
+                    "pages": [
+                      "hris/employments/get-employments",
+                      "hris/employments/get-employment-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Pay Groups",
+                    "pages": [
+                      "hris/pay-groups/get-pay-groups",
+                      "hris/pay-groups/get-pay-group-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Payroll Runs",
+                    "pages": [
+                      "hris/payroll-runs/get-payroll-runs",
+                      "hris/payroll-runs/get-payroll-run-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Payroll Run Calendar",
+                    "pages": [
+                      "hris/payroll-run-calendar/get-payroll-run-calendars",
+                      "hris/payroll-run-calendar/get-payroll-run-calendar-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Employee Payroll Runs",
+                    "pages": [
+                      "hris/employee-payroll-runs/get-employee-payroll-runs",
+                      "hris/employee-payroll-runs/create-employee-payroll-runs",
+                      "hris/employee-payroll-runs/get-employee-payroll-runs-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Time Off",
+                    "pages": [
+                      "hris/time-off/get-time-off-list",
+                      "hris/time-off/create-time-off",
+                      "hris/time-off/get-time-off-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Time Off Balance",
+                    "pages": [
+                      "hris/time-off-balance/get-time-off-balances-list",
+                      "hris/time-off-balance/get-time-off-balance-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Time Sheet Entry",
+                    "pages": [
+                      "hris/timesheet-entries/get-timesheet-entries-list",
+                      "hris/timesheet-entries/create-timesheet-entries",
+                      "hris/timesheet-entries/get-timesheet-entries-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Compensation",
+                    "pages": [
+                      "hris/compensation/get-compensations",
+                      "hris/compensation/get-compensation-by-id"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Recruiting (ATS)",
+            "groups": [
+              {
+                "group": "Unified Models",
+                "pages": [
+                  {
+                    "group": "Activity",
+                    "pages": [
+                      "ats/activity/get-activities",
+                      "ats/activity/create-activity",
+                      "ats/activity/get-activity-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Application",
+                    "pages": [
+                      "ats/application/get-applications",
+                      "ats/application/create-application",
+                      "ats/application/get-application-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Attachment",
+                    "pages": [
+                      "ats/attachment/get-attachments",
+                      "ats/attachment/create-attachment",
+                      "ats/attachment/get-attachment-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Candidate",
+                    "pages": [
+                      "ats/candidate/get-candidates",
+                      "ats/candidate/create-candidate",
+                      "ats/candidate/get-candidate-by-id",
+                      "ats/candidate/meta-create-candidate",
+                      "ats/candidate/write-attachment-for-existing-candidate"
+                    ]
+                  },
+                  {
+                    "group": "Department",
+                    "pages": [
+                      "ats/department/get-departments",
+                      "ats/department/create-department",
+                      "ats/department/get-department-by-id"
+                    ]
+                  },
+                  {
+                    "group": "EEOC",
+                    "pages": [
+                      "ats/eeoc/get-eeocs",
+                      "ats/eeoc/create-eeoc",
+                      "ats/eeoc/get-eeoc-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Job Interview Stage",
+                    "pages": [
+                      "ats/job-interview-stage/get-job-interview-stages",
+                      "ats/job-interview-stage/create-job-interview-stage",
+                      "ats/job-interview-stage/get-job-interview-stage-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Job",
+                    "pages": [
+                      "ats/job/get-jobs",
+                      "ats/job/create-job",
+                      "ats/job/get-job-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Offer",
+                    "pages": [
+                      "ats/offer/get-offers",
+                      "ats/offer/create-offer",
+                      "ats/offer/get-offer-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Office",
+                    "pages": [
+                      "ats/office/get-offices",
+                      "ats/office/create-office",
+                      "ats/office/get-office-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Reject Reason",
+                    "pages": [
+                      "ats/reject-reason/get-reject-reasons",
+                      "ats/reject-reason/create-reject-reason",
+                      "ats/reject-reason/get-reject-reason-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Remote User",
+                    "pages": [
+                      "ats/remote-user/get-remote-users",
+                      "ats/remote-user/create-remote-user",
+                      "ats/remote-user/get-remote-user-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Scheduled Interview",
+                    "pages": [
+                      "ats/scheduled-interview/get-scheduled-interviews",
+                      "ats/scheduled-interview/create-scheduled-interview",
+                      "ats/scheduled-interview/get-scheduled-interview-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Scorecard",
+                    "pages": [
+                      "ats/scorecard/get-scorecards",
+                      "ats/scorecard/create-scorecard",
+                      "ats/scorecard/get-scorecard-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Screening Question",
+                    "pages": [
+                      "ats/screening-question/get-screening-questions",
+                      "ats/screening-question/create-screening-question",
+                      "ats/screening-question/get-screening-question-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Tag",
+                    "pages": [
+                      "ats/tag/get-tags",
+                      "ats/tag/create-tag",
+                      "ats/tag/get-tag-by-id"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Vendor Management System (VMS)",
+            "groups": [
+              {
+                "group": "Unified Models",
+                "pages": [
+                  {
+                    "group": "Job Posting",
+                    "pages": [
+                      "vms/job-posting/get-job-posting-list",
+                      "vms/job-posting/get-job-posting-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Job Seeker",
+                    "pages": [
+                      "vms/job-seeker/create-job-seeker",
+                      "vms/job-seeker/get-job-seeker-list"
+                    ]
+                  },
+                  {
+                    "group": "Work Order",
+                    "pages": [
+                      "vms/work-order/get-work-order-list",
+                      "vms/work-order/create-work-order"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "anchor": "Overview",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": "Features Overview",
+            "pages": ["features/overview"]
+          },
+          {
+            "group": "Bindbee Features",
+            "pages": [
+              "features/dashboard",
+              "features/magic-link",
+              "features/connectors",
+              "features/logs"
+            ]
+          }
+        ]
+      },
+      {
+        "anchor": "SDK",
+        "hidden": true,
+        "icon": "code",
+        "groups": [
+          {
+            "group": "Bindbee Embed",
+            "pages": [
+              "sdk/bindbee-embed",
+              "sdk/integrations",
+              "sdk/customizations"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "pages": ["sdk/create-link-token", "sdk/get-connector-token"]
+          }
+        ]
+      },
+      {
+        "anchor": "Webhooks",
+        "icon": "webhook",
+        "groups": [
+          {
+            "group": "Webhooks",
+            "pages": ["webhooks/overview"]
+          }
+        ]
+      },
+      {
+        "anchor": "Custom Fields",
+        "icon": "code-fork",
+        "groups": [
+          {
+            "group": "Custom Fields",
+            "pages": ["custom-fields/overview"]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "api": {
+    "openapi": ["spec.json"],
+    "mdx": {
+      "server": "https://api.bindbee.dev",
+      "auth": {
+        "method": "bearer"
+      }
+    }
+  },
+  "background": {
+    "color": {
+      "light": "#FAFAFB",
+      "dark": "#090807"
+    }
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Bindbee.dev",
+        "href": "https://bindbee.dev/"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Book Demo",
+      "href": "https://cal.com/team/bindbee/demo?utm_source=Documentation&utm_medium=Header&utm_campaign=Documentation"
+    }
+  },
+  "footer": {
+    "socials": {
+      "twitter": "https://twitter.com/bindbee?utm_source=documentation&utm_medium=documentation-footer&utm_campaign=documentation",
+      "linkedin": "https://www.linkedin.com/company/bindbee/?utm_source=documentation&utm_medium=documentation-footer&utm_campaign=documentation"
+    }
+  }
+}

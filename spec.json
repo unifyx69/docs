@@ -14297,6 +14297,12 @@
             "description": "Integration slug",
             "example": "ukg_pro"
           },
+          "integration_type": {
+            "type": "string",
+            "title": "Integration Type",
+            "description": "Integration Type",
+            "example": "API"
+          },
           "category": {
             "type": "string",
             "title": "Category",
@@ -14327,6 +14333,7 @@
           "integration_id",
           "is_enabled",
           "integration_slug",
+          "integration_type",
           "category",
           "display_name",
           "icon_url",
