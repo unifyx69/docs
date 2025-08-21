@@ -11900,7 +11900,7 @@
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Benefit Plan Type",
             "description": "The type of benefit plan",
-            "example": "MED"
+            "example": "Health Insurance"
           },
           "frequency": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
@@ -11951,6 +11951,18 @@
             "title": "Employer Benefit",
             "description": "The employer benefit plan the employee is enrolled in.",
             "example": "018b18ef-c488-7d40-9131-91bbc47c1007"
+          },
+          "benefit_plan_category": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Benefit Plan Category",
+            "description": "The category of the plan.",
+            "example": "MEDICAL"
+          },
+          "coverage_tier": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Coverage Tier",
+            "description": "The coverage tier for the benefit plan.",
+            "example": "EMPLOYEE_ONLY"
           }
         },
         "type": "object",
@@ -11969,7 +11981,9 @@
           "start_date",
           "effective_date",
           "end_date",
-          "employer_benefit"
+          "employer_benefit",
+          "benefit_plan_category",
+          "coverage_tier"
         ],
         "title": "HrisBenefit",
         "description": "The Benefit object is used to represent a benefit that an employee has enrolled in."
@@ -13271,7 +13285,7 @@
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Benefit Plan Type",
             "description": "The type of benefit plan",
-            "example": "MEDICAL"
+            "example": "Health Insurance"
           },
           "deduction_code": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
@@ -13284,6 +13298,21 @@
             "title": "Description",
             "description": "The employer benefit's description.",
             "example": "KTO Silver Plan"
+          },
+          "benefit_plan_category": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Benefit Plan Category",
+            "description": "The category of the plan.",
+            "example": "MEDICAL"
+          },
+          "coverage_tiers": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Coverage Tiers",
+            "description": "The coverage tiers for the benefit plan.",
+            "example": ["EMPLOYEE_SPOUSE", "EMPLOYEE_CHILDREN"]
           }
         },
         "type": "object",
@@ -13296,7 +13325,9 @@
           "provider_name",
           "benefit_plan_type",
           "deduction_code",
-          "description"
+          "description",
+          "benefit_plan_category",
+          "coverage_tiers"
         ],
         "title": "HrisEmployerBenefit",
         "description": "The Employer Benefit object is used to represent a benefit plan offered by a company."
@@ -14419,11 +14450,22 @@
             ],
             "title": "Request Format",
             "description": "format of the request",
+            "default": "JSON",
+            "example": "JSON"
+          },
+          "response_format": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/ResponseFormatEnum" },
+              { "type": "null" }
+            ],
+            "title": "Response Format",
+            "description": "format of the response",
+            "default": "JSON",
             "example": "JSON"
           }
         },
         "type": "object",
-        "required": ["method", "path", "headers", "request_format"],
+        "required": ["method", "path", "headers"],
         "title": "PassThroughRequest"
       },
       "PostCandidate": {
@@ -14595,6 +14637,11 @@
         "type": "string",
         "enum": ["JSON", "XML", "MULTIPART"],
         "title": "RequestFormatEnum"
+      },
+      "ResponseFormatEnum": {
+        "type": "string",
+        "enum": ["JSON", "XML", "MULTIPART"],
+        "title": "ResponseFormatEnum"
       },
       "Tax": {
         "properties": {
