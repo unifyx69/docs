@@ -351,51 +351,48 @@
                 "pages": [
                   {
                     "group": "Users",
-                    "pages": [
-                      "lms/users/get-lms-users",
-                      "lms/users/get-lms-user-by-id"
-                    ]
+                    "pages": ["lms/users/get-users", "lms/users/get-user-by-id"]
                   },
                   {
                     "group": "Courses",
                     "pages": [
-                      "lms/courses/get-lms-courses",
-                      "lms/courses/get-lms-course-by-id"
+                      "lms/courses/get-courses",
+                      "lms/courses/get-course-by-id"
                     ]
                   },
                   {
                     "group": "Contents",
                     "pages": [
-                      "lms/contents/get-lms-contents",
-                      "lms/contents/get-lms-content-by-id"
+                      "lms/contents/get-contents",
+                      "lms/contents/get-content-by-id"
                     ]
                   },
                   {
                     "group": "Skills",
                     "pages": [
-                      "lms/skills/get-lms-skills",
-                      "lms/skills/get-lms-skill-by-id"
+                      "lms/skills/get-skills",
+                      "lms/skills/get-skill-by-id"
                     ]
                   },
                   {
                     "group": "Categories",
                     "pages": [
-                      "lms/categories/get-lms-categories",
-                      "lms/categories/get-lms-category-by-id"
+                      "lms/categories/get-categories",
+                      "lms/categories/get-category-by-id"
                     ]
                   },
                   {
                     "group": "Completions",
                     "pages": [
-                      "lms/completions/get-lms-completions",
-                      "lms/completions/get-lms-completion-by-id"
+                      "lms/completions/get-completions",
+                      "lms/completions/get-completion-by-id"
                     ]
                   },
                   {
                     "group": "Enrollments",
                     "pages": [
-                      "lms/enrollments/get-lms-enrollments",
-                      "lms/enrollments/get-lms-enrollment-by-id"
+                      "lms/enrollments/get-enrollments",
+                      "lms/enrollments/get-enrollment-by-id"
                     ]
                   }
                 ]

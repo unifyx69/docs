@@ -8827,10 +8827,10 @@
     },
     "/api/lms/v1/users": {
       "get": {
-        "tags": ["LMS Users"],
-        "summary": "Get Lms Users",
+        "tags": ["Users"],
+        "summary": "Get Users",
         "description": "Returns a list of LMS User objects.",
-        "operationId": "get_lms_users_api_lms_v1_users_get",
+        "operationId": "get_users_api_lms_v1_users_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -8950,9 +8950,9 @@
     "/api/lms/v1/users/{id}": {
       "get": {
         "tags": ["LMS Users"],
-        "summary": "Get Lms User By Id",
+        "summary": "Get User By Id",
         "description": "Returns an LMS User object with the given id.",
-        "operationId": "get_lms_user_by_id_api_lms_v1_users__id__get",
+        "operationId": "get_user_by_id_api_lms_v1_users__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9017,9 +9017,9 @@
     "/api/lms/v1/courses": {
       "get": {
         "tags": ["LMS Courses"],
-        "summary": "Get Lms Courses",
+        "summary": "Get Courses",
         "description": "Returns a list of LMS Course objects.",
-        "operationId": "get_lms_courses_api_lms_v1_courses_get",
+        "operationId": "get_courses_api_lms_v1_courses_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9199,9 +9199,9 @@
     "/api/lms/v1/courses/{id}": {
       "get": {
         "tags": ["LMS Courses"],
-        "summary": "Get Lms Course By Id",
+        "summary": "Get Course By Id",
         "description": "Returns an LMS Course object with the given id.",
-        "operationId": "get_lms_course_by_id_api_lms_v1_courses__id__get",
+        "operationId": "get_course_by_id_api_lms_v1_courses__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9278,9 +9278,9 @@
     "/api/lms/v1/contents": {
       "get": {
         "tags": ["LMS Contents"],
-        "summary": "Get Lms Contents",
+        "summary": "Get Contents",
         "description": "Returns a list of LMS Content objects.",
-        "operationId": "get_lms_contents_api_lms_v1_contents_get",
+        "operationId": "get_contents_api_lms_v1_contents_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9451,9 +9451,9 @@
     "/api/lms/v1/contents/{id}": {
       "get": {
         "tags": ["LMS Contents"],
-        "summary": "Get Lms Content By Id",
+        "summary": "Get Content By Id",
         "description": "Returns an LMS Content object with the given id.",
-        "operationId": "get_lms_content_by_id_api_lms_v1_contents__id__get",
+        "operationId": "get_content_by_id_api_lms_v1_contents__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9530,9 +9530,9 @@
     "/api/lms/v1/skills": {
       "get": {
         "tags": ["LMS Skills"],
-        "summary": "Get Lms Skills",
+        "summary": "Get Skills",
         "description": "Returns a list of LMS Skill objects.",
-        "operationId": "get_lms_skills_api_lms_v1_skills_get",
+        "operationId": "get_skills_api_lms_v1_skills_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9640,9 +9640,9 @@
     "/api/lms/v1/skills/{id}": {
       "get": {
         "tags": ["LMS Skills"],
-        "summary": "Get Lms Skill By Id",
+        "summary": "Get Skill By Id",
         "description": "Returns an LMS Skill object with the given id.",
-        "operationId": "get_lms_skill_by_id_api_lms_v1_skills__id__get",
+        "operationId": "get_skill_by_id_api_lms_v1_skills__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9707,9 +9707,9 @@
     "/api/lms/v1/categories": {
       "get": {
         "tags": ["LMS Categories"],
-        "summary": "Get Lms Categories",
+        "summary": "Get Categories",
         "description": "Returns a list of LMS Category objects.",
-        "operationId": "get_lms_categories_api_lms_v1_categories_get",
+        "operationId": "get_categories_api_lms_v1_categories_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9817,9 +9817,9 @@
     "/api/lms/v1/categories/{id}": {
       "get": {
         "tags": ["LMS Categories"],
-        "summary": "Get Lms Category By Id",
+        "summary": "Get Category By Id",
         "description": "Returns an LMS Category object with the given id.",
-        "operationId": "get_lms_category_by_id_api_lms_v1_categories__id__get",
+        "operationId": "get_category_by_id_api_lms_v1_categories__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9884,9 +9884,9 @@
     "/api/lms/v1/completions": {
       "get": {
         "tags": ["LMS Completions"],
-        "summary": "Get Lms Completions",
+        "summary": "Get Completions",
         "description": "Returns a list of LMS Completion objects.",
-        "operationId": "get_lms_completions_api_lms_v1_completions_get",
+        "operationId": "get_completions_api_lms_v1_completions_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -10093,9 +10093,9 @@
     "/api/lms/v1/completions/{id}": {
       "get": {
         "tags": ["LMS Completions"],
-        "summary": "Get Lms Completion By Id",
+        "summary": "Get Completion By Id",
         "description": "Returns an LMS Completion object with the given id.",
-        "operationId": "get_lms_completion_by_id_api_lms_v1_completions__id__get",
+        "operationId": "get_completion_by_id_api_lms_v1_completions__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -10172,9 +10172,9 @@
     "/api/lms/v1/enrollments": {
       "get": {
         "tags": ["LMS Enrollments"],
-        "summary": "Get Lms Enrollments",
+        "summary": "Get Enrollments",
         "description": "Returns a list of LMS Enrollment objects.",
-        "operationId": "get_lms_enrollments_api_lms_v1_enrollments_get",
+        "operationId": "get_enrollments_api_lms_v1_enrollments_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -10355,9 +10355,9 @@
     "/api/lms/v1/enrollments/{id}": {
       "get": {
         "tags": ["LMS Enrollments"],
-        "summary": "Get Lms Enrollment By Id",
+        "summary": "Get Enrollment By Id",
         "description": "Returns an LMS Enrollment object with the given id.",
-        "operationId": "get_lms_enrollment_by_id_api_lms_v1_enrollments__id__get",
+        "operationId": "get_enrollment_by_id_api_lms_v1_enrollments__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
