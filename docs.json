@@ -15,6 +15,24 @@
         "icon": "book-open",
         "tabs": [
           {
+            "tab": "Overview",
+            "groups": [
+              {
+                "group": "Features Overview",
+                "pages": ["features/overview"]
+              },
+              {
+                "group": "Bindbee Features",
+                "pages": [
+                  "features/dashboard",
+                  "features/magic-link",
+                  "features/connectors",
+                  "features/logs"
+                ]
+              }
+            ]
+          },
+          {
             "tab": "API Basics",
             "groups": [
               {
@@ -326,53 +344,62 @@
             ]
           },
           {
-            "tab": "Vendor Management System (VMS)",
+            "tab": "Learning Management System (LMS)",
             "groups": [
               {
                 "group": "Unified Models",
                 "pages": [
                   {
-                    "group": "Job Posting",
+                    "group": "Users",
                     "pages": [
-                      "vms/job-posting/get-job-posting-list",
-                      "vms/job-posting/get-job-posting-by-id"
+                      "lms/users/get-lms-users",
+                      "lms/users/get-lms-user-by-id"
                     ]
                   },
                   {
-                    "group": "Job Seeker",
+                    "group": "Courses",
                     "pages": [
-                      "vms/job-seeker/create-job-seeker",
-                      "vms/job-seeker/get-job-seeker-list"
+                      "lms/courses/get-lms-courses",
+                      "lms/courses/get-lms-course-by-id"
                     ]
                   },
                   {
-                    "group": "Work Order",
+                    "group": "Contents",
                     "pages": [
-                      "vms/work-order/get-work-order-list",
-                      "vms/work-order/create-work-order"
+                      "lms/contents/get-lms-contents",
+                      "lms/contents/get-lms-content-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Skills",
+                    "pages": [
+                      "lms/skills/get-lms-skills",
+                      "lms/skills/get-lms-skill-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Categories",
+                    "pages": [
+                      "lms/categories/get-lms-categories",
+                      "lms/categories/get-lms-category-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Completions",
+                    "pages": [
+                      "lms/completions/get-lms-completions",
+                      "lms/completions/get-lms-completion-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Enrollments",
+                    "pages": [
+                      "lms/enrollments/get-lms-enrollments",
+                      "lms/enrollments/get-lms-enrollment-by-id"
                     ]
                   }
                 ]
               }
-            ]
-          }
-        ]
-      },
-      {
-        "anchor": "Overview",
-        "icon": "book-open",
-        "groups": [
-          {
-            "group": "Features Overview",
-            "pages": ["features/overview"]
-          },
-          {
-            "group": "Bindbee Features",
-            "pages": [
-              "features/dashboard",
-              "features/magic-link",
-              "features/connectors",
-              "features/logs"
             ]
           }
         ]

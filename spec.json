@@ -8825,6 +8825,1612 @@
         }
       }
     },
+    "/api/lms/v1/users": {
+      "get": {
+        "tags": ["LMS Users"],
+        "summary": "Get Lms Users",
+        "description": "Returns a list of LMS User objects.",
+        "operationId": "get_lms_users_api_lms_v1_users_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object."
+          },
+          {
+            "name": "email_address",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will only return users for this email address.",
+              "title": "Email Address"
+            },
+            "description": "If provided, will only return users for this email address.",
+            "example": "john@doe.com"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/LMSUserStatus",
+              "description": "If provided, will only return enrollments for this status."
+            },
+            "description": "If provided, will only return enrollments for this status.",
+            "example": "ACTIVE"
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page. Maximum size is 100.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page. Maximum size is 100."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LmsUserPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/users/{id}": {
+      "get": {
+        "tags": ["LMS Users"],
+        "summary": "Get Lms User By Id",
+        "description": "Returns an LMS User object with the given id.",
+        "operationId": "get_lms_user_by_id_api_lms_v1_users__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LmsUser" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/courses": {
+      "get": {
+        "tags": ["LMS Courses"],
+        "summary": "Get Lms Courses",
+        "description": "Returns a list of LMS Course objects.",
+        "operationId": "get_lms_courses_api_lms_v1_courses_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/LMSCourseStatus",
+              "description": "If provided, will only return courses with this status."
+            },
+            "description": "If provided, will only return courses with this status.",
+            "example": "ACTIVE"
+          },
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object."
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will return courses with these categories",
+              "title": "Category"
+            },
+            "description": "If provided, will return courses with these categories",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          {
+            "name": "skill",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will return courses with these skills",
+              "title": "Skill"
+            },
+            "description": "If provided, will return courses with these skills",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          {
+            "name": "instructor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will return courses with these instructors",
+              "title": "Instructor"
+            },
+            "description": "If provided, will return courses with these instructors",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          {
+            "name": "content",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will return courses with these contents",
+              "title": "Content"
+            },
+            "description": "If provided, will return courses with these contents",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will return courses with these languages",
+              "title": "Language"
+            },
+            "description": "If provided, will return courses with these languages",
+            "example": "en_US"
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page. Maximum size is 100.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page. Maximum size is 100."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LmsCoursePaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/courses/{id}": {
+      "get": {
+        "tags": ["LMS Courses"],
+        "summary": "Get Lms Course By Id",
+        "description": "Returns an LMS Course object with the given id.",
+        "operationId": "get_lms_course_by_id_api_lms_v1_courses__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LmsCourse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/contents": {
+      "get": {
+        "tags": ["LMS Contents"],
+        "summary": "Get Lms Contents",
+        "description": "Returns a list of LMS Content objects.",
+        "operationId": "get_lms_contents_api_lms_v1_contents_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object."
+          },
+          {
+            "name": "course",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "If provided, will only return contents for this course.",
+              "title": "Course"
+            },
+            "description": "If provided, will only return contents for this course.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          {
+            "name": "skill",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "If provided, will only return contents for this skill.",
+              "title": "Skill"
+            },
+            "description": "If provided, will only return contents for this skill.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "If provided, will only return contents for this category.",
+              "title": "Category"
+            },
+            "description": "If provided, will only return contents for this category.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will only return contents for this language.",
+              "title": "Language"
+            },
+            "description": "If provided, will only return contents for this language.",
+            "example": "en_US"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/LMSContentStatus",
+              "description": "If provided, will only return contents for this status."
+            },
+            "description": "If provided, will only return contents for this status.",
+            "example": "ACTIVE"
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page. Maximum size is 100.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page. Maximum size is 100."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LmsContentPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/contents/{id}": {
+      "get": {
+        "tags": ["LMS Contents"],
+        "summary": "Get Lms Content By Id",
+        "description": "Returns an LMS Content object with the given id.",
+        "operationId": "get_lms_content_by_id_api_lms_v1_contents__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LmsContent" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/skills": {
+      "get": {
+        "tags": ["LMS Skills"],
+        "summary": "Get Lms Skills",
+        "description": "Returns a list of LMS Skill objects.",
+        "operationId": "get_lms_skills_api_lms_v1_skills_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object."
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/LMSSkillStatus",
+              "description": "If provided, will only return skills with this status."
+            },
+            "description": "If provided, will only return skills with this status.",
+            "example": "ACTIVE"
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page. Maximum size is 100.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page. Maximum size is 100."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LmsSkillPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/skills/{id}": {
+      "get": {
+        "tags": ["LMS Skills"],
+        "summary": "Get Lms Skill By Id",
+        "description": "Returns an LMS Skill object with the given id.",
+        "operationId": "get_lms_skill_by_id_api_lms_v1_skills__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LmsSkill" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/categories": {
+      "get": {
+        "tags": ["LMS Categories"],
+        "summary": "Get Lms Categories",
+        "description": "Returns a list of LMS Category objects.",
+        "operationId": "get_lms_categories_api_lms_v1_categories_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object."
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/LMSCategoryStatus",
+              "description": "If provided, will only return categories with this status."
+            },
+            "description": "If provided, will only return categories with this status.",
+            "example": "ACTIVE"
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page. Maximum size is 100.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page. Maximum size is 100."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LmsCategoryPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/categories/{id}": {
+      "get": {
+        "tags": ["LMS Categories"],
+        "summary": "Get Lms Category By Id",
+        "description": "Returns an LMS Category object with the given id.",
+        "operationId": "get_lms_category_by_id_api_lms_v1_categories__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LmsCategory" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/completions": {
+      "get": {
+        "tags": ["LMS Completions"],
+        "summary": "Get Lms Completions",
+        "description": "Returns a list of LMS Completion objects.",
+        "operationId": "get_lms_completions_api_lms_v1_completions_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "course",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "If provided, will only return completions for this course.",
+              "title": "Course"
+            },
+            "description": "If provided, will only return completions for this course.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "If provided, will only return completions for this user.",
+              "title": "User"
+            },
+            "description": "If provided, will only return completions for this user.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          {
+            "name": "content",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "If provided, will only return completions for this content.",
+              "title": "Content"
+            },
+            "description": "If provided, will only return completions for this content.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          {
+            "name": "grade",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/LMSGrade",
+              "description": "If provided, will only return completions for this grade."
+            },
+            "description": "If provided, will only return completions for this grade.",
+            "example": "A"
+          },
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object."
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page. Maximum size is 100.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page. Maximum size is 100."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
+            "name": "started_at_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with started_at same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Started At From"
+            },
+            "description": "If provided, only objects with started_at same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "started_at_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with started_at same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Started At To"
+            },
+            "description": "If provided, only objects with started_at same or before this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "completed_at_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with completed_at same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Completed At From"
+            },
+            "description": "If provided, only objects with completed_at same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "completed_at_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with completed_at same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Completed At To"
+            },
+            "description": "If provided, only objects with completed_at same or before this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LmsCompletionPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/completions/{id}": {
+      "get": {
+        "tags": ["LMS Completions"],
+        "summary": "Get Lms Completion By Id",
+        "description": "Returns an LMS Completion object with the given id.",
+        "operationId": "get_lms_completion_by_id_api_lms_v1_completions__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LmsCompletion" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/enrollments": {
+      "get": {
+        "tags": ["LMS Enrollments"],
+        "summary": "Get Lms Enrollments",
+        "description": "Returns a list of LMS Enrollment objects.",
+        "operationId": "get_lms_enrollments_api_lms_v1_enrollments_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object."
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will only return enrollments for this user.",
+              "title": "User"
+            },
+            "description": "If provided, will only return enrollments for this user.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          {
+            "name": "course",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will only return enrollments for this course.",
+              "title": "Course"
+            },
+            "description": "If provided, will only return enrollments for this course.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page. Maximum size is 100.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page. Maximum size is 100."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
+            "name": "start_date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Start Date From"
+            },
+            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "start_date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Start Date To"
+            },
+            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "end_date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "End Date From"
+            },
+            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "end_date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "End Date To"
+            },
+            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LmsEnrollmentPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/enrollments/{id}": {
+      "get": {
+        "tags": ["LMS Enrollments"],
+        "summary": "Get Lms Enrollment By Id",
+        "description": "Returns an LMS Enrollment object with the given id.",
+        "operationId": "get_lms_enrollment_by_id_api_lms_v1_enrollments__id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Id" }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+            "example": false
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response.",
+            "example": false
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+            "example": "manager[first_name,last_name]"
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LmsEnrollment" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/embedded/v1/link/create-link-token": {
       "post": {
         "tags": ["Link"],
@@ -11077,7 +12683,7 @@
       },
       "Category": {
         "type": "string",
-        "enum": ["CRM", "HRIS", "ATS"],
+        "enum": ["CRM", "HRIS", "ATS", "LMS"],
         "title": "Category"
       },
       "ConnectorPaginatedResponse": {
@@ -14377,6 +15983,36 @@
         "enum": ["Syncing", "Done", "Failed"],
         "title": "JobDisplayStatus"
       },
+      "LMSCategoryStatus": {
+        "type": "string",
+        "enum": ["ACTIVE", "PENDING", "INACTIVE"],
+        "title": "LMSCategoryStatus"
+      },
+      "LMSContentStatus": {
+        "type": "string",
+        "enum": ["ACTIVE", "PENDING", "INACTIVE"],
+        "title": "LMSContentStatus"
+      },
+      "LMSCourseStatus": {
+        "type": "string",
+        "enum": ["ACTIVE", "PENDING", "INACTIVE"],
+        "title": "LMSCourseStatus"
+      },
+      "LMSGrade": {
+        "type": "string",
+        "enum": ["A", "B", "C", "D", "F", "PASS", "FAIL", "-"],
+        "title": "LMSGrade"
+      },
+      "LMSSkillStatus": {
+        "type": "string",
+        "enum": ["ACTIVE", "PENDING", "INACTIVE"],
+        "title": "LMSSkillStatus"
+      },
+      "LMSUserStatus": {
+        "type": "string",
+        "enum": ["ACTIVE", "PENDING", "INACTIVE"],
+        "title": "LMSUserStatus"
+      },
       "LinkTokenCreate": {
         "properties": {
           "end_user_data": {
@@ -14400,6 +16036,785 @@
         "type": "object",
         "required": ["end_user_data", "category", "integration"],
         "title": "LinkTokenCreate"
+      },
+      "LmsCategory": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name",
+            "description": "The name of the category",
+            "example": "Programming"
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Description",
+            "description": "The description of the category",
+            "example": "All programming topics"
+          },
+          "status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Status",
+            "description": "The status of the category. Possible values include: ACTIVE, PENDING, INACTIVE or - in cases where there is no clear mapping - the original value passed through",
+            "example": "ACTIVE"
+          }
+        },
+        "type": "object",
+        "required": ["id", "remote_id", "modified_at", "custom_fields"],
+        "title": "LmsCategory"
+      },
+      "LmsCategoryPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/LmsCategory" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "LmsCategoryPaginatedResponse"
+      },
+      "LmsCompletion": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
+          "user": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "User",
+            "description": "The user who completed the course",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "course": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "Course",
+            "description": "The course that the user completed",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "content": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "Content",
+            "description": "The content that the user completed",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "score": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Score",
+            "description": "The score obtained by the user",
+            "example": 95
+          },
+          "grade": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Grade",
+            "description": "The grade achieved by the user. Possible values include: A, B, C, D, F, PASS, FAIL or - in cases where there is no clear mapping - the original value passed through",
+            "example": "PASS"
+          },
+          "started_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Started At",
+            "description": "The date and time when the user started the course",
+            "example": "2025-08-01T10:00:00Z"
+          },
+          "completed_at": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Completed At",
+            "description": "The date and time when the user completed the course",
+            "example": "2025-08-01T11:15:00Z"
+          },
+          "time_duration": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Time Duration",
+            "description": "The time duration of the course used by the user in ISO 8601 format",
+            "example": "PT1H15M"
+          }
+        },
+        "type": "object",
+        "required": ["id", "remote_id", "modified_at", "custom_fields"],
+        "title": "LmsCompletion"
+      },
+      "LmsCompletionPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/LmsCompletion" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "LmsCompletionPaginatedResponse"
+      },
+      "LmsContent": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
+          "title": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Title",
+            "description": "The title of the content",
+            "example": "NumPy Basics"
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Description",
+            "description": "The description of the content",
+            "example": "Array manipulation"
+          },
+          "languages": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Languages",
+            "description": "The languages of the content",
+            "example": ["en_US", "en_GB"]
+          },
+          "cover_image": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cover Image",
+            "description": "The URL of the cover image of the content",
+            "example": "https://img.example.com/numpy.png"
+          },
+          "url": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Url",
+            "description": "The URL of the content",
+            "example": "https://lms.example.com/content/numpy"
+          },
+          "duration": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Duration",
+            "description": "The duration of the content in ISO 8601 format",
+            "example": "PT45M"
+          },
+          "categories": {
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
+            "title": "Categories",
+            "description": "The categories of the content",
+            "example": ["018b18ef-c487-703c-afd9-0ca478ccd9d6"]
+          },
+          "skills": {
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
+            "title": "Skills",
+            "description": "The skills of the content",
+            "example": ["018b18ef-c487-703c-afd9-0ca478ccd9d6"]
+          },
+          "courses": {
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
+            "title": "Courses",
+            "description": "The courses that the content belongs to",
+            "example": ["018b18ef-c487-703c-afd9-0ca478ccd9d6"]
+          },
+          "order": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Order",
+            "description": "Order of the content inside a course",
+            "example": 1
+          },
+          "provider": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Provider",
+            "description": "The provider of the content",
+            "example": "Coursera"
+          },
+          "status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Status",
+            "description": "The status of the content. Possible values include: ACTIVE, PENDING, INACTIVE or - in cases where there is no clear mapping - the original value passed through",
+            "example": "ACTIVE"
+          }
+        },
+        "type": "object",
+        "required": ["id", "remote_id", "modified_at", "custom_fields"],
+        "title": "LmsContent"
+      },
+      "LmsContentPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/LmsContent" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "LmsContentPaginatedResponse"
+      },
+      "LmsCourse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name",
+            "description": "The name of the course",
+            "example": "Python for Data Science"
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Description",
+            "description": "The description of the course",
+            "example": "Introductory course"
+          },
+          "cover_image": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cover Image",
+            "description": "The URL of the cover image of the course",
+            "example": "https://img.example.com/py.png"
+          },
+          "url": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Url",
+            "description": "The URL of the course",
+            "example": "https://lms.example.com/course/py"
+          },
+          "duration": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Duration",
+            "description": "The duration of the course in ISO 8601 format",
+            "example": "PT5H30M"
+          },
+          "languages": {
+            "anyOf": [
+              { "items": { "type": "string" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Languages",
+            "description": "The languages of the course",
+            "example": ["en_US"]
+          },
+          "categories": {
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
+            "title": "Categories",
+            "description": "The categories of the course",
+            "example": ["018b18ef-c487-703c-afd9-0ca478ccd9d6"]
+          },
+          "contents": {
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
+            "title": "Contents",
+            "description": "The contents of the course",
+            "example": ["018b18ef-c487-703c-afd9-0ca478ccd9d6"]
+          },
+          "skills": {
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
+            "title": "Skills",
+            "description": "The skills of the course",
+            "example": ["018b18ef-c487-703c-afd9-0ca478ccd9d6"]
+          },
+          "instructors": {
+            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
+            "title": "Instructors",
+            "description": "The instructors of the course",
+            "example": ["018b18ef-c487-703c-afd9-0ca478ccd9d6"]
+          },
+          "status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Status",
+            "description": "The status of the course. Possible values include: ACTIVE, PENDING, INACTIVE or - in cases where there is no clear mapping - the original value passed through",
+            "example": "ACTIVE"
+          }
+        },
+        "type": "object",
+        "required": ["id", "remote_id", "modified_at", "custom_fields"],
+        "title": "LmsCourse"
+      },
+      "LmsCoursePaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/LmsCourse" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "LmsCoursePaginatedResponse"
+      },
+      "LmsEnrollment": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
+          "user": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "User",
+            "description": "The user who is enrolled in the course",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "course": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "Course",
+            "description": "The course that the user is enrolled in",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "start_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Start Date",
+            "description": "The date and time when the user started the course",
+            "example": "2025-08-01T10:00:00Z"
+          },
+          "completion": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "Completion",
+            "description": "The completion of the course",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          }
+        },
+        "type": "object",
+        "required": ["id", "remote_id", "modified_at", "custom_fields"],
+        "title": "LmsEnrollment"
+      },
+      "LmsEnrollmentPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/LmsEnrollment" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "LmsEnrollmentPaginatedResponse"
+      },
+      "LmsSkill": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name",
+            "description": "The name of the skill",
+            "example": "Data Analysis"
+          },
+          "status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Status",
+            "description": "The status of the skill. Possible values include: ACTIVE, PENDING, INACTIVE or - in cases where there is no clear mapping - the original value passed through",
+            "example": "ACTIVE"
+          }
+        },
+        "type": "object",
+        "required": ["id", "remote_id", "modified_at", "custom_fields"],
+        "title": "LmsSkill"
+      },
+      "LmsSkillPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/LmsSkill" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "LmsSkillPaginatedResponse"
+      },
+      "LmsUser": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
+          "remote_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "example": "123321"
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "example": "2021-10-16T00:00:00Z"
+          },
+          "raw_data": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "example": {
+              "key_1": "Platform dependent data 1",
+              "key_2": "Platform dependent data 2"
+            }
+          },
+          "custom_fields": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "example": {
+              "category_group": "REG",
+              "disability_type": "ASBERG",
+              "hire_date": "1991-03-16T00:00:00",
+              "hire_source": "REFER",
+              "nationality": "USA",
+              "original_hire_date": "1991-03-16T00:00:00"
+            }
+          },
+          "first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "First Name",
+            "description": "The first name of the user",
+            "example": "Jane"
+          },
+          "last_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Last Name",
+            "description": "The last name of the user",
+            "example": "Doe"
+          },
+          "middle_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Middle Name",
+            "description": "The middle name of the user",
+            "example": "A."
+          },
+          "email_address": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Email Address",
+            "description": "The email address of the user",
+            "example": "jane.doe@example.com"
+          },
+          "phone_number": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Phone Number",
+            "description": "The phone number of the user",
+            "example": "+1 415 555 1212"
+          },
+          "status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Status",
+            "description": "The status of the user. Possible values include: ACTIVE, PENDING, INACTIVE or - in cases where there is no clear mapping - the original value passed through",
+            "example": "ACTIVE"
+          }
+        },
+        "type": "object",
+        "required": ["id", "remote_id", "modified_at", "custom_fields"],
+        "title": "LmsUser"
+      },
+      "LmsUserPaginatedResponse": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "example": "MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "example": 50
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/LmsUser" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "LmsUserPaginatedResponse"
       },
       "MetaApiResponseModel": {
         "properties": {
@@ -14668,7 +17083,7 @@
       },
       "UnifiedApiCategory": {
         "type": "string",
-        "enum": ["HRIS", "ATS"],
+        "enum": ["HRIS", "ATS", "LMS"],
         "title": "UnifiedApiCategory"
       },
       "ValidationError": {
