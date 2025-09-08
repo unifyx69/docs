@@ -24,6 +24,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of bank info records to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of bank info records to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -227,30 +239,40 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the benefits to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the benefits to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "employee_id",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "The ID of the employee.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the employees for the benefits to fetch",
               "title": "Employee Id"
             },
-            "description": "The ID of the employee.",
-            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+            "description": "The ID of the employees for the benefits to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "employer_benefit_id",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "The ID of the employer benefit.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the employer benefits for the benefits to fetch",
               "title": "Employer Benefit Id"
             },
-            "description": "The ID of the employer benefit.",
-            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+            "description": "The ID of the employer benefits for the benefits to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "remote_id",
@@ -528,6 +550,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of companies to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of companies to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -707,17 +741,28 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the dependents to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the dependents to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "employee_id",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "The ID of the employee.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the employees to fetch dependents for",
               "title": "Employee Id"
             },
-            "description": "The ID of the employee.",
-            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+            "description": "The ID of the employees to fetch dependents for",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "remote_id",
@@ -923,30 +968,40 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the dependent benefits to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the dependent benefits to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "employer_benefit_id",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "The ID of the employer benefit.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the employer benefits to fetch dependent benefits for",
               "title": "Employer Benefit Id"
             },
-            "description": "The ID of the employer benefit.",
-            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+            "description": "The ID of the employer benefits to fetch dependent benefits for",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "dependent_id",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "The ID of the dependent.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the dependents to fetch dependent benefits for",
               "title": "Dependent Id"
             },
-            "description": "The ID of the dependent.",
-            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+            "description": "The ID of the dependents to fetch dependent benefits for",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "remote_id",
@@ -1202,6 +1257,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the employer benefits to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the employer benefits to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -1381,17 +1448,28 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of employees to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of employees to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "manager_id",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "If provided, will only return employees for this manager.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of managers to fetch employees for",
               "title": "Manager Id"
             },
-            "description": "If provided, will only return employees for this manager.",
-            "example": "018d69a2-ea0e-7c93-8b7a-709b126e9c7a"
+            "description": "The ID of managers to fetch employees for",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "remote_id",
@@ -1410,13 +1488,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "If provided, will only return employees for this company",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of companies to fetch employees for",
               "title": "Company Id"
             },
-            "description": "If provided, will only return employees for this company",
-            "example": "018af6f5-180c-782e-816a-1d9b01c63652"
+            "description": "The ID of companies to fetch employees for",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "include_raw_data",
@@ -1717,17 +1794,28 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the employments to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the employments to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "employee_id",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "The ID of the employee.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID for employees to fetch employments for",
               "title": "Employee Id"
             },
-            "description": "The ID of the employee.",
-            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+            "description": "The ID for employees to fetch employments for",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "remote_id",
@@ -1933,6 +2021,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the groups to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the groups to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -2112,6 +2212,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the pay groups to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the pay groups to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -2290,6 +2402,18 @@
         "operationId": "get_payroll_runs_api_hris_v1_payroll_runs_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the payroll runs to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the payroll runs to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
           {
             "name": "run_type",
             "in": "query",
@@ -2590,6 +2714,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the payroll run calendars to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the payroll run calendars to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -2799,26 +2935,24 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "The ID of the employee.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the employees to fetch employee payroll run for",
               "title": "Employee Id"
             },
-            "description": "The ID of the employee.",
-            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+            "description": "The ID of the employees to fetch employee payroll run for",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "payroll_run_id",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "The payroll being run.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The IDs of the payroll runs to fetch employee payroll run for",
               "title": "Payroll Run Id"
             },
-            "description": "The payroll being run.",
-            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+            "description": "The IDs of the payroll runs to fetch employee payroll run for",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "remote_id",
@@ -3137,6 +3271,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the time offs to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the time offs to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -3153,13 +3299,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "The ID of the employee.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the employees to fetch time offs for",
               "title": "Employee Id"
             },
-            "description": "The ID of the employee.",
-            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+            "description": "The ID of the employees to fetch time offs for",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "include_raw_data",
@@ -3390,6 +3535,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the time off balances to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the time off balances to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -3406,13 +3563,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "The ID of the employee.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the employees to fetch time off balance for",
               "title": "Employee Id"
             },
-            "description": "The ID of the employee.",
-            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+            "description": "The ID of the employees to fetch time off balance for",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "include_raw_data",
@@ -3644,17 +3800,28 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the compensations to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the compensations to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "employee_id",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "The ID of the employee.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the employees to fetch compensation for",
               "title": "Employee Id"
             },
-            "description": "The ID of the employee.",
-            "example": "f5d4c5e4-3f5e-4e3e-8f5e-4e3f5e4e3f5e"
+            "description": "The ID of the employees to fetch compensation for",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "remote_id",
@@ -3870,6 +4037,30 @@
             },
             "description": "The third-party API ID of the matching object.",
             "example": "3235005483341316245"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the timesheet entries to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the timesheet entries to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
+            "name": "employee_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the employees to fetch timesheet entries for",
+              "title": "Employee Id"
+            },
+            "description": "The ID of the employees to fetch timesheet entries for",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "include_raw_data",
@@ -4114,6 +4305,18 @@
             "example": "i5kqe8bSedEdPLX9pHhFojKdo7Uzvue0f7I4NVhaDfV0GTxF0uAgwa_COb3zZU3T"
           },
           {
+            "name": "is_active",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+              "description": "Filter connectors by active status",
+              "title": "Is Active"
+            },
+            "description": "Filter connectors by active status",
+            "example": true
+          },
+          {
             "name": "page_size",
             "in": "query",
             "required": false,
@@ -4261,6 +4464,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the activities to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the activities to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -4290,24 +4505,24 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "The user id of the user triggering activity",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The user ids of the users triggering activity",
               "title": "User"
             },
-            "description": "The user id of the user triggering activity",
-            "example": "01932bf2-b8bc-7bc0-bef0-1a7e2971ec31"
+            "description": "The user ids of the users triggering activity",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "candidate",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "The candidate id concerning the activity.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The candidate ids concerning the activity.",
               "title": "Candidate"
             },
-            "description": "The candidate id concerning the activity.",
-            "example": "01932bf2-b8bc-7bc0-bef0-1a7e2971ec31"
+            "description": "The candidate ids concerning the activity.",
+            "example": "01932bf2-b8bc-7bc0-bef0-1a7e2971ec31,01931edf-04b6-7391-8a5c-93ac4b395316"
           },
           {
             "name": "include_custom_fields",
@@ -4525,6 +4740,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the applications to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the applications to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -4541,24 +4768,24 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "The current stage id of the application",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The current stage ids of the application",
               "title": "Current Stage"
             },
-            "description": "The current stage id of the application",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "description": "The current stage ids of the application",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "credited_to",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "The user id which has the credit for this application",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The user ids which has the credit for the applications to fetch",
               "title": "Credited To"
             },
-            "description": "The user id which has the credit for this application",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "description": "The user ids which has the credit for the applications to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "source",
@@ -4577,36 +4804,36 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "The job id of the application",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The job ids for the applications to fetch",
               "title": "Job"
             },
-            "description": "The job id of the application",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "description": "The job ids for the applications to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "candidate",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "The candidate id of the application",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The candidate ids for the applications to fetch",
               "title": "Candidate"
             },
-            "description": "The candidate id of the application",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "description": "The candidate ids for the applications to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "reject_reason",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "The reject reason id of the application",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The reject reason ids for the applications to fetch",
               "title": "Reject Reason"
             },
-            "description": "The reject reason id of the application",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "description": "The reject reason ids for the applications to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "include_raw_data",
@@ -4829,6 +5056,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the attachments to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the attachments to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -4845,12 +5084,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "The candidate id of the attachment",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The candidate ids for the attachments to fetch",
               "title": "Candidate"
             },
-            "description": "The candidate id of the attachment",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "description": "The candidate ids for the attachments to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "include_raw_data",
@@ -5073,6 +5312,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the candidates to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the candidates to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -5085,17 +5336,16 @@
             "example": "3235005483341316245"
           },
           {
-            "name": "company_id",
+            "name": "company",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "If provided, will only return candidate for this company",
-              "title": "Company Id"
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return candidate for these companies",
+              "title": "Company"
             },
-            "description": "If provided, will only return candidate for this company",
-            "example": "2024-02-21T21:22:12.993+05:30"
+            "description": "If provided, will only return candidate for these companies",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "first_name",
@@ -5131,7 +5381,7 @@
               "title": "Tag"
             },
             "description": "If provided, will return candidates with this tag",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "example": "Tech Experience"
           },
           {
             "name": "email_addresses",
@@ -5463,6 +5713,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the departments to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the departments to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "include_raw_data",
             "in": "query",
             "required": false,
@@ -5683,16 +5945,28 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the eeocs to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the eeocs to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "candidate",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "The candidate id of the eeoc",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The candidates id for the eeocs to fetch",
               "title": "Candidate"
             },
-            "description": "The candidate id of the eeoc",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "description": "The candidates id for the eeocs to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "include_raw_data",
@@ -5915,6 +6189,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the job interview stages to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the job interview stages to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "include_raw_data",
             "in": "query",
             "required": false,
@@ -5932,12 +6218,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "Return the stages for this particular jobid",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "Return the stages for the given jobids",
               "title": "Job"
             },
-            "description": "Return the stages for this particular jobid",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "description": "Return the stages for the given jobids",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "include_custom_fields",
@@ -6149,6 +6435,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the jobs to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the jobs to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -6188,16 +6486,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "array",
-              "items": { "type": "string" },
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
               "description": "If provided, will return jobs in these offices",
               "title": "Offices"
             },
             "description": "If provided, will return jobs in these offices",
-            "example": [
-              "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92",
-              "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
-            ]
+            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92,0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
           },
           {
             "name": "include_raw_data",
@@ -6420,6 +6714,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the offers to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the offers to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -6436,7 +6742,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
               "description": "The application id of the offer",
               "title": "Application"
             },
@@ -6448,12 +6754,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "The creator of the offer",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The creator for the offers to fetch",
               "title": "Creator"
             },
-            "description": "The creator of the offer",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "description": "The creator for the offers to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "include_raw_data",
@@ -6675,6 +6981,18 @@
         "operationId": "get_offices_api_ats_v1_offices_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the offices to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the offices to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
           {
             "name": "remote_id",
             "in": "query",
@@ -6908,6 +7226,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the reject reasons to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the reject reasons to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "include_raw_data",
             "in": "query",
             "required": false,
@@ -7127,6 +7457,18 @@
         "operationId": "get_remote_users_api_ats_v1_remote_users_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the remote users to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the remote users to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
           {
             "name": "email",
             "in": "query",
@@ -7360,40 +7702,52 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the scheduled interviews to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the scheduled interviews to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "application",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
               "description": "Application id of the scheduled interview",
               "title": "Application"
             },
             "description": "Application id of the scheduled interview",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "organizer",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "User id of the organizer of the scheduled interview",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "User id of the organizers for the scheduled interview to fetch",
               "title": "Organizer"
             },
-            "description": "User id of the organizer of the scheduled interview",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "description": "User id of the organizers for the scheduled interview to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "job_interview_stage",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "Job interview stage id of the scheduled interview",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "Job interview stage id of the scheduled interviews",
               "title": "Job Interview Stage"
             },
-            "description": "Job interview stage id of the scheduled interview",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "description": "Job interview stage id of the scheduled interviews",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "include_raw_data",
@@ -7618,6 +7972,18 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the scorecards to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the scorecards to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "application",
             "in": "query",
             "required": false,
@@ -7634,24 +8000,24 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "The interview id for the scorecard",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The interview ids for the scorecards to fetch",
               "title": "Interview"
             },
-            "description": "The interview id for the scorecard",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "description": "The interview ids for the scorecards to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "interviewer",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "The interviewer id for the scorecard",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The interviewer ids for the scorecards to fetch",
               "title": "Interviewer"
             },
-            "description": "The interviewer id for the scorecard",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "description": "The interviewer ids for the scorecards to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "include_raw_data",
@@ -7874,16 +8240,28 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the screening questions to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the screening questions to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "job",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "The job id for the screening question",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The job ids for the screening questions to fetch",
               "title": "Job"
             },
-            "description": "The job id for the screening question",
-            "example": "0194bcb7-bf3e-7315-8628-0dc9bf1b6d92"
+            "description": "The job ids for the screening questions to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
             "name": "include_raw_data",
@@ -8107,6 +8485,18 @@
         "operationId": "get_tags_api_ats_v1_tags_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the tags to fetch",
+              "title": "Ids"
+            },
+            "description": "The ID of the tags to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
           {
             "name": "include_raw_data",
             "in": "query",
@@ -8338,6 +8728,18 @@
             },
             "description": "The connector token for the connector",
             "example": "i5kqe8bSedEdPLX9pHhFojKdo7Uzvue0f7I4NVhaDfV0GTxF0uAgwa_COb3zZU3T"
+          },
+          {
+            "name": "is_active",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+              "description": "Filter connectors by active status",
+              "title": "Is Active"
+            },
+            "description": "Filter connectors by active status",
+            "example": true
           },
           {
             "name": "page_size",
@@ -8828,11 +9230,23 @@
     "/api/lms/v1/users": {
       "get": {
         "tags": ["Users"],
-        "summary": "Get Users",
+        "summary": "Get Lms Users",
         "description": "Returns a list of LMS User objects.",
-        "operationId": "get_users_api_lms_v1_users_get",
+        "operationId": "get_lms_users_api_lms_v1_users_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return users for these IDs.",
+              "title": "Ids"
+            },
+            "description": "If provided, will only return users for these IDs.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
+          },
           {
             "name": "remote_id",
             "in": "query",
@@ -8949,10 +9363,10 @@
     },
     "/api/lms/v1/users/{id}": {
       "get": {
-        "tags": ["LMS Users"],
-        "summary": "Get User By Id",
+        "tags": ["Users"],
+        "summary": "Get Lms User By Id",
         "description": "Returns an LMS User object with the given id.",
-        "operationId": "get_user_by_id_api_lms_v1_users__id__get",
+        "operationId": "get_lms_user_by_id_api_lms_v1_users__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9016,10 +9430,10 @@
     },
     "/api/lms/v1/courses": {
       "get": {
-        "tags": ["LMS Courses"],
-        "summary": "Get Courses",
+        "tags": ["Courses"],
+        "summary": "Get Lms Courses",
         "description": "Returns a list of LMS Course objects.",
-        "operationId": "get_courses_api_lms_v1_courses_get",
+        "operationId": "get_lms_courses_api_lms_v1_courses_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9045,64 +9459,76 @@
             "description": "The third-party API ID of the matching object."
           },
           {
-            "name": "category",
+            "name": "ids",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return courses with these IDs",
+              "title": "Ids"
+            },
+            "description": "If provided, will only return courses with these IDs",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
+          },
+          {
+            "name": "categories",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
               "description": "If provided, will return courses with these categories",
-              "title": "Category"
+              "title": "Categories"
             },
             "description": "If provided, will return courses with these categories",
             "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
           },
           {
-            "name": "skill",
+            "name": "skills",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
               "description": "If provided, will return courses with these skills",
-              "title": "Skill"
+              "title": "Skills"
             },
             "description": "If provided, will return courses with these skills",
-            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
           },
           {
-            "name": "instructor",
+            "name": "instructors",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
               "description": "If provided, will return courses with these instructors",
-              "title": "Instructor"
+              "title": "Instructors"
             },
             "description": "If provided, will return courses with these instructors",
-            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
           },
           {
-            "name": "content",
+            "name": "contents",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
               "description": "If provided, will return courses with these contents",
-              "title": "Content"
+              "title": "Contents"
             },
             "description": "If provided, will return courses with these contents",
-            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
           },
           {
-            "name": "language",
+            "name": "languages",
             "in": "query",
             "required": false,
             "schema": {
               "type": "string",
               "description": "If provided, will return courses with these languages",
-              "title": "Language"
+              "title": "Languages"
             },
             "description": "If provided, will return courses with these languages",
-            "example": "en_US"
+            "example": "en_US,en_UK"
           },
           {
             "name": "include_raw_data",
@@ -9198,10 +9624,10 @@
     },
     "/api/lms/v1/courses/{id}": {
       "get": {
-        "tags": ["LMS Courses"],
-        "summary": "Get Course By Id",
+        "tags": ["Courses"],
+        "summary": "Get Lms Course By Id",
         "description": "Returns an LMS Course object with the given id.",
-        "operationId": "get_course_by_id_api_lms_v1_courses__id__get",
+        "operationId": "get_lms_course_by_id_api_lms_v1_courses__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9277,10 +9703,10 @@
     },
     "/api/lms/v1/contents": {
       "get": {
-        "tags": ["LMS Contents"],
-        "summary": "Get Contents",
+        "tags": ["Contents"],
+        "summary": "Get Lms Contents",
         "description": "Returns a list of LMS Content objects.",
-        "operationId": "get_contents_api_lms_v1_contents_get",
+        "operationId": "get_lms_contents_api_lms_v1_contents_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9295,55 +9721,64 @@
             "description": "The third-party API ID of the matching object."
           },
           {
-            "name": "course",
+            "name": "ids",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "If provided, will only return contents for this course.",
-              "title": "Course"
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return contents for these IDs.",
+              "title": "Ids"
             },
-            "description": "If provided, will only return contents for this course.",
+            "description": "If provided, will only return contents for these IDs.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
+          },
+          {
+            "name": "courses",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return contents for these courses.",
+              "title": "Courses"
+            },
+            "description": "If provided, will only return contents for these courses.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
+          },
+          {
+            "name": "skills",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return contents for these skills.",
+              "title": "Skills"
+            },
+            "description": "If provided, will only return contents for these skills.",
             "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
           },
           {
-            "name": "skill",
+            "name": "categories",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "If provided, will only return contents for this skill.",
-              "title": "Skill"
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return contents for these categories.",
+              "title": "Categories"
             },
-            "description": "If provided, will only return contents for this skill.",
+            "description": "If provided, will only return contents for these categories.",
             "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
           },
           {
-            "name": "category",
+            "name": "languages",
             "in": "query",
             "required": false,
             "schema": {
               "type": "string",
-              "format": "uuid",
-              "description": "If provided, will only return contents for this category.",
-              "title": "Category"
+              "description": "If provided, will only return contents for these languages.",
+              "title": "Languages"
             },
-            "description": "If provided, will only return contents for this category.",
-            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
-          },
-          {
-            "name": "language",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "description": "If provided, will only return contents for this language.",
-              "title": "Language"
-            },
-            "description": "If provided, will only return contents for this language.",
-            "example": "en_US"
+            "description": "If provided, will only return contents for these languages.",
+            "example": "en_US,en_UK"
           },
           {
             "name": "status",
@@ -9450,10 +9885,10 @@
     },
     "/api/lms/v1/contents/{id}": {
       "get": {
-        "tags": ["LMS Contents"],
-        "summary": "Get Content By Id",
+        "tags": ["Contents"],
+        "summary": "Get Lms Content By Id",
         "description": "Returns an LMS Content object with the given id.",
-        "operationId": "get_content_by_id_api_lms_v1_contents__id__get",
+        "operationId": "get_lms_content_by_id_api_lms_v1_contents__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9529,12 +9964,24 @@
     },
     "/api/lms/v1/skills": {
       "get": {
-        "tags": ["LMS Skills"],
-        "summary": "Get Skills",
+        "tags": ["Skills"],
+        "summary": "Get Lms Skills",
         "description": "Returns a list of LMS Skill objects.",
-        "operationId": "get_skills_api_lms_v1_skills_get",
+        "operationId": "get_lms_skills_api_lms_v1_skills_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return skills for these IDs.",
+              "title": "Ids"
+            },
+            "description": "If provided, will only return skills for these IDs.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
+          },
           {
             "name": "remote_id",
             "in": "query",
@@ -9639,10 +10086,10 @@
     },
     "/api/lms/v1/skills/{id}": {
       "get": {
-        "tags": ["LMS Skills"],
-        "summary": "Get Skill By Id",
+        "tags": ["Skills"],
+        "summary": "Get Lms Skill By Id",
         "description": "Returns an LMS Skill object with the given id.",
-        "operationId": "get_skill_by_id_api_lms_v1_skills__id__get",
+        "operationId": "get_lms_skill_by_id_api_lms_v1_skills__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9706,12 +10153,23 @@
     },
     "/api/lms/v1/categories": {
       "get": {
-        "tags": ["LMS Categories"],
-        "summary": "Get Categories",
+        "tags": ["Categories"],
+        "summary": "Get Lms Categories",
         "description": "Returns a list of LMS Category objects.",
-        "operationId": "get_categories_api_lms_v1_categories_get",
+        "operationId": "get_lms_categories_api_lms_v1_categories_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "A comma-separated list of LMS Category IDs to filter by.",
+              "title": "Ids"
+            },
+            "description": "A comma-separated list of LMS Category IDs to filter by."
+          },
           {
             "name": "remote_id",
             "in": "query",
@@ -9816,10 +10274,10 @@
     },
     "/api/lms/v1/categories/{id}": {
       "get": {
-        "tags": ["LMS Categories"],
-        "summary": "Get Category By Id",
+        "tags": ["Categories"],
+        "summary": "Get Lms Category By Id",
         "description": "Returns an LMS Category object with the given id.",
-        "operationId": "get_category_by_id_api_lms_v1_categories__id__get",
+        "operationId": "get_lms_category_by_id_api_lms_v1_categories__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -9883,50 +10341,59 @@
     },
     "/api/lms/v1/completions": {
       "get": {
-        "tags": ["LMS Completions"],
-        "summary": "Get Completions",
+        "tags": ["Completions"],
+        "summary": "Get Lms Completions",
         "description": "Returns a list of LMS Completion objects.",
-        "operationId": "get_completions_api_lms_v1_completions_get",
+        "operationId": "get_lms_completions_api_lms_v1_completions_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "A comma-separated list of LMS Completion IDs to filter by.",
+              "title": "Ids"
+            },
+            "description": "A comma-separated list of LMS Completion IDs to filter by.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
+          },
           {
             "name": "course",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "If provided, will only return completions for this course.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return completions for these courses.",
               "title": "Course"
             },
-            "description": "If provided, will only return completions for this course.",
-            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+            "description": "If provided, will only return completions for these courses.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
           },
           {
             "name": "user",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "If provided, will only return completions for this user.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return completions for these users.",
               "title": "User"
             },
-            "description": "If provided, will only return completions for this user.",
-            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+            "description": "If provided, will only return completions for these users.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
           },
           {
             "name": "content",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "description": "If provided, will only return completions for this content.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return completions for these contents.",
               "title": "Content"
             },
-            "description": "If provided, will only return completions for this content.",
-            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+            "description": "If provided, will only return completions for these contents.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
           },
           {
             "name": "grade",
@@ -10092,10 +10559,10 @@
     },
     "/api/lms/v1/completions/{id}": {
       "get": {
-        "tags": ["LMS Completions"],
-        "summary": "Get Completion By Id",
+        "tags": ["Completions"],
+        "summary": "Get Lms Completion By Id",
         "description": "Returns an LMS Completion object with the given id.",
-        "operationId": "get_completion_by_id_api_lms_v1_completions__id__get",
+        "operationId": "get_lms_completion_by_id_api_lms_v1_completions__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -10171,10 +10638,10 @@
     },
     "/api/lms/v1/enrollments": {
       "get": {
-        "tags": ["LMS Enrollments"],
-        "summary": "Get Enrollments",
+        "tags": ["Enrollments"],
+        "summary": "Get Lms Enrollments",
         "description": "Returns a list of LMS Enrollment objects.",
-        "operationId": "get_enrollments_api_lms_v1_enrollments_get",
+        "operationId": "get_lms_enrollments_api_lms_v1_enrollments_get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -10202,28 +10669,40 @@
             "example": false
           },
           {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return enrollments for these IDs.",
+              "title": "Ids"
+            },
+            "description": "If provided, will only return enrollments for these IDs.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
+          },
+          {
             "name": "user",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "If provided, will only return enrollments for this user.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return enrollments for these users.",
               "title": "User"
             },
-            "description": "If provided, will only return enrollments for this user.",
-            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+            "description": "If provided, will only return enrollments for these users.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
           },
           {
             "name": "course",
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
-              "description": "If provided, will only return enrollments for this course.",
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return enrollments for these courses.",
               "title": "Course"
             },
-            "description": "If provided, will only return enrollments for this course.",
-            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+            "description": "If provided, will only return enrollments for these courses.",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6,018b18ef-c487-703c-afd9-0ca478ccd9d7"
           },
           {
             "name": "include_custom_fields",
@@ -10354,10 +10833,10 @@
     },
     "/api/lms/v1/enrollments/{id}": {
       "get": {
-        "tags": ["LMS Enrollments"],
-        "summary": "Get Enrollment By Id",
+        "tags": ["Enrollments"],
+        "summary": "Get Lms Enrollment By Id",
         "description": "Returns an LMS Enrollment object with the given id.",
-        "operationId": "get_enrollment_by_id_api_lms_v1_enrollments__id__get",
+        "operationId": "get_lms_enrollment_by_id_api_lms_v1_enrollments__id__get",
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
@@ -10417,6 +10896,177 @@
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/LmsEnrollment" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/connectors": {
+      "get": {
+        "tags": ["Connector"],
+        "summary": "Get Lms Connectors",
+        "description": "Returns a list of LMS connectors",
+        "operationId": "get_lms_connectors_api_lms_v1_connectors_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "connector_token",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The connector token for the connector",
+              "title": "Connector Token"
+            },
+            "description": "The connector token for the connector",
+            "example": "i5kqe8bSedEdPLX9pHhFojKdo7Uzvue0f7I4NVhaDfV0GTxF0uAgwa_COb3zZU3T"
+          },
+          {
+            "name": "is_active",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+              "description": "Filter connectors by active status",
+              "title": "Is Active"
+            },
+            "description": "Filter connectors by active status",
+            "example": true
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page. Maximum size is 100.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page. Maximum size is 100."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectorPaginatedResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/connectors/{connector_id}/delete": {
+      "delete": {
+        "tags": ["Connector"],
+        "summary": "Delete Lms Connector",
+        "description": "Deletes the provided connector",
+        "operationId": "delete_lms_connector_api_lms_v1_connectors__connector_id__delete_delete",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "connector_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Connector Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/lms/v1/integrations": {
+      "get": {
+        "tags": ["Integration"],
+        "summary": "Get Org Integrations",
+        "description": "Returns a list of Integrations",
+        "operationId": "get_org_integrations_api_lms_v1_integrations_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Number of results to return per page. Maximum size is 100.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page. Maximum size is 100."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntegrationPaginatedResponse"
+                }
               }
             }
           },
