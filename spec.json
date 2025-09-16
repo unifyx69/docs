@@ -11081,6 +11081,44 @@
         }
       }
     },
+    "/api/v1/passthrough": {
+      "post": {
+        "tags": ["Passthrough"],
+        "summary": "Make Passthrough Request",
+        "operationId": "make_passthrough_request_api_v1_passthrough_post",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PassThroughRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/embedded/v1/link/create-link-token": {
       "post": {
         "tags": ["Link"],
@@ -17502,6 +17540,13 @@
             "description": "headers of the request",
             "example": { "Content-Type": "application/json" }
           },
+          "params": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "params",
+            "description": "params of the request",
+            "default": {},
+            "example": { "a": 1, "b": 2 }
+          },
           "data": {
             "anyOf": [{}, { "type": "null" }],
             "title": "data",
@@ -17527,6 +17572,12 @@
             "description": "format of the response",
             "default": "JSON",
             "example": "JSON"
+          },
+          "timeout": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Timeout",
+            "description": "timeout of the request",
+            "example": 300.0
           }
         },
         "type": "object",
