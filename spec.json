@@ -36,6 +36,18 @@
             "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
+            "name": "employee_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of the employees for the bank info to fetch",
+              "title": "Employee Id"
+            },
+            "description": "The ID of the employees for the bank info to fetch",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
