@@ -1557,6 +1557,18 @@
             "example": "000000168"
           },
           {
+            "name": "groups",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "The ID of groups to fetch employees for",
+              "title": "Groups"
+            },
+            "description": "The ID of groups to fetch employees for",
+            "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+          },
+          {
             "name": "page_size",
             "in": "query",
             "required": false,
