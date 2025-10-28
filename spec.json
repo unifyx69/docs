@@ -4087,6 +4087,54 @@
             "example": "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
           },
           {
+            "name": "start_time_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will only return timesheet entries with start time greater than or equal to this value.",
+              "title": "Start Time From"
+            },
+            "description": "If provided, will only return timesheet entries with start time greater than or equal to this value.",
+            "example": "2023-10-01T00:00:00Z"
+          },
+          {
+            "name": "start_time_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will only return timesheet entries with start time less than or equal to this value.",
+              "title": "Start Time To"
+            },
+            "description": "If provided, will only return timesheet entries with start time less than or equal to this value.",
+            "example": "2023-10-31T23:59:59Z"
+          },
+          {
+            "name": "end_time_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will only return timesheet entries with end time greater than or equal to this value.",
+              "title": "End Time From"
+            },
+            "description": "If provided, will only return timesheet entries with end time greater than or equal to this value.",
+            "example": "2023-10-01T00:00:00Z"
+          },
+          {
+            "name": "end_time_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, will only return timesheet entries with end time less than or equal to this value.",
+              "title": "End Time To"
+            },
+            "description": "If provided, will only return timesheet entries with end time less than or equal to this value.",
+            "example": "2023-10-31T23:59:59Z"
+          },
+          {
             "name": "include_raw_data",
             "in": "query",
             "required": false,
@@ -6634,8 +6682,16 @@
             "schema": { "type": "string", "title": "X-Connector-Token" }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateAtsJob" }
+            }
+          }
+        },
         "responses": {
-          "200": {
+          "201": {
             "description": "Successful Response",
             "content": { "application/json": { "schema": {} } }
           },
@@ -13597,6 +13653,130 @@
         ],
         "title": "CreateAtsActivity"
       },
+      "CreateAtsJob": {
+        "properties": {
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name",
+            "description": "The name of the job.",
+            "example": "SOFTWARE ENGINEER"
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Description",
+            "description": "A detailed description of the job.",
+            "example": "We are looking for a software engineer to join our team."
+          },
+          "code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Code",
+            "description": "The internal or external code that identifies the job.",
+            "example": "SE-2021-01"
+          },
+          "status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Status",
+            "description": "The current status of the job posting.",
+            "example": "OPEN"
+          },
+          "job_posting_urls": {
+            "anyOf": [
+              {
+                "items": { "$ref": "#/components/schemas/AtsUrl" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Job Posting Urls",
+            "description": "A list of URLs where the job is posted.",
+            "example": ["https://www.company.com/careers/software-engineer"]
+          },
+          "confidential": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Confidential",
+            "description": "Whether the job posting is confidential.",
+            "example": false
+          },
+          "departments": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Departments",
+            "description": "A list of department identifiers associated with the job.",
+            "example": [
+              "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+              "018b4bfb-5ece-70b1-ad5e-862a9433aa23"
+            ]
+          },
+          "offices": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Offices",
+            "description": "A list of office identifiers where the job is located.",
+            "example": [
+              "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+              "018b4bfb-5ece-70b1-ad5e-862a9433aa23"
+            ]
+          },
+          "hiring_managers": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Hiring Managers",
+            "description": "A list of identifiers for hiring managers associated with the job.",
+            "example": [
+              "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+              "018b4bfb-5ece-70b1-ad5e-862a9433aa23"
+            ]
+          },
+          "recruiters": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "format": "uuid" },
+                "type": "array"
+              },
+              { "type": "null" }
+            ],
+            "title": "Recruiters",
+            "description": "A list of identifiers for recruiters associated with the job.",
+            "example": ["018b4bfb-5ece-70b1-ad5e-862a9433aa65"]
+          },
+          "template_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Template Id",
+            "description": "The template id associated with the job.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "remote_user_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Remote User Id",
+            "description": "The remote user's id who is creating the job.",
+            "example": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+          },
+          "openings": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Openings",
+            "description": "Number of openings for the job.",
+            "example": 3
+          }
+        },
+        "type": "object",
+        "title": "CreateAtsJob"
+      },
       "CreateCandidate": {
         "properties": {
           "data": { "$ref": "#/components/schemas/PostCandidate" },
@@ -16627,6 +16807,13 @@
       },
       "IntegrationResponse": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "description": "Id of the integration object",
+            "example": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+          },
           "integration_id": {
             "type": "string",
             "format": "uuid",
@@ -16679,6 +16866,7 @@
         },
         "type": "object",
         "required": [
+          "id",
           "integration_id",
           "is_enabled",
           "integration_slug",
