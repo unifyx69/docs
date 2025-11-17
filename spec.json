@@ -1,6 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": { "title": "Bindbee APIs", "version": "0.1.0" },
+  "servers": [
+    {
+      "url": "https://api.bindbee.dev"
+    },
+    {
+      "url": "https://api-eu.bindbee.dev"
+    }
+  ],
   "paths": {
     "/metrics": {
       "get": {
