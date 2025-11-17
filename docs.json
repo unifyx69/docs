@@ -7,6 +7,11 @@
     "light": "#F57E21",
     "dark": "#441F02"
   },
+  "integrations": {
+    "gtm": {
+      "tagId": "GTM-5JFMCWD5"
+    }
+  },
   "favicon": "/favicon.svg",
   "navigation": {
     "anchors": [
