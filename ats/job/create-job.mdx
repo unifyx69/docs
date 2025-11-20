@@ -1,3 +1,61 @@
 ---
 openapi: post /api/ats/v1/jobs
 ---
+
+import { Accordion, AccordionGroup } from "@mintlify/components";
+
+This endpoint creates a Job in the connected ATS via Bindbee's unified **Job** model.
+
+## Provider-specific behavior
+
+Different ATS providers can have slightly different requirements and behaviors when creating jobs. Use the accordions below to see details for each provider.
+
+<AccordionGroup>
+  <Accordion title="Greenhouse">
+    <p>
+      When the underlying ATS is <strong>Greenhouse</strong>, a job can be created using a payload like:
+    </p>
+
+    ```json
+    {
+      "remote_user_id": "019a2903-74af-78eb-8beb-d9bfce1895c7",
+      "template_id": "4033879009",
+      "name": "Sales Manager",
+      "departments": [
+        "019a1041-57f8-752d-bd75-6f5136196765"
+      ],
+      "offices": [
+        "019a1041-5980-724f-a669-9e904be609de",
+        "019a1041-5980-7d5f-ae13-0eab242cfafc"
+      ],
+      "openings": 1
+    }
+    ```
+
+    ### Required fields
+
+    For Greenhouse, the following fields are required when creating a job through Bindbee:
+
+    - **template_id**
+    - **remote_user_id**
+    - **openings**
+
+    All IDs (`remote_user_id`, `departments`, `offices`) should be the <strong>Bindbee model IDs</strong> returned from the respective unified endpoints, not raw Greenhouse IDs.
+
+    ### How to get `template_id`
+
+    1. Fetch jobs from the Greenhouse connector using the Bindbee Jobs list endpoint.
+    2. In the <code>raw_data</code> of each job, look for entries where <code>is_template</code> is <code>true</code>.
+    3. Use either the <code>id</code> or <code>remote_id</code> from that record as the <code>template_id</code> when creating a job.
+
+    ### Greenhouse-specific notes
+
+    - <strong>Single department only</strong>: Greenhouse allows only one department per job. Even though the Bindbee model accepts an array in <code>departments</code>, you should send <strong>at most one</strong> department ID for Greenhouse.
+    - <strong>Multiple offices allowed</strong>: You can associate multiple offices with a job by passing multiple Bindbee office IDs in the <code>offices</code> array.
+    - <strong>Use unified IDs</strong>: Always use IDs from Bindbee's unified models (e.g., Departments, Offices, Remote Users) so that the same payload structure works consistently across ATS providers.
+
+  </Accordion>
+
+{/* Add more provider-specific accordions here as you support additional ATS integrations */}
+
+</AccordionGroup>
