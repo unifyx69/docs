@@ -14971,6 +14971,12 @@
             "description": "The day and time the benefit started.",
             "example": "2023-10-18T00:00:00Z"
           },
+          "effective_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Effective Date",
+            "description": "The day and time the benefit is effective from.",
+            "example": "2023-10-18T00:00:00Z"
+          },
           "end_date": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "End Date",
@@ -14987,6 +14993,7 @@
           "employer_benefit",
           "dependent",
           "start_date",
+          "effective_date",
           "end_date"
         ],
         "title": "HrisDependentBenefit",
