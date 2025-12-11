@@ -1147,6 +1147,30 @@
             "example": "2024-02-21T21:22:12.993Z"
           },
           {
+            "name": "effective_date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with effective_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Effective Date From"
+            },
+            "description": "If provided, only objects with effective_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
+            "name": "effective_date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects with effective_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "title": "Effective Date To"
+            },
+            "description": "If provided, only objects with effective_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+            "example": "2024-02-21T21:22:12.993Z"
+          },
+          {
             "name": "expand",
             "in": "query",
             "required": false,
