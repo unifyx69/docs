@@ -1,3 +1,53 @@
 ---
 openapi: post /api/hris/v1/employee-payroll-runs
 ---
+
+import { Accordion, AccordionGroup } from "@mintlify/components";
+
+This endpoint creates an Employee Payroll Run in the connected HRIS via Bindbee's unified **Employee Payroll Runs** model.
+
+## Provider-specific behavior
+
+Different HRIS systems can have slightly different requirements and behaviors when creating payroll runs. Use the accordions below to see details for each provider.
+
+<AccordionGroup>
+  <Accordion title="Workday">
+    <p>
+      When the underlying HRIS is <strong>Workday</strong>, a job can be created using a payload like:
+    </p>
+    ```json
+    {
+      "employee": "<employee_id>",
+      "start_date": "2025-12-01",
+      "end_date": "2025-12-31",
+      "check_date": "",
+      "earnings": [],
+      "deductions":
+      [
+        {
+          "type": "Workday_Deduction_Code",
+          "amount": 200,
+          "id": "W_1042S_2015"
+        }
+      ],
+      "taxes": []
+    }
+    ```
+
+    ### Important note
+
+    For Workday, you can add either `earnings` or `deductions` at a time - you cannot add both simultaneously.
+
+    `deductions` types:
+    - **Workday_Deduction_Code**
+    - **WID**
+
+    `earnings` types:
+    - **Workday_Earning_Code**
+    - **WID**
+
+    `payroll_run` field must be set to **null** for Workday integration.
+
+  </Accordion>
+{/* Add more provider-specific accordions here as you support additional ATS integrations */}
+</AccordionGroup>
