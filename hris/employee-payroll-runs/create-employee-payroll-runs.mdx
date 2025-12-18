@@ -1,3 +1,71 @@
 ---
 openapi: post /api/hris/v1/employee-payroll-runs
 ---
+
+import { Accordion, AccordionGroup } from "@mintlify/components";
+
+This endpoint creates an Employee Payroll Run in the connected HRIS via Bindbee's unified **Employee Payroll Runs** model.
+
+## Provider-specific behavior
+
+Different HRIS systems can have slightly different requirements and behaviors when creating payroll runs. Use the accordions below to see details for each provider.
+
+<AccordionGroup>
+  <Accordion title="Workday">
+    <p>
+      When the underlying HRIS is <strong>Workday</strong>, an `earning` can be created using a payload like:
+    </p>
+    ```json
+    {
+      "employee": "019b2647-8e14-7fcf-aa9e-aeff6ab205b2",
+      "start_date": "2025-12-01",
+      "end_date": "2025-12-31",
+      "earnings":
+      [
+        {
+          "type": "Workday_Earning_Code",
+          "amount": 200,
+          "id": "W_1042S_2015"
+        }
+      ],
+    }
+    ```
+    <p>
+      Similarly, a `deduction` can be created using a payload like:
+    </p>
+    ```json
+    {
+      "employee": "019b2647-8e14-7fcf-aa9e-aeff6ab205b2",
+      "start_date": "2025-12-01",
+      "end_date": "2025-12-31",
+      "deductions":
+      [
+        {
+          "type": "Workday_Deduction_Code",
+          "amount": 200,
+          "id": "W_1042S_2015"
+        }
+      ],
+    }
+    ```
+
+    ### Important note
+    - For Workday, you can add either `earnings` or `deductions` at a time - you cannot add both simultaneously.
+    - You can only add 1 `earning` or `deduction` at a time, no more than that.
+    - `payroll_run` field must be set to **null** for Workday integration.
+
+    <p>
+    The possible types for `earnings` are: 
+    - **Workday_Earning_Code**
+    - **WID**
+    </p>
+
+    <p>
+    The possible types for `deductions` are:
+    - **Workday_Deduction_Code**
+    - **WID**
+    </p>
+
+  </Accordion>
+{/* Add more provider-specific accordions here as you support additional ATS integrations */}
+</AccordionGroup>
