@@ -13,15 +13,31 @@ Different HRIS systems can have slightly different requirements and behaviors wh
 <AccordionGroup>
   <Accordion title="Workday">
     <p>
-      When the underlying HRIS is <strong>Workday</strong>, a job can be created using a payload like:
+      When the underlying HRIS is <strong>Workday</strong>, an `earning` can be created using a payload like:
     </p>
     ```json
     {
-      "employee": "<employee_id>",
+      "employee": "<1f7d14206fbe10092f7fdeda65bc0000>",
       "start_date": "2025-12-01",
       "end_date": "2025-12-31",
-      "check_date": "",
-      "earnings": [],
+      "earnings":
+      [
+        {
+          "type": "Workday_Earning_Code",
+          "amount": 200,
+          "id": "W_1042S_2015"
+        }
+      ],
+    }
+    ```
+    <p>
+      Similarly, a `deduction` can be created using a payload like:
+    </p>
+    ```json
+    {
+      "employee": "<1f7d14206fbe10092f7fdeda65bc0000>",
+      "start_date": "2025-12-01",
+      "end_date": "2025-12-31",
       "deductions":
       [
         {
@@ -30,23 +46,25 @@ Different HRIS systems can have slightly different requirements and behaviors wh
           "id": "W_1042S_2015"
         }
       ],
-      "taxes": []
     }
     ```
 
     ### Important note
+    - For Workday, you can add either `earnings` or `deductions` at a time - you cannot add both simultaneously.
+    - You can only add 1 `earning` or `deduction` at a time, no more than that.
+    - `payroll_run` field must be set to **null** for Workday integration.
 
-    For Workday, you can add either `earnings` or `deductions` at a time - you cannot add both simultaneously.
-
-    `deductions` types:
-    - **Workday_Deduction_Code**
-    - **WID**
-
-    `earnings` types:
+    <p>
+    The possible values for `earnings` are:
     - **Workday_Earning_Code**
     - **WID**
+    </p>
 
-    `payroll_run` field must be set to **null** for Workday integration.
+    <p>
+    The possible values for `deductions` are:
+    - **Workday_Deduction_Code**
+    - **WID**
+    </p>
 
   </Accordion>
 {/* Add more provider-specific accordions here as you support additional ATS integrations */}
