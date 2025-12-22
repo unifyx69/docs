@@ -1,3 +1,28 @@
 ---
 openapi: post /api/hris/v1/timesheet-entry
 ---
+
+import { Accordion, AccordionGroup } from "@mintlify/components";
+
+This endpoint creates a Timesheet Entry in the connected HRIS via Bindbee's unified **Time Sheet Entry** model.
+
+## Provider-specific behavior
+
+Different HRIS systems can have slightly different requirements and behaviors when creating timesheet entries. Use the accordions below to see details for each provider.
+
+<AccordionGroup>
+  <Accordion title="Bamboo HR">
+    <p>
+      When the underlying HRIS is <strong>Bamboo HR</strong>, a Timesheet Entry can be created using a payload like:
+    </p>
+    ```json
+    {
+      "employee": "019ab506-66a2-7f6e-b8da-09d3579a534e",
+      "date": "2025-11-24",
+      "start_time": "2025-11-24T08:00:00Z",
+      "end_time": "2025-11-24T17:00:00Z"
+    }
+    ```
+  </Accordion>
+{/* Add more provider-specific accordions here as you support additional ATS integrations */}
+</AccordionGroup>
