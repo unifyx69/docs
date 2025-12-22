@@ -1,3 +1,29 @@
 ---
 openapi: post /api/hris/v1/time-off
 ---
+
+import { Accordion, AccordionGroup } from "@mintlify/components";
+
+This endpoint creates a Timeoff Entry in the connected HRIS via Bindbee's unified **Time Off** model.
+
+## Provider-specific behavior
+
+Different HRIS systems can have slightly different requirements and behaviors when creating timeoff entries. Use the accordions below to see details for each provider.
+
+<AccordionGroup>
+  <Accordion title="ADP">
+    <p>
+      When the underlying HRIS is <strong>ADP</strong>, a Timesheet Entry can be created using a payload like:
+    </p>
+    ```json
+    {
+        "employee": "01929f6e-c6c1-74b4-8119-a7d9efc0c8b8",
+        "amount": 8,
+        "start_time": "2024-09-04T08:00:00Z",
+        "end_time": "2024-09-04T16:00:00Z",
+        "request_type": "VACATION"
+    }
+    ```
+  </Accordion>
+{/* Add more provider-specific accordions here as you support additional HRIS integrations */}
+</AccordionGroup>
