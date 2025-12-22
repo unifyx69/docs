@@ -67,5 +67,84 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     </p>
 
   </Accordion>
+
+  <Accordion title="ADP">
+    <p>
+      When the underlying HRIS is <strong>ADP</strong>, an `employee_payroll_run` can be created using a payload like:
+    </p>
+    ```json
+    {
+      "employee": "01929ee7-28b6-7abc-b4d3-e78610669c82",
+      "earnings":
+        [
+          {
+            "code": "BN",
+            "amount": 0.01
+          },
+          {
+            "code": "R",
+            "amount": 0.04
+          }
+        ],
+      "deductions":
+        [
+          {
+            "code": "REI",
+            "amount": 0.01
+          },
+          {
+              "code": "KL1",
+              "amount": 0.04
+          }
+        ],
+      "taxes":
+        [
+          {
+              "code": "9"
+          }
+        ],
+      "payroll_file": "023321",
+      "payroll_process_name": "Ded Ear writeback"
+    }
+    ```
+
+  </Accordion>
+
+
+  </Accordion>
+
+  <Accordion title="UKG Ready">
+    <p>
+      When the underlying HRIS is <strong>UKG Ready</strong>, an `employee_payroll_run` can be created using a payload like:
+    </p>
+    ```json
+    {
+      "employee": "0194cbef-a29f-7afe-8fb6-bcb706383346",
+      "payroll_run": "0194cbef-a8e7-7784-ae98-bb6adaac63c6",
+      "paystatement_type_id": 51743758,
+      "deductions":
+        [
+          {
+            "company_deduction": 5.5,
+            "employee_deduction": 10.2,
+            "name": "Student Loan"
+          },
+          {
+            "company_deduction": 1.5,
+            "name": "Dental PreTax"
+          }
+        ],
+      "earnings":
+        [
+          {
+            "name": "Overtime",
+            "amount": 12.9
+          }
+        ]
+    }
+    ```
+
+  </Accordion>
+
 {/* Add more provider-specific accordions here as you support additional ATS integrations */}
 </AccordionGroup>
