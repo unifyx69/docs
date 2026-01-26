@@ -10,19 +10,6 @@
     }
   ],
   "paths": {
-    "/metrics": {
-      "get": {
-        "summary": "Metrics",
-        "description": "Endpoint that serves Prometheus metrics.",
-        "operationId": "metrics_metrics_get",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": { "application/json": { "schema": {} } }
-          }
-        }
-      }
-    },
     "/api/hris/v1/bank-info": {
       "get": {
         "tags": ["Bank Info"],
@@ -11193,6 +11180,20 @@
         }
       }
     },
+    "/api/v1/org-check": {
+      "post": {
+        "tags": ["Health Check"],
+        "summary": "Org Health Check",
+        "operationId": "org_health_check_api_v1_org_check_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        },
+        "security": [{ "HTTPBearer": [] }]
+      }
+    },
     "/api/v1/passthrough": {
       "post": {
         "tags": ["Passthrough"],
@@ -13870,6 +13871,24 @@
             "default": "",
             "example": "000099"
           },
+          "payroll_provider_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Payroll Provider Id",
+            "description": "Payroll provider identifier.",
+            "example": "ECP"
+          },
+          "payroll_person_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Payroll Person Id",
+            "description": "Payroll person identifier.",
+            "example": "1234567890"
+          },
+          "payroll_employment_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Payroll Employment Id",
+            "description": "Payroll employment identifier.",
+            "example": "1234567890"
+          },
           "payroll_group_code": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Payroll Group Code",
@@ -14078,7 +14097,7 @@
             "type": "string",
             "title": "End Time",
             "description": "The day and time of the end of the time requested off.",
-            "example": "2023-11-10T00:00:00"
+            "example": "2023-11-10T00:00:00Z"
           }
         },
         "type": "object",
@@ -14885,6 +14904,12 @@
             "description": "The dependent's phone number",
             "example": "+44-208-555-2112"
           },
+          "is_student": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Is Student",
+            "description": "Indicates if the dependent is a student",
+            "example": true
+          },
           "ssn": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "Ssn",
@@ -14907,6 +14932,7 @@
           "date_of_birth",
           "gender",
           "phone_number",
+          "is_student",
           "ssn"
         ],
         "title": "HrisDependent"
@@ -15850,6 +15876,18 @@
             "title": "Coverage Tiers",
             "description": "The coverage tiers for the benefit plan.",
             "example": ["EMPLOYEE_SPOUSE", "EMPLOYEE_CHILDREN"]
+          },
+          "start_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Start Date",
+            "description": "The day and time the benefit started.",
+            "example": "2023-10-18T00:00:00Z"
+          },
+          "end_date": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "End Date",
+            "description": "The day and time the benefit ended.",
+            "example": "2024-10-16T00:00:00Z"
           }
         },
         "type": "object",
@@ -15864,7 +15902,9 @@
           "deduction_code",
           "description",
           "benefit_plan_category",
-          "coverage_tiers"
+          "coverage_tiers",
+          "start_date",
+          "end_date"
         ],
         "title": "HrisEmployerBenefit",
         "description": "The Employer Benefit object is used to represent a benefit plan offered by a company."
@@ -16767,7 +16807,7 @@
             "anyOf": [{ "type": "string" }, { "type": "null" }],
             "title": "End Time",
             "description": "The day and time of the end of the time requested off.",
-            "example": "2023-11-10T00:00:00"
+            "example": "2023-11-10T00:00:00Z"
           }
         },
         "type": "object",
@@ -18718,7 +18758,7 @@
             "type": "string",
             "title": "Work Order Id",
             "description": "Work Order ID",
-            "example": "KTWO10002"
+            "example": "KTWO1002"
           },
           "job_seeker_id": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
@@ -18799,7 +18839,7 @@
             "type": "string",
             "title": "Work Order Id",
             "description": "Work Order ID",
-            "example": "KTWO10002"
+            "example": "KTWO1002"
           },
           "job_seeker_id": {
             "anyOf": [{ "type": "string" }, { "type": "null" }],
