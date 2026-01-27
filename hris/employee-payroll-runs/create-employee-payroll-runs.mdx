@@ -13,14 +13,15 @@ Different HRIS systems can have slightly different requirements and behaviors wh
 <AccordionGroup>
   <Accordion title="Workday">
     <p>
-      When the underlying HRIS is <strong>Workday</strong>, an <code>earning</code> can be created using a payload like:
+      When the underlying HRIS is <strong>Workday</strong>, an `earning` can be created using a payload like:
     </p>
     ```json
     {
       "employee": "019b2647-8e14-7fcf-aa9e-aeff6ab205b2",
       "start_date": "2025-12-01",
       "end_date": "2025-12-31",
-      "earnings": [
+      "earnings":
+      [
         {
           "type": "Workday_Earning_Code",
           "amount": 200,
@@ -29,16 +30,16 @@ Different HRIS systems can have slightly different requirements and behaviors wh
       ]
     }
     ```
-
     <p>
-      Similarly, a <code>deduction</code> can be created using a payload like:
+      Similarly, a `deduction` can be created using a payload like:
     </p>
     ```json
     {
       "employee": "019b2647-8e14-7fcf-aa9e-aeff6ab205b2",
       "start_date": "2025-12-01",
       "end_date": "2025-12-31",
-      "deductions": [
+      "deductions":
+      [
         {
           "type": "Workday_Deduction_Code",
           "amount": 200,
@@ -49,150 +50,135 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     ```
 
     ### Important note
-    - For Workday, you can add either <code>earnings</code> or <code>deductions</code> at a time — not both.
-    - You can only add one earning or deduction per request.
-    - The <code>payroll_run</code> field must be set to <strong>null</strong>.
+    - For Workday, you can add either `earnings` or `deductions` at a time - you cannot add both simultaneously.
+    - You can only add 1 `earning` or `deduction` at a time, no more than that.
+    - `payroll_run` field must be set to **null** for Workday integration.
 
-    **Allowed types**
+    The possible types for `earnings` are: 
+    - **Workday_Earning_Code**
+    - **WID**
 
-    Earnings:
-    - Workday_Earning_Code
-    - WID
+    The possible types for `deductions` are:
+    - **Workday_Deduction_Code**
+    - **WID**
 
-    Deductions:
-    - Workday_Deduction_Code
-    - WID
   </Accordion>
 
   <Accordion title="ADP">
     <p>
-      When the underlying HRIS is <strong>ADP</strong>, an <code>employee_payroll_run</code> can be created using a payload like:
+      When the underlying HRIS is <strong>ADP</strong>, an `employee_payroll_run` can be created using a payload like:
     </p>
     ```json
     {
       "employee": "01929ee7-28b6-7abc-b4d3-e78610669c82",
-      "earnings": [
-        {
-          "code": "BN",
-          "amount": 0.01
-        },
-        {
-          "code": "R",
-          "amount": 0.04
-        }
-      ],
-      "deductions": [
-        {
-          "code": "REI",
-          "amount": 0.01
-        },
-        {
-          "code": "KL1",
-          "amount": 0.04
-        }
-      ],
-      "taxes": [
-        {
-          "code": "9"
-        }
-      ],
+      "earnings":
+        [
+          {
+            "code": "BN",
+            "amount": 0.01
+          },
+          {
+            "code": "R",
+            "amount": 0.04
+          }
+        ],
+      "deductions":
+        [
+          {
+            "code": "REI",
+            "amount": 0.01
+          },
+          {
+              "code": "KL1",
+              "amount": 0.04
+          }
+        ],
+      "taxes":
+        [
+          {
+              "code": "9"
+          }
+        ],
       "payroll_file": "023321",
       "payroll_process_name": "Ded Ear writeback"
     }
     ```
+
   </Accordion>
 
   <Accordion title="UKG Ready">
     <p>
-      When the underlying HRIS is <strong>UKG Ready</strong>, an <code>employee_payroll_run</code> can be created using a payload like:
+      When the underlying HRIS is <strong>UKG Ready</strong>, an `employee_payroll_run` can be created using a payload like:
     </p>
     ```json
     {
       "employee": "0194cbef-a29f-7afe-8fb6-bcb706383346",
       "payroll_run": "0194cbef-a8e7-7784-ae98-bb6adaac63c6",
       "paystatement_type_id": 51743758,
-      "deductions": [
-        {
-          "company_deduction": 5.5,
-          "employee_deduction": 10.2,
-          "name": "Student Loan"
-        },
-        {
-          "company_deduction": 1.5,
-          "name": "Dental PreTax"
-        }
-      ],
-      "earnings": [
-        {
-          "name": "Overtime",
-          "amount": 12.9
-        }
-      ]
-    }
-    ```
-  </Accordion>
-
-  <Accordion title="SAP SuccessFactors (SAP SF)">
-    <p>
-      When the underlying HRIS is <strong>SAP SuccessFactors</strong>, an <code>employee_payroll_run</code> can be created using a payload like:
-    </p>
-
-    ```json
-    {
-        "employee": "019bdafb-0afb-782b-b03b-01c23271653d",
-        "payroll_provider_id": "BindBee",
-        "payroll_person_id": "310",
-        "payroll_employment_id": "270",
-        "start_date": "2026-01-26T08:00:00Z",
-        "end_date": "2026-01-31T08:00:00Z",
-        "deductions": [
-        {
-            "employee_deduction": 200,
-            "name": "401K"
-        }
+      "deductions":
+        [
+          {
+            "company_deduction": 5.5,
+            "employee_deduction": 10.2,
+            "name": "Student Loan"
+          },
+          {
+            "company_deduction": 1.5,
+            "name": "Dental PreTax"
+          }
         ],
-        "earnings": [
-        {
-            "name": "GROSS",
-            "amount": 2000
-        }
-        ],
-        "taxes": [
-        {
-            "name": "Testing_Tax",
-            "amount": 101
-        }
+      "earnings":
+        [
+          {
+            "name": "Overtime",
+            "amount": 12.9
+          }
         ]
     }
     ```
 
-    ### Field details
+  </Accordion>
 
-    - <strong>employee</strong>  
-      Bindbee employee ID.
+<Accordion title="SAP SuccessFactors (SAP SF)">
+    <p>
+      When the underlying HRIS is <strong>SAP SuccessFactors</strong>, an
+      `employee_payroll_run` can be created using a payload like:
+    </p>
 
-    - <strong>payroll_provider_id</strong>  
-      Any payroll identifier provided by the customer.  
-      If not available, any string value is accepted.
-
-    - <strong>payroll_person_id</strong>  
-      Retrieved from the employee’s <code>raw_data</code>.
-
-    - <strong>payroll_employment_id</strong>  
-      Retrieved from:
-      - Employee’s <code>raw_data</code>, or
-      - Bindbee Employment model’s <code>remote_id</code>.
-
-    - <strong>start_date</strong> / <strong>end_date</strong>  
-      Payroll period for the run.
-
-    - <strong>earnings / deductions / taxes</strong>  
-      One array is mandatory.
-      - For deductions, the deduction code must be passed in the <code>name</code> field.
-      - All fields are compulsory.
+    ```json
+    {
+      "employee": "019bdafb-0afb-782b-b03b-01c23271653d",
+      "payroll_provider_id": "BindBee",
+      "payroll_person_id": "310",
+      "payroll_employment_id": "270",
+      "start_date": "2026-01-26T08:00:00Z",
+      "end_date": "2026-01-31T08:00:00Z",
+      "deductions": [
+        {
+          "employee_deduction": 200,
+          "name": "401K"
+        }
+      ],
+      "earnings": [
+        {
+          "name": "GROSS",
+          "amount": 2000
+        }
+      ],
+      "taxes": [
+        {
+          "name": "Testing_Tax",
+          "amount": 101
+        }
+      ]
+    }
+    ```
 
     ### Important notes
     - All top-level fields are mandatory.
+    - <code>earnings</code>, <code>deductions</code>, and <code>taxes</code> can be sent together.
+    - All fields inside each array are compulsory.
   </Accordion>
 
+{/* Add more provider-specific accordions here as you support additional HRIS integrations */}
 </AccordionGroup>
