@@ -13,8 +13,7 @@ Different HRIS systems can have slightly different requirements and behaviors wh
 <AccordionGroup>
   <Accordion title="Workday">
     <p>
-    When the underlying HRIS is <strong>Workday</strong>
-    , an `earning` can be created using a payload like:
+    When the underlying HRIS is Workday, an `earning` can be created using a payload like:
 
     </p>
 
@@ -74,7 +73,7 @@ Different HRIS systems can have slightly different requirements and behaviors wh
   <Accordion title="ADP">
     <p>
     When the underlying HRIS is <strong>ADP</strong>
-    , an `employee_payroll_run` can be created using a payload like:
+     , an `employee_payroll_run` can be created using a payload like:
 
     </p>
 
@@ -117,7 +116,7 @@ Different HRIS systems can have slightly different requirements and behaviors wh
   <Accordion title="UKG Ready">
     <p>
     When the underlying HRIS is <strong>UKG Ready</strong>
-    , an `employee_payroll_run` can be created using a payload like:
+     , an `employee_payroll_run` can be created using a payload like:
 
     </p>
 
@@ -150,8 +149,7 @@ Different HRIS systems can have slightly different requirements and behaviors wh
   </Accordion>
   <Accordion title="SAP SuccessFactors (SAP SF)">
     <p>
-    When the underlying HRIS is <strong>SAP SuccessFactors</strong>
-    , an `employee_payroll_run` can be created using a payload like:
+    When the underlying HRIS is SAP SuccessFactors, an `employee_payroll_run` can be created using a payload like:
 
     </p>
 
@@ -194,16 +192,7 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     ### Important notes
 
     - All top-level fields are mandatory.
-    - <code>
-      earnings</code>
-
-      , <code>
-      deductions</code>
-
-      , and <code>
-      taxes</code>
-
-       can be sent together.
+    - `earnings`, `deductions`, and `taxes` can be sent together.
     - All fields inside each array are compulsory.
   </Accordion>
   {/* Add more provider-specific accordions here as you support additional HRIS integrations */}
