@@ -174,6 +174,12 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     }
     ```
 
+    ### Where to find these fields:
+    - payroll_provider_id: Use the ID provided by the customer if it’s available. If not, any valid string can be used.
+    - payroll_person_id: This value can be found in the employee’s raw_data.
+    - payroll_employment_id: Source this either from the employee’s raw_data or from Binbee’s employment model (remote_id).
+    - Deductions: When adding deductions, ensure the deduction codes are included in the name field.
+
     ### Important notes
     - All top-level fields are mandatory.
     - <code>earnings</code>, <code>deductions</code>, and <code>taxes</code> can be sent together.
