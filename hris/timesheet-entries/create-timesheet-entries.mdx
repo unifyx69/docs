@@ -39,5 +39,46 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     }
     ```
   </Accordion>
+  <Accordion title="Xero">
+    <p>
+      When the underlying HRIS is <strong>Xero</strong>, a Timesheet Entry can be created using a payload like:
+    </p>
+    ```json
+    {
+      "employee": "0198e59a-876f-748c-8e38-c56e6246f8aa",
+      "start_time": "2025-08-04T08:00:00Z",
+      "end_time": "2025-08-04T16:00:00Z"
+    }
+    ```
+  </Accordion>
+  <Accordion title="Quickbooks">
+    <p>
+      When the underlying HRIS is <strong>Quickbooks</strong>, a Timesheet Entry can be created using a payload like:
+    </p>
+    ```json
+    {
+      "employee": "0198e59a-876f-748c-8e38-c56e6246f8aa",
+      "hours_worked": 8,
+      "date": "2025-08-04T08:00:00Z",
+      "start_time": "2025-08-04T08:00:00Z",
+      "end_time": "2025-08-04T16:00:00Z"
+    }
+    ```
+  </Accordion>
+  <Accordion title="Workday (Beta)">
+    <p>
+     Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details
+    </p>
+  </Accordion>
+  <Accordion title="UKG Ready (Beta)">
+    <p>
+     Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details
+    </p>
+  </Accordion>
+  <Accordion title="ADP (Beta)">
+    <p>
+     Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details
+    </p>
+  </Accordion>
 {/* Add more provider-specific accordions here as you support additional HRIS integrations */}
 </AccordionGroup>
