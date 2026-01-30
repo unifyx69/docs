@@ -1,5 +1,5 @@
 ---
-openapi: POST /api/hris/v1/employee-payroll-runs
+openapi: "POST /api/hris/v1/employee-payroll-runs"
 ---
 
 import { Accordion, AccordionGroup } from "@mintlify/components";
@@ -13,8 +13,10 @@ Different HRIS systems can have slightly different requirements and behaviors wh
 <AccordionGroup>
   <Accordion title="Workday">
     <p>
-      When the underlying HRIS is <strong>Workday</strong>, an `earning` can be created using a payload like:
+    When the underlying HRIS is Workday, an `earning` can be created using a payload like:
+
     </p>
+
     ```json
     {
       "employee": "019b2647-8e14-7fcf-aa9e-aeff6ab205b2",
@@ -30,9 +32,12 @@ Different HRIS systems can have slightly different requirements and behaviors wh
       ]
     }
     ```
+
     <p>
-      Similarly, a `deduction` can be created using a payload like:
+    Similarly, a `deduction` can be created using a payload like:
+
     </p>
+
     ```json
     {
       "employee": "019b2647-8e14-7fcf-aa9e-aeff6ab205b2",
@@ -50,24 +55,28 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     ```
 
     ### Important note
+
     - For Workday, you can add either `earnings` or `deductions` at a time - you cannot add both simultaneously.
     - You can only add 1 `earning` or `deduction` at a time, no more than that.
     - `payroll_run` field must be set to **null** for Workday integration.
 
-    The possible types for `earnings` are: 
+    The possible types for `earnings` are:
+
     - **Workday_Earning_Code**
     - **WID**
 
     The possible types for `deductions` are:
+
     - **Workday_Deduction_Code**
     - **WID**
-
   </Accordion>
-
   <Accordion title="ADP">
     <p>
-      When the underlying HRIS is <strong>ADP</strong>, an `employee_payroll_run` can be created using a payload like:
+    When the underlying HRIS is <strong>ADP</strong>
+     , an `employee_payroll_run` can be created using a payload like:
+
     </p>
+
     ```json
     {
       "employee": "01929ee7-28b6-7abc-b4d3-e78610669c82",
@@ -103,13 +112,14 @@ Different HRIS systems can have slightly different requirements and behaviors wh
       "payroll_process_name": "Ded Ear writeback"
     }
     ```
-
   </Accordion>
-
   <Accordion title="UKG Ready">
     <p>
-      When the underlying HRIS is <strong>UKG Ready</strong>, an `employee_payroll_run` can be created using a payload like:
+    When the underlying HRIS is <strong>UKG Ready</strong>
+     , an `employee_payroll_run` can be created using a payload like:
+
     </p>
+
     ```json
     {
       "employee": "0194cbef-a29f-7afe-8fb6-bcb706383346",
@@ -136,8 +146,54 @@ Different HRIS systems can have slightly different requirements and behaviors wh
         ]
     }
     ```
-
   </Accordion>
+  <Accordion title="SAP SuccessFactors (SAP SF)">
+    <p>
+    When the underlying HRIS is **SAP SuccessFactors**, an `employee_payroll_run` can be created using a payload like:
 
-{/* Add more provider-specific accordions here as you support additional HRIS integrations */}
+    </p>
+
+    ```json
+    {
+      "employee": "019bdafb-0afb-782b-b03b-01c23271653d",
+      "payroll_provider_id": "BindBee",
+      "payroll_person_id": "310",
+      "payroll_employment_id": "270",
+      "start_date": "2026-01-26T08:00:00Z",
+      "end_date": "2026-01-31T08:00:00Z",
+      "deductions": [
+        {
+          "employee_deduction": 200,
+          "name": "401K"
+        }
+      ],
+      "earnings": [
+        {
+          "name": "GROSS",
+          "amount": 2000
+        }
+      ],
+      "taxes": [
+        {
+          "name": "Testing_Tax",
+          "amount": 101
+        }
+      ]
+    }
+    ```
+
+    ### Where to find these fields:
+
+    - **payroll_provider_id**: Use the ID provided by the customer if it’s available. If not, any valid string can be used.
+    - **payroll_person_id**: This value can be found in the employee’s `raw_data`.
+    - **payroll_employment_id**: Source this either from the employee’s `raw_data` or from Binbee’s employment model (`remote_id`).
+    - **Deductions**: When adding deductions, ensure the deduction codes are included in the name field.
+
+    ### Important notes
+
+    - All top-level fields are mandatory.
+    - `earnings`, `deductions`, and `taxes` can be sent together.
+    - All fields inside each array are compulsory.
+  </Accordion>
+  {/* Add more provider-specific accordions here as you support additional HRIS integrations */}
 </AccordionGroup>
