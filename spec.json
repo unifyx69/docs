@@ -4408,6 +4408,18 @@
             "example": true
           },
           {
+            "name": "origin_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "Filter connectors by end user origin ID",
+              "title": "Origin Id"
+            },
+            "description": "Filter connectors by end user origin ID",
+            "example": "user_123"
+          },
+          {
             "name": "page_size",
             "in": "query",
             "required": false,
@@ -8841,6 +8853,18 @@
             "example": true
           },
           {
+            "name": "origin_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "Filter connectors by end user origin ID",
+              "title": "Origin Id"
+            },
+            "description": "Filter connectors by end user origin ID",
+            "example": "user_123"
+          },
+          {
             "name": "page_size",
             "in": "query",
             "required": false,
@@ -11040,6 +11064,18 @@
             },
             "description": "Filter connectors by active status",
             "example": true
+          },
+          {
+            "name": "origin_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "Filter connectors by end user origin ID",
+              "title": "Origin Id"
+            },
+            "description": "Filter connectors by end user origin ID",
+            "example": "user_123"
           },
           {
             "name": "page_size",
@@ -13548,6 +13584,12 @@
             "description": "Name of the end user which is used when creating corresponding connector",
             "example": "Acme Corp."
           },
+          "origin_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Origin Id",
+            "description": "Origin ID of the end user",
+            "example": "user_123"
+          },
           "sync_status": {
             "anyOf": [
               { "$ref": "#/components/schemas/JobDisplayStatus" },
@@ -13615,6 +13657,7 @@
           "status",
           "integration_slug",
           "end_user",
+          "origin_id",
           "sync_status",
           "last_sync_start_time",
           "next_sync_start_time",
