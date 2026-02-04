@@ -1,30 +1,19 @@
 ---
 title: "Production Environment"
-description: "Learn about the Bindbee Production environment and how to securely manage your production API keys."
+description: "Bindbee Production environment for live customer integrations."
 ---
 
 ## Overview
 
-The Production environment is your live environment where real customer data flows through Bindbee. This environment is designed for your production applications and should be used when you're ready to go live with your integrations.
+The Production environment is where your live customer integrations run. This environment handles real customer data and is completely isolated from the Development environment.
 
 <Warning>
-  Production API keys provide access to real customer data. Handle them with the utmost care and never expose them publicly.
+  Production API keys provide access to real customer data. Keep them secure and never expose them publicly.
 </Warning>
 
-## Production API Keys
+## Production API Key
 
-Each Bindbee environment has its own set of API keys. Your Production API key authenticates requests to the live Bindbee API and grants access to your customers' actual data.
-
-### Security Best Practices
-
-<Info>
-  Production API keys should be treated as sensitive credentials. Only authorized personnel should have access to these keys.
-</Info>
-
-- **Never share** your Production API key with external parties or commit it to version control
-- **Store securely** using environment variables or a secrets management service
-- **Rotate regularly** to minimize the risk of compromised credentials
-- **Limit access** to only team members who need it for production deployments
+Your Production API key (`prod_api_key`) is used exclusively to access the Production environment. It cannot be used to access the Development environment.
 
 ### Managing Your Production API Key
 
@@ -37,19 +26,18 @@ You can view and regenerate your Production API key in the [API Keys](https://ap
 />
 
 <Note>
-  Regenerating your Production API key will immediately invalidate the previous key. Ensure you update all services using the old key before regenerating.
+  Regenerating your Production API key will immediately invalidate the previous key. Update all services before regenerating.
 </Note>
 
-### Using Your Production API Key
+### Authentication
 
-Include your Production API key in the `Authorization` header of every request to the Bindbee API:
+Include your Production API key in the `Authorization` header:
 
-`Authorization: Bearer YOUR_PRODUCTION_API_KEY`
+`Authorization: Bearer YOUR_PROD_API_KEY`
 
-## When to Use Production
+## Environment Isolation
 
-Use the Production environment when:
-
-- Your integration is fully tested and ready for live deployment
-- You need to access real customer data
-- Your application is serving end-users in a production setting
+The Production and Development environments are completely isolated:
+- Production API keys only access Production data
+- Development API keys only access Development data
+- Connectors and data do not transfer between environments

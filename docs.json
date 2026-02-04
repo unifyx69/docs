@@ -30,7 +30,7 @@
                 "group": "Environments",
                 "pages": [
                   "features/environments/production",
-                  "features/environments/test"
+                  "features/environments/development"
                 ]
               },
               {
