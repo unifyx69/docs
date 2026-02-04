@@ -27,6 +27,13 @@
                 "pages": ["features/overview"]
               },
               {
+                "group": "Environments",
+                "pages": [
+                  "features/environments/production",
+                  "features/environments/test"
+                ]
+              },
+              {
                 "group": "Bindbee Features",
                 "pages": [
                   "features/dashboard",

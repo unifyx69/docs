@@ -1,0 +1,55 @@
+---
+title: "Production Environment"
+description: "Learn about the Bindbee Production environment and how to securely manage your production API keys."
+---
+
+## Overview
+
+The Production environment is your live environment where real customer data flows through Bindbee. This environment is designed for your production applications and should be used when you're ready to go live with your integrations.
+
+<Warning>
+  Production API keys provide access to real customer data. Handle them with the utmost care and never expose them publicly.
+</Warning>
+
+## Production API Keys
+
+Each Bindbee environment has its own set of API keys. Your Production API key authenticates requests to the live Bindbee API and grants access to your customers' actual data.
+
+### Security Best Practices
+
+<Info>
+  Production API keys should be treated as sensitive credentials. Only authorized personnel should have access to these keys.
+</Info>
+
+- **Never share** your Production API key with external parties or commit it to version control
+- **Store securely** using environment variables or a secrets management service
+- **Rotate regularly** to minimize the risk of compromised credentials
+- **Limit access** to only team members who need it for production deployments
+
+### Managing Your Production API Key
+
+You can view and regenerate your Production API key in the [API Keys](https://app.bindbee.dev/settings/keys) section of your Bindbee dashboard.
+
+<img
+  src="https://images.unifyx.dev/documentation_images/api_keys.png"
+  alt="Production API Keys"
+  className="block"
+/>
+
+<Note>
+  Regenerating your Production API key will immediately invalidate the previous key. Ensure you update all services using the old key before regenerating.
+</Note>
+
+### Using Your Production API Key
+
+Include your Production API key in the `Authorization` header of every request to the Bindbee API:
+
+`Authorization: Bearer YOUR_PRODUCTION_API_KEY`
+
+## When to Use Production
+
+Use the Production environment when:
+
+- Your integration is fully tested and ready for live deployment
+- You need to access real customer data
+- Your application is serving end-users in a production setting
