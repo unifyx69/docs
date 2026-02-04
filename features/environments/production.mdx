@@ -1,0 +1,43 @@
+---
+title: "Production Environment"
+description: "Bindbee Production environment for live customer integrations."
+---
+
+## Overview
+
+The Production environment is where your live customer integrations run. This environment handles real customer data and is completely isolated from the Development environment.
+
+<Warning>
+  Production API keys provide access to real customer data. Keep them secure and never expose them publicly.
+</Warning>
+
+## Production API Key
+
+Your Production API key (`prod_api_key`) is used exclusively to access the Production environment. It cannot be used to access the Development environment.
+
+### Managing Your Production API Key
+
+You can view and regenerate your Production API key in the [API Keys](https://app.bindbee.dev/settings/keys) section of your Bindbee dashboard.
+
+<img
+  src="https://images.unifyx.dev/documentation_images/api_keys.png"
+  alt="Production API Keys"
+  className="block"
+/>
+
+<Note>
+  Regenerating your Production API key will immediately invalidate the previous key. Update all services before regenerating.
+</Note>
+
+### Authentication
+
+Include your Production API key in the `Authorization` header:
+
+`Authorization: Bearer YOUR_PROD_API_KEY`
+
+## Environment Isolation
+
+The Production and Development environments are completely isolated:
+- Production API keys only access Production data
+- Development API keys only access Development data
+- Connectors and data do not transfer between environments
