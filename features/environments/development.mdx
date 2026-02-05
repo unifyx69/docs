@@ -1,0 +1,43 @@
+---
+title: "Development Environment"
+description: "Bindbee Development environment for building and testing integrations."
+---
+
+## Overview
+
+The Development environment is a sandbox for building and testing your Bindbee integrations. This environment is completely isolated from Production and has no limits on the number of connectors you can create.
+
+## Development API Key
+
+Your Development API key (`dev_api_key`) is used exclusively to access the Development environment. It cannot be used to access the Production environment.
+
+### Sharing Development Keys
+
+Development API keys can be safely shared within your team for development and testing purposes.
+
+### Managing Your Development API Key
+
+You can view and regenerate your Development API key in the [API Keys](https://app.bindbee.dev/settings/keys) section of your Bindbee dashboard.
+
+<img
+  src="https://images.unifyx.dev/documentation_images/development-key.png"
+  alt="Development API Keys"
+  className="block"
+/>
+
+### Authentication
+
+Include your Development API key in the `Authorization` header:
+
+`Authorization: Bearer YOUR_DEV_API_KEY`
+
+## Environment Isolation
+
+The Production and Development environments are completely isolated:
+- Development API keys only access Development data
+- Production API keys only access Production data
+- Connectors and data do not transfer between environments
+
+## Unlimited Connectors
+
+The Development environment has no limit on the number of connectors you can create, allowing you to test as many integrations as needed without restrictions.
