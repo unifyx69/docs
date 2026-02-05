@@ -5,7 +5,9 @@ description: "Bindbee Production environment for live customer integrations."
 
 ## Overview
 
-The Production environment is where your live customer integrations run. This environment handles real customer data and is completely isolated from the Development environment.
+The Production environment is used for running live customer integrations. It handles real customer data and is intended for use with customers actively operating in production.
+
+This environment is completely isolated from the Development environment.
 
 <Warning>
   Production API keys provide access to real customer data. Keep them secure and never expose them publicly.
@@ -13,7 +15,12 @@ The Production environment is where your live customer integrations run. This en
 
 ## Production API Key
 
-Your Production API key (`prod_api_key`) is used exclusively to access the Production environment. It cannot be used to access the Development environment.
+Your Production API key (`prod_api_key`) is required to access the Production environment. Development API keys cannot be used to authenticate Production requests.
+
+<Note>
+  Only Production API keys can be used to access the Production environment.
+  Development API keys are strictly limited to the Development environment.
+ </Note>
 
 ### Managing Your Production API Key
 
@@ -26,14 +33,31 @@ You can view and regenerate your Production API key in the [API Keys](https://ap
 />
 
 <Note>
-  Regenerating your Production API key will immediately invalidate the previous key. Update all services before regenerating.
+  Regenerating your Production API key will immediately invalidate the previous key. Ensure all dependent services are updated before regenerating.
 </Note>
 
 ### Authentication
 
-Include your Production API key in the `Authorization` header:
+Include your Production API key in the `Authorization` header for all requests:
 
 `Authorization: Bearer YOUR_PROD_API_KEY`
+
+## Sync Behavior
+
+In the Production environment, data syncs are handled automatically.
+
+<Note>
+  Data synchronization occurs once every 24 hours by default. This sync frequency can be adjusted based on customization preferences.
+</Note>
+
+## Intended Usage
+
+The Production environment is designed for:
+- Live customer integrations
+- Real-time and scheduled data synchronization
+- Stable, production-ready workflows
+
+It should only be used once integrations have been fully tested in the Development environment.
 
 ## Environment Isolation
 
