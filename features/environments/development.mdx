@@ -1,23 +1,55 @@
 ---
-title: "Development Environment"
+title: "Development"
 description: "Bindbee Development environment for building and testing integrations."
 ---
 
 ## Overview
 
-The Development environment is a sandbox for building and testing your Bindbee integrations. This environment is completely isolated from Production and has no limits on the number of connectors you can create.
+The Development environment is a sandbox designed for building and testing your Bindbee integrations. It is intended strictly for non-production use and is completely isolated from the Production environment.
+
+<Info>
+  The Development environment allows unrestricted testing without impacting live
+  production data.
+</Info>
 
 ## Development API Key
 
 Your Development API key (`dev_api_key`) is used exclusively to access the Development environment. It cannot be used to access the Production environment.
 
+<Note>
+  Development API keys should only be used for testing and should never be used
+  in production applications.
+</Note>
+
 ### Sharing Development Keys
 
-Development API keys can be safely shared within your team for development and testing purposes.
+Development API keys are intended for testing purposes only and can be safely shared within your team for development and testing workflows.
 
-### Managing Your Development API Key
+## Authentication
 
-You can view and regenerate your Development API key in the [API Keys](https://app.bindbee.dev/settings/keys) section of your Bindbee dashboard.
+When making requests to the Bindbee API in the Development environment, include your Development API key in the `Authorization` header using the **Bearer** prefix:
+
+`Authorization: Bearer YOUR_DEV_API_KEY`
+
+## Connector Behavior
+
+### Sync Configuration
+
+Connectors created using Development API keys do not resync automatically. You can trigger syncs either programmatically or manually via the dashboard.
+
+<Tip>
+  Unlike Production connectors, syncs are not automated for Development connectors. You must trigger syncs manually or programmatically to fetch updated data.
+</Tip>
+
+### Connector Limits
+
+There is no limit on the number of connectors you can create in the Development environment, allowing you to test multiple integrations without restrictions.
+
+## Managing Your Development API Key
+
+You can view and regenerate your Development API key from the **API Keys** section of your Bindbee dashboard:
+
+https://app.bindbee.dev/settings/keys
 
 <img
   src="https://images.unifyx.dev/documentation_images/development-key.png"
@@ -25,19 +57,10 @@ You can view and regenerate your Development API key in the [API Keys](https://a
   className="block"
 />
 
-### Authentication
-
-Include your Development API key in the `Authorization` header:
-
-`Authorization: Bearer YOUR_DEV_API_KEY`
-
 ## Environment Isolation
 
-The Production and Development environments are completely isolated:
-- Development API keys only access Development data
-- Production API keys only access Production data
-- Connectors and data do not transfer between environments
+The Development and Production environments are completely isolated:
 
-## Unlimited Connectors
-
-The Development environment has no limit on the number of connectors you can create, allowing you to test as many integrations as needed without restrictions.
+- Development API keys only access Development data  
+- Production API keys only access Production data  
+- Connectors and data do not transfer between environments  
