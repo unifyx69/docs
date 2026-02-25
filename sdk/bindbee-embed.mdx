@@ -31,11 +31,12 @@ You will need [**BINDBEE_API_KEY**](/api-reference/basics/authentication#bindbee
 
 <Warning>
   The type of API key you use determines the environment of the connector
-  created:
-  - Using a **Production API key** creates a **Production connector**
-  - Using a **Development API key** creates a **Development connector** 
-  
-  These environments are completely isolated. Make sure to use the appropriate API key for your use case. Learn more about [Development](/features/environments/development) and [Production](/features/environments/production) environments.
+  created: - Using a **Production API key** creates a **Production connector** -
+  Using a **Development API key** creates a **Development connector** These
+  environments are completely isolated. Make sure to use the appropriate API key
+  for your use case. Learn more about
+  [Development](/features/environments/development) and
+  [Production](/features/environments/production) environments.
 </Warning>
 
 You will also need to send some information about end user, integration category, and the specific integration you want to connect to.
@@ -305,12 +306,29 @@ If you're using a framework or library other than React for your frontend, you c
 Add the following script tag to your HTML:
 
 ```html HTML
-<script src="https://cdn.bindbee.dev/initialize.min.js"></script>
+<script
+  src="https://cdn.bindbee.dev/initialize.min.js"
+  integrity="sha512-1L1XqHiVgenLFd95eE8fqJ7o6kje+5+3IN7K0cuwNP6feTrYAeNTdpeqR1e2HgThSb5Bj+USqJeNiyEE9KBtfA=="
+  crossorigin="anonymous"
+></script>
 ```
 
 <Note>
-  You can also use the CDN link `https://cdn.bindbee.dev/initialize.js` if the
-  previous URL doesn’t work.
+  The `integrity` attribute ensures that the script has not been tampered with by
+  verifying its cryptographic hash. The `crossorigin="anonymous"` attribute is
+  required for Subresource Integrity (SRI) checks on CDN-hosted scripts.
+</Note>
+
+<Note>
+  You can also use the unminified CDN link if the previous URL doesn’t work:
+
+  ```html HTML
+  <script
+    src="https://cdn.bindbee.dev/initialize.js"
+    integrity="sha512-2Rzjv7TfBrXNCgB1wLTnpZupTZh6/JS0tQkKTGRu9fC7IAK4ahbPzcu29VUGHOmRPquLNU6RkLyt6yVuKR60DQ=="
+    crossorigin="anonymous"
+  ></script>
+  ```
 </Note>
 
 #### Usage
@@ -352,7 +370,11 @@ Here’s a complete HTML code snippet for the implementation, including the Java
 <html>
   <head>
     <title>Bindbee Integration</title>
-    <script src="https://cdn.bindbee.dev/initialize.min.js"></script>
+    <script
+      src="https://cdn.bindbee.dev/initialize.min.js"
+      integrity="sha512-1L1XqHiVgenLFd95eE8fqJ7o6kje+5+3IN7K0cuwNP6feTrYAeNTdpeqR1e2HgThSb5Bj+USqJeNiyEE9KBtfA=="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <button onclick="openLinkingFlow()">Connect Integration</button>
