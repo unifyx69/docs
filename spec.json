@@ -292,6 +292,18 @@
             "description": "The ID of the employer benefits for the benefits to fetch"
           },
           {
+            "name": "benefit_plan_category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The category of the benefit plan to filter by (e.g., MEDICAL, VISION, DENTAL, RETIREMENT, etc.)",
+              "examples": ["MEDICAL"],
+              "title": "Benefit Plan Category"
+            },
+            "description": "The category of the benefit plan to filter by (e.g., MEDICAL, VISION, DENTAL, RETIREMENT, etc.)"
+          },
+          {
             "name": "remote_id",
             "in": "query",
             "required": false,
@@ -1322,6 +1334,18 @@
               "title": "Ids"
             },
             "description": "The ID of the employer benefits to fetch"
+          },
+          {
+            "name": "benefit_plan_category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The category of the benefit plan to filter by (e.g., MEDICAL, VISION, DENTAL, RETIREMENT, etc.)",
+              "examples": ["MEDICAL"],
+              "title": "Benefit Plan Category"
+            },
+            "description": "The category of the benefit plan to filter by (e.g., MEDICAL, VISION, DENTAL, RETIREMENT, etc.)"
           },
           {
             "name": "remote_id",
