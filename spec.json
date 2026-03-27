@@ -14536,6 +14536,16 @@
             "title": "End Time",
             "description": "The day and time of the end of the time requested off.",
             "examples": ["2023-11-10T00:00:00Z"]
+          },
+          "additional_attributes": {
+            "anyOf": [{ "type": "object" }, { "type": "null" }],
+            "title": "Additional Attributes",
+            "description": "Specific fields required by the chosen HRIS.",
+            "example": {
+              "worker_time_block_id": "TEST_BB",
+              "time_entry_code_reference_wid": "c20c857a8cf41001aa4db119cb360000",
+              "out_reason_reference_id": "Out"
+            }
           }
         },
         "type": "object",
