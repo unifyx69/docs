@@ -39,6 +39,7 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     }
     ```
   </Accordion>
+
   <Accordion title="Xero">
     <p>
       When the underlying HRIS is <strong>Xero</strong>, a Timesheet Entry can be created using a payload like:
@@ -51,9 +52,10 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     }
     ```
   </Accordion>
-  <Accordion title="Quickbooks">
+
+  <Accordion title="QuickBooks">
     <p>
-      When the underlying HRIS is <strong>Quickbooks</strong>, a Timesheet Entry can be created using a payload like:
+      When the underlying HRIS is <strong>QuickBooks</strong>, a Timesheet Entry can be created using a payload like:
     </p>
     ```json
     {
@@ -65,25 +67,65 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     }
     ```
   </Accordion>
-  <Accordion title="Workday (Beta)">
+
+  <Accordion title="Workday">
     <p>
-     Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details
+      When the underlying HRIS is <strong>Workday</strong>, a Timesheet Entry can be created using a payload like:
     </p>
+    ```json
+    {
+      "employee": "019d29f5-07cf-7396-9ae1-34e5b71ad42c",
+      "date": "2026-03-26",
+      "hours_worked": 7.5,
+      "start_time": "2026-03-26T10:00:00Z",
+      "end_time": "2026-03-26T17:30:00Z",
+      "additional_attributes": {
+        "worker_time_block_id": "TEST_BB",
+        "time_entry_code_reference_wid": "c20c857a8cf41001aa4db119cb360000",
+        "out_reason_reference_id": "Out"
+      }
+    }
+    ```
+
+    <p>
+      <strong>Workday-specific requirements:</strong>
+    </p>
+    <ul>
+      <li>
+        <code>out_reason_reference_id</code> must be one of: <code>Break</code>, <code>Meal</code>, or <code>Out</code>.
+      </li>
+      <li>
+        For <code>time_entry_code_reference_wid</code>, search for <strong>All Time Entry Codes</strong> in the Workday portal and use the WID of any suitable code from the displayed list.
+      </li>
+      <li>
+        The selected Time Entry Code must have <strong>Units = Hours</strong>.
+      </li>
+      <li>
+        If the selected Time Entry Code has <strong>Entry Method = In/Out Only</strong>, <code>out_reason_reference_id</code> is required.
+      </li>
+      <li>
+        If the selected Time Entry Code has <strong>Entry Method = Hours Only</strong>, <code>out_reason_reference_id</code> must not be passed.
+      </li>
+    </ul>
   </Accordion>
+
   <Accordion title="UKG Ready (Beta)">
     <p>
-     Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details
+      Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details.
     </p>
   </Accordion>
+
   <Accordion title="ADP (Beta)">
     <p>
-     Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details
+      Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details.
     </p>
   </Accordion>
+
   <Accordion title="Factorial (Beta)">
     <p>
-     Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details
+      Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details.
     </p>
   </Accordion>
-{/* Add more provider-specific accordions here as you support additional HRIS integrations */}
+
+  {/* Add more provider-specific accordions here as you support additional HRIS integrations */}
 </AccordionGroup>
