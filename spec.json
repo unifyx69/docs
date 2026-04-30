@@ -1,6 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": { "title": "Bindbee APIs", "version": "0.1.0" },
+  "servers": [
+    {
+      "url": "https://api.bindbee.dev"
+    },
+    {
+      "url": "https://api-eu.bindbee.dev"
+    }
+  ],
   "paths": {
     "/api/hris/v1/bank-info": {
       "get": {
@@ -1770,32 +1778,27 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "x-idempotency-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Key to guarantee idempotent write execution.",
+              "title": "X-Idempotency-Key"
+            },
+            "description": "Key to guarantee idempotent write execution."
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
             "schema": { "type": "string", "title": "X-Connector-Token" }
           }
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/HrisEmployeeCreateRequest"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WriteApiResponseModel"
-                }
-              }
-            }
+            "content": { "application/json": { "schema": {} } }
           },
           "422": {
             "description": "Validation Error",
@@ -1830,6 +1833,47 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/MetaApiResponseModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hris/v1/employees/meta/post": {
+      "get": {
+        "tags": ["Employee"],
+        "summary": "Get Create Employee Meta",
+        "description": "Returns request schema for POST Employee request.",
+        "operationId": "get_create_employee_meta_api_hris_v1_employees_meta_post_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    { "type": "object", "additionalProperties": true },
+                    { "$ref": "#/components/schemas/MetaApiResponseModel" }
+                  ],
+                  "title": "Response Get Create Employee Meta Api Hris V1 Employees Meta Post Get"
                 }
               }
             }
@@ -3374,26 +3418,66 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "x-idempotency-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Key to guarantee idempotent write execution.",
+              "title": "X-Idempotency-Key"
+            },
+            "description": "Key to guarantee idempotent write execution."
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
             "schema": { "type": "string", "title": "X-Connector-Token" }
           }
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateHrisEmployeePayrollRun"
-              }
-            }
-          }
-        },
         "responses": {
           "201": {
             "description": "Successful Response",
             "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hris/v1/employee-payroll-runs/meta/post": {
+      "get": {
+        "tags": ["Employee Payroll Runs"],
+        "summary": "Get Create Employee Payroll Run Meta",
+        "description": "Returns request schema for POST Employee Payroll Run request.",
+        "operationId": "get_create_employee_payroll_run_meta_api_hris_v1_employee_payroll_runs_meta_post_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Get Create Employee Payroll Run Meta Api Hris V1 Employee Payroll Runs Meta Post Get"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -4004,44 +4088,6 @@
         }
       }
     },
-    "/api/hris/v1/passthrough": {
-      "post": {
-        "tags": ["Passthrough"],
-        "summary": "Make Passthrough Request",
-        "operationId": "make_passthrough_request_api_hris_v1_passthrough_post",
-        "security": [{ "HTTPBearer": [] }],
-        "parameters": [
-          {
-            "name": "x-connector-token",
-            "in": "header",
-            "required": true,
-            "schema": { "type": "string", "title": "X-Connector-Token" }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": { "$ref": "#/components/schemas/PassThroughRequest" }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": { "application/json": { "schema": {} } }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/hris/v1/compensations": {
       "get": {
         "tags": ["Compensation"],
@@ -4518,26 +4564,66 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "x-idempotency-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Key to guarantee idempotent write execution.",
+              "title": "X-Idempotency-Key"
+            },
+            "description": "Key to guarantee idempotent write execution."
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
             "schema": { "type": "string", "title": "X-Connector-Token" }
           }
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateHrisTimeSheetEntry"
-              }
-            }
-          }
-        },
         "responses": {
           "201": {
             "description": "Successful Response",
             "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hris/v1/timesheet-entry/meta/post": {
+      "get": {
+        "tags": ["Timesheet Entry"],
+        "summary": "Get Create Timesheet Meta",
+        "description": "Returns request schema for POST Timesheet entry request.",
+        "operationId": "get_create_timesheet_meta_api_hris_v1_timesheet_entry_meta_post_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Get Create Timesheet Meta Api Hris V1 Timesheet Entry Meta Post Get"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -13452,6 +13538,15 @@
             "description": "Category of the connector",
             "examples": ["HRIS"]
           },
+          "relink_needed_at": {
+            "anyOf": [
+              { "type": "string", "format": "date-time" },
+              { "type": "null" }
+            ],
+            "title": "Relink Needed At",
+            "description": "Time at which credentials were deemed invalid",
+            "examples": ["2024-10-17T00:00:00Z"]
+          },
           "is_test_connector": {
             "type": "boolean",
             "title": "Is Test Connector",
@@ -13488,6 +13583,7 @@
           "next_sync_start_time",
           "connector_token",
           "category",
+          "relink_needed_at",
           "is_test_connector",
           "completed_at",
           "created_at"
@@ -13705,167 +13801,6 @@
         "required": ["data"],
         "title": "CreateCandidate"
       },
-      "CreateHrisEmployeePayrollRun": {
-        "properties": {
-          "employee": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
-            "title": "Employee",
-            "description": "The employee whose payroll is being run.",
-            "examples": ["018b168d-70f9-7043-a796-56d66a4f8f07"]
-          },
-          "payroll_run": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
-            "title": "Payroll Run",
-            "description": "The payroll being run.",
-            "default": "",
-            "examples": ["018b709e-b6ef-7db4-902a-a064157bdba2"]
-          },
-          "payroll_process_name": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Payroll Process Name",
-            "description": "The payroll process name to be displayed.",
-            "default": "",
-            "examples": ["Hours, Earning Codes"]
-          },
-          "paystatement_type_id": {
-            "anyOf": [{ "type": "integer" }, { "type": "null" }],
-            "title": "Paystatement Type Id",
-            "description": "Id of Employee's Paystatement Type",
-            "examples": [53123324]
-          },
-          "payroll_file": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Payroll File",
-            "description": "Employee's Payroll File Number for which earnings are made",
-            "default": "",
-            "examples": ["000099"]
-          },
-          "payroll_provider_id": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Payroll Provider Id",
-            "description": "Payroll provider identifier.",
-            "examples": ["ECP"]
-          },
-          "payroll_person_id": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Payroll Person Id",
-            "description": "Payroll person identifier.",
-            "examples": ["1234567890"]
-          },
-          "payroll_employment_id": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Payroll Employment Id",
-            "description": "Payroll employment identifier.",
-            "examples": ["1234567890"]
-          },
-          "payroll_group_code": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Payroll Group Code",
-            "description": "The payroll group code the employee belongs to.",
-            "default": "",
-            "examples": ["9YT"]
-          },
-          "gross_pay": {
-            "anyOf": [
-              { "type": "number" },
-              { "type": "integer" },
-              { "type": "null" }
-            ],
-            "title": "Gross Pay",
-            "description": "The total earnings throughout a given period for an employee before any deductions are made.",
-            "default": 0,
-            "examples": [772277.77]
-          },
-          "net_pay": {
-            "anyOf": [
-              { "type": "number" },
-              { "type": "integer" },
-              { "type": "null" }
-            ],
-            "title": "Net Pay",
-            "description": "The take-home pay throughout a given period for an employee after deductions are made.",
-            "default": 0,
-            "examples": [577221.27]
-          },
-          "start_date": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Start Date",
-            "description": "The day and time the benefit started.",
-            "default": "",
-            "examples": ["2023-07-01T00:00:00Z"]
-          },
-          "end_date": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "End Date",
-            "description": "The day and time the benefit ended.",
-            "default": "",
-            "examples": ["2023-07-31T00:00:00Z"]
-          },
-          "check_date": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Check Date",
-            "description": "The day and time the payroll run was checked.",
-            "default": "",
-            "examples": ["2023-08-31T00:00:00Z"]
-          },
-          "earnings": {
-            "anyOf": [
-              {
-                "items": { "additionalProperties": true, "type": "object" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
-            "title": "Earnings",
-            "description": "The earnings of the Employee",
-            "default": [],
-            "examples": [{ "amount": "27151", "name": "SALARY" }]
-          },
-          "deductions": {
-            "anyOf": [
-              {
-                "items": { "additionalProperties": true, "type": "object" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
-            "title": "Deductions",
-            "description": "The deductions of the Employee",
-            "default": [],
-            "examples": [
-              {
-                "company_deduction": "77.57",
-                "employee_deduction": "27.22",
-                "name": "Social Security"
-              }
-            ]
-          },
-          "taxes": {
-            "anyOf": [
-              {
-                "items": { "additionalProperties": true, "type": "object" },
-                "type": "array"
-              },
-              { "type": "null" }
-            ],
-            "title": "Taxes",
-            "description": "The taxes of the Employee",
-            "default": [],
-            "examples": [
-              { "amount": "175.22", "name": "California State Income Tax" }
-            ]
-          }
-        },
-        "type": "object",
-        "required": ["employee"],
-        "title": "CreateHrisEmployeePayrollRun"
-      },
       "CreateHrisTimeOff": {
         "properties": {
           "employee": {
@@ -13969,75 +13904,6 @@
         "required": ["employee", "amount", "request_type", "start_time"],
         "title": "CreateHrisTimeOff",
         "description": "The TimeOff object is used to represent all employees' Time Off entries."
-      },
-      "CreateHrisTimeSheetEntry": {
-        "properties": {
-          "additional_attributes": {
-            "anyOf": [
-              { "additionalProperties": true, "type": "object" },
-              { "type": "null" }
-            ],
-            "title": "Additional Attributes",
-            "description": "Specific fields required by the chosen HRIS",
-            "examples": [
-              {
-                "contract_end_date": "2025-12-31T00:00:00",
-                "previous_employer": "TechCorp"
-              }
-            ]
-          },
-          "custom_fields": {
-            "anyOf": [
-              { "additionalProperties": true, "type": "object" },
-              { "type": "null" }
-            ],
-            "title": "Custom Fields",
-            "description": "The custom fields related to the model",
-            "examples": [{ "customTshirtSize": "XXL" }]
-          },
-          "employee": {
-            "type": "string",
-            "format": "uuid",
-            "title": "Employee",
-            "description": "The employee the timesheet entry is for.",
-            "examples": ["018abccc-4a0a-7e7d-a9d7-56881f57a6b4"]
-          },
-          "date": {
-            "type": "string",
-            "title": "Date",
-            "description": "The date the time was logged.",
-            "examples": ["2023-11-10"]
-          },
-          "hours_worked": {
-            "anyOf": [{ "type": "integer" }, { "type": "number" }],
-            "title": "Hours Worked",
-            "description": "The number of hours logged by the employee.",
-            "default": 0,
-            "examples": [12]
-          },
-          "break_duration": {
-            "type": "number",
-            "title": "Break Duration",
-            "description": "The number of hours the employee took for a break.",
-            "default": 0,
-            "examples": [30]
-          },
-          "start_time": {
-            "type": "string",
-            "title": "Start Time",
-            "description": "The day and time of the start of the time entry.",
-            "examples": ["2023-11-10T00:00:00Z"]
-          },
-          "end_time": {
-            "type": "string",
-            "title": "End Time",
-            "description": "The day and time of the end of the time entry.",
-            "examples": ["2023-11-10T08:00:00Z"]
-          }
-        },
-        "type": "object",
-        "required": ["employee", "date", "start_time", "end_time"],
-        "title": "CreateHrisTimeSheetEntry"
       },
       "CurrentConnectorResponseModel": {
         "properties": {
@@ -14160,6 +14026,22 @@
           "RETIRED"
         ],
         "title": "HRISEmploymentStatus"
+      },
+      "HTTPMethod": {
+        "type": "string",
+        "enum": [
+          "CONNECT",
+          "DELETE",
+          "GET",
+          "HEAD",
+          "OPTIONS",
+          "PATCH",
+          "POST",
+          "PUT",
+          "TRACE"
+        ],
+        "title": "HTTPMethod",
+        "description": "HTTP methods and descriptions\n\nMethods from the following RFCs are all observed:\n\n    * RFC 7231: Hypertext Transfer Protocol (HTTP/1.1), obsoletes 2616\n    * RFC 5789: PATCH Method for HTTP"
       },
       "HTTPValidationError": {
         "properties": {
@@ -15035,336 +14917,6 @@
         ],
         "title": "HrisDependentBenefit",
         "description": "The Hris Dependent Benefit object is used to represent a benefit that an dependent has enrolled in."
-      },
-      "HrisEmployeeCreateRequest": {
-        "properties": {
-          "employee_number": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Employee Number",
-            "description": "The employee's number that appears in the third-party integration's UI.",
-            "examples": ["1"]
-          },
-          "company": {
-            "anyOf": [{}, { "type": "null" }],
-            "title": "Company",
-            "description": "The ID of the employee's company.",
-            "examples": ["018af1fe-1250-772d-87c5-6f725a579e8a"]
-          },
-          "first_name": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "First Name",
-            "description": "The employee's first name.",
-            "examples": ["Kunal"]
-          },
-          "middle_name": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Middle Name",
-            "description": "The employee's middle name.",
-            "examples": ["Christopher"]
-          },
-          "last_name": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Last Name",
-            "description": "The employee's last name.",
-            "examples": ["Tyagi"]
-          },
-          "preferred_name": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Preferred Name",
-            "description": "The employee's preferred first name.",
-            "examples": ["Dark Knight"]
-          },
-          "display_full_name": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Display Full Name",
-            "description": "The employee's full name, to use for display purposes. If a preferred first name is available, the full name will include the preferred first name.",
-            "examples": ["Kunal Tyagi"]
-          },
-          "username": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Username",
-            "description": "The employee's username that appears in the remote UI.",
-            "examples": ["kunaltyagi"]
-          },
-          "designation": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Designation",
-            "description": "The employee's current designation/title",
-            "examples": ["Chief Technology Officer"]
-          },
-          "groups": {
-            "anyOf": [{ "items": {}, "type": "array" }, { "type": "null" }],
-            "title": "Groups",
-            "description": "The IDs of the groups that the employee belongs to.",
-            "examples": [
-              [
-                "018af1fe-1250-772d-87c5-6f725a579e8a",
-                "018af1fe-1250-772d-87c5-6f725a579e8b"
-              ]
-            ]
-          },
-          "department": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Department",
-            "description": "The employee's department",
-            "examples": ["Engineering"]
-          },
-          "division": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Division",
-            "description": "The employee's division",
-            "examples": ["Bangalore Division"]
-          },
-          "work_email": {
-            "anyOf": [
-              { "type": "string", "format": "email" },
-              { "type": "null" }
-            ],
-            "title": "Work Email",
-            "description": "The employee's work email.",
-            "examples": ["kunal@bindbee.dev"]
-          },
-          "personal_email": {
-            "anyOf": [
-              { "type": "string", "format": "email" },
-              { "type": "null" }
-            ],
-            "title": "Personal Email",
-            "description": "The employee's personal email.",
-            "examples": ["kunaltyagi77@gmail.com"]
-          },
-          "mobile_phone_number": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Mobile Phone Number",
-            "description": "The employee's mobile phone number.",
-            "examples": ["+1234567890"]
-          },
-          "home_phone_number": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Home Phone Number",
-            "description": "The employee's home phone number.",
-            "examples": ["+1234567890"]
-          },
-          "country_code": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Country Code",
-            "description": "The employee's country code",
-            "examples": ["+91"]
-          },
-          "home_location": {
-            "anyOf": [
-              { "$ref": "#/components/schemas/HrisAddress" },
-              { "type": "null" }
-            ],
-            "description": "The employee's home address.",
-            "examples": [
-              {
-                "city": "London",
-                "country": "UK",
-                "location": "UK-HO-London",
-                "name": "UK-HO-London",
-                "postal_code": "56273",
-                "state": "LND",
-                "street_1": "1011",
-                "street_2": "Lane number 4, Golden Villa"
-              }
-            ]
-          },
-          "work_location": {
-            "anyOf": [
-              { "$ref": "#/components/schemas/HrisAddress" },
-              { "type": "null" }
-            ],
-            "description": "The employee's work address.",
-            "examples": [
-              {
-                "city": "London",
-                "country": "UK",
-                "location": "UK-HO-London",
-                "name": "UK-HO-London",
-                "postal_code": "56273",
-                "state": "LND",
-                "street_1": "1011",
-                "street_2": "Lane number 4, Golden Villa"
-              }
-            ]
-          },
-          "manager": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
-            "title": "Manager",
-            "description": "UUID of the employee's manager",
-            "examples": ["550e8400-e29b-41d4-a716-446655440000"]
-          },
-          "pay_group": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
-            "title": "Pay Group",
-            "description": "The employee's pay group",
-            "examples": ["018af1fe-1250-77c5-9fcd-4bca1e4568f4"]
-          },
-          "ssn": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Ssn",
-            "description": "The employee's social security number.",
-            "examples": ["1234567890"]
-          },
-          "gender": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "enum": [
-              "MALE",
-              "FEMALE",
-              "NON-BINARY",
-              "OTHER",
-              "PREFER_NOT_TO_DISCLOSE",
-              "-"
-            ],
-            "title": "Gender",
-            "description": "The employee's gender. If the value is not one of the defined enum values, the original value passed through will be returned.",
-            "examples": ["MALE"]
-          },
-          "ethnicity": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "enum": [
-              "AMERICAN_INDIAN_OR_ALASKA_NATIVE",
-              "ASIAN_OR_INDIAN_SUBCONTINENT",
-              "BLACK_OR_AFRICAN_AMERICAN",
-              "HISPANIC_OR_LATINO",
-              "NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER",
-              "TWO_OR_MORE_RACES",
-              "WHITE",
-              "PREFER_NOT_TO_DISCLOSE",
-              "OTHER",
-              "-"
-            ],
-            "title": "Ethnicity",
-            "description": "The employee's ethnicity. If the value is not one of the defined enum values, the original value passed through will be returned.",
-            "examples": ["ASIAN_OR_INDIAN_SUBCONTINENT"]
-          },
-          "marital_status": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "enum": [
-              "SINGLE",
-              "MARRIED",
-              "DIVORCED",
-              "SEPARATED",
-              "COMMON_LAW",
-              "DOMESTIC_PARTNERSHIP",
-              "WIDOWED",
-              "HEAD_OF_HOUSEHOLD",
-              "QUALIFYING_WIDOW_OR_WIDOWER_WITH_DEPENDENT_CHILD",
-              "IN_A_RELATIONSHIP",
-              "CIVIL_PARTNERSHIP",
-              "OTHER",
-              "-"
-            ],
-            "title": "Marital Status",
-            "description": "The employee's filing status as related to marital status. If the value is not one of the defined enum values, the original value passed through will be returned.",
-            "examples": ["SINGLE"]
-          },
-          "tobacco_use": {
-            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
-            "title": "Tobacco Use",
-            "description": "Indicates whether the employee uses tobacco or is a smoker.",
-            "examples": [true]
-          },
-          "date_of_birth": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Date Of Birth",
-            "description": "The employee's date of birth.",
-            "examples": ["1986-10-27T00:00:00Z"]
-          },
-          "start_date": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Start Date",
-            "description": "The date that the employee started working. If an employee was rehired, the most recent start date will be returned.",
-            "examples": ["2023-03-05T00:00:00Z"]
-          },
-          "remote_created_at": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Remote Created At",
-            "description": "When the third party's employee was created.",
-            "examples": ["2023-03-01T00:00:00Z"]
-          },
-          "employment_status": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "enum": [
-              "ACTIVE",
-              "PENDING",
-              "INACTIVE",
-              "ACTIVE_EXTERNAL",
-              "INACTIVE_EXTERNAL",
-              "-",
-              "LEAVE",
-              "DECEASED",
-              "RETIRED"
-            ],
-            "title": "Employment Status",
-            "description": "The employment status of the employee. If the value is not one of the defined enum values, the original value passed through will be returned.",
-            "examples": ["INACTIVE"]
-          },
-          "termination_date": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Termination Date",
-            "description": "The employee's termination date.",
-            "examples": ["2023-06-05T00:00:00Z"]
-          },
-          "termination_reason": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Termination Reason",
-            "description": "The employee's termination reason.",
-            "examples": [
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-            ]
-          },
-          "avatar": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Avatar",
-            "description": "The URL of the employee's avatar image.",
-            "examples": ["http://alturl.com/h2h8m"]
-          },
-          "payroll_run_calendar": {
-            "anyOf": [{}, { "type": "null" }],
-            "title": "Payroll Run Calendar",
-            "description": "The employee's payroll calendar",
-            "examples": ["018af1fe-1250-77c5-9fcd-4bca1e4568f4"]
-          },
-          "additional_attributes": {
-            "anyOf": [
-              { "additionalProperties": true, "type": "object" },
-              { "type": "null" }
-            ],
-            "title": "Additional Attributes",
-            "description": "Fields related to models other than employee Model",
-            "examples": [
-              {
-                "contract_end_date": "2025-12-31T00:00:00",
-                "emergency_contact": "John Doe - +1-234-567-8901",
-                "employee_type": "Contract",
-                "language_proficiency": "English, French",
-                "marital_status": "Married",
-                "performance_rating": "Excellent",
-                "previous_employer": "TechCorp"
-              }
-            ]
-          },
-          "custom_fields": {
-            "anyOf": [
-              { "additionalProperties": true, "type": "object" },
-              { "type": "null" }
-            ],
-            "title": "Custom Fields",
-            "description": "The custom fields related to the model",
-            "examples": [{ "customTshirtSize": "XXL" }]
-          }
-        },
-        "additionalProperties": true,
-        "type": "object",
-        "title": "HrisEmployeeCreateRequest"
       },
       "HrisEmployeePayrollRun": {
         "properties": {
@@ -16928,11 +16480,6 @@
         ],
         "title": "HrisTimeSheetEntry",
         "description": "The Timesheet Entry object is used to track coverage for Hours Worked by an Employee."
-      },
-      "HttpMethodEnum": {
-        "type": "string",
-        "enum": ["GET", "POST", "PUT", "PATCH", "DELETE"],
-        "title": "HttpMethodEnum"
       },
       "IntegrationPaginatedResponse": {
         "properties": {
@@ -19560,7 +19107,7 @@
       "PassThroughRequest": {
         "properties": {
           "method": {
-            "$ref": "#/components/schemas/HttpMethodEnum",
+            "$ref": "#/components/schemas/HTTPMethod",
             "title": "method",
             "description": "Method of the request",
             "examples": ["POST"]
@@ -19835,22 +19382,6 @@
         "type": "object",
         "required": ["loc", "msg", "type"],
         "title": "ValidationError"
-      },
-      "WriteApiResponseModel": {
-        "properties": {
-          "success": { "type": "boolean", "title": "Success" },
-          "data": { "type": "string", "title": "Data" },
-          "error": {
-            "anyOf": [
-              { "additionalProperties": true, "type": "object" },
-              { "type": "null" }
-            ],
-            "title": "Error"
-          }
-        },
-        "type": "object",
-        "required": ["success", "data"],
-        "title": "WriteApiResponseModel"
       }
     },
     "securitySchemes": { "HTTPBearer": { "type": "http", "scheme": "bearer" } }

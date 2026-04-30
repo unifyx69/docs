@@ -24,9 +24,7 @@
             "groups": [
               {
                 "group": "Features Overview",
-                "pages": [
-                  "features/overview"
-                ]
+                "pages": ["features/overview"]
               },
               {
                 "group": "Environments",
@@ -68,9 +66,7 @@
               },
               {
                 "group": "Integrations",
-                "pages": [
-                  "api-reference/integrations/get-integrations"
-                ]
+                "pages": ["api-reference/integrations/get-integrations"]
               },
               {
                 "group": "Supplemental Data",
@@ -138,6 +134,7 @@
                     "pages": [
                       "hris/employee/get-employees",
                       "hris/employee/get-create-employee-meta",
+                      "hris/employee/get-create-employee-request-body",
                       "hris/employee/create-employee",
                       "hris/employee/get-employee-by-id"
                     ]
@@ -146,6 +143,7 @@
                     "group": "Employee Payroll Runs",
                     "pages": [
                       "hris/employee-payroll-runs/get-employee-payroll-runs",
+                      "hris/employee-payroll-runs/get-create-employee-payroll-run-meta",
                       "hris/employee-payroll-runs/create-employee-payroll-runs",
                       "hris/employee-payroll-runs/get-employee-payroll-runs-by-id"
                     ]
@@ -204,6 +202,7 @@
                     "group": "Time Sheet Entry",
                     "pages": [
                       "hris/timesheet-entries/get-timesheet-entries-list",
+                      "hris/timesheet-entries/get-create-timesheet-meta",
                       "hris/timesheet-entries/create-timesheet-entries",
                       "hris/timesheet-entries/get-timesheet-entries-by-id"
                     ]
@@ -367,10 +366,7 @@
                 "pages": [
                   {
                     "group": "Users",
-                    "pages": [
-                      "lms/users/get-users",
-                      "lms/users/get-user-by-id"
-                    ]
+                    "pages": ["lms/users/get-users", "lms/users/get-user-by-id"]
                   },
                   {
                     "group": "Courses",
@@ -435,10 +431,7 @@
           },
           {
             "group": "API Reference",
-            "pages": [
-              "sdk/create-link-token",
-              "sdk/get-connector-token"
-            ]
+            "pages": ["sdk/create-link-token", "sdk/get-connector-token"]
           }
         ]
       },
@@ -448,9 +441,7 @@
         "groups": [
           {
             "group": "Webhooks",
-            "pages": [
-              "webhooks/overview"
-            ]
+            "pages": ["webhooks/overview"]
           }
         ]
       },
@@ -460,9 +451,7 @@
         "groups": [
           {
             "group": "Custom Fields",
-            "pages": [
-              "custom-fields/overview"
-            ]
+            "pages": ["custom-fields/overview"]
           }
         ]
       }
