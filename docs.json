@@ -451,7 +451,11 @@
         "groups": [
           {
             "group": "Custom Fields",
-            "pages": ["custom-fields/overview"]
+            "pages": [
+              "custom-fields/overview",
+              "custom-fields/dashboard",
+              "custom-fields/api-workflow"
+            ]
           }
         ]
       }
