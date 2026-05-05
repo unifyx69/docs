@@ -11275,6 +11275,679 @@
         }
       }
     },
+    "/api/v1/custom-fields": {
+      "post": {
+        "tags": ["Custom Fields"],
+        "summary": "Create Custom Field",
+        "description": "Create a new custom field.",
+        "operationId": "create_custom_field_api_v1_custom_fields_post",
+        "security": [{ "HTTPBearer": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomFieldCreateExternal"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Create Custom Field Api V1 Custom Fields Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Custom Fields"],
+        "summary": "List Custom Fields",
+        "description": "List custom fields for the caller's organization.",
+        "operationId": "list_custom_fields_api_v1_custom_fields_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                { "$ref": "#/components/schemas/Category" },
+                { "type": "null" }
+              ],
+              "description": "Filter by category, e.g. HRIS.",
+              "examples": ["HRIS"],
+              "title": "Category"
+            },
+            "description": "Filter by category, e.g. HRIS."
+          },
+          {
+            "name": "model",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 64,
+                  "pattern": "^[a-z][a-z0-9_-]*$"
+                },
+                { "type": "null" }
+              ],
+              "description": "Filter by model slug, e.g. employee.",
+              "examples": ["employee"],
+              "title": "Model"
+            },
+            "description": "Filter by model slug, e.g. employee."
+          },
+          {
+            "name": "source",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                { "$ref": "#/components/schemas/CustomFieldSource" },
+                { "type": "null" }
+              ],
+              "description": "Filter by origin: 'API' for fields created via the public API, 'DASHBOARD' for fields created from the Bindbee dashboard.",
+              "examples": ["API"],
+              "title": "Source"
+            },
+            "description": "Filter by origin: 'API' for fields created via the public API, 'DASHBOARD' for fields created from the Bindbee dashboard."
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "description": "Number of results to return per page. Maximum size is 200.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page. Maximum size is 200."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedResponse_CustomFieldExternal_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/custom-fields/mapping": {
+      "post": {
+        "tags": ["Custom Fields"],
+        "summary": "Create Custom Field Mapping",
+        "description": "Create a custom field mapping. Provide exactly one of `integration_slug` (organization scope) or `connector_token` (connector scope).",
+        "operationId": "create_custom_field_mapping_api_v1_custom_fields_mapping_post",
+        "security": [{ "HTTPBearer": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomFieldMappingCreateExternal"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Create Custom Field Mapping Api V1 Custom Fields Mapping Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Custom Fields"],
+        "summary": "List Custom Field Mappings",
+        "description": "List mappings for an integration slug or connector token. Provide exactly one of `integration_slug` or `connector_token`.",
+        "operationId": "list_custom_field_mappings_api_v1_custom_fields_mapping_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "integration_slug",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "Integration slug — return organization-scoped mappings for this integration.",
+              "examples": ["workday"],
+              "title": "Integration Slug"
+            },
+            "description": "Integration slug — return organization-scoped mappings for this integration."
+          },
+          {
+            "name": "connector_token",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "Connector token — return connector-scoped mappings for this connector.",
+              "examples": [
+                "i5kqe8bSedEdPLX9pHhFojKdo7Uzvue0f7I4NVhaDfV0GTxF0uAgwa_COb3zZU3T"
+              ],
+              "title": "Connector Token"
+            },
+            "description": "Connector token — return connector-scoped mappings for this connector."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CustomFieldMappingExternal"
+                  },
+                  "title": "Response List Custom Field Mappings Api V1 Custom Fields Mapping Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/custom-fields/mapping/{custom_field_mapping_id}": {
+      "patch": {
+        "tags": ["Custom Fields"],
+        "summary": "Update Custom Field Mapping",
+        "description": "Update a custom field mapping (json_path only).",
+        "operationId": "update_custom_field_mapping_api_v1_custom_fields_mapping__custom_field_mapping_id__patch",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "custom_field_mapping_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Custom Field Mapping Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomFieldMappingUpdateExternal"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomFieldMappingExternal"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Custom Fields"],
+        "summary": "Delete Custom Field Mapping",
+        "description": "Delete a custom field mapping.",
+        "operationId": "delete_custom_field_mapping_api_v1_custom_fields_mapping__custom_field_mapping_id__delete",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "custom_field_mapping_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Custom Field Mapping Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/custom-fields/raw-data": {
+      "get": {
+        "tags": ["Custom Fields"],
+        "summary": "Get Raw Data",
+        "description": "Inspect the raw upstream payload for a connector + (category, model). Use this to discover the field structure before writing a JMESPath. Returns the latest synced row's raw_data; falls back to the integration's canned sample if the connector has never synced. Provide exactly one of `connector_token` or `integration_slug`.",
+        "operationId": "get_raw_data_api_v1_custom_fields_raw_data_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Category",
+              "examples": ["HRIS"]
+            }
+          },
+          {
+            "name": "model",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 64,
+              "pattern": "^[a-z][a-z0-9_-]*$",
+              "examples": ["employee"],
+              "title": "Model"
+            }
+          },
+          {
+            "name": "connector_token",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "Connector token — returns the connector's latest synced row, falling back to integration sample.",
+              "examples": [
+                "i5kqe8bSedEdPLX9pHhFojKdo7Uzvue0f7I4NVhaDfV0GTxF0uAgwa_COb3zZU3T"
+              ],
+              "title": "Connector Token"
+            },
+            "description": "Connector token — returns the connector's latest synced row, falling back to integration sample."
+          },
+          {
+            "name": "integration_slug",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "Integration slug — returns the integration's canned sample (no connector required).",
+              "examples": ["workday"],
+              "title": "Integration Slug"
+            },
+            "description": "Integration slug — returns the integration's canned sample (no connector required)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Raw Data Api V1 Custom Fields Raw Data Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/custom-fields/preview": {
+      "post": {
+        "tags": ["Custom Fields"],
+        "summary": "Preview Custom Field",
+        "description": "Dry-run a JMESPath against a connector's data, without creating a mapping. Useful for validating an expression before persisting it as a mapping.",
+        "operationId": "preview_custom_field_api_v1_custom_fields_preview_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomFieldPreviewRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomFieldPreviewResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "security": [{ "HTTPBearer": [] }]
+      }
+    },
+    "/api/v1/custom-fields/configuration": {
+      "get": {
+        "tags": ["Custom Fields"],
+        "summary": "Get Custom Fields Configuration",
+        "description": "For a connector + (category, model), return the full custom-field configuration: every custom field with its effective mapping (connector overrides organization) and the source. Unmapped fields are included with null json_path so callers can see what is left to configure.",
+        "operationId": "get_custom_fields_configuration_api_v1_custom_fields_configuration_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "connector_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Connector token to compute the configuration for.",
+              "examples": [
+                "i5kqe8bSedEdPLX9pHhFojKdo7Uzvue0f7I4NVhaDfV0GTxF0uAgwa_COb3zZU3T"
+              ],
+              "title": "Connector Token"
+            },
+            "description": "Connector token to compute the configuration for."
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Category",
+              "description": "Category to filter custom fields by.",
+              "examples": ["HRIS"]
+            },
+            "description": "Category to filter custom fields by."
+          },
+          {
+            "name": "model",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 64,
+              "pattern": "^[a-z][a-z0-9_-]*$",
+              "description": "Model slug to filter custom fields by.",
+              "examples": ["employee"],
+              "title": "Model"
+            },
+            "description": "Model slug to filter custom fields by."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EffectiveCustomFieldResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/custom-fields/{custom_field_id}": {
+      "get": {
+        "tags": ["Custom Fields"],
+        "summary": "Get Custom Field",
+        "description": "Get a custom field with all its mappings.",
+        "operationId": "get_custom_field_api_v1_custom_fields__custom_field_id__get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "custom_field_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Custom Field Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomFieldDetailExternal"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Custom Fields"],
+        "summary": "Delete Custom Field",
+        "description": "Delete a custom field.",
+        "operationId": "delete_custom_field_api_v1_custom_fields__custom_field_id__delete",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "custom_field_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Custom Field Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/lookup/integrations": {
+      "get": {
+        "tags": ["Lookup"],
+        "summary": "List Integrations",
+        "description": "List integrations enabled for the caller's organization. Each row carries the categories the org has enabled for that integration. Use `slug` as `integration_slug` when creating org-level custom field mappings.",
+        "operationId": "list_integrations_api_v1_lookup_integrations_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                { "$ref": "#/components/schemas/Category" },
+                { "type": "null" }
+              ],
+              "description": "Filter to integrations the org has enabled for this category.",
+              "examples": ["HRIS"],
+              "title": "Category"
+            },
+            "description": "Filter to integrations the org has enabled for this category."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntegrationListResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/lookup/models": {
+      "get": {
+        "tags": ["Lookup"],
+        "summary": "List Models",
+        "description": "List unified models enabled for the caller's organization. Use `slug` as `model` when creating custom fields or mappings.",
+        "operationId": "list_models_api_v1_lookup_models_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                { "$ref": "#/components/schemas/Category" },
+                { "type": "null" }
+              ],
+              "description": "Filter to models in this category.",
+              "examples": ["HRIS"],
+              "title": "Category"
+            },
+            "description": "Filter to models in this category."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ModelListResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/embedded/v1/link/create-link-token": {
       "post": {
         "tags": ["Link"],
@@ -13925,6 +14598,352 @@
         "required": ["connector_token", "connector_id"],
         "title": "CurrentConnectorResponseModel"
       },
+      "CustomFieldCreateExternal": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 2,
+            "title": "Name",
+            "description": "Name of the custom field. Must be snake_case.",
+            "examples": ["guardian_mobile"]
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Description",
+            "description": "Description of the custom field.",
+            "examples": ["Employee's guardian mobile number"]
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category",
+            "description": "Category of the model on which the custom field is created.",
+            "examples": ["HRIS"]
+          },
+          "model": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[a-z][a-z0-9_-]*$",
+            "title": "Model",
+            "description": "Model on which the custom field is to be applied.",
+            "examples": ["employee"]
+          }
+        },
+        "type": "object",
+        "required": ["name", "category", "model"],
+        "title": "CustomFieldCreateExternal"
+      },
+      "CustomFieldDetailExternal": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "description": "Unique identifier of the custom field.",
+            "examples": ["018e586b-7d0b-7bc9-be65-a8fdbc82d734"]
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Name of the custom field (snake_case).",
+            "examples": ["guardian_mobile"]
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Description",
+            "description": "Description of the custom field.",
+            "examples": ["Employee's guardian mobile number"]
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category",
+            "description": "Category of the model.",
+            "examples": ["HRIS"]
+          },
+          "model": {
+            "type": "string",
+            "title": "Model",
+            "description": "Model on which the custom field is applied.",
+            "examples": ["employee"]
+          },
+          "source": {
+            "$ref": "#/components/schemas/CustomFieldSource",
+            "description": "Origin of the custom field. 'API' if created through the public API, 'DASHBOARD' if created from the Bindbee dashboard.",
+            "examples": ["API"]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "anyOf": [
+              { "type": "string", "format": "date-time" },
+              { "type": "null" }
+            ],
+            "title": "Updated At"
+          },
+          "mappings": {
+            "items": {
+              "$ref": "#/components/schemas/CustomFieldMappingExternal"
+            },
+            "type": "array",
+            "title": "Mappings",
+            "description": "All mappings configured for this custom field."
+          }
+        },
+        "type": "object",
+        "required": ["id", "name", "category", "model", "source", "created_at"],
+        "title": "CustomFieldDetailExternal"
+      },
+      "CustomFieldExternal": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "description": "Unique identifier of the custom field.",
+            "examples": ["018e586b-7d0b-7bc9-be65-a8fdbc82d734"]
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Name of the custom field (snake_case).",
+            "examples": ["guardian_mobile"]
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Description",
+            "description": "Description of the custom field.",
+            "examples": ["Employee's guardian mobile number"]
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category",
+            "description": "Category of the model.",
+            "examples": ["HRIS"]
+          },
+          "model": {
+            "type": "string",
+            "title": "Model",
+            "description": "Model on which the custom field is applied.",
+            "examples": ["employee"]
+          },
+          "source": {
+            "$ref": "#/components/schemas/CustomFieldSource",
+            "description": "Origin of the custom field. 'API' if created through the public API, 'DASHBOARD' if created from the Bindbee dashboard.",
+            "examples": ["API"]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "anyOf": [
+              { "type": "string", "format": "date-time" },
+              { "type": "null" }
+            ],
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": ["id", "name", "category", "model", "source", "created_at"],
+        "title": "CustomFieldExternal"
+      },
+      "CustomFieldMappingCreateExternal": {
+        "properties": {
+          "custom_field_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Custom Field Id",
+            "description": "ID of the custom field to be mapped.",
+            "examples": ["018e586b-7d0b-7bc9-be65-a8fdbc82d734"]
+          },
+          "integration_slug": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Integration Slug",
+            "description": "Integration slug — set this for an organization-scoped mapping (applies to all connectors of this integration in the org). Mutually exclusive with `connector_token`.",
+            "examples": ["workday"]
+          },
+          "connector_token": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Connector Token",
+            "description": "Connector token — set this for a connector-scoped mapping (applies to a single connector instance). Mutually exclusive with `integration_slug`.",
+            "examples": [
+              "i5kqe8bSedEdPLX9pHhFojKdo7Uzvue0f7I4NVhaDfV0GTxF0uAgwa_COb3zZU3T"
+            ]
+          },
+          "json_path": {
+            "type": "string",
+            "maxLength": 1024,
+            "pattern": "\\S.*\\S",
+            "title": "Json Path",
+            "description": "JMESPath expression to extract the value from the upstream payload."
+          }
+        },
+        "type": "object",
+        "required": ["custom_field_id", "json_path"],
+        "title": "CustomFieldMappingCreateExternal"
+      },
+      "CustomFieldMappingExternal": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "description": "Unique identifier of the mapping.",
+            "examples": ["018e586b-7d0b-7bc9-be65-a8fdbc82d734"]
+          },
+          "custom_field_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Custom Field Id",
+            "description": "ID of the custom field this mapping belongs to.",
+            "examples": ["018e586b-7d0b-7bc9-be65-a8fdbc82d734"]
+          },
+          "integration_slug": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Integration Slug",
+            "description": "Integration slug. Set when the mapping is organization-scoped; null otherwise.",
+            "examples": ["workday"]
+          },
+          "connector_token": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Connector Token",
+            "description": "Connector token. Set when the mapping is connector-scoped; null otherwise.",
+            "examples": [
+              "i5kqe8bSedEdPLX9pHhFojKdo7Uzvue0f7I4NVhaDfV0GTxF0uAgwa_COb3zZU3T"
+            ]
+          },
+          "json_path": {
+            "type": "string",
+            "title": "Json Path",
+            "description": "JMESPath expression used to extract the value from the upstream payload.",
+            "examples": ["data.employee.guardian_mobile"]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "anyOf": [
+              { "type": "string", "format": "date-time" },
+              { "type": "null" }
+            ],
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": ["id", "custom_field_id", "json_path", "created_at"],
+        "title": "CustomFieldMappingExternal"
+      },
+      "CustomFieldMappingUpdateExternal": {
+        "properties": {
+          "json_path": {
+            "type": "string",
+            "maxLength": 1024,
+            "pattern": "\\S.*\\S",
+            "title": "Json Path",
+            "description": "JMESPath expression to extract the value from the upstream payload."
+          }
+        },
+        "type": "object",
+        "required": ["json_path"],
+        "title": "CustomFieldMappingUpdateExternal"
+      },
+      "CustomFieldPreviewRequest": {
+        "properties": {
+          "connector_token": {
+            "type": "string",
+            "title": "Connector Token",
+            "description": "Connector token to evaluate the JMESPath against.",
+            "examples": [
+              "i5kqe8bSedEdPLX9pHhFojKdo7Uzvue0f7I4NVhaDfV0GTxF0uAgwa_COb3zZU3T"
+            ]
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category",
+            "description": "Category of the model.",
+            "examples": ["HRIS"]
+          },
+          "model": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[a-z][a-z0-9_-]*$",
+            "title": "Model",
+            "description": "Model slug whose raw payload will be evaluated.",
+            "examples": ["employee"]
+          },
+          "json_path": {
+            "type": "string",
+            "maxLength": 1024,
+            "pattern": "\\S.*\\S",
+            "title": "Json Path",
+            "description": "JMESPath expression to evaluate.",
+            "examples": ["data.employee.guardian_mobile"]
+          },
+          "raw_data": {
+            "anyOf": [
+              { "additionalProperties": true, "type": "object" },
+              { "type": "null" }
+            ],
+            "title": "Raw Data",
+            "description": "Optional inline payload to evaluate against. If omitted, the connector's latest synced row is used (falling back to the integration sample if never synced).",
+            "examples": [null]
+          }
+        },
+        "type": "object",
+        "required": ["connector_token", "category", "model", "json_path"],
+        "title": "CustomFieldPreviewRequest"
+      },
+      "CustomFieldPreviewResponse": {
+        "properties": {
+          "connector_token": {
+            "type": "string",
+            "title": "Connector Token",
+            "description": "Connector the JMESPath was evaluated against.",
+            "examples": [
+              "i5kqe8bSedEdPLX9pHhFojKdo7Uzvue0f7I4NVhaDfV0GTxF0uAgwa_COb3zZU3T"
+            ]
+          },
+          "json_path": {
+            "type": "string",
+            "title": "Json Path",
+            "description": "JMESPath expression that was evaluated.",
+            "examples": ["data.employee.guardian_mobile"]
+          },
+          "resolved_value": {
+            "anyOf": [{}, { "type": "null" }],
+            "title": "Resolved Value",
+            "description": "The value the JMESPath resolved to. May be of any JSON type or null.",
+            "examples": ["+1-555-123-4567"]
+          },
+          "resolved_value_type": {
+            "type": "string",
+            "title": "Resolved Value Type",
+            "description": "JSON type of the resolved value: 'string', 'number', 'boolean', 'object', 'array', or 'null'.",
+            "examples": ["string"]
+          },
+          "raw_data_source": {
+            "type": "string",
+            "title": "Raw Data Source",
+            "description": "Where the evaluated payload came from: 'connector_sync' (latest synced row), 'integration_sample' (fallback when never synced), or 'inline' (provided in the request body).",
+            "examples": ["connector_sync"]
+          }
+        },
+        "type": "object",
+        "required": [
+          "connector_token",
+          "json_path",
+          "resolved_value_type",
+          "raw_data_source"
+        ],
+        "title": "CustomFieldPreviewResponse"
+      },
+      "CustomFieldSource": {
+        "type": "string",
+        "enum": ["DASHBOARD", "API"],
+        "title": "CustomFieldSource"
+      },
       "Deduction": {
         "properties": {
           "name": {
@@ -13981,6 +15000,106 @@
         "type": "object",
         "required": ["amount", "name"],
         "title": "Earning"
+      },
+      "EffectiveCustomFieldEntry": {
+        "properties": {
+          "custom_field_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Custom Field Id",
+            "description": "ID of the custom field.",
+            "examples": ["018e586b-7d0b-7bc9-be65-a8fdbc82d734"]
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Name of the custom field.",
+            "examples": ["guardian_mobile"]
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Description",
+            "description": "Description of the custom field."
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category",
+            "description": "Category of the model.",
+            "examples": ["HRIS"]
+          },
+          "model": {
+            "type": "string",
+            "title": "Model",
+            "description": "Model the custom field is applied to.",
+            "examples": ["employee"]
+          },
+          "json_path": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Json Path",
+            "description": "The effective JMESPath in use for this field on this connector. Null when no mapping exists.",
+            "examples": ["data.employee.guardian_mobile"]
+          },
+          "source": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Source",
+            "description": "Which mapping is in effect: 'connector' (connector-scoped override), 'organization' (org-scoped inherited), or null (no mapping configured).",
+            "examples": ["connector"]
+          },
+          "mapping_id": {
+            "anyOf": [
+              { "type": "string", "format": "uuid" },
+              { "type": "null" }
+            ],
+            "title": "Mapping Id",
+            "description": "ID of the underlying mapping row, for editing. Null when unmapped.",
+            "examples": ["018e586b-7d0b-7bc9-be65-a8fdbc82d734"]
+          }
+        },
+        "type": "object",
+        "required": ["custom_field_id", "name", "category", "model"],
+        "title": "EffectiveCustomFieldEntry"
+      },
+      "EffectiveCustomFieldResponse": {
+        "properties": {
+          "connector_token": {
+            "type": "string",
+            "title": "Connector Token",
+            "description": "Connector the effective view was computed for."
+          },
+          "integration_slug": {
+            "type": "string",
+            "title": "Integration Slug",
+            "description": "Slug of the integration this connector belongs to.",
+            "examples": ["workday"]
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category",
+            "description": "Category filter applied.",
+            "examples": ["HRIS"]
+          },
+          "model": {
+            "type": "string",
+            "title": "Model",
+            "description": "Model filter applied.",
+            "examples": ["employee"]
+          },
+          "fields": {
+            "items": {
+              "$ref": "#/components/schemas/EffectiveCustomFieldEntry"
+            },
+            "type": "array",
+            "title": "Fields",
+            "description": "Every custom field for this org matching (category, model), with the effective mapping per field. Includes unmapped fields so callers can see what is left to configure."
+          }
+        },
+        "type": "object",
+        "required": [
+          "connector_token",
+          "integration_slug",
+          "category",
+          "model",
+          "fields"
+        ],
+        "title": "EffectiveCustomFieldResponse"
       },
       "EndUserCreate": {
         "properties": {
@@ -16481,6 +17600,44 @@
         "title": "HrisTimeSheetEntry",
         "description": "The Timesheet Entry object is used to track coverage for Hours Worked by an Employee."
       },
+      "IntegrationListItem": {
+        "properties": {
+          "slug": {
+            "type": "string",
+            "title": "Slug",
+            "description": "Stable identifier for the integration. Use this as `integration_slug` when creating org-level mappings.",
+            "examples": ["workday"]
+          },
+          "display_name": {
+            "type": "string",
+            "title": "Display Name",
+            "description": "Human-readable name of the integration.",
+            "examples": ["Workday"]
+          },
+          "categories": {
+            "items": { "$ref": "#/components/schemas/Category" },
+            "type": "array",
+            "title": "Categories",
+            "description": "Categories of unified models the org has enabled for this integration.",
+            "examples": [["HRIS"]]
+          }
+        },
+        "type": "object",
+        "required": ["slug", "display_name", "categories"],
+        "title": "IntegrationListItem"
+      },
+      "IntegrationListResponse": {
+        "properties": {
+          "integrations": {
+            "items": { "$ref": "#/components/schemas/IntegrationListItem" },
+            "type": "array",
+            "title": "Integrations"
+          }
+        },
+        "type": "object",
+        "required": ["integrations"],
+        "title": "IntegrationListResponse"
+      },
       "IntegrationPaginatedResponse": {
         "properties": {
           "cursor": {
@@ -18194,6 +19351,42 @@
         "required": ["success"],
         "title": "MetaApiResponseModel"
       },
+      "ModelListItem": {
+        "properties": {
+          "slug": {
+            "type": "string",
+            "title": "Slug",
+            "description": "Stable identifier for the model. Use this as `model` when creating custom fields or mappings.",
+            "examples": ["employee"]
+          },
+          "display_name": {
+            "type": "string",
+            "title": "Display Name",
+            "description": "Human-readable name of the model.",
+            "examples": ["Employee"]
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category",
+            "description": "Category this model belongs to.",
+            "examples": ["HRIS"]
+          }
+        },
+        "type": "object",
+        "required": ["slug", "display_name", "category"],
+        "title": "ModelListItem"
+      },
+      "ModelListResponse": {
+        "properties": {
+          "models": {
+            "items": { "$ref": "#/components/schemas/ModelListItem" },
+            "type": "array",
+            "title": "Models"
+          }
+        },
+        "type": "object",
+        "required": ["models"],
+        "title": "ModelListResponse"
+      },
       "PaginatedResponse_AtsActivity_": {
         "properties": {
           "cursor": {
@@ -18635,6 +19828,32 @@
         "type": "object",
         "required": ["cursor", "page_size", "items"],
         "title": "PaginatedResponse[ConnectorResponse]"
+      },
+      "PaginatedResponse_CustomFieldExternal_": {
+        "properties": {
+          "cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "examples": ["MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"]
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "examples": [50]
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/CustomFieldExternal" },
+            "type": "array",
+            "title": "Items",
+            "description": "List of items in the current response",
+            "examples": [{}]
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "PaginatedResponse[CustomFieldExternal]"
       },
       "PaginatedResponse_HrisBankInfo_": {
         "properties": {

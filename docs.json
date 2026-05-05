@@ -450,11 +450,44 @@
         "icon": "code-fork",
         "groups": [
           {
-            "group": "Custom Fields",
+            "group": "Get Started",
             "pages": [
               "custom-fields/overview",
               "custom-fields/dashboard",
               "custom-fields/api-workflow"
+            ]
+          },
+          {
+            "group": "Lookup",
+            "pages": [
+              "custom-fields/lookup/list-models",
+              "custom-fields/lookup/list-integrations"
+            ]
+          },
+          {
+            "group": "Custom Fields",
+            "pages": [
+              "custom-fields/api/create-custom-field",
+              "custom-fields/api/list-custom-fields",
+              "custom-fields/api/get-custom-field",
+              "custom-fields/api/delete-custom-field"
+            ]
+          },
+          {
+            "group": "Mappings",
+            "pages": [
+              "custom-fields/api/create-mapping",
+              "custom-fields/api/list-mappings",
+              "custom-fields/api/update-mapping",
+              "custom-fields/api/delete-mapping"
+            ]
+          },
+          {
+            "group": "Discovery & Validation",
+            "pages": [
+              "custom-fields/api/get-raw-data",
+              "custom-fields/api/preview",
+              "custom-fields/api/get-configuration"
             ]
           }
         ]
