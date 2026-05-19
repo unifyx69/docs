@@ -187,6 +187,7 @@
                     "group": "Time Off",
                     "pages": [
                       "hris/time-off/get-time-off-list",
+                      "hris/time-off/get-create-time-off-meta",
                       "hris/time-off/create-time-off",
                       "hris/time-off/get-time-off-by-id"
                     ]

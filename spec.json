@@ -3748,24 +3748,66 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
+            "name": "x-idempotency-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Key to guarantee idempotent write execution.",
+              "title": "X-Idempotency-Key"
+            },
+            "description": "Key to guarantee idempotent write execution."
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
             "schema": { "type": "string", "title": "X-Connector-Token" }
           }
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": { "$ref": "#/components/schemas/CreateHrisTimeOff" }
-            }
-          }
-        },
         "responses": {
           "201": {
             "description": "Successful Response",
             "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hris/v1/time-off/meta/post": {
+      "get": {
+        "tags": ["Time Off"],
+        "summary": "Get Create Time Off Meta",
+        "description": "Returns request schema for POST Time off request.",
+        "operationId": "get_create_time_off_meta_api_hris_v1_time_off_meta_post_get",
+        "security": [{ "HTTPBearer": [] }],
+        "parameters": [
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "title": "X-Connector-Token" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Get Create Time Off Meta Api Hris V1 Time Off Meta Post Get"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -14473,110 +14515,6 @@
         "type": "object",
         "required": ["data"],
         "title": "CreateCandidate"
-      },
-      "CreateHrisTimeOff": {
-        "properties": {
-          "employee": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
-            "title": "Employee",
-            "description": "The employee requesting time off.",
-            "examples": ["018b4bfb-5ece-70b1-ad5e-862a9433aa65"]
-          },
-          "approver": {
-            "anyOf": [
-              { "type": "string", "format": "uuid" },
-              { "type": "null" }
-            ],
-            "title": "Approver",
-            "description": "The Bindbee ID of the employee with the ability to approve the time off request.",
-            "examples": ["018b4bfb-6065-7f83-b11d-e85ea49e37c3"]
-          },
-          "status": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "enum": [
-              "REQUESTED",
-              "APPROVED",
-              "DECLINED",
-              "CANCELLED",
-              "DELETED"
-            ],
-            "title": "Status",
-            "description": "The status of this time off request. If the value is not one of the defined enum values, the original value passed through will be returned.",
-            "default": "",
-            "examples": ["APPROVED"]
-          },
-          "employee_note": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Employee Note",
-            "description": "The employee note for this time off request.",
-            "default": "",
-            "examples": ["Paid paid vacation! Scuba diving in Hawaii."]
-          },
-          "units": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "enum": ["HOURS", "DAYS"],
-            "title": "Units",
-            "description": "The measurement that the third-party integration uses to count time requested. If the value is not one of the defined enum values, the original value passed through will be returned.",
-            "default": "",
-            "examples": ["HOURS"]
-          },
-          "amount": {
-            "anyOf": [
-              { "type": "integer" },
-              { "type": "number" },
-              { "type": "null" }
-            ],
-            "title": "Amount",
-            "description": "The time off quantity measured by the prescribed “units”.",
-            "examples": [12]
-          },
-          "request_type": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "enum": [
-              "VACATION",
-              "SICK",
-              "PERSONAL",
-              "JURY_DUTY",
-              "VOLUNTEER",
-              "BEREAVEMENT",
-              "MATERNITY",
-              "ANNUAL_LEAVE",
-              "EMERGENCY_LEAVE",
-              "LEAVE_OF_ABSENCE",
-              "PATERNITY",
-              "PAID_TIME_OFF",
-              "LONG_TERM_DISABILITY",
-              "SHORT_TERM_DISABILITY",
-              "COMP_OFF",
-              "WORK_FROM_HOME",
-              "COMPASSIONATE",
-              "TIME_OFF",
-              "FMLA"
-            ],
-            "title": "Request Type",
-            "description": "The type of time off request. If the value is not one of the defined enum values, the original value passed through will be returned.",
-            "examples": ["VACATION"]
-          },
-          "start_time": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "Start Time",
-            "description": "The day and time of the start of the time requested off.",
-            "examples": ["2023-04-10T00:00:00Z"]
-          },
-          "end_time": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
-            "title": "End Time",
-            "default": "The day and time of the end of the time requested off.",
-            "examples": ["2023-04-10T00:00:00Z"]
-          }
-        },
-        "type": "object",
-        "required": ["employee", "amount", "request_type", "start_time"],
-        "title": "CreateHrisTimeOff",
-        "description": "The TimeOff object is used to represent all employees' Time Off entries."
       },
       "CurrentConnectorResponseModel": {
         "properties": {
