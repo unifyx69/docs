@@ -9,17 +9,30 @@ To create webhooks follow the intructions up ahead!
 
 **Step 1:** Navigate to the “Webhooks” section from the sidebar under the “Configure” menu.
 
-![Webhook New](https://images.unifyx.dev/documentation_images/webhook_name.webp)
+<Frame>
+  ![Image](/images/image.png)
+</Frame>
 
 **Step 2:** In the “New webhook” section, enter the destination URL where you want to receive the webhook notifications in the “Destination URL” field.
 
-![Webhook Create](https://images.unifyx.dev/documentation_images/webhook_create.webp)
+<Frame>
+  ![Download](/images/download.png)
+</Frame>
 
 **Step 3:** Optionally, click the “Test URL” button to ensure that your destination URL is correctly set up and can receive test data.
 
 **Step 4:** Provide a meaningful name for your webhook in the “Webhook Name” field. For example, “Employee data.”
 
-**Step 5:** Choose the events for which you want to receive notifications by selecting the appropriate checkboxes:
+Step 5: Under “Webhook Type,” select the environment for which you want to receive webhook alerts.
+
+| Webhook Type | Receives alerts for | Recommended use |
+| --- | --- | --- |
+| **Production** | Production connectors | Live customer integrations |
+| **Development** | Development connectors | Testing and development connectors |
+
+> Note: Production and Development webhooks are environment-specific. This means a Production webhook will only receive alerts for connectors created in the [Production environment](https://docs.bindbee.dev/features/environments/production), while a Development webhook will only receive alerts for connectors created in the [Development environment](https://docs.bindbee.dev/features/environments/development).
+
+**Step 6:** Choose the events for which you want to receive notifications by selecting the appropriate checkboxes:
 
 - **Sync start**: Receive an alert when a connector’s sync starts.
 - **Sync error**: Get notified when a connector sync fails.
@@ -27,11 +40,11 @@ To create webhooks follow the intructions up ahead!
 - **Employee model change**: Receive an alert when any employee data is modified.
 - **Data model change**: Receive an alert when any data model is modified.
 
-**Step 6:** Once you have filled in all the required fields and selected the notification triggers, click the “Create webhook” button to save your webhook configuration.
+**Step 7:** Once you have filled in all the required fields and selected the notification triggers, click the “Create webhook” button to save your webhook configuration.
 
 ## Payload Properties
 
-- `hook`: The webhook that was triggered.
+- `webhook`: The webhook that was triggered.
 - `connector`: The connector whose data has changed.
 - `data`: The affected data model.
 
@@ -48,7 +61,8 @@ To create webhooks follow the intructions up ahead!
 <Tabs>
   <Tab title="Connector Sync Started">
     Recieve an alert when the connector sync starts
-    ``` json
+
+    ```json
     {
         "webhook": {
             "webhook_id": "10c9a6b1-4ea8-476e-bdb0-193001a94a8d",
@@ -81,146 +95,180 @@ To create webhooks follow the intructions up ahead!
   </Tab>
   <Tab title="Connector Synced">
     Recieve an alert when the connector sync finishes
-      ``` json
+
+    ```json
     {
-        "webhook": {
-            "webhook_id": "10c9a6b1-4ea8-476e-bdb0-193001a94a8d",
-            "url": "https://webhook-test.com/8e771727c78e3a4017f374fb745313b6",
-            "event": "connector_synced"
-        },
-        "connector": {
-            "id": "018f99e2-ed3a-7f4c-ae97-83d619bdf95c",
-            "display_name": "BreatheHR",
-            "integration_slug": "breathehr",
-            "categories": [
-            "HRIS"
-            ],
-            "org_name": "Test Org",
-            "origin_id": "user_123",
-            "connector_status": "COMPLETE",
-            "end_user_name": "John Doe",
-            "end_user_email": "abc@xyz.com"
-        },
-        "data": {
-            "id": "018f99e7-886b-7c9f-a63a-f6fbc9da1f83",
-            "integration_name": "breathehr",
-            "initial_sync": true,
-            "category": "HRIS",
-            "display_status": "Done",
-            "last_sync_start_time": "2024-07-22T09:49:22.922083+00:00"
-        }
+      "webhook": {
+          "webhook_id": "10c9a6b1-4ea8-476e-bdb0-193001a94a8d",
+          "url": "https://webhook-test.com/8e771727c78e3a4017f374fb745313b6",
+          "event": "connector_synced"
+      },
+      "connector": {
+          "id": "018f99e2-ed3a-7f4c-ae97-83d619bdf95c",
+          "display_name": "BreatheHR",
+          "integration_slug": "breathehr",
+          "categories": [
+          "HRIS"
+          ],
+          "org_name": "Test Org",
+          "origin_id": "user_123",
+          "connector_status": "COMPLETE",
+          "end_user_name": "John Doe",
+          "end_user_email": "abc@xyz.com"
+      },
+      "data": {
+          "id": "018f99e7-886b-7c9f-a63a-f6fbc9da1f83",
+          "integration_name": "breathehr",
+          "initial_sync": true,
+          "category": "HRIS",
+          "display_status": "Done",
+          "last_sync_start_time": "2024-07-22T09:49:22.922083+00:00"
+      }
     }
     ```
   </Tab>
   <Tab title="Connector Sync Error">
     Recieve an alert when the connector sync fails
-      ``` json
+
+    ```json
     {
-        "webhook": {
-            "webhook_id": "10c9a6b1-4ea8-476e-bdb0-193001a94a8d",
-            "url": "https://webhook-test.com/8e771727c78e3a4017f374fb745313b6",
-            "event": "connector_sync_error"
-        },
-        "connector": {
-            "id": "018f99e2-ed3a-7f4c-ae97-83d619bdf95c",
-            "display_name": "BreatheHR",
-            "integration_slug": "breathehr",
-            "categories": [
-            "HRIS"
-            ],
-            "org_name": "Test Org",
-            "origin_id": "user_123",
-            "connector_status": "COMPLETE",
-            "end_user_name": "John Doe",
-            "end_user_email": "abc@xyz.com"
-        },
-        "data": {
-            "id": "018f99e7-886b-7c9f-a63a-f6fbc9da1f83",
-            "integration_name": "breathehr",
-            "initial_sync": true,
-            "category": "HRIS",
-            "display_status": "Failed",
-            "last_sync_start_time": "2024-07-22T07:03:49.967851+00:00"
-        }
+      "webhook": {
+          "webhook_id": "10c9a6b1-4ea8-476e-bdb0-193001a94a8d",
+          "url": "https://webhook-test.com/8e771727c78e3a4017f374fb745313b6",
+          "event": "connector_sync_error"
+      },
+      "connector": {
+          "id": "018f99e2-ed3a-7f4c-ae97-83d619bdf95c",
+          "display_name": "BreatheHR",
+          "integration_slug": "breathehr",
+          "categories": [
+          "HRIS"
+          ],
+          "org_name": "Test Org",
+          "origin_id": "user_123",
+          "connector_status": "COMPLETE",
+          "end_user_name": "John Doe",
+          "end_user_email": "abc@xyz.com"
+      },
+      "data": {
+          "id": "018f99e7-886b-7c9f-a63a-f6fbc9da1f83",
+          "integration_name": "breathehr",
+          "initial_sync": true,
+          "category": "HRIS",
+          "display_status": "Failed",
+          "last_sync_start_time": "2024-07-22T07:03:49.967851+00:00"
+      }
     }
     ```
   </Tab>
-    <Tab title="Employee Data Changed">
+  <Tab title="Employee Data Changed">
     Recieve an alert when a employee is created or edited. It returns the `id` of the employees created or modified.
-      ``` json
+
+    ```json
     {
-        "webhook": {
-            "webhook_id": "10c9a6b1-4ea8-476e-bdb0-193001a94a8d",
-            "url": "https://webhook-test.com/8e771727c78e3a4017f374fb745313b6",
-            "event": "employee_data_changed"
-        },
-        "connector": {
-            "id": "018f99e2-ed3a-7f4c-ae97-83d619bdf95c",
-            "display_name": "BreatheHR",
-            "integration_slug": "breathehr",
-            "categories": [
-            "HRIS"
-            ],
-            "org_name": "Test Org",
-            "origin_id": "user_123",
-            "connector_status": "COMPLETE",
-            "end_user_name": "John Doe",
-            "end_user_email": "abc@xyz.com"
-        },
-        "data": [
-            "0190d9d8-ac9b-76cb-a5ee-df70994e6f3d"
-        ]
+      "webhook": {
+          "webhook_id": "10c9a6b1-4ea8-476e-bdb0-193001a94a8d",
+          "url": "https://webhook-test.com/8e771727c78e3a4017f374fb745313b6",
+          "event": "employee_data_changed"
+      },
+      "connector": {
+          "id": "018f99e2-ed3a-7f4c-ae97-83d619bdf95c",
+          "display_name": "BreatheHR",
+          "integration_slug": "breathehr",
+          "categories": [
+          "HRIS"
+          ],
+          "org_name": "Test Org",
+          "origin_id": "user_123",
+          "connector_status": "COMPLETE",
+          "end_user_name": "John Doe",
+          "end_user_email": "abc@xyz.com"
+      },
+      "data": [
+          "0190d9d8-ac9b-76cb-a5ee-df70994e6f3d"
+      ]
     }
     ```
   </Tab>
   <Tab title="Connector Data Modified">
     Recieve an alert when any data model is created or edited. It returns the `id` of the data model created or modified.
-      ``` json
+
+    ```json
     {
-        "webhook": {
-            "webhook_id": "10c9a6b1-4ea8-476e-bdb0-193001a94a8d",
-            "url": "https://webhook-test.com/8e771727c78e3a4017f374fb745313b6",
-            "event": "connector_data_modified"
-        },
-        "connector": {
-            "id": "018f99e2-ed3a-7f4c-ae97-83d619bdf95c",
-            "display_name": "BreatheHR",
-            "integration_slug": "breathehr",
-            "categories": [
-            "HRIS"
-            ],
-            "org_name": "Test Org",
-            "origin_id": "user_123",
-            "connector_status": "COMPLETE",
-            "end_user_name": "John Doe",
-            "end_user_email": "abc@xyz.com"
-        },
-        "data": {
-            "hris_bank_info": [
-            "0190d9d8-cf5b-7ce4-b60f-1fd95c04adee"
-            ],
-            "hris_employment": [
-            "0190d9d9-023d-7259-97e1-b38682dec062"
-            ]
-        }
+      "webhook": {
+          "webhook_id": "10c9a6b1-4ea8-476e-bdb0-193001a94a8d",
+          "url": "https://webhook-test.com/8e771727c78e3a4017f374fb745313b6",
+          "event": "connector_data_modified"
+      },
+      "connector": {
+          "id": "018f99e2-ed3a-7f4c-ae97-83d619bdf95c",
+          "display_name": "BreatheHR",
+          "integration_slug": "breathehr",
+          "categories": [
+          "HRIS"
+          ],
+          "org_name": "Test Org",
+          "origin_id": "user_123",
+          "connector_status": "COMPLETE",
+          "end_user_name": "John Doe",
+          "end_user_email": "abc@xyz.com"
+      },
+      "data": {
+          "hris_bank_info": [
+          "0190d9d8-cf5b-7ce4-b60f-1fd95c04adee"
+          ],
+          "hris_employment": [
+          "0190d9d9-023d-7259-97e1-b38682dec062"
+          ]
+      }
     }
     ```
   </Tab>
 </Tabs>
- 
- 
- 
+
+## Retry Mechanism
+
+When a webhook event is triggered, Bindbee sends a `POST` request to your configured destination URL. If the request fails due to a request or network-layer issue, Bindbee automatically retries the delivery up to 4 times within 60 seconds.
+
+Each delivery attempt has a timeout of 10 seconds. Your server should respond within this window to avoid the request being treated as timed out.
+
+> Retries are not triggered based on HTTP status codes. If your server responds with any `4xx` or `5xx` status code, Bindbee treats the request as completed and does not retry the webhook.
+
+### Retry behavior
+
+| Property | Value |
+| --- | --- |
+| Maximum retries | Up to 4 retries |
+| Retry window | Within 60 seconds |
+| Request timeout | 10 seconds per attempt |
+| Request method | `POST` |
+| Retry trigger | Request/network-layer failures only |
+| No retry for | Any `4xx` or `5xx` HTTP response |
+
+### Failures that trigger retries
+
+Retries are triggered only for request or network-layer failures, including:
+
+| Failure category | Examples |
+| --- | --- |
+| Timeout errors | Connection timeout, read timeout, write timeout, connection pool timeout |
+| Connection errors | Connection error, read error, write error, close error |
+| Protocol errors | Local protocol error, remote protocol error, unsupported protocol error |
+| Other request errors | Proxy error, response decoding error, too many redirects |
+
 ## Security
+
 To secure your API endpoint, ensure it verifies that POST requests are genuinely from Bindbee and not from a malicious source, and that payloads haven’t been tampered with during transit.
- 
+
 You can achieve this by checking if the `X-Bindbee-Webhook-Signature` field in the request header matches an encoded combination of your organization’s unique webhook signature and the payload of the incoming request.
- 
+
 In the Webhooks configuration page, you should find a Security section where you can access your signature key. This key is unique to your organization and can be regenerated if it becomes known to an unauthorized party.
- 
+
 ![Webhook Security](https://images.unifyx.dev/documentation_images/signature_key.webp)
- 
+
 <CodeGroup>
-``` python Python
+
+```python Python
 import base64
 import hashlib
 import hmac
@@ -252,8 +300,8 @@ encoded_digest = base64.urlsafe_b64encode(hmac_digest).decode()
 # Use `hmac.compare_digest` to compare the computed digest with the received signature
 signature_valid = hmac.compare_digest(encoded_digest, received_signature)
 ```
- 
-``` ruby Ruby
+
+```ruby Ruby
 require 'base64'
 require 'openssl'
 require 'json'
@@ -281,7 +329,8 @@ encoded_digest = Base64.urlsafe_encode64(hmac_digest)
 # Use secure comparison to validate the signature
 valid_signature = ActiveSupport::SecurityUtils.secure_compare(encoded_digest, received_signature)
 ```
-``` javascript Node
+
+```javascript Node
 const crypto = require('crypto');
 const express = require('express');
 const app = express();
@@ -326,9 +375,9 @@ const isSignatureValid = Buffer.byteLength(expectedSignature) === Buffer.byteLen
  
 console.log(isSignatureValid);
 ```
+
 </CodeGroup>
- 
+
 ## Webhook Visibility
- 
-The webhook logs are easily visible on the webhooks tab at [Bindbee](https://app.bindbee.dev/logs/webhooks) dashboard. 
-The specific webhook logs will be visible on the individual webhook page.
+
+The webhook logs are easily visible on the webhooks tab at [Bindbee](https://app.bindbee.dev/logs/webhooks) dashboard. The specific webhook logs will be visible on the individual webhook page.
