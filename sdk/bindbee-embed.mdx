@@ -19,7 +19,7 @@ Bindbee Embed uses four steps to securely authenticate your customer's integrati
 
 ### Step 1: Generate `link_token`
 
-To start, generate a link_token by making a POST request to the following endpoint: `https://api.bindbee.dev/api/embedded/v1/link/create-link-token`.
+To start, generate a link\_token by making a POST request to the following endpoint: `https://api.bindbee.dev/api/embedded/v1/link/create-link-token`.
 
 #### What is a `link_token`?
 
@@ -27,16 +27,17 @@ A `link_token` is a unique code that allows you to start the linking process for
 
 #### Generating the `link_token`?
 
-You will need [**BINDBEE_API_KEY**](/api-reference/basics/authentication#bindbee-api-key) for authentication.
+You will need [**BINDBEE\_API\_KEY**](/api-reference/basics/authentication#bindbee-api-key) for authentication.
 
 <Warning>
-  The type of API key you use determines the environment of the connector
-  created: - Using a **Production API key** creates a **Production connector** -
-  Using a **Development API key** creates a **Development connector** These
-  environments are completely isolated. Make sure to use the appropriate API key
-  for your use case. Learn more about
-  [Development](/features/environments/development) and
-  [Production](/features/environments/production) environments.
+  The type of API key you use determines the environment of the connector created:
+
+  - Using a **Production API key** creates a **Production connector**\
+  - Using a **Development API key** creates a **Development connector**
+
+  These environments are completely isolated. Make sure to use the appropriate API key for your use case.
+
+  Learn more about [Development](/features/environments/development) and [Production](/features/environments/production) environments.
 </Warning>
 
 You will also need to send some information about end user, integration category, and the specific integration you want to connect to.
@@ -68,7 +69,6 @@ data = {
 
 response = requests.post(url, headers=headers, json=data)
 print(response.json())
-
 ```
 
 ```bash cURL
@@ -146,7 +146,6 @@ if ($result === FALSE) { /* Handle error */ }
 
 var_dump($result);
 ?>
-
 ```
 
 ```go Go
@@ -293,7 +292,7 @@ export default App;
 
 - `useBindbeeMagiclink` is a hook that handles the linking flow which takes following parameters as input:
   - `linkToken` is the token generated in Step 1.
-  - `serverUrl` is optional parameter used to specify region. eg. use 'https://api-eu.bindbee.dev' to use eu region.
+  - `serverUrl` is optional parameter used to specify region. eg. use '[https://api-eu.bindbee.dev](https://api-eu.bindbee.dev)' to use eu region.
   - `onSuccess` is a callback function that is called when the linking process is successful.
   - `onClose` is an optional callback function that is called when the user closes the linking flow.
 
@@ -314,9 +313,7 @@ Add the following script tag to your HTML:
 ```
 
 <Note>
-  The `integrity` attribute ensures that the script has not been tampered with by
-  verifying its cryptographic hash. The `crossorigin="anonymous"` attribute is
-  required for Subresource Integrity (SRI) checks on CDN-hosted scripts.
+  The `integrity` attribute ensures that the script has not been tampered with by verifying its cryptographic hash. The `crossorigin="anonymous"` attribute is required for Subresource Integrity (SRI) checks on CDN-hosted scripts.
 </Note>
 
 <Note>
@@ -405,20 +402,18 @@ After a successful linking process, you will receive a `temporary_token`. This t
 
 ### Step 4: Get `connector_token` using the `temporary_token`
 
-To get the connector_token, make a GET request to the following endpoint: `https://api.bindbee.dev/api/embedded/v1/connectors/connector_token/{temporary_token}`
+To get the connector\_token, make a GET request to the following endpoint: `https://api.bindbee.dev/api/embedded/v1/connectors/connector_token/{temporary_token}`
 
-You will need [**BINDBEE_API_KEY**](/api-reference/basics/authentication#bindbee-api-key) for authentication.
+You will need [**BINDBEE\_API\_KEY**](/api-reference/basics/authentication#bindbee-api-key) for authentication.
 
 #### What is `connector_token`?
 
-`connector_token` is required for authorizing your Bindbee API requests effectively. for more information about connector_token you can refer [here](/api-reference/basics/authentication#connector-tokens)
+`connector_token` is required for authorizing your Bindbee API requests effectively. for more information about connector\_token you can refer [here](/api-reference/basics/authentication#connector-tokens)
 
 #### Getting the `connector_token`?
 
 <Tip>
-  Important: Securely store this **connector_token** in your database for
-  authenticating future API requests to the Bindbee's Unified API regarding the
-  end user's data.
+  Important: Securely store this **connector\_token** in your database for authenticating future API requests to the Bindbee's Unified API regarding the end user's data.
 </Tip>
 
 Here’s an example on how to get the `connector_token`:
@@ -436,7 +431,6 @@ headers = {
 
 response = requests.get(url, headers=headers)
 print(response.json())
-
 ```
 
 ```bash cURL
@@ -486,7 +480,6 @@ if ($result === FALSE) { /* Handle error */ }
 
 var_dump($result);
 ?>
-
 ```
 
 ```go Go
@@ -515,7 +508,6 @@ func main() {
 	body, _ := ioutil.ReadAll(resp.Body)
 	fmt.Println(string(body))
 }
-
 ```
 
 ```java Java
@@ -548,7 +540,6 @@ public class Main {
         }
     }
 }
-
 ```
 
 </CodeGroup>
