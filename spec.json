@@ -15098,7 +15098,7 @@
           "TRACE"
         ],
         "title": "HTTPMethod",
-        "description": "HTTP methods and descriptions\n\nMethods from the following RFCs are all observed:\n\n    * RFC 7231: Hypertext Transfer Protocol (HTTP/1.1), obsoletes 2616\n    * RFC 5789: PATCH Method for HTTP"
+        "description": "HTTP methods and descriptions\n\nMethods from the following RFCs are all observed:\n\n    * RFC 9110: HTTP Semantics, obsoletes 7231, which obsoleted 2616\n    * RFC 5789: PATCH Method for HTTP"
       },
       "HTTPValidationError": {
         "properties": {

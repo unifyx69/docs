@@ -9,15 +9,11 @@ To create webhooks follow the intructions up ahead!
 
 **Step 1:** Navigate to the “Webhooks” section from the sidebar under the “Configure” menu.
 
-<Frame>
-  ![Image](/images/image.png)
-</Frame>
+<Frame>![Image](/images/image.png)</Frame>
 
 **Step 2:** In the “New webhook” section, enter the destination URL where you want to receive the webhook notifications in the “Destination URL” field.
 
-<Frame>
-  ![Download](/images/download.png)
-</Frame>
+<Frame>![Download](/images/download.png)</Frame>
 
 **Step 3:** Optionally, click the “Test URL” button to ensure that your destination URL is correctly set up and can receive test data.
 
@@ -25,9 +21,9 @@ To create webhooks follow the intructions up ahead!
 
 **Step 5:** Under “Webhook Type,” select the environment for which you want to receive webhook alerts.
 
-| Webhook Type | Receives alerts for | Recommended use |
-| --- | --- | --- |
-| **Production** | Production connectors | Live customer integrations |
+| Webhook Type    | Receives alerts for    | Recommended use                    |
+| --------------- | ---------------------- | ---------------------------------- |
+| **Production**  | Production connectors  | Live customer integrations         |
 | **Development** | Development connectors | Testing and development connectors |
 
 > Note: Production and Development webhooks are environment-specific. This means a Production webhook will only receive alerts for connectors created in the [Production environment](https://docs.bindbee.dev/features/environments/production), while a Development webhook will only receive alerts for connectors created in the [Development environment](https://docs.bindbee.dev/features/environments/development).
@@ -89,9 +85,15 @@ To create webhooks follow the intructions up ahead!
             "category": "HRIS",
             "display_status": "Syncing",
             "last_sync_start_time": "2024-07-22T09:49:30.478384+00:00"
+        },
+        "sync": {
+          "sync_id": "019f146e-8396-7c6d-aff3-c5760bf5eef8",
+          "sync_type": "AUTOMATED",
+          "sync_name": "#13"
         }
     }
     ```
+
   </Tab>
   <Tab title="Connector Synced">
     Recieve an alert when the connector sync finishes
@@ -123,9 +125,15 @@ To create webhooks follow the intructions up ahead!
           "category": "HRIS",
           "display_status": "Done",
           "last_sync_start_time": "2024-07-22T09:49:22.922083+00:00"
+      },
+      "sync": {
+          "sync_id": "019f146e-8396-7c6d-aff3-c5760bf5eef8",
+          "sync_type": "AUTOMATED",
+          "sync_name": "#13"
       }
     }
     ```
+
   </Tab>
   <Tab title="Connector Sync Error">
     Recieve an alert when the connector sync fails
@@ -157,9 +165,23 @@ To create webhooks follow the intructions up ahead!
           "category": "HRIS",
           "display_status": "Failed",
           "last_sync_start_time": "2024-07-22T07:03:49.967851+00:00"
+      },
+      "sync": {
+          "sync_id": "019f146e-8396-7c6d-aff3-c5760bf5eef8",
+          "sync_type": "AUTOMATED",
+          "sync_name": "#13"
+      },
+      "error": {
+        "failed_at": "2026-06-29T13:17:31.085343+00:00",
+        "message": "Received error response when validating the connection.",
+        "detail": {
+          "status_code": 500,
+          "message": "invalid username or password"
+        } // or {} if no detail is available
       }
     }
     ```
+
   </Tab>
   <Tab title="Employee Data Changed">
     Recieve an alert when a employee is created or edited. It returns the `id` of the employees created or modified.
@@ -186,9 +208,15 @@ To create webhooks follow the intructions up ahead!
       },
       "data": [
           "0190d9d8-ac9b-76cb-a5ee-df70994e6f3d"
-      ]
+      ],
+      "sync": {
+          "sync_id": "019f146e-8396-7c6d-aff3-c5760bf5eef8",
+          "sync_type": "AUTOMATED",
+          "sync_name": "#13"
+      }
     }
     ```
+
   </Tab>
   <Tab title="Connector Data Modified">
     Recieve an alert when any data model is created or edited. It returns the `id` of the data model created or modified.
@@ -220,9 +248,15 @@ To create webhooks follow the intructions up ahead!
           "hris_employment": [
           "0190d9d9-023d-7259-97e1-b38682dec062"
           ]
+      },
+      "sync": {
+          "sync_id": "019f146e-8396-7c6d-aff3-c5760bf5eef8",
+          "sync_type": "AUTOMATED",
+          "sync_name": "#13"
       }
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -236,25 +270,25 @@ Each delivery attempt has a timeout of 10 seconds. Your server should respond wi
 
 ### Retry behavior
 
-| Property | Value |
-| --- | --- |
-| Maximum retries | Up to 4 retries |
-| Retry window | Within 60 seconds |
-| Request timeout | 10 seconds per attempt |
-| Request method | `POST` |
-| Retry trigger | Request/network-layer failures only |
-| No retry for | Any `4xx` or `5xx` HTTP response |
+| Property        | Value                               |
+| --------------- | ----------------------------------- |
+| Maximum retries | Up to 4 retries                     |
+| Retry window    | Within 60 seconds                   |
+| Request timeout | 10 seconds per attempt              |
+| Request method  | `POST`                              |
+| Retry trigger   | Request/network-layer failures only |
+| No retry for    | Any `4xx` or `5xx` HTTP response    |
 
 ### Failures that trigger retries
 
 Retries are triggered only for request or network-layer failures, including:
 
-| Failure category | Examples |
-| --- | --- |
-| Timeout errors | Connection timeout, read timeout, write timeout, connection pool timeout |
-| Connection errors | Connection error, read error, write error, close error |
-| Protocol errors | Local protocol error, remote protocol error, unsupported protocol error |
-| Other request errors | Proxy error, response decoding error, too many redirects |
+| Failure category     | Examples                                                                 |
+| -------------------- | ------------------------------------------------------------------------ |
+| Timeout errors       | Connection timeout, read timeout, write timeout, connection pool timeout |
+| Connection errors    | Connection error, read error, write error, close error                   |
+| Protocol errors      | Local protocol error, remote protocol error, unsupported protocol error  |
+| Other request errors | Proxy error, response decoding error, too many redirects                 |
 
 ## Security
 
@@ -272,31 +306,31 @@ In the Webhooks configuration page, you should find a Security section where you
 import base64
 import hashlib
 import hmac
- 
+
 # Replace 'YOUR_WEBHOOK_SIGNATURE_KEY' with the actual key from:
 # https://app.bindbee.dev/webhooks
- 
+
 signature_key = "YOUR_WEBHOOK_SIGNATURE_KEY"
 request_body = request.body
- 
+
 # Ensure the presence of a signature header in the request
 if "X-Bindbee-Webhook-Signature" not in request.headers:
     print('Signature header missing; request may not be from Bindbee.')
     raise
- 
+
 # Retrieve the signature header from the request
 received_signature = request.headers["X-Bindbee-Webhook-Signature"]
- 
+
 # Convert the key and request body to bytes
 key_bytes = signature_key.encode("utf-8")
 body_bytes = request_body.encode("utf-8")
- 
+
 # Create an HMAC digest using SHA-256
 hmac_digest = hmac.new(key_bytes, body_bytes, hashlib.sha256).digest()
- 
+
 # Encode the digest to base64
 encoded_digest = base64.urlsafe_b64encode(hmac_digest).decode()
- 
+
 # Use `hmac.compare_digest` to compare the computed digest with the received signature
 signature_valid = hmac.compare_digest(encoded_digest, received_signature)
 ```
@@ -305,74 +339,77 @@ signature_valid = hmac.compare_digest(encoded_digest, received_signature)
 require 'base64'
 require 'openssl'
 require 'json'
- 
+
 # Replace 'YOUR_WEBHOOK_SIGNATURE_KEY' with the actual key from:
 # https://app.bindbee.dev/webhooks
- 
+
 secret_key = 'YOUR_WEBHOOK_SIGNATURE_KEY'
 request_body = request.raw_post
 received_signature = request.env['X-Bindbee-Webhook-Signature']
- 
+
 unless received_signature
   raise "Signature header missing; request may not be from Bindbee."
 end
- 
+
 # Ensure the payload is properly encoded in UTF-8
 request_body.force_encoding('UTF-8')
- 
+
 # Compute HMAC digest using SHA-256
 hmac_digest = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), secret_key, request_body)
- 
+
 # Base64 encode the HMAC digest
 encoded_digest = Base64.urlsafe_encode64(hmac_digest)
- 
+
 # Use secure comparison to validate the signature
 valid_signature = ActiveSupport::SecurityUtils.secure_compare(encoded_digest, received_signature)
 ```
 
 ```javascript Node
-const crypto = require('crypto');
-const express = require('express');
+const crypto = require("crypto");
+const express = require("express");
 const app = express();
- 
+
 // Replace 'YOUR_WEBHOOK_SIGNATURE_KEY' with the actual key from:
 // https://app.bindbee.dev/webhooks
- 
+
 // Middleware to capture raw body for HMAC verification
 app.use(
   express.json({
     verify: (req, res, buf) => {
       req.rawBody = buf.toString();
-    }
-  })
+    },
+  }),
 );
- 
-const webhookSecret = 'YOUR_WEBHOOK_SIGNATURE_KEY';
+
+const webhookSecret = "YOUR_WEBHOOK_SIGNATURE_KEY";
 const rawRequestBody = request.rawBody;
- 
-const receivedSignature = request.headers['X-Bindbee-Webhook-Signature'];
- 
+
+const receivedSignature = request.headers["X-Bindbee-Webhook-Signature"];
+
 if (!receivedSignature) {
-  console.log('Missing webhook signature; request may not be from Bindbee.');
+  console.log("Missing webhook signature; request may not be from Bindbee.");
 }
- 
+
 // Ensure the request body is properly encoded
-const utf8Body = Buffer.from(rawRequestBody, 'utf-8').toString();
- 
+const utf8Body = Buffer.from(rawRequestBody, "utf-8").toString();
+
 // Create an HMAC digest using SHA-256
-const hmacDigest = crypto.createHmac('sha256', webhookSecret)
+const hmacDigest = crypto
+  .createHmac("sha256", webhookSecret)
   .update(utf8Body)
-  .digest('base64')
-  .replace(/\+/g, '-')
-  .replace(/\//g, '_');
- 
+  .digest("base64")
+  .replace(/\+/g, "-")
+  .replace(/\//g, "_");
+
 // Use crypto.timingSafeEqual to compare the signatures securely
-const expectedSignature = Buffer.from(receivedSignature, 'utf-8');
-const calculatedSignature = Buffer.from(hmacDigest, 'utf-8');
- 
-const isSignatureValid = Buffer.byteLength(expectedSignature) === Buffer.byteLength(calculatedSignature) &&
+const expectedSignature = Buffer.from(receivedSignature, "utf-8");
+const calculatedSignature = Buffer.from(hmacDigest, "utf-8");
+
+const isSignatureValid =
+  Buffer.byteLength(expectedSignature) ===
+    Buffer.byteLength(calculatedSignature) &&
   crypto.timingSafeEqual(expectedSignature, calculatedSignature);
- 
+
 console.log(isSignatureValid);
 ```
 
