@@ -9,11 +9,15 @@ To create webhooks follow the intructions up ahead!
 
 **Step 1:** Navigate to the “Webhooks” section from the sidebar under the “Configure” menu.
 
-<Frame>![Image](/images/image.png)</Frame>
+<Frame>
+  ![Image](/images/image.png)
+</Frame>
 
 **Step 2:** In the “New webhook” section, enter the destination URL where you want to receive the webhook notifications in the “Destination URL” field.
 
-<Frame>![Download](/images/download.png)</Frame>
+<Frame>
+  ![Download](/images/download.png)
+</Frame>
 
 **Step 3:** Optionally, click the “Test URL” button to ensure that your destination URL is correctly set up and can receive test data.
 
@@ -21,9 +25,9 @@ To create webhooks follow the intructions up ahead!
 
 **Step 5:** Under “Webhook Type,” select the environment for which you want to receive webhook alerts.
 
-| Webhook Type    | Receives alerts for    | Recommended use                    |
-| --------------- | ---------------------- | ---------------------------------- |
-| **Production**  | Production connectors  | Live customer integrations         |
+| Webhook Type | Receives alerts for | Recommended use |
+| --- | --- | --- |
+| **Production** | Production connectors | Live customer integrations |
 | **Development** | Development connectors | Testing and development connectors |
 
 > Note: Production and Development webhooks are environment-specific. This means a Production webhook will only receive alerts for connectors created in the [Production environment](https://docs.bindbee.dev/features/environments/production), while a Development webhook will only receive alerts for connectors created in the [Development environment](https://docs.bindbee.dev/features/environments/development).
@@ -93,7 +97,6 @@ To create webhooks follow the intructions up ahead!
         }
     }
     ```
-
   </Tab>
   <Tab title="Connector Synced">
     Recieve an alert when the connector sync finishes
@@ -133,7 +136,6 @@ To create webhooks follow the intructions up ahead!
       }
     }
     ```
-
   </Tab>
   <Tab title="Connector Sync Error">
     Recieve an alert when the connector sync fails
@@ -181,7 +183,6 @@ To create webhooks follow the intructions up ahead!
       }
     }
     ```
-
   </Tab>
   <Tab title="Employee Data Changed">
     Recieve an alert when a employee is created or edited. It returns the `id` of the employees created or modified.
@@ -216,7 +217,6 @@ To create webhooks follow the intructions up ahead!
       }
     }
     ```
-
   </Tab>
   <Tab title="Connector Data Modified">
     Recieve an alert when any data model is created or edited. It returns the `id` of the data model created or modified.
@@ -256,7 +256,6 @@ To create webhooks follow the intructions up ahead!
       }
     }
     ```
-
   </Tab>
 </Tabs>
 
@@ -266,29 +265,27 @@ When a webhook event is triggered, Bindbee sends a `POST` request to your config
 
 Each delivery attempt has a timeout of 10 seconds. Your server should respond within this window to avoid the request being treated as timed out.
 
-> Retries are not triggered based on HTTP status codes. If your server responds with any `4xx` or `5xx` status code, Bindbee treats the request as completed and does not retry the webhook.
-
 ### Retry behavior
 
-| Property        | Value                               |
-| --------------- | ----------------------------------- |
-| Maximum retries | Up to 4 retries                     |
-| Retry window    | Within 60 seconds                   |
-| Request timeout | 10 seconds per attempt              |
-| Request method  | `POST`                              |
-| Retry trigger   | Request/network-layer failures only |
-| No retry for    | Any `4xx` or `5xx` HTTP response    |
+| Property | Value |
+| --- | --- |
+| Maximum retries | Up to 4 retries |
+| Retry window | Within 60 seconds |
+| Request timeout | 10 seconds per attempt |
+| Request method | `POST` |
+| Retry trigger | Request/network-layer failures only |
+| Retry trigger | All non-`2xx`responses |
 
 ### Failures that trigger retries
 
 Retries are triggered only for request or network-layer failures, including:
 
-| Failure category     | Examples                                                                 |
-| -------------------- | ------------------------------------------------------------------------ |
-| Timeout errors       | Connection timeout, read timeout, write timeout, connection pool timeout |
-| Connection errors    | Connection error, read error, write error, close error                   |
-| Protocol errors      | Local protocol error, remote protocol error, unsupported protocol error  |
-| Other request errors | Proxy error, response decoding error, too many redirects                 |
+| Failure category | Examples |
+| --- | --- |
+| Timeout errors | Connection timeout, read timeout, write timeout, connection pool timeout |
+| Connection errors | Connection error, read error, write error, close error |
+| Protocol errors | Local protocol error, remote protocol error, unsupported protocol error |
+| Other request errors | Proxy error, response decoding error, too many redirects |
 
 ## Security
 
