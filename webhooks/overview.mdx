@@ -273,8 +273,7 @@ Each delivery attempt has a timeout of 10 seconds. Your server should respond wi
 | Retry window | Within 60 seconds |
 | Request timeout | 10 seconds per attempt |
 | Request method | `POST` |
-| Retry trigger | Request/network-layer failures only |
-| Retry trigger | All non-`2xx`responses |
+| Retry trigger | Request/network-layer failures and all non-`2xx`responses |
 
 ### Failures that trigger retries
 
