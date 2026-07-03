@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "maple",
+  "theme": "almond",
   "name": "Bindbee Docs",
   "colors": {
     "primary": "#F57E21",
     "light": "#F57E21",
-    "dark": "#441F02"
+    "dark": "#E06D10"
   },
   "integrations": {
     "gtm": {
@@ -496,8 +496,8 @@
     ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/images/docs_light.svg",
+    "dark": "/images/docs_dark.svg"
   },
   "api": {
     "openapi": ["spec.json"],
@@ -510,8 +510,12 @@
   },
   "background": {
     "color": {
-      "light": "#FAFAFB",
-      "dark": "#090807"
+      "light": "#F9F9F8",
+      "dark": "#090909"
+    },
+    "image": {
+      "light": "/images/background.svg",
+      "dark": "/images/background.svg"
     }
   },
   "navbar": {
@@ -531,6 +535,11 @@
     "socials": {
       "twitter": "https://twitter.com/bindbee?utm_source=documentation&utm_medium=documentation-footer&utm_campaign=documentation",
       "linkedin": "https://www.linkedin.com/company/bindbee/?utm_source=documentation&utm_medium=documentation-footer&utm_campaign=documentation"
+    }
+  },
+  "fonts": {
+    "heading": {
+      "family": "Inclusive Sans"
     }
   }
 }
