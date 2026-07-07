@@ -4,8 +4,8 @@
   "name": "Bindbee Docs",
   "colors": {
     "primary": "#F57E21",
-    "light": "#F57E21",
-    "dark": "#E06D10"
+    "light": "#E06D10",
+    "dark": "#F57E21"
   },
   "integrations": {
     "gtm": {
@@ -521,7 +521,7 @@
   "navbar": {
     "links": [
       {
-        "label": "Bindbee.dev",
+        "label": "Website",
         "href": "https://bindbee.dev?utm_source=documentation&utm_medium=documentation-footer&utm_campaign=documentation"
       }
     ],
@@ -540,6 +540,12 @@
   "fonts": {
     "heading": {
       "family": "Inclusive Sans"
+    },
+    "body": {
+      "family": "Inclusive Sans"
     }
+  },
+  "icons": {
+    "library": "fontawesome"
   }
 }

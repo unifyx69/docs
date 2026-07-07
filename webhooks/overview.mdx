@@ -5,7 +5,7 @@ description: "With Webhooks, you can receive real-time updates on connector sync
 
 ## Create Webhooks
 
-To create webhooks follow the intructions up ahead!
+To create webhooks, follow the instructions below.
 
 **Step 1:** Navigate to the “Webhooks” section from the sidebar under the “Configure” menu.
 
@@ -44,9 +44,47 @@ To create webhooks follow the intructions up ahead!
 
 ## Payload Properties
 
-- `webhook`: The webhook that was triggered.
-- `connector`: The connector whose data has changed.
-- `data`: The affected data model.
+- `webhook`: Information about the webhook that was triggered.
+- `connector`: Information about the connector associated with the event.
+- `data`: The affected connector sync status data.
+- `sync`: Information about the sync job that triggered the event. This object is included in all webhook payloads.
+- `error`: Information about the sync failure. This object is included only in the `connector_sync_error` webhook.
+
+### Sync information
+
+All webhook payloads include a top-level `sync` object in the following format:
+
+```json
+{
+  "sync_id": "019f146e-8396-7c6d-aff3-c5760bf5eefe",
+  "sync_type": "AUTOMATED",
+  "sync_name": "#13"
+}
+```
+
+| Field | Description |
+| --- | --- |
+| `sync_id` | The unique identifier of the sync job. |
+| `sync_type` | How the sync was triggered. Possible values:`MANUAL` and `AUTOMATED`. |
+| `sync_name` | The name assigned to the sync job. |
+
+### Sync error information
+
+The `connector_sync_error` webhook includes a top-level `error` object in the following format:
+
+```json
+{
+  "failed_at": "2026-07-07T11:21:35.837448+00:00",
+  "message": "A runtime error occurred during the sync process. Bindbee team has been notified.",
+  "detail": {}
+}
+```
+
+| Field | Description |
+| --- | --- |
+| `failed_at` | The timestamp at which the sync job failed. |
+| `message` | A summary of the sync job error. |
+| `detail` | Additional details about the error. This is returned as an empty object (`{}`)<br />when no additional details are available. |
 
 ## Webhook event types
 
@@ -60,7 +98,7 @@ To create webhooks follow the intructions up ahead!
 
 <Tabs>
   <Tab title="Connector Sync Started">
-    Recieve an alert when the connector sync starts
+    Receive an alert when the connector sync starts.
 
     ```json
     {
@@ -85,7 +123,6 @@ To create webhooks follow the intructions up ahead!
         "data": {
             "id": "018f99e7-886b-7c9f-a63a-f6fbc9da1f83",
             "integration_name": "breathehr",
-            "initial_sync": true,
             "category": "HRIS",
             "display_status": "Syncing",
             "last_sync_start_time": "2024-07-22T09:49:30.478384+00:00"
@@ -99,7 +136,7 @@ To create webhooks follow the intructions up ahead!
     ```
   </Tab>
   <Tab title="Connector Synced">
-    Recieve an alert when the connector sync finishes
+    Receive an alert when the connector sync finishes successfully.
 
     ```json
     {
@@ -124,7 +161,6 @@ To create webhooks follow the intructions up ahead!
       "data": {
           "id": "018f99e7-886b-7c9f-a63a-f6fbc9da1f83",
           "integration_name": "breathehr",
-          "initial_sync": true,
           "category": "HRIS",
           "display_status": "Done",
           "last_sync_start_time": "2024-07-22T09:49:22.922083+00:00"
@@ -138,54 +174,52 @@ To create webhooks follow the intructions up ahead!
     ```
   </Tab>
   <Tab title="Connector Sync Error">
-    Recieve an alert when the connector sync fails
+    Receive an alert when the connector sync encounters an error.
 
     ```json
     {
       "webhook": {
-          "webhook_id": "10c9a6b1-4ea8-476e-bdb0-193001a94a8d",
-          "url": "https://webhook-test.com/8e771727c78e3a4017f374fb745313b6",
-          "event": "connector_sync_error"
+        "webhook_id": "704ec26b-585d-4551-a833-e447e3313c78",
+        "url": "https://play.svix.com/in/kxY1EpRT84F0JIxx43lgfnr2Icr/",
+        "event": "connector_sync_error"
       },
       "connector": {
-          "id": "018f99e2-ed3a-7f4c-ae97-83d619bdf95c",
-          "display_name": "BreatheHR",
-          "integration_slug": "breathehr",
-          "categories": [
+        "id": "019ebc1c-953a-7ba9-b599-0e6599e30304",
+        "display_name": "Workday",
+        "integration_slug": "workday",
+        "categories": [
+          "LMS",
           "HRIS"
-          ],
-          "org_name": "Test Org",
-          "origin_id": "user_123",
-          "connector_status": "COMPLETE",
-          "end_user_name": "John Doe",
-          "end_user_email": "abc@xyz.com"
+        ],
+        "org_name": "Bindbeee",
+        "origin_id": "dfgvbbgtfbnytgnhgh",
+        "connector_status": "COMPLETE",
+        "end_user_name": "Coca Cola",
+        "end_user_email": null
       },
       "data": {
-          "id": "018f99e7-886b-7c9f-a63a-f6fbc9da1f83",
-          "integration_name": "breathehr",
-          "initial_sync": true,
-          "category": "HRIS",
-          "display_status": "Failed",
-          "last_sync_start_time": "2024-07-22T07:03:49.967851+00:00"
-      },
-      "sync": {
-          "sync_id": "019f146e-8396-7c6d-aff3-c5760bf5eef8",
-          "sync_type": "AUTOMATED",
-          "sync_name": "#13"
+        "id": "018f96ad-459c-7fd5-a24a-2c3a6c1a64e8",
+        "integration_name": "workday",
+        "category": "HRIS",
+        "display_status": "Failed"
       },
       "error": {
-        "failed_at": "2026-06-29T13:17:31.085343+00:00",
-        "message": "Received error response when validating the connection.",
-        "detail": {
-          "status_code": 500,
-          "message": "invalid username or password"
-        } // or {} if no detail is available
+        "failed_at": "2026-07-07T11:21:35.837448+00:00",
+        "message": "A runtime error occurred during the sync process. Bindbee team has been notified.",
+        "detail": {}
+      },
+      "sync": {
+        "sync_id": "019f3c4f-dbc2-7480-a6d5-f1f789ee05c1",
+        "sync_type": "AUTOMATED",
+        "sync_name": "#6"
       }
     }
     ```
+
+    The `detail` field is returned as an empty object (`{}`) when no additional error details are available.
   </Tab>
   <Tab title="Employee Data Changed">
-    Recieve an alert when a employee is created or edited. It returns the `id` of the employees created or modified.
+    Receive an alert when an employee is created or updated. The payload returns the `id` of each employee that was created or modified.
 
     ```json
     {
@@ -219,7 +253,7 @@ To create webhooks follow the intructions up ahead!
     ```
   </Tab>
   <Tab title="Connector Data Modified">
-    Recieve an alert when any data model is created or edited. It returns the `id` of the data model created or modified.
+    Receive an alert when a record in any supported data model is created or updated. The payload returns the `id` of each record that was created or modified.
 
     ```json
     {
