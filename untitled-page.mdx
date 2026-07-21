@@ -1,0 +1,252 @@
+---
+title: "Meta APIs for Write Operations"
+description: "Retrieve request schemas for Create Employee, Create Employee Payroll Run, Create Timesheet, and Create Time Off Request APIs."
+hidden: true
+---
+
+## Overview
+
+Meta APIs describe the request body expected by Bindbee for a specific write operation and integration. Each response follows a JSON Schema-compatible structure and includes field requirements, accepted values, formats, and nested object definitions.
+
+Because write capabilities vary by integration, the Meta API response should be used to construct and validate the request body before submitting a write operation.
+
+## Supported Operations
+
+Meta APIs are currently available for the following write operations:
+
+- Create Employee
+- Create Employee Payroll Run
+- Create Timesheet
+- Create Time Off Request
+
+Support may vary by integration. A write operation can be available for an integration even when its Meta API schema has not yet been implemented.
+
+## Request Workflow
+
+Use the following process when preparing a write request:
+
+1. Call the Meta endpoint for the required write operation and integration.
+2. Review the returned schema, including required fields, accepted values, and integration-specific parameters.
+3. Construct a request body that conforms to the schema.
+4. Submit the request to the corresponding write endpoint.
+
+The schema can also be used with compatible JSON Schema tooling for request validation or form generation.
+
+## Meta API Response Structure
+
+A Meta API response defines the structure of the request body for the selected write operation. In addition to standard JSON Schema keywords, the response can include Bindbee-specific metadata such as `isRequired` and `enumInformation`.
+
+The following keywords are commonly included:
+
+| Keyword | Purpose |
+| --- | --- |
+| `type` | Defines the expected data type. |
+| `properties` | Defines fields within an object. |
+| `items` | Defines the structure of each element in an array. |
+| `required` | Lists the fields required within an object. |
+| `isRequired` | Indicates whether an individual field is required. |
+| `description` | Provides a human-readable explanation of a field. |
+| `format` | Defines an additional constraint for a string value. |
+| `enum` | Lists the accepted values for a field. |
+| `enumInformation` | Provides descriptions for values listed in `enum`. |
+
+### Root Object and Field Definitions
+
+A top-level `type` of `object` indicates that the write request body must be a JSON object. The `properties` object contains the available fields, while the `required` array lists the fields that must be included.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string",
+      "description": "The employee's first name.",
+      "isRequired": true
+    },
+    "last_name": {
+      "type": "string",
+      "description": "The employee's last name.",
+      "isRequired": true
+    }
+  },
+  "required": ["first_name", "last_name"]
+}
+```
+
+Use `isRequired` to review the requirement for an individual field. Use the `required` array to identify all mandatory fields within an object.
+
+### Nested Objects and Arrays
+
+For a field with `type: "object"`, nested fields are defined under `properties`.
+
+```json
+"home_location": {
+  "type": "object",
+  "description": "The employee's home address.",
+  "isRequired": false,
+  "properties": {
+    "street_1": {
+      "type": "string",
+      "description": "The first line of the street address.",
+      "isRequired": false
+    },
+    "city": {
+      "type": "string",
+      "description": "The city of the address.",
+      "isRequired": false
+    }
+  }
+}
+```
+
+For a field with `type: "array"`, the schema for each array element is defined under `items`.
+
+```json
+"earnings": {
+  "type": "array",
+  "description": "The earnings entries for the payroll run.",
+  "isRequired": false,
+  "items": {
+    "type": "object",
+    "properties": {
+      "earning_code": {
+        "type": "string",
+        "isRequired": true
+      },
+      "amount": {
+        "type": "number",
+        "isRequired": false
+      }
+    },
+    "required": ["earning_code"]
+  }
+}
+```
+
+## Integration-Specific Fields
+
+Meta API responses can include `integration_params` and `additional_attributes`. These fields serve different purposes.
+
+| Field | Structure | Validation | Purpose |
+| --- | --- | --- | --- |
+| `integration_params` | Defined object | Validated and potentially required | Contains parameters required by the underlying integration for the write operation. |
+| `additional_attributes` | Free-form object | Not defined by the unified schema | Contains integration-specific values that are not represented in Bindbee's unified fields. |
+
+### `integration_params`
+
+`integration_params` contains fields required by the underlying integration. Its properties are explicitly defined in the Meta API response and can be required.
+
+```json
+"integration_params": {
+  "type": "object",
+  "description": "Parameters required by the integration for the write operation.",
+  "isRequired": true,
+  "properties": {
+    "pay_statement_type_id": {
+      "type": "string",
+      "isRequired": true
+    }
+  },
+  "required": ["pay_statement_type_id"]
+}
+```
+
+### `additional_attributes`
+
+`additional_attributes` is a free-form object for fields that are supported by the underlying integration but are not represented in Bindbee's unified model.
+
+```json
+"additional_attributes": {
+  "type": "object",
+  "description": "Additional integration-specific attributes for the write operation.",
+  "isRequired": false
+}
+```
+
+Values included in `additional_attributes` are forwarded to the underlying integration as part of the write request.
+
+## Accepted Values and Validation
+
+### `enum` and `enumInformation`
+
+The `enum` keyword lists the values accepted by a field. When available, `enumInformation` provides a description for each accepted value.
+
+```json
+"pay_statement_type_id": {
+  "type": "string",
+  "isRequired": true,
+  "enum": ["51743768", "51743769", "51743758"],
+  "enumInformation": [
+    {
+      "value": "51743768",
+      "description": "Third-Party Sick"
+    },
+    {
+      "value": "51743769",
+      "description": "Bonus"
+    },
+    {
+      "value": "51743758",
+      "description": "Regular"
+    }
+  ]
+}
+```
+
+The request body must use one of the values listed in `enum`. The corresponding entry in `enumInformation` can be used to determine the appropriate value.
+
+### `description` and `format`
+
+The `description` keyword explains the purpose of a field. The `format` keyword defines an additional constraint for a string value, such as an email address or UUID.
+
+```json
+"work_email": {
+  "type": "string",
+  "description": "The employee's work email address.",
+  "format": "email",
+  "isRequired": false
+}
+```
+
+## Constructing the Write Request
+
+After reviewing the schema, construct a request body that includes all required fields and conforms to the defined types, formats, and accepted values.
+
+For example, if `first_name` and `last_name` are required, the following request body is valid:
+
+```json
+{
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "work_email": "jane@acme.com",
+  "additional_attributes": {
+    "employee_number": "E-1042"
+  }
+}
+```
+
+In this example:
+
+- `first_name` and `last_name` satisfy the required field definitions.
+- `work_email` conforms to the `email` format.
+- `employee_number` is included as an integration-specific attribute.
+
+## Common Errors
+
+### Meta API Not Implemented for an Integration
+
+A Meta API schema may not yet be available for every supported write operation and integration combination. In this case, the Meta endpoint returns the following HTTP status:
+
+```http
+501 Not Implemented
+```
+
+Example response:
+
+```json
+{
+  "detail": "Meta API is not implemented for Time Off in bamboohr. You can request this feature by contacting support@bindbee.dev."
+}
+```
+
+This error indicates that the Meta API schema is not yet available for the selected integration and write operation. To request Meta API support for an additional integration or operation, contact `support@bindbee.dev`.

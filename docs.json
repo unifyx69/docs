@@ -71,6 +71,7 @@
               {
                 "group": "Supplemental Data",
                 "pages": [
+                  "meta-apis-for-write-operations",
                   {
                     "group": "Passthrough",
                     "pages": [
