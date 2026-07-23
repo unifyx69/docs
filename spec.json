@@ -14626,10 +14626,22 @@
             "type": "array",
             "title": "Mappings",
             "description": "All mappings configured for this custom field."
+          },
+          "mapping_counts": {
+            "$ref": "#/components/schemas/CustomFieldMappingCounts",
+            "description": "Counts of mappings for this custom field, broken down by scope."
           }
         },
         "type": "object",
-        "required": ["id", "name", "category", "model", "source", "created_at"],
+        "required": [
+          "id",
+          "name",
+          "category",
+          "model",
+          "source",
+          "created_at",
+          "mapping_counts"
+        ],
         "title": "CustomFieldDetailExternal"
       },
       "CustomFieldExternal": {
@@ -14685,6 +14697,31 @@
         "type": "object",
         "required": ["id", "name", "category", "model", "source", "created_at"],
         "title": "CustomFieldExternal"
+      },
+      "CustomFieldMappingCounts": {
+        "properties": {
+          "total": {
+            "type": "integer",
+            "title": "Total",
+            "description": "Total number of mappings configured for this custom field.",
+            "examples": [3]
+          },
+          "organization": {
+            "type": "integer",
+            "title": "Organization",
+            "description": "Number of organization-scoped (integration-level) mappings.",
+            "examples": [1]
+          },
+          "connector": {
+            "type": "integer",
+            "title": "Connector",
+            "description": "Number of connector-scoped mappings.",
+            "examples": [2]
+          }
+        },
+        "type": "object",
+        "required": ["total", "organization", "connector"],
+        "title": "CustomFieldMappingCounts"
       },
       "CustomFieldMappingCreateExternal": {
         "properties": {
@@ -20674,7 +20711,7 @@
       },
       "ResponseFormatEnum": {
         "type": "string",
-        "enum": ["JSON", "XML", "MULTIPART"],
+        "enum": ["JSON", "XML", "MULTIPART", "BINARY"],
         "title": "ResponseFormatEnum"
       },
       "Tax": {
