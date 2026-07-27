@@ -96,6 +96,13 @@
                     ]
                   },
                   {
+                    "group": "Benefit Coverage",
+                    "pages": [
+                      "hris/benefit-coverages/get-benefit-coverages",
+                      "hris/benefit-coverages/get-benefit-coverage-by-id"
+                    ]
+                  },
+                  {
                     "group": "Benefits",
                     "pages": [
                       "hris/benefits/get-benefits",
@@ -128,6 +135,13 @@
                     "pages": [
                       "hris/dependent-benefits/get-dependent-benefits",
                       "hris/dependent-benefits/get-dependent-benefit-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Company",
+                    "pages": [
+                      "hris/companies/get-companies",
+                      "hris/companies/get-company-by-id"
                     ]
                   },
                   {
