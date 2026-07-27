@@ -95,6 +95,13 @@
                     ]
                   },
                   {
+                    "group": "Benefit Coverage",
+                    "pages": [
+                      "hris/benefit-coverages/get-benefit-coverages",
+                      "hris/benefit-coverages/get-benefit-coverage-by-id"
+                    ]
+                  },
+                  {
                     "group": "Benefits",
                     "pages": [
                       "hris/benefits/get-benefits",
@@ -102,10 +109,17 @@
                     ]
                   },
                   {
-                    "group": "Employer Benefits",
+                    "group": "Company",
                     "pages": [
-                      "hris/employer-benefits/get-employer-benefits",
-                      "hris/employer-benefits/get-employer-benefit-by-id"
+                      "hris/companies/get-companies",
+                      "hris/companies/get-company-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Compensation",
+                    "pages": [
+                      "hris/compensation/get-compensations",
+                      "hris/compensation/get-compensation-by-id"
                     ]
                   },
                   {
@@ -123,13 +137,6 @@
                     ]
                   },
                   {
-                    "group": "Benefit Coverage",
-                    "pages": [
-                      "hris/benefit-coverages/get-benefit-coverages",
-                      "hris/benefit-coverages/get-benefit-coverage-by-id"
-                    ]
-                  },
-                  {
                     "group": "Company",
                     "pages": [
                       "hris/companies/get-companies",
@@ -141,15 +148,25 @@
                     "pages": [
                       "hris/employee/get-employees",
                       "hris/employee/get-create-employee-meta",
+                      "hris/employee/get-create-employee-request-body",
                       "hris/employee/create-employee",
                       "hris/employee/get-employee-by-id"
                     ]
                   },
                   {
-                    "group": "Group",
+                    "group": "Employee Payroll Runs",
                     "pages": [
-                      "hris/groups/get-groups",
-                      "hris/groups/get-group-by-id"
+                      "hris/employee-payroll-runs/get-employee-payroll-runs",
+                      "hris/employee-payroll-runs/get-create-employee-payroll-run-meta",
+                      "hris/employee-payroll-runs/create-employee-payroll-runs",
+                      "hris/employee-payroll-runs/get-employee-payroll-runs-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Employer Benefits",
+                    "pages": [
+                      "hris/employer-benefits/get-employer-benefits",
+                      "hris/employer-benefits/get-employer-benefit-by-id"
                     ]
                   },
                   {
@@ -157,6 +174,13 @@
                     "pages": [
                       "hris/employments/get-employments",
                       "hris/employments/get-employment-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Group",
+                    "pages": [
+                      "hris/groups/get-groups",
+                      "hris/groups/get-group-by-id"
                     ]
                   },
                   {
@@ -174,24 +198,10 @@
                     ]
                   },
                   {
-                    "group": "Payroll Run Calendar",
-                    "pages": [
-                      "hris/payroll-run-calendar/get-payroll-run-calendars",
-                      "hris/payroll-run-calendar/get-payroll-run-calendar-by-id"
-                    ]
-                  },
-                  {
-                    "group": "Employee Payroll Runs",
-                    "pages": [
-                      "hris/employee-payroll-runs/get-employee-payroll-runs",
-                      "hris/employee-payroll-runs/create-employee-payroll-runs",
-                      "hris/employee-payroll-runs/get-employee-payroll-runs-by-id"
-                    ]
-                  },
-                  {
                     "group": "Time Off",
                     "pages": [
                       "hris/time-off/get-time-off-list",
+                      "hris/time-off/get-create-time-off-meta",
                       "hris/time-off/create-time-off",
                       "hris/time-off/get-time-off-by-id"
                     ]
@@ -207,15 +217,16 @@
                     "group": "Time Sheet Entry",
                     "pages": [
                       "hris/timesheet-entries/get-timesheet-entries-list",
+                      "hris/timesheet-entries/get-create-timesheet-meta",
                       "hris/timesheet-entries/create-timesheet-entries",
                       "hris/timesheet-entries/get-timesheet-entries-by-id"
                     ]
                   },
                   {
-                    "group": "Compensation",
+                    "group": "Payroll Run Calendar",
                     "pages": [
-                      "hris/compensation/get-compensations",
-                      "hris/compensation/get-compensation-by-id"
+                      "hris/payroll-run-calendar/get-payroll-run-calendars",
+                      "hris/payroll-run-calendar/get-payroll-run-calendar-by-id"
                     ]
                   }
                 ]
@@ -422,8 +433,8 @@
       },
       {
         "anchor": "SDK",
-        "hidden": true,
         "icon": "code",
+        "hidden": true,
         "groups": [
           {
             "group": "Bindbee Embed",
@@ -454,8 +465,45 @@
         "icon": "code-fork",
         "groups": [
           {
+            "group": "Get Started",
+            "pages": [
+              "custom-fields/overview",
+              "custom-fields/dashboard",
+              "custom-fields/api-workflow"
+            ]
+          },
+          {
+            "group": "Lookup",
+            "pages": [
+              "custom-fields/lookup/list-models",
+              "custom-fields/lookup/list-integrations"
+            ]
+          },
+          {
             "group": "Custom Fields",
-            "pages": ["custom-fields/overview"]
+            "pages": [
+              "custom-fields/api/create-custom-field",
+              "custom-fields/api/list-custom-fields",
+              "custom-fields/api/get-custom-field",
+              "custom-fields/api/delete-custom-field"
+            ]
+          },
+          {
+            "group": "Mappings",
+            "pages": [
+              "custom-fields/api/create-mapping",
+              "custom-fields/api/list-mappings",
+              "custom-fields/api/update-mapping",
+              "custom-fields/api/delete-mapping"
+            ]
+          },
+          {
+            "group": "Discovery & Validation",
+            "pages": [
+              "custom-fields/api/get-raw-data",
+              "custom-fields/api/preview",
+              "custom-fields/api/get-configuration"
+            ]
           }
         ]
       }

@@ -1,0 +1,64 @@
+---
+title: "Dashboard Configuration"
+description: "Create and configure Custom Fields visually from the Bindbee Dashboard."
+---
+
+This page walks through creating a Custom Field from the Bindbee Dashboard. For the concepts (what Custom Fields are, organization vs connector scope) see the [Custom Fields overview](/custom-fields/overview). For the programmatic equivalent, see [API Configuration](/custom-fields/api-workflow).
+
+Creating a Custom Field from the dashboard is a two-step process.
+
+**Step 1:** Create New Field
+
+**Step 2:** Configure Field Mappings
+
+## Step 1: Create New Field
+
+- Click the "New Field" button in the top right corner
+- Fill out the necessary details in the dialog.
+- Click "Create"
+
+<Note>
+  Name of custom field must be **unique** and naming should follow
+  **snake_case**
+</Note>
+
+## Step 2: Configure Field Mappings
+
+After creating the field, you'll be redirected to the mapping configuration screen where you can set up both `Connector Level` and `Organization Level` mappings.
+
+### Connector Level Mapping
+
+- Click on "Connector Level"
+- Select your connector from the Dropdown
+- Fill or Select Data field box, you can choose either
+  - Select Mapping from Options
+  - Click the `</>` button to view the raw JSON response and click the desired field
+  - Enter the JSON Path(JMESPath) expression directly
+
+<Warning>
+  If your JSON Path (JMESPath) expression is incorrect, then while requesting
+  the `custom_fields` via APIs, you will not receive an error. Instead, the API
+  will respond with `"INVALID_JSON_PATH"` mapped to the incorrectly configured
+  field. Ensure that all JMESPath expressions are valid to retrieve the intended
+  data correctly.
+</Warning>
+
+### Organization Level Mapping
+
+- Click on "Organization Level"
+- Select your integration from the Dropdown
+- Fill or Select Data field box, you can choose either
+  - Select Mapping from Options
+  - Click the `</>` button to view the raw JSON response and click the desired field
+  - Enter the JSON Path(JMESPath) expression directly.
+
+<Info>
+  You can add multiple mappings to a single custom field by clicking the "Add
+  New" button and repeating the process for different connectors or
+  integrations.
+</Info>
+
+## Next steps
+
+- Learn how to [retrieve Custom Fields in API responses](/custom-fields/overview#using-custom-fields-in-responses).
+- Review the [Best Practices](/custom-fields/overview#best-practices) for naming and scoping.
