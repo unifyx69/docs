@@ -123,6 +123,13 @@
                     ]
                   },
                   {
+                    "group": "Benefit Coverage",
+                    "pages": [
+                      "hris/benefit-coverages/get-benefit-coverages",
+                      "hris/benefit-coverages/get-benefit-coverage-by-id"
+                    ]
+                  },
+                  {
                     "group": "Company",
                     "pages": [
                       "hris/companies/get-companies",
