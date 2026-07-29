@@ -138,13 +138,6 @@
                     ]
                   },
                   {
-                    "group": "Company",
-                    "pages": [
-                      "hris/companies/get-companies",
-                      "hris/companies/get-company-by-id"
-                    ]
-                  },
-                  {
                     "group": "Employee",
                     "pages": [
                       "hris/employee/get-employees",
