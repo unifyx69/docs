@@ -18,8 +18,7 @@ Creating a Custom Field from the dashboard is a two-step process.
 - Click "Create"
 
 <Note>
-  Name of custom field must be **unique** and naming should follow
-  **snake_case**
+  Name of custom field must be **unique** and naming should follow **snake\_case**
 </Note>
 
 ## Step 2: Configure Field Mappings
@@ -35,12 +34,29 @@ After creating the field, you'll be redirected to the mapping configuration scre
   - Click the `</>` button to view the raw JSON response and click the desired field
   - Enter the JSON Path(JMESPath) expression directly
 
+#### Find Fields Using Employee Search
+
+The field you want to map may not be available for every employee in the connector. In some cases, it may only appear in the `raw_data` returned for a specific employee.
+
+You can use Employee Search to find an employee and review their connector data while configuring the mapping.
+
+- Click the employee search field at the top of the data panel.
+- Enter the employee's name or email address.
+- Select the appropriate employee from the search results.
+- Review the fields in the employee's raw data displayed in the panel on the right.
+- Find and select the field you want to map.
+- Click "Map Field" to confirm the custom field mapping.
+
+<Info>
+  Employee Search displays live employee data returned by the selected connector, making it easier to locate fields that are only available for certain employees.
+</Info>
+
+<Note>
+  Data structures may differ across integrations depending on how each platform structures and returns its information.
+</Note>
+
 <Warning>
-  If your JSON Path (JMESPath) expression is incorrect, then while requesting
-  the `custom_fields` via APIs, you will not receive an error. Instead, the API
-  will respond with `"INVALID_JSON_PATH"` mapped to the incorrectly configured
-  field. Ensure that all JMESPath expressions are valid to retrieve the intended
-  data correctly.
+  If your JSON Path (JMESPath) expression is incorrect, then while requesting the `custom_fields` via APIs, you will not receive an error. Instead, the API will respond with `"INVALID_JSON_PATH"` mapped to the incorrectly configured field. Ensure that all JMESPath expressions are valid to retrieve the intended data correctly.
 </Warning>
 
 ### Organization Level Mapping
@@ -53,9 +69,7 @@ After creating the field, you'll be redirected to the mapping configuration scre
   - Enter the JSON Path(JMESPath) expression directly.
 
 <Info>
-  You can add multiple mappings to a single custom field by clicking the "Add
-  New" button and repeating the process for different connectors or
-  integrations.
+  You can add multiple mappings to a single custom field by clicking the "Add New" button and repeating the process for different connectors or integrations.
 </Info>
 
 ## Next steps
