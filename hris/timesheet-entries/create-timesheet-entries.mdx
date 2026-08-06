@@ -1,5 +1,6 @@
 ---
-openapi: post /api/hris/v1/timesheet-entry
+title: "create-timesheet-entries"
+openapi: "post /api/hris/v1/timesheet-entry"
 ---
 
 import { Accordion, AccordionGroup } from "@mintlify/components";
@@ -13,8 +14,9 @@ Different HRIS systems can have slightly different requirements and behaviors wh
 <AccordionGroup>
   <Accordion title="Bamboo HR">
     <p>
-      When the underlying HRIS is <strong>Bamboo HR</strong>, a Timesheet Entry can be created using a payload like:
-    </p>
+  When the underlying HRIS is <strong>Bamboo HR</strong>, a Timesheet Entry can be created using a payload like:
+</p>
+
     ```json
     {
       "employee": "019ab506-66a2-7f6e-b8da-09d3579a534e",
@@ -27,8 +29,9 @@ Different HRIS systems can have slightly different requirements and behaviors wh
 
   <Accordion title="Personio">
     <p>
-      When the underlying HRIS is <strong>Personio</strong>, a Timesheet Entry can be created using a payload like:
-    </p>
+  When the underlying HRIS is <strong>Personio</strong>, a Timesheet Entry can be created using a payload like:
+</p>
+
     ```json
     {
       "employee": "0198e59a-876f-748c-8e38-c56e6246f8aa",
@@ -42,8 +45,9 @@ Different HRIS systems can have slightly different requirements and behaviors wh
 
   <Accordion title="Xero">
     <p>
-      When the underlying HRIS is <strong>Xero</strong>, a Timesheet Entry can be created using a payload like:
-    </p>
+  When the underlying HRIS is <strong>Xero</strong>, a Timesheet Entry can be created using a payload like:
+</p>
+
     ```json
     {
       "employee": "0198e59a-876f-748c-8e38-c56e6246f8aa",
@@ -55,8 +59,9 @@ Different HRIS systems can have slightly different requirements and behaviors wh
 
   <Accordion title="QuickBooks">
     <p>
-      When the underlying HRIS is <strong>QuickBooks</strong>, a Timesheet Entry can be created using a payload like:
-    </p>
+  When the underlying HRIS is <strong>QuickBooks</strong>, a Timesheet Entry can be created using a payload like:
+</p>
+
     ```json
     {
       "employee": "0198e59a-876f-748c-8e38-c56e6246f8aa",
@@ -70,8 +75,9 @@ Different HRIS systems can have slightly different requirements and behaviors wh
 
   <Accordion title="Workday">
     <p>
-      When the underlying HRIS is <strong>Workday</strong>, a Timesheet Entry can be created using a payload like:
-    </p>
+  When the underlying HRIS is <strong>Workday</strong>, a Timesheet Entry can be created using a payload like:
+</p>
+
     ```json
     {
       "employee": "019d29f5-07cf-7396-9ae1-34e5b71ad42c",
@@ -88,43 +94,48 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     ```
 
     <p>
-      <strong>Workday-specific requirements:</strong>
-    </p>
+  <strong>Workday-specific requirements:</strong>
+</p>
+
     <ul>
-      <li>
-        <code>out_reason_reference_id</code> must be one of: <code>Break</code>, <code>Meal</code>, or <code>Out</code>.
-      </li>
-      <li>
-        For <code>time_entry_code_reference_wid</code>, search for <strong>All Time Entry Codes</strong> in the Workday portal and use the WID of any suitable code from the displayed list.
-      </li>
-      <li>
-        The selected Time Entry Code must have <strong>Units = Hours</strong>.
-      </li>
-      <li>
-        If the selected Time Entry Code has <strong>Entry Method = In/Out Only</strong>, <code>out_reason_reference_id</code> is required.
-      </li>
-      <li>
-        If the selected Time Entry Code has <strong>Entry Method = Hours Only</strong>, <code>out_reason_reference_id</code> must not be passed.
-      </li>
-    </ul>
+  <li>
+    <code>out\_reason\_reference\_id</code> must be one of: <code>Break</code>, <code>Meal</code>, or <code>Out</code>.
+  </li>
+
+  <li>
+    For <code>time\_entry\_code\_reference\_wid</code>, search for <strong>All Time Entry Codes</strong> in the Workday portal and use the WID of any suitable code from the displayed list.
+  </li>
+
+  <li>
+    The selected Time Entry Code must have <strong>Units = Hours</strong>.
+  </li>
+
+  <li>
+    If the selected Time Entry Code has <strong>Entry Method = In/Out Only</strong>, <code>out\_reason\_reference\_id</code> is required.
+  </li>
+
+  <li>
+    If the selected Time Entry Code has <strong>Entry Method = Hours Only</strong>, <code>out\_reason\_reference\_id</code> must not be passed.
+  </li>
+</ul>
   </Accordion>
 
-  <Accordion title="UKG Ready (Beta)">
+  <Accordion title="UKG Ready">
     <p>
-      Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details.
-    </p>
+  Use the <a href="https://docs.bindbee.dev/hris/timesheet-entries/get-create-timesheet-meta" target="_blank"><strong>Get Create Timesheet Meta</strong></a> endpoint to retrieve the required schema and values.
+</p>
   </Accordion>
 
   <Accordion title="ADP (Beta)">
     <p>
-      Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details.
-    </p>
+  Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details.
+</p>
   </Accordion>
 
   <Accordion title="Factorial (Beta)">
     <p>
-      Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details.
-    </p>
+  Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details.
+</p>
   </Accordion>
 
   {/* Add more provider-specific accordions here as you support additional HRIS integrations */}

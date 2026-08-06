@@ -1,5 +1,6 @@
 ---
-openapi: post /api/hris/v1/time-off
+title: "create-time-off"
+openapi: "post /api/hris/v1/time-off"
 ---
 
 import { Accordion, AccordionGroup } from "@mintlify/components";
@@ -13,8 +14,9 @@ Different HRIS systems can have slightly different requirements and behaviors wh
 <AccordionGroup>
   <Accordion title="ADP">
     <p>
-      When the underlying HRIS is <strong>ADP</strong>, a Timesheet Entry can be created using a payload like:
-    </p>
+  When the underlying HRIS is <strong>ADP</strong>, a Timesheet Entry can be created using a payload like:
+</p>
+
     ```json
     {
         "employee": "01929f6e-c6c1-74b4-8119-a7d9efc0c8b8",
@@ -25,5 +27,18 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     }
     ```
   </Accordion>
-{/* Add more provider-specific accordions here as you support additional HRIS integrations */}
+
+  <Accordion title="Workday">
+    <p>
+  Use the <a href="https://docs.bindbee.dev/hris/time-off/get-create-time-off-meta" target="_blank"><strong>Get Create Time Off Meta</strong></a> endpoint to retrieve the required schema and values.
+</p>
+  </Accordion>
+
+  <Accordion title="Dayforce">
+    <p>
+  Use the <a href="https://docs.bindbee.dev/hris/time-off/get-create-time-off-meta" target="_blank"><strong>Get Create Time Off Meta</strong></a> endpoint to retrieve the required schema and values.
+</p>
+  </Accordion>
+
+  {/* Add more provider-specific accordions here as you support additional HRIS integrations */}
 </AccordionGroup>
