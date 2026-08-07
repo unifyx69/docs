@@ -19143,20 +19143,6 @@
         "security": [{ "HTTPBearer": [] }],
         "parameters": [
           {
-            "name": "webhook_id",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                { "type": "string", "format": "uuid" },
-                { "type": "null" }
-              ],
-              "description": "Restrict results to deliveries for this webhook.",
-              "title": "Webhook Id"
-            },
-            "description": "Restrict results to deliveries for this webhook."
-          },
-          {
             "name": "page_size",
             "in": "query",
             "required": false,
@@ -19180,6 +19166,20 @@
               "title": "Cursor"
             },
             "description": "The pagination cursor value."
+          },
+          {
+            "name": "webhook_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                { "type": "string", "format": "uuid" },
+                { "type": "null" }
+              ],
+              "description": "Restrict results to deliveries for this webhook.",
+              "title": "Webhook Id"
+            },
+            "description": "Restrict results to deliveries for this webhook."
           },
           {
             "name": "connector_id",
