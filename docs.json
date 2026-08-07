@@ -138,6 +138,15 @@
                     ]
                   },
                   {
+                    "group": "Documents",
+                    "tag": "BETA",
+                    "pages": [
+                      "hris/documents/get-documents",
+                      "hris/documents/get-document-by-id",
+                      "hris/documents/get-document-download-url"
+                    ]
+                  },
+                  {
                     "group": "Employee",
                     "pages": [
                       "hris/employee/get-employees",
