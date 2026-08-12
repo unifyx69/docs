@@ -127,11 +127,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -487,11 +487,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "page_size",
@@ -524,11 +524,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Start Date From"
             },
-            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "start_date_to",
@@ -536,11 +536,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Start Date To"
             },
-            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "end_date_from",
@@ -548,11 +548,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "End Date From"
             },
-            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "end_date_to",
@@ -560,11 +560,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "End Date To"
             },
-            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "effective_date_from",
@@ -572,11 +572,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with effective_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with effective_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Effective Date From"
             },
-            "description": "If provided, only objects with effective_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with effective_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "effective_date_to",
@@ -584,11 +584,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with effective_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with effective_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Effective Date To"
             },
-            "description": "If provided, only objects with effective_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with effective_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -894,11 +894,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "page_size",
@@ -1240,11 +1240,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -1551,11 +1551,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -1875,11 +1875,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "page_size",
@@ -1912,11 +1912,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Start Date From"
             },
-            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "start_date_to",
@@ -1924,11 +1924,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Start Date To"
             },
-            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "end_date_from",
@@ -1936,11 +1936,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "End Date From"
             },
-            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "end_date_to",
@@ -1948,11 +1948,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "End Date To"
             },
-            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "effective_date_from",
@@ -1960,11 +1960,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with effective_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with effective_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Effective Date From"
             },
-            "description": "If provided, only objects with effective_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with effective_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "effective_date_to",
@@ -1972,11 +1972,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with effective_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with effective_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Effective Date To"
             },
-            "description": "If provided, only objects with effective_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with effective_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -2755,11 +2755,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "page_size",
@@ -3192,11 +3192,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -3813,11 +3813,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -4166,11 +4166,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -4463,11 +4463,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -4798,11 +4798,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "start_date_from",
@@ -4810,11 +4810,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Start Date From"
             },
-            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "start_date_to",
@@ -4822,11 +4822,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Start Date To"
             },
-            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "end_date_from",
@@ -4834,11 +4834,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "End Date From"
             },
-            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "end_date_to",
@@ -4846,11 +4846,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "End Date To"
             },
-            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "check_date_from",
@@ -4858,11 +4858,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with check_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with check_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Check Date From"
             },
-            "description": "If provided, only objects with check_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with check_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "check_date_to",
@@ -4870,11 +4870,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with check_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with check_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Check Date To"
             },
-            "description": "If provided, only objects with check_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with check_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -5191,11 +5191,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -5542,11 +5542,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "start_date_from",
@@ -5554,11 +5554,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Start Date From"
             },
-            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "start_date_to",
@@ -5566,11 +5566,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Start Date To"
             },
-            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "end_date_from",
@@ -5578,11 +5578,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "End Date From"
             },
-            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "end_date_to",
@@ -5590,11 +5590,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "End Date To"
             },
-            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "check_date_from",
@@ -5602,11 +5602,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with check_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with check_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Check Date From"
             },
-            "description": "If provided, only objects with check_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with check_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "check_date_to",
@@ -5614,11 +5614,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with check_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with check_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Check Date To"
             },
-            "description": "If provided, only objects with check_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with check_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -6156,11 +6156,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -6654,11 +6654,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -7003,11 +7003,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "start_date_from",
@@ -7015,11 +7015,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Start Date From"
             },
-            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "start_date_to",
@@ -7027,11 +7027,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Start Date To"
             },
-            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -7410,11 +7410,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -8283,11 +8283,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -8771,11 +8771,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -9190,11 +9190,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -9651,11 +9651,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -10225,11 +10225,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -10601,11 +10601,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -11001,11 +11001,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -11438,11 +11438,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -11870,11 +11870,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -12268,11 +12268,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -12630,11 +12630,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -13004,11 +13004,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -13408,11 +13408,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -13843,11 +13843,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -14250,11 +14250,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "expand",
@@ -14645,11 +14645,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Modified After"
             },
-            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -17068,11 +17068,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with started_at same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with started_at same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Started At From"
             },
-            "description": "If provided, only objects with started_at same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with started_at same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "started_at_to",
@@ -17080,11 +17080,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with started_at same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with started_at same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Started At To"
             },
-            "description": "If provided, only objects with started_at same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with started_at same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "completed_at_from",
@@ -17092,11 +17092,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with completed_at same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with completed_at same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Completed At From"
             },
-            "description": "If provided, only objects with completed_at same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with completed_at same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "completed_at_to",
@@ -17104,11 +17104,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with completed_at same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with completed_at same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Completed At To"
             },
-            "description": "If provided, only objects with completed_at same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with completed_at same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -17452,11 +17452,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Start Date From"
             },
-            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with start_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "start_date_to",
@@ -17464,11 +17464,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Start Date To"
             },
-            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with start_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "end_date_from",
@@ -17476,11 +17476,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "End Date From"
             },
-            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with end_date same or after this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "end_date_to",
@@ -17488,11 +17488,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)",
+              "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "End Date To"
             },
-            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601)"
+            "description": "If provided, only objects with end_date same or before this date time will be returned. Format: DateTime (ISO 8601). If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "x-connector-token",
@@ -19734,11 +19734,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "Only logs created at or after this datetime. Format: ISO 8601.",
+              "description": "Only logs created at or after this datetime. Format: ISO 8601. If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Created At From"
             },
-            "description": "Only logs created at or after this datetime. Format: ISO 8601."
+            "description": "Only logs created at or after this datetime. Format: ISO 8601. If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "created_at_to",
@@ -19746,11 +19746,11 @@
             "required": false,
             "schema": {
               "type": "string",
-              "description": "Only logs created at or before this datetime. Format: ISO 8601.",
+              "description": "Only logs created at or before this datetime. Format: ISO 8601. If no timezone offset is supplied, the value is interpreted as UTC.",
               "examples": ["2024-02-21T21:22:12.993Z"],
               "title": "Created At To"
             },
-            "description": "Only logs created at or before this datetime. Format: ISO 8601."
+            "description": "Only logs created at or before this datetime. Format: ISO 8601. If no timezone offset is supplied, the value is interpreted as UTC."
           },
           {
             "name": "errors_only",
@@ -20211,6 +20211,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -20327,6 +20328,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -20473,6 +20475,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -20600,6 +20603,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -20957,6 +20961,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -21021,6 +21026,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -21166,6 +21172,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -21331,6 +21338,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -21415,6 +21423,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -21538,6 +21547,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -21615,6 +21625,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -21679,6 +21690,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -21793,6 +21805,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -21930,6 +21943,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -22036,6 +22050,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -22157,6 +22172,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -23313,6 +23329,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -23755,6 +23772,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -23957,6 +23975,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -24059,6 +24078,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -24146,6 +24166,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -24450,6 +24471,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -24616,6 +24638,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -24714,6 +24737,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -24881,6 +24905,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -25221,6 +25246,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -25380,6 +25406,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -25485,6 +25512,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -25586,6 +25614,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -25663,6 +25692,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -25791,6 +25821,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -25896,6 +25927,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -26054,6 +26086,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -26174,6 +26207,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -26497,6 +26531,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -26597,6 +26632,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -26727,6 +26763,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -27212,6 +27249,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -27691,6 +27729,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -27796,6 +27835,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
@@ -27890,6 +27930,7 @@
           },
           "modified_at": {
             "type": "string",
+            "format": "date-time",
             "title": "Modified At",
             "description": "This is the datetime that this object was last updated by Bindbee",
             "examples": ["2021-10-16T00:00:00Z"]
