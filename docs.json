@@ -97,6 +97,7 @@
                   },
                   {
                     "group": "Benefit Coverage",
+                    "tag": "BETA",
                     "pages": [
                       "hris/benefit-coverages/get-benefit-coverages",
                       "hris/benefit-coverages/get-benefit-coverage-by-id"
@@ -184,6 +185,14 @@
                     "pages": [
                       "hris/groups/get-groups",
                       "hris/groups/get-group-by-id"
+                    ]
+                  },
+                  {
+                    "group": "Location",
+                    "tag": "BETA",
+                    "pages": [
+                      "hris/locations/get-locations",
+                      "hris/locations/get-location-by-id"
                     ]
                   },
                   {
