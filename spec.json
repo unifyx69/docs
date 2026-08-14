@@ -2787,6 +2787,18 @@
             "description": "The pagination cursor value."
           },
           {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "examples": ["manager[first_name,last_name]"],
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name."
+          },
+          {
             "name": "x-connector-token",
             "in": "header",
             "required": true,
@@ -2902,6 +2914,18 @@
               "title": "Include Custom Fields"
             },
             "description": "Whether to include custom fields in the response."
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "examples": ["manager[first_name,last_name]"],
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name."
           },
           {
             "name": "x-connector-token",
@@ -3079,11 +3103,22 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/HRISEmploymentStatus",
-              "description": "If provided, will only return employees with this employment status.",
-              "examples": ["ACTIVE"]
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return employees with this employment status. Along with the standard values, any connector specific value returned in the response can be passed as well.",
+              "examples": [
+                "ACTIVE",
+                "PENDING",
+                "INACTIVE",
+                "ACTIVE_EXTERNAL",
+                "INACTIVE_EXTERNAL",
+                "-",
+                "LEAVE",
+                "DECEASED",
+                "RETIRED"
+              ],
+              "title": "Employment Status"
             },
-            "description": "If provided, will only return employees with this employment status."
+            "description": "If provided, will only return employees with this employment status. Along with the standard values, any connector specific value returned in the response can be passed as well."
           },
           {
             "name": "employee_number",
@@ -11981,11 +12016,19 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/ATSStatusType",
-              "description": "If provided, will return jobs with this status",
-              "examples": ["OPEN"]
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will return jobs with this status. Along with the standard values, any connector specific value returned in the response can be passed as well.",
+              "examples": [
+                "OPEN",
+                "CLOSED",
+                "DRAFT",
+                "ARCHIVED",
+                "PENDING",
+                "-"
+              ],
+              "title": "Status"
             },
-            "description": "If provided, will return jobs with this status"
+            "description": "If provided, will return jobs with this status. Along with the standard values, any connector specific value returned in the response can be passed as well."
           },
           {
             "name": "offices",
@@ -15935,11 +15978,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/LMSUserStatus",
-              "description": "If provided, will only return enrollments for this status.",
-              "examples": ["ACTIVE"]
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return enrollments for this status. Along with the standard values, any connector specific value returned in the response can be passed as well.",
+              "examples": ["ACTIVE", "PENDING", "INACTIVE"],
+              "title": "Status"
             },
-            "description": "If provided, will only return enrollments for this status."
+            "description": "If provided, will only return enrollments for this status. Along with the standard values, any connector specific value returned in the response can be passed as well."
           },
           {
             "name": "include_raw_data",
@@ -16205,11 +16249,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/LMSCourseStatus",
-              "description": "If provided, will only return courses with this status.",
-              "examples": ["ACTIVE"]
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return courses with this status. Along with the standard values, any connector specific value returned in the response can be passed as well.",
+              "examples": ["ACTIVE", "PENDING", "INACTIVE"],
+              "title": "Status"
             },
-            "description": "If provided, will only return courses with this status."
+            "description": "If provided, will only return courses with this status. Along with the standard values, any connector specific value returned in the response can be passed as well."
           },
           {
             "name": "remote_id",
@@ -16665,11 +16710,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/LMSContentStatus",
-              "description": "If provided, will only return contents for this status.",
-              "examples": ["ACTIVE"]
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return contents for this status. Along with the standard values, any connector specific value returned in the response can be passed as well.",
+              "examples": ["ACTIVE", "PENDING", "INACTIVE"],
+              "title": "Status"
             },
-            "description": "If provided, will only return contents for this status."
+            "description": "If provided, will only return contents for this status. Along with the standard values, any connector specific value returned in the response can be passed as well."
           },
           {
             "name": "include_raw_data",
@@ -16997,11 +17043,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/LMSSkillStatus",
-              "description": "If provided, will only return skills with this status.",
-              "examples": ["ACTIVE"]
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return skills with this status. Along with the standard values, any connector specific value returned in the response can be passed as well.",
+              "examples": ["ACTIVE", "PENDING", "INACTIVE"],
+              "title": "Status"
             },
-            "description": "If provided, will only return skills with this status."
+            "description": "If provided, will only return skills with this status. Along with the standard values, any connector specific value returned in the response can be passed as well."
           },
           {
             "name": "include_custom_fields",
@@ -17289,11 +17336,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/LMSCategoryStatus",
-              "description": "If provided, will only return categories with this status.",
-              "examples": ["ACTIVE"]
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return categories with this status. Along with the standard values, any connector specific value returned in the response can be passed as well.",
+              "examples": ["ACTIVE", "PENDING", "INACTIVE"],
+              "title": "Status"
             },
-            "description": "If provided, will only return categories with this status."
+            "description": "If provided, will only return categories with this status. Along with the standard values, any connector specific value returned in the response can be passed as well."
           },
           {
             "name": "include_custom_fields",
@@ -17602,11 +17650,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/LMSGrade",
-              "description": "If provided, will only return completions for this grade.",
-              "examples": ["A"]
+              "anyOf": [{ "type": "string" }, { "type": "null" }],
+              "description": "If provided, will only return completions for this grade. Along with the standard values, any connector specific value returned in the response can be passed as well.",
+              "examples": ["A", "B", "C", "D", "F", "PASS", "FAIL", "-"],
+              "title": "Grade"
             },
-            "description": "If provided, will only return completions for this grade."
+            "description": "If provided, will only return completions for this grade. Along with the standard values, any connector specific value returned in the response can be passed as well."
           },
           {
             "name": "remote_id",
@@ -20810,11 +20859,6 @@
   },
   "components": {
     "schemas": {
-      "ATSStatusType": {
-        "type": "string",
-        "enum": ["OPEN", "CLOSED", "DRAFT", "ARCHIVED", "PENDING", "-"],
-        "title": "ATSStatusType"
-      },
       "AtsActivity": {
         "properties": {
           "id": {
@@ -23908,21 +23952,6 @@
           "SOCIAL_SECURITY"
         ],
         "title": "HRISPayrollTaxSubType"
-      },
-      "HRISEmploymentStatus": {
-        "type": "string",
-        "enum": [
-          "ACTIVE",
-          "PENDING",
-          "INACTIVE",
-          "ACTIVE_EXTERNAL",
-          "INACTIVE_EXTERNAL",
-          "-",
-          "LEAVE",
-          "DECEASED",
-          "RETIRED"
-        ],
-        "title": "HRISEmploymentStatus"
       },
       "HTTPMethod-Input": {
         "type": "string",
@@ -27387,36 +27416,6 @@
         "type": "string",
         "enum": ["Syncing", "Done", "Failed"],
         "title": "JobDisplayStatus"
-      },
-      "LMSCategoryStatus": {
-        "type": "string",
-        "enum": ["ACTIVE", "PENDING", "INACTIVE"],
-        "title": "LMSCategoryStatus"
-      },
-      "LMSContentStatus": {
-        "type": "string",
-        "enum": ["ACTIVE", "PENDING", "INACTIVE"],
-        "title": "LMSContentStatus"
-      },
-      "LMSCourseStatus": {
-        "type": "string",
-        "enum": ["ACTIVE", "PENDING", "INACTIVE"],
-        "title": "LMSCourseStatus"
-      },
-      "LMSGrade": {
-        "type": "string",
-        "enum": ["A", "B", "C", "D", "F", "PASS", "FAIL", "-"],
-        "title": "LMSGrade"
-      },
-      "LMSSkillStatus": {
-        "type": "string",
-        "enum": ["ACTIVE", "PENDING", "INACTIVE"],
-        "title": "LMSSkillStatus"
-      },
-      "LMSUserStatus": {
-        "type": "string",
-        "enum": ["ACTIVE", "PENDING", "INACTIVE"],
-        "title": "LMSUserStatus"
       },
       "LinkTokenCreate": {
         "properties": {
