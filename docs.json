@@ -203,6 +203,14 @@
                     ]
                   },
                   {
+                    "group": "Payroll Codes",
+                    "tag": "BETA",
+                    "pages": [
+                      "hris/payroll-codes/get-payroll-codes",
+                      "hris/payroll-codes/get-payroll-code-by-id"
+                    ]
+                  },
+                  {
                     "group": "Payroll Runs",
                     "pages": [
                       "hris/payroll-runs/get-payroll-runs",
