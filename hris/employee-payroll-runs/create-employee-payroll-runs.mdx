@@ -1,4 +1,5 @@
 ---
+title: "create-employee-payroll-runs"
 openapi: "POST /api/hris/v1/employee-payroll-runs"
 ---
 
@@ -13,9 +14,8 @@ Different HRIS systems can have slightly different requirements and behaviors wh
 <AccordionGroup>
   <Accordion title="Workday">
     <p>
-    When the underlying HRIS is Workday, an `earning` can be created using a payload like:
-
-    </p>
+  When the underlying HRIS is Workday, an `earning` can be created using a payload like:
+</p>
 
     ```json
     {
@@ -34,9 +34,8 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     ```
 
     <p>
-    Similarly, a `deduction` can be created using a payload like:
-
-    </p>
+  Similarly, a `deduction` can be created using a payload like:
+</p>
 
     ```json
     {
@@ -62,20 +61,20 @@ Different HRIS systems can have slightly different requirements and behaviors wh
 
     The possible types for `earnings` are:
 
-    - **Workday_Earning_Code**
+    - **Workday\_Earning\_Code**
     - **WID**
 
     The possible types for `deductions` are:
 
-    - **Workday_Deduction_Code**
+    - **Workday\_Deduction\_Code**
     - **WID**
   </Accordion>
+
   <Accordion title="ADP">
     <p>
-    When the underlying HRIS is <strong>ADP</strong>
-     , an `employee_payroll_run` can be created using a payload like:
-
-    </p>
+  When the underlying HRIS is <strong>ADP</strong>
+  , an `employee_payroll_run` can be created using a payload like:
+</p>
 
     ```json
     {
@@ -113,12 +112,12 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     }
     ```
   </Accordion>
+
   <Accordion title="UKG Ready">
     <p>
-    When the underlying HRIS is <strong>UKG Ready</strong>
-     , an `employee_payroll_run` can be created using a payload like:
-
-    </p>
+  When the underlying HRIS is <strong>UKG Ready</strong>
+  , an `employee_payroll_run` can be created using a payload like:
+</p>
 
     ```json
     {
@@ -147,11 +146,11 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     }
     ```
   </Accordion>
+
   <Accordion title="SAP SuccessFactors (SAP SF)">
     <p>
-    When the underlying HRIS is **SAP SuccessFactors**, an `employee_payroll_run` can be created using a payload like:
-
-    </p>
+  When the underlying HRIS is **SAP SuccessFactors**, an `employee_payroll_run` can be created using a payload like:
+</p>
 
     ```json
     {
@@ -184,9 +183,9 @@ Different HRIS systems can have slightly different requirements and behaviors wh
 
     ### Where to find these fields:
 
-    - **payroll_provider_id**: Use the ID provided by the customer if it’s available. If not, any valid string can be used.
-    - **payroll_person_id**: This value can be found in the employee’s `raw_data`.
-    - **payroll_employment_id**: Source this either from the employee’s `raw_data` or from Binbee’s employment model (`remote_id`).
+    - **payroll\_provider\_id**: Use the ID provided by the customer if it’s available. If not, any valid string can be used.
+    - **payroll\_person\_id**: This value can be found in the employee’s `raw_data`.
+    - **payroll\_employment\_id**: Source this either from the employee’s `raw_data` or from Binbee’s employment model (`remote_id`).
     - **Deductions**: When adding deductions, ensure the deduction codes are included in the name field.
 
     ### Important notes
@@ -195,5 +194,12 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     - `earnings`, `deductions`, and `taxes` can be sent together.
     - All fields inside each array are compulsory.
   </Accordion>
+
+  <Accordion title="Dayfore HCM">
+    <p>
+  Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details.
+</p>
+  </Accordion>
+
   {/* Add more provider-specific accordions here as you support additional HRIS integrations */}
 </AccordionGroup>
