@@ -33142,7 +33142,49 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [[{}]]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "employee": "018af1fe-1250-772d-87c5-6f725a579e8a",
+                  "type": "W4",
+                  "remote_type": "Tax Documents / Federal W-4",
+                  "filename": "Charlotte_Danielle_Abbott_W-4.pdf",
+                  "data_status": "AVAILABLE",
+                  "data": {
+                    "source": "FORM_FIELDS",
+                    "form_year": 2026,
+                    "form_version": "2020",
+                    "effective_date": "2026-01-15",
+                    "filing_status": "MARRIED_FILING_JOINTLY",
+                    "multiple_jobs": false,
+                    "qualifying_children_amount": 2000,
+                    "other_dependents_amount": 500,
+                    "dependents_total_amount": 2500,
+                    "other_income": 0,
+                    "deductions": 0,
+                    "extra_withholding": 50,
+                    "is_exempt": false,
+                    "allowances": 2
+                  },
+                  "is_deleted": false
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39397,7 +39439,34 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "user": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "activity_type": "NOTE",
+                  "subject": "Interview with John Doe",
+                  "body": "John Doe was interviewed for the position of Software Engineer.",
+                  "visibility": "PUBLIC",
+                  "candidate": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "remote_created_at": "2021-07-01T00:00:00Z"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39432,7 +39501,35 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "candidate": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "job": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "applied_at": "2021-01-01T00:00:00Z",
+                  "rejected_at": "2021-01-01T00:00:00Z",
+                  "source": "LinkedIn",
+                  "credited_to": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "current_stage": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "reject_reason": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39467,7 +39564,31 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "file_name": "resume.pdf",
+                  "file_url": "https://example.com/path/to/resume.pdf",
+                  "attachment_type": "RESUME",
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "candidate": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39502,7 +39623,47 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "first_name": "John",
+                  "last_name": "Doe",
+                  "company": "Google",
+                  "title": "SOFTWARE ENGINEER",
+                  "last_interaction_at": "2021-07-01T00:00:00Z",
+                  "is_private": true,
+                  "can_email": true,
+                  "locations": "San Francisco",
+                  "phone_numbers": "123-456-7890",
+                  "email_addresses": "john@doe.com",
+                  "urls": {
+                    "type": "LINKEDIN",
+                    "value": "https://www.linkedin.com/in/johndoe"
+                  },
+                  "tags": "JUNIOR",
+                  "applications": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "attachments": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "remote_created_at": "2021-07-01T00:00:00Z",
+                  "remote_updated_at": "2021-07-01T00:00:00Z",
+                  "avatar": "https://www.example.com/avatar.jpg"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39537,7 +39698,28 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "name": "Engineering"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39572,7 +39754,33 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "candidate": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "submitted_at": "2021-01-01T00:00:00Z",
+                  "race": "WHITE",
+                  "gender": "MALE",
+                  "veteran_status": "DISABLED_VETERAN",
+                  "disability_status": "YES_I_HAVE_A_DISABILITY_OR_PREVIOUSLY_HAD_A_DISABILITY"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39607,7 +39815,30 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "name": "PHONE SCREENING",
+                  "job": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "stage_order": 3
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39642,7 +39873,39 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "name": "SOFTWARE ENGINEER",
+                  "description": "We are looking for a software engineer to join our team.",
+                  "code": "SE-2021-01",
+                  "status": "OPEN",
+                  "job_posting_urls": "https://www.company.com/careers/software-engineer",
+                  "remote_created_at": "2021-01-01T00:00:00Z",
+                  "remote_updated_at": "2021-01-01T00:00:00Z",
+                  "confidential": false,
+                  "departments": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "offices": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "hiring_managers": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "recruiters": "018b4bfb-5ece-70b1-ad5e-862a9433aa65"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39677,7 +39940,34 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "application": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "creator": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "remote_created_at": "2021-01-01T00:00:00Z",
+                  "closed_at": "2021-01-01T00:00:00Z",
+                  "sent_at": "2021-01-01T00:00:00Z",
+                  "start_date": "2021-01-01T00:00:00Z",
+                  "status": "APPROVED"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39712,7 +40002,29 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "name": "San Francisco",
+                  "location": "1234 Main Street, San Francisco, CA 94111"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39747,7 +40059,28 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "name": "Not a good fit"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39782,7 +40115,33 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "first_name": "John",
+                  "last_name": "Doe",
+                  "email": "john@doe.com",
+                  "disabled": false,
+                  "remote_created_at": "2021-01-01T00:00:00Z",
+                  "access_role": "ADMIN"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39817,7 +40176,37 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "application": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "job_interview_stage": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "organizer": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "interviewers": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "location": "123 Main St, Anytown, USA",
+                  "start_at": "2021-01-01T00:00:00Z",
+                  "end_at": "2021-01-01T00:00:00Z",
+                  "remote_created_at": "2021-01-01T00:00:00Z",
+                  "remote_updated_at": "2021-01-01T00:00:00Z",
+                  "status": "SCHEDULED"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39852,7 +40241,33 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "application": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "interview": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "interviewer": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "remote_created_at": "2021-01-01T00:00:00Z",
+                  "submitted_at": "2021-01-01T00:00:00Z",
+                  "overall_recommendation": "YES"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39887,7 +40302,33 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "job": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "description": "Please describe your experience with Python.",
+                  "title": "Python Experience",
+                  "type": "SINGLE_LINE_TEXT",
+                  "required": true,
+                  "options": "Yes"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39922,7 +40363,28 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "name": "JUNIOR"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39957,7 +40419,27 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "is_active": true,
+                  "status": "COMPLETE",
+                  "integration_slug": "ukg-pro",
+                  "end_user": "Acme Corp.",
+                  "origin_id": "user_123",
+                  "sync_status": "Done",
+                  "last_sync_start_time": "2024-10-16T00:00:00Z",
+                  "next_sync_start_time": "2024-10-17T00:00:00Z",
+                  "connector_token": "LJITuCJFqpGXeKfZtn4I9ZcahzA-lkCSO6uhDKj5xw9EzPL96qk7ObgIHQQ1GnxH",
+                  "category": "HRIS",
+                  "relink_needed_at": "2024-10-17T00:00:00Z",
+                  "is_test_connector": false,
+                  "completed_at": "2024-10-17T00:00:00Z",
+                  "created_at": "2024-10-17T00:00:00Z"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -39992,7 +40474,20 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018e586b-7d0b-7bc9-be65-a8fdbc82d734",
+                  "name": "guardian_mobile",
+                  "description": "Employee's guardian mobile number",
+                  "category": "HRIS",
+                  "model": "employee",
+                  "source": "DASHBOARD",
+                  "created_at": "string",
+                  "updated_at": "string"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40027,7 +40522,33 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "employee": "018af1fe-1250-772d-87c5-6f725a579e8a",
+                  "account_number": "123456789012",
+                  "routing_number": "123456789",
+                  "bank_name": "Wells Fargo",
+                  "account_type": "SAVINGS",
+                  "remote_created_at": "2023-03-01T00:00:00Z"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40062,7 +40583,34 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "currency": "USD",
+                  "amount": 50000,
+                  "benefit": "018b18ef-c488-7d40-9131-91bbc47c1007",
+                  "covered_dependents": [
+                    "018abccb-c4a9-72f6-be1d-3fc7aaf2be67"
+                  ],
+                  "is_employee_covered": true
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40097,7 +40645,40 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "employee": "018b18ef-c488-7d40-9131-91bbc47c1007",
+                  "plan_name": "Medical PPO",
+                  "provider_name": "Anthem",
+                  "benefit_plan_type": "Medical",
+                  "frequency": "SEMIMONTHLY",
+                  "employee_contribution": 22.27,
+                  "company_contribution": 77.22,
+                  "start_date": "2023-10-18T00:00:00Z",
+                  "effective_date": "2023-10-18T00:00:00Z",
+                  "end_date": "2024-10-16T00:00:00Z",
+                  "employer_benefit": "018b18ef-c488-7d40-9131-91bbc47c1007",
+                  "benefit_plan_category": "MEDICAL",
+                  "coverage_tier": "EMPLOYEE_ONLY"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40132,7 +40713,30 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "legal_name": "Integrax Pvt. Ltd.",
+                  "display_name": "Bindbee",
+                  "eins": ["12-3456789", "12-3451111"]
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40167,7 +40771,35 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "employee": "018abccc-3208-7b2d-8b86-927945f89a42",
+                  "pay_group": "018b802f-4856-7ea8-a83f-ac374853ab90",
+                  "pay_rate": 77000,
+                  "pay_period": "YEAR",
+                  "pay_frequency": "MONTHLY",
+                  "pay_currency": "USD",
+                  "flsa_status": "EXEMPT",
+                  "start_date": "2022-12-15T00:00:00Z"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40202,7 +40834,31 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "is_active": true,
+                  "status": "COMPLETE",
+                  "integration_slug": "ukg-pro",
+                  "end_user": "Acme Corp.",
+                  "origin_id": "user_123",
+                  "sync_status": "Done",
+                  "last_sync_start_time": "2024-10-16T00:00:00Z",
+                  "next_sync_start_time": "2024-10-17T00:00:00Z",
+                  "connector_token": "LJITuCJFqpGXeKfZtn4I9ZcahzA-lkCSO6uhDKj5xw9EzPL96qk7ObgIHQQ1GnxH",
+                  "category": "HRIS",
+                  "relink_needed_at": "2024-10-17T00:00:00Z",
+                  "is_test_connector": false,
+                  "completed_at": "2024-10-17T00:00:00Z",
+                  "created_at": "2024-10-17T00:00:00Z",
+                  "sync_progress": 42,
+                  "total_employees": 128,
+                  "active_employees": 120,
+                  "avg_sync_duration": "15 min 30 sec"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40237,7 +40893,32 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "employer_benefit": "018b18ef-c488-7d40-9131-91bbc47c1007",
+                  "dependent": "018abccb-c4a9-72f6-be1d-3fc7aaf2be67",
+                  "start_date": "2023-10-18T00:00:00Z",
+                  "effective_date": "2023-10-18T00:00:00Z",
+                  "end_date": "2024-10-16T00:00:00Z"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40272,7 +40953,46 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "employee": "018abccb-c4a9-72f6-be1d-3fc7aaf2be67",
+                  "home_location": {
+                    "city": "London",
+                    "country": "UK",
+                    "location": "UK-HO-London",
+                    "postal_code": "56273",
+                    "state": "LND",
+                    "street_1": "1011",
+                    "street_2": "Lane number 4, Golden Villa"
+                  },
+                  "first_name": "Aayushi",
+                  "middle_name": "Olivia",
+                  "last_name": "Rai",
+                  "relationship": "SPOUSE",
+                  "date_of_birth": "1995-04-16T00:00:00Z",
+                  "gender": "FEMALE",
+                  "phone_number": "+44-208-555-2112",
+                  "is_student": true,
+                  "ssn": "555-22-5555"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40307,7 +41027,47 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "employee": "018b168d-70f9-7043-a796-56d66a4f8f07",
+                  "payroll_run": "018b709e-b6ef-7db4-902a-a064157bdba2",
+                  "gross_pay": 772277.77,
+                  "net_pay": 577221.27,
+                  "start_date": "2023-07-01T00:00:00Z",
+                  "end_date": "2023-07-31T00:00:00Z",
+                  "check_date": "2023-08-31T00:00:00Z",
+                  "earnings": {
+                    "amount": "27151",
+                    "name": "SALARY"
+                  },
+                  "deductions": {
+                    "company_deduction": "77.57",
+                    "employee_deduction": "27.22",
+                    "name": "Social Security"
+                  },
+                  "taxes": {
+                    "amount": "175.22",
+                    "name": "California State Income Tax"
+                  }
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40342,7 +41102,86 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "employee_number": "1",
+                  "company": "018af1fe-1250-772d-87c5-6f725a579e8a",
+                  "first_name": "Kunal",
+                  "middle_name": "Christopher",
+                  "last_name": "Tyagi",
+                  "preferred_name": "Dark Knight",
+                  "display_full_name": "Kunal Tyagi",
+                  "username": "kunaltyagi",
+                  "designation": "Chief Technology Officer",
+                  "groups": [
+                    "018af1fe-1250-772d-87c5-6f725a579e8a",
+                    "018af1fe-1250-772d-87c5-6f725a579e8b"
+                  ],
+                  "department": "Engineering",
+                  "division": "Bangalore Division",
+                  "work_email": "kunal@bindbee.dev",
+                  "personal_email": "kunaltyagi77@gmail.com",
+                  "mobile_phone_number": "+1234567890",
+                  "home_phone_number": "+1234567890",
+                  "country_code": "+91",
+                  "home_location": {
+                    "city": "London",
+                    "country": "UK",
+                    "location": "UK-HO-London",
+                    "name": "UK-HO-London",
+                    "postal_code": "56273",
+                    "state": "LND",
+                    "street_1": "1011",
+                    "street_2": "Lane number 4, Golden Villa"
+                  },
+                  "work_location": {
+                    "city": "London",
+                    "country": "UK",
+                    "location": "UK-HO-London",
+                    "name": "UK-HO-London",
+                    "postal_code": "56273",
+                    "state": "LND",
+                    "street_1": "1011",
+                    "street_2": "Lane number 4, Golden Villa"
+                  },
+                  "work_locations": [
+                    "018af1fe-1250-772d-87c5-6f725a579e8a",
+                    "018af1fe-1250-772d-87c5-6f725a579e8b"
+                  ],
+                  "manager": "018aeaff-cc7c-7837-988a-965762bd63c1",
+                  "pay_group": "018af1fe-1250-77c5-9fcd-4bca1e4568f4",
+                  "ssn": "1234567890",
+                  "gender": "MALE",
+                  "ethnicity": "ASIAN_OR_INDIAN_SUBCONTINENT",
+                  "marital_status": "SINGLE",
+                  "tobacco_use": true,
+                  "date_of_birth": "1986-10-27T00:00:00Z",
+                  "start_date": "2023-03-05T00:00:00Z",
+                  "remote_created_at": "2023-03-01T00:00:00Z",
+                  "employment_status": "INACTIVE",
+                  "termination_date": "2023-06-05T00:00:00Z",
+                  "termination_reason": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                  "avatar": "http://alturl.com/h2h8m",
+                  "payroll_run_calendar": "018af1fe-1250-77c5-9fcd-4bca1e4568f4"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40377,7 +41216,37 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "plan_name": "Medical PPO",
+                  "provider_name": "Anthem",
+                  "benefit_plan_type": "Medical",
+                  "deduction_code": "MEDPPO",
+                  "description": "Preferred Provider Organization (PPO) plan with medical coverage.",
+                  "benefit_plan_category": "MEDICAL",
+                  "coverage_tiers": "EMPLOYEE_SPOUSE",
+                  "start_date": "2023-10-18T00:00:00Z",
+                  "end_date": "2024-10-16T00:00:00Z",
+                  "payroll_codes": ["018abccb-c4a9-72f6-be1d-3fc7aaf2be67"]
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40412,7 +41281,33 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "employee": "018abccc-3208-7b2d-8b86-927945f89a42",
+                  "job_title": "Chief Technology Officer",
+                  "department": "Engineering",
+                  "division": "Core",
+                  "effective_date": "2023-06-22T00:00:00Z",
+                  "employment_type": "FULL_TIME"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40447,7 +41342,31 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "name": "Engineering",
+                  "type": "DEPARTMENT",
+                  "parent_group": "018af1fe-1250-772d-87c5-6f725a579e8a",
+                  "is_commonly_used_as_team": true
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40482,7 +41401,34 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "name": "UK-HO-London",
+                  "street_1": "1011",
+                  "street_2": "Lane number 4, Golden Villa",
+                  "city": "London",
+                  "state": "LND",
+                  "postal_code": "56273",
+                  "country": "UK"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40517,7 +41463,29 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "name": "Pay Group - USA",
+                  "description": "Pay group for US employees"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40552,7 +41520,31 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "name": "Regular Earnings",
+                  "code": "REG",
+                  "type": "EARNING",
+                  "sub_type": "OVERTIME"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40587,7 +41579,33 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "payroll_run_calendar_name": "Monthly Payroll Calendar",
+                  "pay_group": "018af1fe-2fad-749e-a282-ea17ba4fc0c4",
+                  "pay_period_start_date": "2023-11-01T00:00:00Z",
+                  "pay_period_end_date": "2023-11-30T00:00:00Z",
+                  "pay_date": "2023-12-05T00:00:00Z",
+                  "calendar_type": "MONTHLY"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40622,7 +41640,34 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "pay_group": "018af1fe-2fad-749e-a282-ea17ba4fc0c4",
+                  "run_state": "PAID",
+                  "run_type": "REGULAR",
+                  "start_date": "2020-11-08T00:00:00Z",
+                  "end_date": "2020-11-15T00:00:00Z",
+                  "check_date": "2020-11-15T00:00:00Z",
+                  "payroll_run_calendar": "018af1fe-2fad-749e-a282-ea17ba4fc0c4"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40657,7 +41702,31 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "employee": "018b48d5-79f8-7deb-8813-3e47b375067e",
+                  "balance": 12,
+                  "used": 7,
+                  "policy_type": "VACATION"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40692,7 +41761,36 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "employee": "018b4bfb-5ece-70b1-ad5e-862a9433aa65",
+                  "approver": "018b4bfb-6065-7f83-b11d-e85ea49e37c3",
+                  "status": "APPROVED",
+                  "employee_note": "Paid paid vacation! Scuba diving in Hawaii.",
+                  "units": "HOURS",
+                  "amount": 12,
+                  "request_type": "VACATION",
+                  "start_time": "2023-04-10T00:00:00Z",
+                  "end_time": "2023-04-10T00:00:00Z"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40727,7 +41825,33 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "employee": "018abccc-4a0a-7e7d-a9d7-56881f57a6b4",
+                  "date": "2023-11-10T00:00:00Z",
+                  "hours_worked": 12.0,
+                  "break_duration": 2.5,
+                  "start_time": "2023-11-10T00:00:00Z",
+                  "end_time": "2023-11-10T00:00:00Z"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40762,7 +41886,21 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "integration_id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "is_enabled": true,
+                  "integration_slug": "ukg_pro",
+                  "integration_type": "API",
+                  "category": "HRIS",
+                  "display_name": "BambooHR",
+                  "icon_url": "https://images.unifyx.dev/logos/icon/ats/recruitee.svg",
+                  "description": "BambooHR is an intuitive HRIS solution designed to streamline HR processes, offering features for employee onboarding, performance management, and HR analytics, providing organizations with a user-friendly platform for effective workforce management."
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40797,7 +41935,30 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "name": "Programming",
+                  "description": "All programming topics",
+                  "status": "ACTIVE"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40832,7 +41993,35 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "user": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "course": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "content": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "score": 95,
+                  "grade": "PASS",
+                  "started_at": "2025-08-01T10:00:00Z",
+                  "completed_at": "2025-08-01T11:15:00Z",
+                  "time_duration": "PT1H15M"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40867,7 +42056,39 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "title": "NumPy Basics",
+                  "description": "Array manipulation",
+                  "languages": ["en_US", "en_GB"],
+                  "cover_image": "https://img.example.com/numpy.png",
+                  "url": "https://lms.example.com/content/numpy",
+                  "duration": "PT45M",
+                  "categories": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "skills": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "courses": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "order": 1,
+                  "provider": "Coursera",
+                  "status": "ACTIVE"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40902,7 +42123,38 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "name": "Python for Data Science",
+                  "description": "Introductory course",
+                  "cover_image": "https://img.example.com/py.png",
+                  "url": "https://lms.example.com/course/py",
+                  "duration": "PT5H30M",
+                  "languages": ["en_US", "fr_FR"],
+                  "categories": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "contents": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "skills": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "instructors": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "status": "ACTIVE"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40937,7 +42189,31 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "user": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "course": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "start_date": "2025-08-01T10:00:00Z",
+                  "completion": "018b18ef-c487-703c-afd9-0ca478ccd9d6"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -40972,7 +42248,29 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "name": "Data Analysis",
+                  "status": "ACTIVE"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -41007,7 +42305,33 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "first_name": "Jane",
+                  "last_name": "Doe",
+                  "middle_name": "A.",
+                  "email_address": "jane.doe@example.com",
+                  "phone_number": "+1 415 555 1212",
+                  "status": "ACTIVE"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -41042,7 +42366,19 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "webhook_id": "018e586b-7d0b-7bc9-be65-a8fdbc82d734",
+                  "name": "string",
+                  "url": "string",
+                  "is_enabled": false,
+                  "for_test_connector": false,
+                  "created_at": "string",
+                  "last_triggered_at": "string"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
@@ -41077,7 +42413,23 @@
             "type": "array",
             "title": "Items",
             "description": "List of items in the current response",
-            "examples": [{}]
+            "examples": [
+              [
+                {
+                  "id": "string",
+                  "connector_id": "string",
+                  "method": "GET",
+                  "url": "string",
+                  "response_code": 0,
+                  "created_at": "string",
+                  "integration_name": "string",
+                  "end_user_name": "string",
+                  "origin_id": "string",
+                  "webhook_action": "connector_synced",
+                  "webhook_name": "string"
+                }
+              ]
+            ]
           }
         },
         "type": "object",
