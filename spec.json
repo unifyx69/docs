@@ -4,6 +4,14 @@
     "title": "Bindbee APIs",
     "version": "0.1.0"
   },
+  "servers": [
+    {
+      "url": "https://api.bindbee.dev"
+    },
+    {
+      "url": "https://api-eu.bindbee.dev"
+    }
+  ],
   "paths": {
     "/api/hris/v1/bank-info": {
       "get": {
@@ -2926,6 +2934,596 @@
           },
           "404": {
             "description": "The requested resource was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hris/v1/documents": {
+      "get": {
+        "tags": ["Documents"],
+        "summary": "Get Documents",
+        "description": "**Beta.** The Documents API is in beta and its contract may change.\n\nReturns a list of Document objects. The response carries document metadata and the parse state of each document, but never the file itself and never the parsed values: read `data_status` to decide which documents are worth fetching in full, then call Get Document By Id for those.",
+        "operationId": "get_documents_list_api_hris_v1_documents_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The ID of document records to fetch",
+              "examples": [
+                "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+              ],
+              "title": "Ids"
+            },
+            "description": "The ID of document records to fetch"
+          },
+          {
+            "name": "employee_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The ID of the employees whose documents to fetch",
+              "examples": [
+                "01931edf-04b6-7391-8a5c-93ac4b395316,01931edf-04c8-7649-a470-d85f6161bd1a"
+              ],
+              "title": "Employee Id"
+            },
+            "description": "The ID of the employees whose documents to fetch"
+          },
+          {
+            "name": "remote_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The third-party API ID of the matching object.",
+              "examples": ["3235005483341316245"],
+              "title": "Remote Id"
+            },
+            "description": "The third-party API ID of the matching object."
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The document types to fetch. Multiple values should be comma separated without spaces.",
+              "examples": ["W4", "W4,I9"],
+              "title": "Type"
+            },
+            "description": "The document types to fetch. Multiple values should be comma separated without spaces."
+          },
+          {
+            "name": "data_status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The parse states to fetch. Multiple values should be comma separated without spaces. Use `AVAILABLE` to fetch only documents whose parsed values are ready.",
+              "examples": ["AVAILABLE", "AVAILABLE,PENDING"],
+              "title": "Data Status"
+            },
+            "description": "The parse states to fetch. Multiple values should be comma separated without spaces. Use `AVAILABLE` to fetch only documents whose parsed values are ready."
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "examples": [false],
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models."
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "examples": [false],
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response."
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "description": "Number of results to return per page. Maximum size is 200.",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Number of results to return per page. Maximum size is 200."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The pagination cursor value.",
+              "title": "Cursor"
+            },
+            "description": "The pagination cursor value."
+          },
+          {
+            "name": "modified_after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)",
+              "examples": ["2024-02-21T21:22:12.993Z"],
+              "title": "Modified After"
+            },
+            "description": "If provided, only objects synced by Bindbee after this date time will be returned. Format: DateTime (ISO 8601)"
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "examples": ["manager[first_name,last_name]"],
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name."
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "X-Connector-Token"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedResponse_HrisDocument_"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer authentication credentials.",
+            "headers": {
+              "WWW-Authenticate": {
+                "description": "Bearer authentication challenge.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The credentials are valid but do not permit access to this resource, e.g. a connector token used on a different API category or a model whose writes are disabled.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded.",
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current window.",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Requests remaining in the current window.",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Reset": {
+                "description": "Unix timestamp (seconds since epoch) at which the current rate-limit window resets.",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "Retry-After": {
+                "description": "Seconds to wait before retrying the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hris/v1/documents/{id}": {
+      "get": {
+        "tags": ["Documents"],
+        "summary": "Get Document By Id",
+        "description": "**Beta.** The Documents API is in beta and its contract may change.\n\nReturns a Document object with the given id, including the parsed `data` object when `data_status` is `AVAILABLE`. This is the only endpoint that returns `data`; it is otherwise identical to the list response.",
+        "operationId": "get_document_by_id_api_hris_v1_documents__id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "include_raw_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models.",
+              "examples": [false],
+              "default": false,
+              "title": "Include Raw Data"
+            },
+            "description": "Whether to include the original data Bindbee fetched from the third-party to produce these models."
+          },
+          {
+            "name": "include_custom_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to include custom fields in the response.",
+              "examples": [false],
+              "default": false,
+              "title": "Include Custom Fields"
+            },
+            "description": "Whether to include custom fields in the response."
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name.",
+              "examples": ["manager[first_name,last_name]"],
+              "title": "Expand"
+            },
+            "description": "Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. You can also specify required fields in [] for each relation name."
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "X-Connector-Token"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HrisDocument"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer authentication credentials.",
+            "headers": {
+              "WWW-Authenticate": {
+                "description": "Bearer authentication challenge.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The credentials are valid but do not permit access to this resource, e.g. a connector token used on a different API category or a model whose writes are disabled.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The requested resource was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded.",
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current window.",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Requests remaining in the current window.",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Reset": {
+                "description": "Unix timestamp (seconds since epoch) at which the current rate-limit window resets.",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "Retry-After": {
+                "description": "Seconds to wait before retrying the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hris/v1/documents/{id}/download": {
+      "get": {
+        "tags": ["Documents"],
+        "summary": "Get Document Download URL",
+        "description": "**Beta.** The Documents API is in beta and its contract may change.\n\nReturns an expiring, signed URL from which the document file can be downloaded, along with its filename, MIME type and size. This is a separate call from Get Document By Id because the URL expires within minutes while the document metadata stays cacheable for hours, and because downloading a signed W-4 warrants its own permission and its own audit event.",
+        "operationId": "get_document_download_url_api_hris_v1_documents__id__download_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "ttl_seconds",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 3600,
+              "minimum": 60,
+              "description": "How long the returned download URL stays valid, in seconds. Maximum is 3600.",
+              "examples": [300],
+              "default": 300,
+              "title": "Ttl Seconds"
+            },
+            "description": "How long the returned download URL stays valid, in seconds. Maximum is 3600."
+          },
+          {
+            "name": "x-connector-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "X-Connector-Token"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HrisDocumentDownload"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid bearer authentication credentials.",
+            "headers": {
+              "WWW-Authenticate": {
+                "description": "Bearer authentication challenge.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The credentials are valid but do not permit access to this resource, e.g. a connector token used on a different API category or a model whose writes are disabled.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The requested resource was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded.",
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current window.",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Requests remaining in the current window.",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Reset": {
+                "description": "Unix timestamp (seconds since epoch) at which the current rate-limit window resets.",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "Retry-After": {
+                "description": "Seconds to wait before retrying the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -32022,6 +32620,576 @@
         ],
         "title": "HrisBankInfo",
         "description": "The Bank info object is used to represent bank info of any person who has been employed by a company."
+      },
+      "HrisDocument": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "examples": ["018b18ef-c487-703c-afd9-0ca478ccd9d6"]
+          },
+          "remote_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remote Id",
+            "description": "The third-party API ID of the matching object.",
+            "examples": ["123321"]
+          },
+          "modified_at": {
+            "type": "string",
+            "title": "Modified At",
+            "description": "This is the datetime that this object was last updated by Bindbee",
+            "examples": ["2021-10-16T00:00:00Z"]
+          },
+          "raw_data": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Raw Data",
+            "description": "This is the Raw data",
+            "examples": [
+              {
+                "key_1": "Platform dependent data 1",
+                "key_2": "Platform dependent data 2"
+              }
+            ]
+          },
+          "custom_fields": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Custom Fields",
+            "description": "The custom fields related to the model",
+            "examples": [
+              {
+                "category_group": "REG",
+                "disability_type": "ASBERG",
+                "hire_date": "1991-03-16T00:00:00",
+                "hire_source": "REFER",
+                "nationality": "USA",
+                "original_hire_date": "1991-03-16T00:00:00"
+              }
+            ]
+          },
+          "employee": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Employee",
+            "description": "The employee this document belongs to. This is the join key used to retrieve a single employee's documents.",
+            "examples": ["018af1fe-1250-772d-87c5-6f725a579e8a"]
+          },
+          "type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "enum": ["W4", "I9", "OTHER", "-"],
+            "title": "Type",
+            "description": "The normalised document type, set from the provider's own category or, where that is missing, from content anchors in the file itself. If the value is not one of the defined enum values, the original value passed through will be returned.",
+            "examples": ["W4"]
+          },
+          "remote_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remote Type",
+            "description": "The third-party's own document category, passed through verbatim. Use this when you need finer granularity than `type` provides.",
+            "examples": ["Tax Documents / Federal W-4"]
+          },
+          "filename": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filename",
+            "description": "The name of the document file in the third-party system.",
+            "examples": ["Charlotte_Danielle_Abbott_W-4.pdf"]
+          },
+          "data_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "enum": ["AVAILABLE", "PENDING", "UNSUPPORTED", "FAILED"],
+            "title": "Data Status",
+            "description": "Whether parsed field values are available for this document. `AVAILABLE`: use `data`. `PENDING`: extraction is still running, wait for the `document.data.available` webhook. `UNSUPPORTED`: Bindbee does not parse this document type, download the file instead. `FAILED`: extraction was attempted and did not succeed, download the file instead. Returned on both the list and the detail endpoint, so you can tell which documents are worth fetching in full without fetching any of them.",
+            "examples": ["AVAILABLE"]
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HrisDocumentW4Data"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data",
+            "description": "The parsed field values for this document, discriminated on `type`. Only returned by the Get Document By Id endpoint, and only when `data_status` is `AVAILABLE`; null in every other case. Only `W4` documents carry a schema today."
+          },
+          "is_deleted": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Deleted",
+            "description": "Whether the document no longer exists in the third-party system. Deleted documents are tombstoned rather than removed, so incremental syncs can observe the deletion.",
+            "examples": [false]
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "remote_id",
+          "modified_at",
+          "custom_fields",
+          "employee",
+          "type",
+          "remote_type",
+          "filename",
+          "data_status",
+          "is_deleted"
+        ],
+        "title": "HrisDocument",
+        "description": "The Document object represents a file held in an HR or payroll system for an employee, together with the field values Bindbee parsed out of it where the document type follows a standard form."
+      },
+      "HrisDocumentW4Data": {
+        "properties": {
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "enum": ["FORM_FIELDS", "OCR"],
+            "title": "Source",
+            "description": "How the values were read. `FORM_FIELDS` means they were read deterministically off the PDF's form fields; `OCR` means they were inferred from a scan. Use this when a value feeds a withholding calculation and you need to know how much to trust it.",
+            "examples": ["FORM_FIELDS"]
+          },
+          "form_year": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Form Year",
+            "description": "The year printed on the form header.",
+            "examples": [2026]
+          },
+          "form_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "enum": ["2020", "PRE_2020"],
+            "title": "Form Version",
+            "description": "Which era of the W-4 this is. `2020` is the redesigned form; `PRE_2020` is the allowances-based form. Source systems return both through the same structure with no version flag, so Bindbee derives this from the signature date and the filled fields.",
+            "examples": ["2020"]
+          },
+          "effective_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective Date",
+            "description": "The signature date from Step 5 of the form.",
+            "examples": ["2026-01-15"]
+          },
+          "filing_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "enum": [
+              "SINGLE_OR_MARRIED_FILING_SEPARATELY",
+              "MARRIED_FILING_JOINTLY",
+              "HEAD_OF_HOUSEHOLD",
+              "SINGLE",
+              "MARRIED",
+              "MARRIED_BUT_WITHHOLD_AT_HIGHER_SINGLE_RATE"
+            ],
+            "title": "Filing Status",
+            "description": "The filing status from Step 1(c). The 2020 form uses `SINGLE_OR_MARRIED_FILING_SEPARATELY`, `MARRIED_FILING_JOINTLY` and `HEAD_OF_HOUSEHOLD`; the pre-2020 form uses `SINGLE`, `MARRIED` and `MARRIED_BUT_WITHHOLD_AT_HIGHER_SINGLE_RATE`.",
+            "examples": ["MARRIED_FILING_JOINTLY"]
+          },
+          "multiple_jobs": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Multiple Jobs",
+            "description": "The Step 2(c) checkbox, set when the employee holds more than one job or is married filing jointly with a working spouse. Null on a pre-2020 form, which has no such box.",
+            "examples": [false]
+          },
+          "qualifying_children_amount": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Qualifying Children Amount",
+            "description": "Step 3(a), the credit claimed for qualifying children under 17. Null on a pre-2020 form.",
+            "examples": [2000]
+          },
+          "other_dependents_amount": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Other Dependents Amount",
+            "description": "Step 3(b), the credit claimed for other dependents. Null on a pre-2020 form.",
+            "examples": [500]
+          },
+          "dependents_total_amount": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dependents Total Amount",
+            "description": "The Step 3 total. This is not always the sum of 3(a) and 3(b), since the line can include other credits, so all three values are returned separately. Null on a pre-2020 form.",
+            "examples": [2500]
+          },
+          "other_income": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Other Income",
+            "description": "Step 4(a), other income not from jobs. Null on a pre-2020 form.",
+            "examples": [0]
+          },
+          "deductions": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Deductions",
+            "description": "Step 4(b), deductions other than the standard deduction. Null on a pre-2020 form.",
+            "examples": [0]
+          },
+          "extra_withholding": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extra Withholding",
+            "description": "Step 4(c), any additional tax the employee wants withheld each pay period. Present on both form versions.",
+            "examples": [50]
+          },
+          "is_exempt": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Exempt",
+            "description": "Whether the employee claimed exemption from withholding. Present on both form versions.",
+            "examples": [false]
+          },
+          "allowances": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Allowances",
+            "description": "Line 5 of the pre-2020 form, the number of withholding allowances claimed. Null on a 2020 or later form, which removed allowances entirely.",
+            "examples": [2]
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "form_year",
+          "form_version",
+          "effective_date",
+          "filing_status",
+          "multiple_jobs",
+          "qualifying_children_amount",
+          "other_dependents_amount",
+          "dependents_total_amount",
+          "other_income",
+          "deductions",
+          "extra_withholding",
+          "is_exempt",
+          "allowances"
+        ],
+        "title": "HrisDocumentW4Data",
+        "description": "The parsed values of a Form W-4. Fields that belong to the other era's form are returned as null rather than zero: a zero is a claim the employee made, a null is a box that did not exist on the form they signed. Source systems commonly return zero for both, so this normalisation is Bindbee's. A blank Step 3 or Step 4 box on a filled 2020 or later form is an affirmative zero, not a null."
+      },
+      "HrisDocumentDownload": {
+        "properties": {
+          "url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2083,
+                "minLength": 1,
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url",
+            "description": "A short-lived, signed URL from which the file can be downloaded. Fetch the file before `expires_at`; do not store or share the URL.",
+            "examples": [
+              "https://files.bindbee.dev/documents/018b18ef...?signature=..."
+            ]
+          },
+          "expires_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expires At",
+            "description": "The datetime at which the download URL stops working. Format: DateTime (ISO 8601)",
+            "examples": ["2026-08-07T12:05:00Z"]
+          },
+          "filename": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filename",
+            "description": "The name of the document file in the third-party system.",
+            "examples": ["Charlotte_Danielle_Abbott_W-4.pdf"]
+          },
+          "content_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Content Type",
+            "description": "The MIME type of the file behind the URL.",
+            "examples": ["application/pdf"]
+          },
+          "size_bytes": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Size Bytes",
+            "description": "The size of the file in bytes.",
+            "examples": [161484]
+          }
+        },
+        "type": "object",
+        "required": [
+          "url",
+          "expires_at",
+          "filename",
+          "content_type",
+          "size_bytes"
+        ],
+        "title": "HrisDocumentDownload",
+        "description": "An expiring link to the document file, together with the metadata a consumer needs in order to download and store it."
+      },
+      "PaginatedResponse_HrisDocument_": {
+        "properties": {
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor",
+            "description": "Cursor value to fetch next set of items",
+            "examples": ["MDE4YjE4ZWYtYzk5Yy03YTg2LTk5NDYtN2I3YzlkNTQzM2U1"]
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size",
+            "description": "Indicates the count of items in the response",
+            "examples": [50]
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/HrisDocument"
+            },
+            "type": "array",
+            "title": "Items",
+            "description": "List of items in the current response",
+            "examples": [
+              [
+                {
+                  "id": "018b18ef-c487-703c-afd9-0ca478ccd9d6",
+                  "remote_id": "123321",
+                  "modified_at": "2021-10-16T00:00:00Z",
+                  "raw_data": {
+                    "key_1": "Platform dependent data 1",
+                    "key_2": "Platform dependent data 2"
+                  },
+                  "custom_fields": {
+                    "category_group": "REG",
+                    "disability_type": "ASBERG",
+                    "hire_date": "1991-03-16T00:00:00",
+                    "hire_source": "REFER",
+                    "nationality": "USA",
+                    "original_hire_date": "1991-03-16T00:00:00"
+                  },
+                  "employee": "018af1fe-1250-772d-87c5-6f725a579e8a",
+                  "type": "W4",
+                  "remote_type": "Tax Documents / Federal W-4",
+                  "filename": "Charlotte_Danielle_Abbott_W-4.pdf",
+                  "data_status": "AVAILABLE",
+                  "data": {
+                    "source": "FORM_FIELDS",
+                    "form_year": 2026,
+                    "form_version": "2020",
+                    "effective_date": "2026-01-15",
+                    "filing_status": "MARRIED_FILING_JOINTLY",
+                    "multiple_jobs": false,
+                    "qualifying_children_amount": 2000,
+                    "other_dependents_amount": 500,
+                    "dependents_total_amount": 2500,
+                    "other_income": 0,
+                    "deductions": 0,
+                    "extra_withholding": 50,
+                    "is_exempt": false,
+                    "allowances": 2
+                  },
+                  "is_deleted": false
+                }
+              ]
+            ]
+          }
+        },
+        "type": "object",
+        "required": ["cursor", "page_size", "items"],
+        "title": "PaginatedResponse[HrisDocument]"
       },
       "HrisBenefit": {
         "properties": {
