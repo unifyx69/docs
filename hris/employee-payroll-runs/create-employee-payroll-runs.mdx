@@ -1,5 +1,4 @@
 ---
-title: "create-employee-payroll-runs"
 openapi: "POST /api/hris/v1/employee-payroll-runs"
 ---
 
@@ -32,7 +31,9 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     ```
 
     <p>
-  Similarly, a `deduction` can be created using a payload like:
+
+Similarly, a `deduction` can be created using a payload like:
+
 </p>
 
     ```json
@@ -66,6 +67,7 @@ Different HRIS systems can have slightly different requirements and behaviors wh
 
     - **Workday\_Deduction\_Code**
     - **WID**
+
   </Accordion>
 
   <Accordion title="ADP">
@@ -109,6 +111,7 @@ Different HRIS systems can have slightly different requirements and behaviors wh
       "payroll_process_name": "Ded Ear writeback"
     }
     ```
+
   </Accordion>
 
   <Accordion title="UKG Ready">
@@ -143,6 +146,7 @@ Different HRIS systems can have slightly different requirements and behaviors wh
         ]
     }
     ```
+
   </Accordion>
 
   <Accordion title="SAP SuccessFactors (SAP SF)">
@@ -191,13 +195,21 @@ Different HRIS systems can have slightly different requirements and behaviors wh
     - All top-level fields are mandatory.
     - `earnings`, `deductions`, and `taxes` can be sent together.
     - All fields inside each array are compulsory.
+
   </Accordion>
 
-  <Accordion title="Dayfore HCM">
-    <p>
-  Contact <strong><a href="mailto:support@bindbee.dev" target="_blank">Bindbee Support Team</a></strong> for additional details.
-</p>
-  </Accordion>
+<Accordion title="Dayfore HCM">
+  <p>
+    Contact{" "}
+    <strong>
+      <a href="mailto:support@bindbee.dev" target="_blank">
+        Bindbee Support Team
+      </a>
+    </strong>{" "}
+    for additional details.
+  </p>
+</Accordion>
 
-  {/* Add more provider-specific accordions here as you support additional HRIS integrations */}
+{/* Add more provider-specific accordions here as you support additional HRIS integrations */}
+
 </AccordionGroup>
